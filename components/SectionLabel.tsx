@@ -6,7 +6,7 @@ interface SectionLabelProps {
 export default function SectionLabel({ text, className = "" }: SectionLabelProps) {
   return (
     <span
-      className={`inline-block font-sans text-[11px] font-normal uppercase tracking-[0.18em] text-accent ${className}`}
+      className={`inline-block font-sans text-xs font-normal uppercase tracking-label text-accent-gold ${className}`}
     >
       {text}
     </span>
