@@ -15,8 +15,8 @@ function Hero() {
       {/* Background image with overlay */}
       <div className="absolute inset-0">
         <Image
-          src="/images/tulum-ruins.jpg"
-          alt="Tulum, Mexico"
+          src="/images/hero-beach.jpg"
+          alt="Caribbean beach, Mexico"
           fill
           className="object-cover"
           priority
@@ -241,19 +241,19 @@ function HowItWorks() {
       step: "01",
       title: "Define Your Direction",
       text: "Tell us your goals, budget, and timeline. We build your buyer profile.",
-      image: "/images/cenote.jpg",
+      image: "/images/palm-beach.jpg",
     },
     {
       step: "02",
       title: "Receive Verified Options",
       text: "We surface audited opportunities matched to your intent. Off-market, pre-sales, and selected listings — verified before delivery.",
-      image: "/images/tropical-villa.jpg",
+      image: "/images/luxury-villa.jpg",
     },
     {
       step: "03",
       title: "Acquire with Clarity",
       text: "We guide you from first review to final close. Legal support, notarial process, partner network — all coordinated.",
-      image: "/images/oaxaca.jpg",
+      image: "/images/sunrise.jpg",
     },
   ];
 
@@ -453,8 +453,8 @@ function FinalCTA() {
       {/* Background image */}
       <div className="absolute inset-0">
         <Image
-          src="/images/jungle.jpg"
-          alt="Tropical jungle"
+          src="/images/cenote.jpg"
+          alt="Cenote, Yucatan"
           fill
           className="object-cover"
         />
@@ -502,7 +502,7 @@ export default function HomePage() {
     <>
       <Hero />
       <ProblemContrast />
-      <ImageBreak src="/images/cenote.jpg" alt="Cenote, Yucatan, Mexico" />
+      <ImageBreak src="/images/tropical-villa.jpg" alt="Luxury villa, Riviera Maya" />
       <WhatIsVirezia />
       <HowItWorks />
       <ForWhom />
