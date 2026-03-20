@@ -18,15 +18,16 @@ export default function Button({
   type = "button",
   onClick,
 }: ButtonProps) {
-  const base = "inline-block font-sans text-sm tracking-label uppercase transition-all duration-300";
+  const base =
+    "inline-block font-sans text-[11px] tracking-[0.18em] uppercase transition-all duration-500";
 
   const variants = {
     primary:
-      "border border-accent-gold text-accent-gold px-8 py-3 hover:bg-accent-gold hover:text-bg-primary",
+      "border border-text-primary/80 text-text-primary px-10 py-4 hover:bg-text-primary hover:text-bg-primary",
     secondary:
-      "text-text-secondary hover:text-text-primary relative after:absolute after:bottom-0 after:left-0 after:h-px after:w-0 after:bg-text-primary after:transition-all after:duration-300 hover:after:w-full",
+      "text-text-secondary hover:text-text-primary relative pb-1 after:absolute after:bottom-0 after:left-0 after:h-px after:w-0 after:bg-accent after:transition-all after:duration-500 hover:after:w-full",
     ghost:
-      "border border-border-subtle text-text-secondary px-6 py-2 hover:border-text-muted hover:text-text-primary",
+      "text-accent hover:text-text-primary",
   };
 
   const classes = `${base} ${variants[variant]} ${className}`;

@@ -8,6 +8,9 @@ export const metadata: Metadata = {
   title: "VIREZIA — Private Real Estate Intelligence · Mexico",
   description:
     "Private real estate intelligence for expats and foreign investors in Mexico. Curated, verified, and matched to your profile — Tulum, Riviera Maya, Oaxaca.",
+  icons: {
+    icon: "/favicon.png",
+  },
   openGraph: {
     title: "VIREZIA — Private Real Estate Intelligence · Mexico",
     description:
