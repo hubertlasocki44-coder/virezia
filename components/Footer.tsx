@@ -1,14 +1,21 @@
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Footer() {
   return (
     <footer className="border-t border-border-subtle bg-bg-primary">
       <div className="mx-auto max-w-content px-6 py-16">
         <div className="grid gap-12 md:grid-cols-3">
-          {/* Left — Wordmark */}
+          {/* Left — Logo */}
           <div>
-            <Link href="/" className="font-serif text-[16px] tracking-[0.15em] text-text-muted">
-              VIREZIA
+            <Link href="/">
+              <Image
+                src="/logo.png"
+                alt="VIREZIA"
+                width={100}
+                height={25}
+                className="h-6 w-auto brightness-0 invert opacity-60"
+              />
             </Link>
           </div>
 

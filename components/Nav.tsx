@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { Menu, X } from "lucide-react";
 
 export default function Nav() {
@@ -29,14 +30,15 @@ export default function Nav() {
       }`}
     >
       <div className="mx-auto flex max-w-content items-center justify-between px-6 py-5">
-        {/* Text wordmark */}
-        <Link href="/" className="flex flex-col">
-          <span className="font-serif text-[18px] font-normal tracking-[0.15em] text-accent-gold">
-            VIREZIA
-          </span>
-          <span className="font-sans text-[10px] font-normal uppercase tracking-[0.2em] text-text-muted">
-            Bespoke Living
-          </span>
+        <Link href="/" className="relative block">
+          <Image
+            src="/logo.png"
+            alt="VIREZIA — Bespoke Living"
+            width={140}
+            height={36}
+            className="h-8 w-auto brightness-0 invert lg:h-9"
+            priority
+          />
         </Link>
 
         {/* Desktop nav */}

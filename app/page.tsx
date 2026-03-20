@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import Link from "next/link";
 import AnimatedSection from "@/components/AnimatedSection";
 import SectionLabel from "@/components/SectionLabel";
@@ -393,6 +394,73 @@ function HowWeWork() {
   );
 }
 
+/* ─── Visual Break — Aerial ─────────────────────────────────── */
+
+function VisualBreak() {
+  return (
+    <AnimatedSection>
+      <section className="relative h-[50vh] min-h-[350px] overflow-hidden">
+        <Image
+          src="/images/tulum-aerial.jpg"
+          alt="Aerial view of coastal architecture in Mexico"
+          fill
+          className="object-cover"
+        />
+        <div className="absolute inset-0 bg-[rgba(8,8,8,0.65)]" />
+        <div className="relative z-10 flex h-full items-center justify-center px-6">
+          <p className="max-w-lg text-center font-serif text-[clamp(24px,3.5vw,32px)] font-light italic leading-[1.5] text-text-primary">
+            Mexico&apos;s real estate market is full of noise.
+            <br />
+            <span className="text-accent-gold">VIREZIA is the filter.</span>
+          </p>
+        </div>
+      </section>
+    </AnimatedSection>
+  );
+}
+
+/* ─── Behind VIREZIA ───────────────────────────────────────── */
+
+function BehindVirezia() {
+  return (
+    <section className="py-[120px]">
+      <div className="mx-auto max-w-content px-6">
+        <div className="grid items-start gap-16 md:grid-cols-[1fr_280px]">
+          <AnimatedSection>
+            <SectionLabel text="Who we are" />
+            <p className="mt-8 font-serif text-[28px] font-light leading-[1.3] text-text-primary">
+              Lucas Hubert
+            </p>
+            <p className="mt-1 font-sans text-[13px] text-text-muted">
+              Founder, VIREZIA
+            </p>
+            <p className="mt-8 max-w-lg font-sans text-base font-light leading-relaxed text-text-secondary">
+              I built VIREZIA after years of watching foreign buyers navigate
+              Mexico&apos;s real estate market without a reliable guide —
+              overpaying, under-informed, and alone in the process.
+            </p>
+            <p className="mt-4 max-w-lg font-sans text-base font-light leading-relaxed text-text-secondary">
+              VIREZIA is the infrastructure I wish had existed.
+            </p>
+          </AnimatedSection>
+
+          {/* Photo placeholder — replace with real photo */}
+          <AnimatedSection delay={0.2} className="hidden md:block">
+            <div className="relative aspect-[3/4] overflow-hidden bg-bg-card">
+              {/* Placeholder — replace /images/lucas-hubert.jpg when available */}
+              <div className="flex h-full items-center justify-center">
+                <p className="font-sans text-[11px] uppercase tracking-[0.15em] text-text-muted">
+                  Photo coming soon
+                </p>
+              </div>
+            </div>
+          </AnimatedSection>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 /* ─── Final CTA ────────────────────────────────────────────── */
 
 function FinalCTA() {
@@ -442,10 +510,12 @@ export default function HomePage() {
     <>
       <Hero />
       <ProblemContrast />
+      <VisualBreak />
       <WhatIsVirezia />
       <Process />
       <ForWhom />
       <HowWeWork />
+      <BehindVirezia />
       <FinalCTA />
     </>
   );
