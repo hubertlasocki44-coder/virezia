@@ -11,21 +11,23 @@ import Button from "@/components/Button";
 
 function Hero() {
   return (
-    <section className="relative min-h-screen overflow-hidden">
-      {/* Background image with overlay */}
+    <section className="relative h-screen max-h-[1000px] min-h-[600px] overflow-hidden">
+      {/* Background image */}
       <div className="absolute inset-0">
         <Image
-          src="/images/hero-beach.jpg"
-          alt="Caribbean beach, Mexico"
+          src="/images/hero-pool.jpg"
+          alt="Freedom and lifestyle in Mexico"
           fill
-          className="object-cover"
+          className="object-cover object-center"
           priority
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-bg-primary/80 via-bg-primary/60 to-bg-primary" />
+        {/* Heavy dark overlay for text readability */}
+        <div className="absolute inset-0 bg-black/55" />
+        <div className="absolute inset-0 bg-gradient-to-t from-bg-primary via-transparent to-bg-primary/40" />
       </div>
 
-      <div className="relative z-10 mx-auto flex min-h-screen max-w-content items-end px-6 pb-32 pt-40">
-        <div className="max-w-2xl">
+      <div className="relative z-10 mx-auto flex h-full max-w-content flex-col justify-end px-6 pb-20 pt-28">
+        <div className="max-w-xl">
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
@@ -35,7 +37,8 @@ function Hero() {
           </motion.div>
 
           <motion.h1
-            className="mt-6"
+            className="mt-5 text-white"
+            style={{ fontSize: "clamp(40px, 6vw, 76px)" }}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.5 }}
@@ -46,28 +49,18 @@ function Hero() {
           </motion.h1>
 
           <motion.p
-            className="mt-8 max-w-lg text-base font-light leading-relaxed text-text-secondary"
+            className="mt-6 max-w-md text-[15px] font-light leading-relaxed text-white/75"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.8 }}
           >
             We help expats and foreign investors buy property in Mexico with full
-            confidence. Every opportunity we show you is curated from the full
-            market, verified on-site, benchmarked against real data, and matched
-            personally to your profile.
-          </motion.p>
-
-          <motion.p
-            className="mt-3 text-base font-light text-text-primary/80"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.95 }}
-          >
-            No hidden fees. No noise. No guesswork.
+            confidence. Curated from the full market, verified on-site,
+            matched to your profile. No hidden fees.
           </motion.p>
 
           <motion.div
-            className="mt-10 flex flex-wrap items-center gap-6"
+            className="mt-8 flex flex-wrap items-center gap-5"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 1.1 }}
@@ -75,28 +68,26 @@ function Hero() {
             <Button href="/apply">Apply for Private Access</Button>
             <Link
               href="/how-it-works"
-              className="font-sans text-sm text-text-secondary transition-colors hover:text-text-primary"
+              className="font-sans text-sm text-white/60 transition-colors hover:text-white"
             >
               Learn how it works →
             </Link>
           </motion.div>
         </div>
-      </div>
 
-      {/* Bottom note */}
-      <motion.div
-        className="absolute bottom-8 left-0 right-0 z-10 px-6"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.8, delay: 1.4 }}
-      >
-        <div className="mx-auto max-w-content">
-          <div className="mb-4 h-px w-full bg-border" />
-          <p className="font-sans text-xs text-text-muted">
+        {/* Bottom note */}
+        <motion.div
+          className="mt-auto pt-8"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, delay: 1.4 }}
+        >
+          <div className="h-px w-full bg-white/10" />
+          <p className="mt-4 font-sans text-xs text-white/35">
             Not a listing portal. Every option is selected for you specifically.
           </p>
-        </div>
-      </motion.div>
+        </motion.div>
+      </div>
     </section>
   );
 }
@@ -108,7 +99,6 @@ function ProblemContrast() {
     <section className="bg-bg-secondary py-[120px]">
       <div className="mx-auto max-w-content px-6">
         <div className="grid gap-16 md:grid-cols-2">
-          {/* Left — The Market */}
           <AnimatedSection>
             <SectionLabel text="The market" />
             <div className="mt-8 space-y-2 font-sans text-base font-light leading-relaxed text-text-secondary">
@@ -116,15 +106,10 @@ function ProblemContrast() {
               <p>Inflated prices.</p>
               <p>No legal clarity.</p>
               <p>No independent verification.</p>
-              <p>
-                Brokers optimizing for commission,
-                <br />
-                not for your outcome.
-              </p>
+              <p>Brokers optimizing for commission,<br />not for your outcome.</p>
             </div>
           </AnimatedSection>
 
-          {/* Right — VIREZIA */}
           <AnimatedSection delay={0.15}>
             <SectionLabel text="VIREZIA" />
             <div className="mt-8 space-y-2 font-sans text-base font-light leading-relaxed text-text-primary">
@@ -141,25 +126,23 @@ function ProblemContrast() {
   );
 }
 
-/* ─── Image Break ──────────────────────────────────────────── */
+/* ─── Lifestyle Image Band ─────────────────────────────────── */
 
-function ImageBreak({
-  src,
-  alt,
-}: {
-  src: string;
-  alt: string;
-}) {
+function LifestyleBand() {
+  const images = [
+    { src: "/images/nomad-laptop.jpg", alt: "Digital nomad working by the water" },
+    { src: "/images/luxury-villa.jpg", alt: "Luxury villa with pool" },
+    { src: "/images/couple-sunset.jpg", alt: "Couple at sunset on the beach" },
+  ];
+
   return (
     <AnimatedSection>
-      <div className="relative h-[40vh] min-h-[300px] w-full overflow-hidden md:h-[50vh]">
-        <Image
-          src={src}
-          alt={alt}
-          fill
-          className="object-cover"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-bg-primary/30 via-transparent to-bg-primary/30" />
+      <div className="grid grid-cols-3 gap-1">
+        {images.map((img) => (
+          <div key={img.src} className="relative aspect-[4/3] overflow-hidden">
+            <Image src={img.src} alt={img.alt} fill className="object-cover" />
+          </div>
+        ))}
       </div>
     </AnimatedSection>
   );
@@ -212,7 +195,6 @@ function WhatIsVirezia() {
           </p>
         </AnimatedSection>
 
-        {/* Three pillars */}
         <div className="mt-20 grid gap-12 md:grid-cols-3">
           {pillars.map((pillar, i) => (
             <AnimatedSection key={pillar.number} delay={i * 0.1}>
@@ -241,19 +223,22 @@ function HowItWorks() {
       step: "01",
       title: "Define Your Direction",
       text: "Tell us your goals, budget, and timeline. We build your buyer profile.",
-      image: "/images/palm-beach.jpg",
+      image: "/images/beach-walk.jpg",
+      imageAlt: "Man walking on tropical beach",
     },
     {
       step: "02",
       title: "Receive Verified Options",
       text: "We surface audited opportunities matched to your intent. Off-market, pre-sales, and selected listings — verified before delivery.",
       image: "/images/luxury-villa.jpg",
+      imageAlt: "Modern luxury villa with pool",
     },
     {
       step: "03",
       title: "Acquire with Clarity",
       text: "We guide you from first review to final close. Legal support, notarial process, partner network — all coordinated.",
-      image: "/images/sunrise.jpg",
+      image: "/images/couple-sunset.jpg",
+      imageAlt: "Couple enjoying sunset at beach",
     },
   ];
 
@@ -264,11 +249,10 @@ function HowItWorks() {
           <SectionLabel text="The process" />
         </AnimatedSection>
 
-        <div className="mt-16 space-y-16">
+        <div className="mt-16 space-y-20">
           {steps.map((step, i) => (
             <AnimatedSection key={step.step} delay={i * 0.1}>
-              <div className="grid items-center gap-8 md:grid-cols-2 md:gap-16">
-                {/* Text — alternates sides */}
+              <div className="grid items-center gap-10 md:grid-cols-2 md:gap-16">
                 <div className={i % 2 === 1 ? "md:order-2" : ""}>
                   <span className="font-sans text-xs tracking-label text-accent-gold">
                     Step {step.step}
@@ -278,15 +262,13 @@ function HowItWorks() {
                     {step.text}
                   </p>
                 </div>
-                {/* Image */}
                 <div className={`relative aspect-[4/3] overflow-hidden ${i % 2 === 1 ? "md:order-1" : ""}`}>
                   <Image
                     src={step.image}
-                    alt={step.title}
+                    alt={step.imageAlt}
                     fill
                     className="object-cover"
                   />
-                  <div className="absolute inset-0 bg-bg-primary/10" />
                 </div>
               </div>
             </AnimatedSection>
@@ -327,55 +309,61 @@ function ForWhom() {
   return (
     <section className="py-[120px]">
       <div className="mx-auto max-w-content px-6">
-        <AnimatedSection>
-          <SectionLabel text="Who this is for" />
-        </AnimatedSection>
+        <div className="grid items-start gap-16 md:grid-cols-[1fr_1fr_1fr]">
+          {/* Left text */}
+          <div className="md:col-span-2">
+            <AnimatedSection>
+              <SectionLabel text="Who this is for" />
+            </AnimatedSection>
 
-        <div className="mt-16 grid gap-16 md:grid-cols-2">
-          <AnimatedSection>
-            <h3 className="text-2xl">VIREZIA is for:</h3>
-            <ul className="mt-8 space-y-3">
-              {forList.map((item) => (
-                <li
-                  key={item}
-                  className="font-sans text-base font-light text-text-secondary"
-                >
-                  · {item}
-                </li>
-              ))}
-            </ul>
-          </AnimatedSection>
+            <div className="mt-16 grid gap-16 md:grid-cols-2">
+              <AnimatedSection>
+                <h3 className="text-2xl">VIREZIA is for:</h3>
+                <ul className="mt-8 space-y-3">
+                  {forList.map((item) => (
+                    <li key={item} className="font-sans text-base font-light text-text-secondary">
+                      · {item}
+                    </li>
+                  ))}
+                </ul>
+              </AnimatedSection>
 
-          <AnimatedSection delay={0.1}>
-            <h3 className="text-2xl">VIREZIA is not for:</h3>
-            <ul className="mt-8 space-y-3">
-              {notForList.map((item) => (
-                <li
-                  key={item}
-                  className="font-sans text-base font-light text-text-muted"
-                >
-                  · {item}
-                </li>
-              ))}
-            </ul>
+              <AnimatedSection delay={0.1}>
+                <h3 className="text-2xl">VIREZIA is not for:</h3>
+                <ul className="mt-8 space-y-3">
+                  {notForList.map((item) => (
+                    <li key={item} className="font-sans text-base font-light text-text-muted">
+                      · {item}
+                    </li>
+                  ))}
+                </ul>
+              </AnimatedSection>
+            </div>
+
+            <AnimatedSection className="mt-16">
+              <p className="font-sans text-sm text-text-muted">
+                Access is limited. Each application is reviewed individually.
+              </p>
+              <p className="mt-4 font-sans text-sm italic text-accent-gold/60">
+                For investors seeking pre-market deal access before public release —
+                VIREZIA Circle operates by invitation only.{" "}
+                <Link href="/circle" className="text-accent-gold/80 transition-colors hover:text-accent-gold">→</Link>
+              </p>
+            </AnimatedSection>
+          </div>
+
+          {/* Right image */}
+          <AnimatedSection delay={0.2} className="hidden md:block">
+            <div className="relative aspect-[3/4] overflow-hidden">
+              <Image
+                src="/images/friends-terrace.jpg"
+                alt="Expat lifestyle in Mexico"
+                fill
+                className="object-cover"
+              />
+            </div>
           </AnimatedSection>
         </div>
-
-        <AnimatedSection className="mt-16">
-          <p className="font-sans text-sm text-text-muted">
-            Access is limited. Each application is reviewed individually.
-          </p>
-          <p className="mt-4 font-sans text-sm italic text-accent-gold/60">
-            For investors seeking pre-market deal access before public release —
-            VIREZIA Circle operates by invitation only.{" "}
-            <Link
-              href="/circle"
-              className="text-accent-gold/80 transition-colors hover:text-accent-gold"
-            >
-              →
-            </Link>
-          </p>
-        </AnimatedSection>
       </div>
     </section>
   );
@@ -388,14 +376,12 @@ function TrustSignals() {
     {
       headline: "3 Focus Regions",
       sub: "Tulum · Riviera Maya · Oaxaca",
-      detail:
-        "Markets monitored daily for pricing, demand, and legal shifts.",
+      detail: "Markets monitored daily for pricing, demand, and legal shifts.",
     },
     {
       headline: "Independent Verification Standard",
       sub: "Legal title · Physical on-site inspection · Registro Público records",
-      detail:
-        "Every deal audited by our due diligence partner before you see it.",
+      detail: "Every deal audited by our due diligence partner before you see it.",
     },
     {
       headline: "Full Cycle Support",
@@ -416,18 +402,13 @@ function TrustSignals() {
             <AnimatedSection key={stat.headline} delay={i * 0.1}>
               <div className="border border-border bg-bg-card p-8">
                 <h3 className="text-xl font-light">{stat.headline}</h3>
-                <p className="mt-3 font-sans text-sm text-accent-gold">
-                  {stat.sub}
-                </p>
-                <p className="mt-3 font-sans text-sm font-light text-text-secondary">
-                  {stat.detail}
-                </p>
+                <p className="mt-3 font-sans text-sm text-accent-gold">{stat.sub}</p>
+                <p className="mt-3 font-sans text-sm font-light text-text-secondary">{stat.detail}</p>
               </div>
             </AnimatedSection>
           ))}
         </div>
 
-        {/* Anonymous case note */}
         <AnimatedSection className="mt-12">
           <div className="border border-border bg-bg-card p-8 md:max-w-2xl">
             <p className="font-serif text-lg font-light italic leading-relaxed text-text-primary">
@@ -450,41 +431,37 @@ function TrustSignals() {
 function FinalCTA() {
   return (
     <section className="relative py-[120px]">
-      {/* Background image */}
       <div className="absolute inset-0">
         <Image
-          src="/images/cenote.jpg"
-          alt="Cenote, Yucatan"
+          src="/images/sunrise.jpg"
+          alt="Sunrise over the ocean"
           fill
           className="object-cover"
         />
-        <div className="absolute inset-0 bg-bg-primary/85" />
+        <div className="absolute inset-0 bg-black/70" />
       </div>
 
       <div className="relative z-10 mx-auto max-w-content px-6">
         <AnimatedSection className="max-w-xl">
-          <h2>
+          <h2 className="text-white">
             Private Access.
             <br />
             Reviewed Individually.
           </h2>
-          <p className="mt-8 font-sans text-base font-light text-text-secondary">
+          <p className="mt-8 font-sans text-base font-light text-white/65">
             Submit your application and tell us what you are looking for. We
             review every request and respond within 48 hours.
           </p>
           <div className="mt-10">
             <Button href="/apply">Apply for Private Access</Button>
           </div>
-          <p className="mt-4 font-sans text-sm text-text-muted">
+          <p className="mt-4 font-sans text-sm text-white/40">
             No commitment. No browsing. Just clarity.
           </p>
-          <div className="mt-8 border-t border-border-subtle pt-4">
-            <p className="font-sans text-xs text-text-muted">
+          <div className="mt-8 border-t border-white/10 pt-4">
+            <p className="font-sans text-xs text-white/30">
               Already a member?{" "}
-              <Link
-                href="/circle"
-                className="text-text-secondary transition-colors hover:text-accent-gold"
-              >
+              <Link href="/circle" className="text-white/50 transition-colors hover:text-accent-gold">
                 → VIREZIA Circle
               </Link>
             </p>
@@ -502,7 +479,7 @@ export default function HomePage() {
     <>
       <Hero />
       <ProblemContrast />
-      <ImageBreak src="/images/tropical-villa.jpg" alt="Luxury villa, Riviera Maya" />
+      <LifestyleBand />
       <WhatIsVirezia />
       <HowItWorks />
       <ForWhom />
