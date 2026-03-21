@@ -11,17 +11,39 @@ import SectionLabel from "@/components/SectionLabel";
 function Hero() {
   return (
     <section className="relative flex min-h-screen items-center overflow-hidden">
-      {/* Layered gradient background */}
+      {/* Base dark background */}
+      <div className="absolute inset-0 bg-[#080808]" />
+
+      {/* Hero image — low opacity, blended from right */}
+      <div className="absolute inset-0">
+        <Image
+          src="/images/hero-bg.png"
+          alt=""
+          fill
+          className="object-cover object-right"
+          style={{ opacity: 0.2 }}
+          priority
+        />
+        {/* Gradient mask: solid black on left → transparent on right */}
+        <div
+          className="absolute inset-0"
+          style={{
+            background: `linear-gradient(to right, #080808 0%, #080808 35%, rgba(8,8,8,0.6) 60%, rgba(8,8,8,0.3) 100%)`,
+          }}
+        />
+      </div>
+
+      {/* Subtle gold radial accents */}
       <div
-        className="absolute inset-0"
+        className="absolute inset-0 pointer-events-none"
         style={{
           background: `
-            radial-gradient(ellipse at 25% 60%, rgba(201,169,110,0.07) 0%, transparent 55%),
-            radial-gradient(ellipse at 75% 20%, rgba(201,169,110,0.04) 0%, transparent 45%),
-            #080808
+            radial-gradient(ellipse at 25% 60%, rgba(201,169,110,0.05) 0%, transparent 55%),
+            radial-gradient(ellipse at 75% 20%, rgba(201,169,110,0.03) 0%, transparent 45%)
           `,
         }}
       />
+
       {/* Grain overlay */}
       <div
         className="absolute inset-0 pointer-events-none"
@@ -30,22 +52,6 @@ function Hero() {
           opacity: 0.035,
         }}
       />
-
-      {/* Subtle geometric accent on right side */}
-      <div className="absolute right-[10%] top-1/2 -translate-y-1/2 hidden lg:block">
-        <motion.div
-          className="h-[300px] w-px bg-gradient-to-b from-transparent via-accent-gold/10 to-transparent"
-          initial={{ scaleY: 0 }}
-          animate={{ scaleY: 1 }}
-          transition={{ duration: 1.5, delay: 1.2 }}
-        />
-        <motion.div
-          className="absolute top-1/2 left-0 h-px w-[80px] -translate-y-1/2 bg-gradient-to-r from-accent-gold/10 to-transparent"
-          initial={{ scaleX: 0 }}
-          animate={{ scaleX: 1 }}
-          transition={{ duration: 1, delay: 1.5 }}
-        />
-      </div>
 
       <div className="relative z-10 mx-auto w-full max-w-content px-6" style={{ marginTop: "-5vh" }}>
         <div className="max-w-[620px]">
