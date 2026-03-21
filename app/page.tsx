@@ -5,7 +5,6 @@ import Image from "next/image";
 import Link from "next/link";
 import AnimatedSection from "@/components/AnimatedSection";
 import SectionLabel from "@/components/SectionLabel";
-import Button from "@/components/Button";
 
 /* ─── Hero ─────────────────────────────────────────────────── */
 
@@ -31,6 +30,22 @@ function Hero() {
           opacity: 0.035,
         }}
       />
+
+      {/* Subtle geometric accent on right side */}
+      <div className="absolute right-[10%] top-1/2 -translate-y-1/2 hidden lg:block">
+        <motion.div
+          className="h-[300px] w-px bg-gradient-to-b from-transparent via-accent-gold/10 to-transparent"
+          initial={{ scaleY: 0 }}
+          animate={{ scaleY: 1 }}
+          transition={{ duration: 1.5, delay: 1.2 }}
+        />
+        <motion.div
+          className="absolute top-1/2 left-0 h-px w-[80px] -translate-y-1/2 bg-gradient-to-r from-accent-gold/10 to-transparent"
+          initial={{ scaleX: 0 }}
+          animate={{ scaleX: 1 }}
+          transition={{ duration: 1, delay: 1.5 }}
+        />
+      </div>
 
       <div className="relative z-10 mx-auto w-full max-w-content px-6" style={{ marginTop: "-5vh" }}>
         <div className="max-w-[620px]">
@@ -91,14 +106,14 @@ function Hero() {
         </div>
       </div>
 
-      {/* Bottom note */}
+      {/* Bottom note — increased contrast */}
       <motion.div
         className="absolute bottom-10 left-0 right-0 px-6"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8, delay: 1.4 }}
       >
-        <p className="mx-auto max-w-content text-center font-sans text-[12px] tracking-[0.05em] text-text-muted">
+        <p className="mx-auto max-w-content text-center font-sans text-[12px] tracking-[0.05em] text-text-secondary">
           Not a listing portal. Every option is selected for you specifically.
         </p>
       </motion.div>
@@ -124,20 +139,24 @@ function Hero() {
 
 function ProblemContrast() {
   return (
-    <section className="border-t border-border-subtle bg-bg-secondary py-[120px]">
+    <section className="border-t border-border-subtle bg-bg-secondary py-[100px]">
       <div className="mx-auto max-w-content px-6">
-        <div className="grid gap-20 md:grid-cols-2">
-          {/* Left — The Market */}
+        <AnimatedSection>
+          <SectionLabel text="Why this matters" />
+        </AnimatedSection>
+
+        <div className="mt-12 grid gap-20 md:grid-cols-2">
+          {/* Left — The Market (boosted contrast) */}
           <AnimatedSection>
             <span className="font-sans text-[11px] uppercase tracking-[0.15em] text-text-muted">
               The market
             </span>
-            <div className="mt-8 border-l-2 border-text-muted/20 pl-6 space-y-3">
-              <p className="font-serif text-[22px] font-light leading-[1.6] text-text-secondary">Hundreds of listings.</p>
-              <p className="font-serif text-[22px] font-light leading-[1.6] text-text-secondary">Inflated prices.</p>
-              <p className="font-serif text-[22px] font-light leading-[1.6] text-text-secondary">No legal clarity.</p>
-              <p className="font-serif text-[22px] font-light leading-[1.6] text-text-secondary">No independent verification.</p>
-              <p className="font-serif text-[22px] font-light leading-[1.6] text-text-secondary">Brokers optimizing for commission,<br />not for your outcome.</p>
+            <div className="mt-8 border-l-2 border-text-muted/30 pl-6 space-y-3">
+              <p className="font-serif text-[22px] font-light leading-[1.6] text-text-secondary/80">Hundreds of listings.</p>
+              <p className="font-serif text-[22px] font-light leading-[1.6] text-text-secondary/80">Inflated prices.</p>
+              <p className="font-serif text-[22px] font-light leading-[1.6] text-text-secondary/80">No legal clarity.</p>
+              <p className="font-serif text-[22px] font-light leading-[1.6] text-text-secondary/80">No independent verification.</p>
+              <p className="font-serif text-[22px] font-light leading-[1.6] text-text-secondary/80">Brokers optimizing for commission,<br />not for your outcome.</p>
             </div>
           </AnimatedSection>
 
@@ -160,32 +179,60 @@ function ProblemContrast() {
   );
 }
 
-/* ─── What is VIREZIA — Three Pillars ──────────────────────── */
+/* ─── Visual Break — Aerial ─────────────────────────────────── */
 
-function WhatIsVirezia() {
-  const pillars = [
+function VisualBreak() {
+  return (
+    <AnimatedSection>
+      <section className="relative h-[45vh] min-h-[320px] overflow-hidden">
+        <Image
+          src="/images/tulum-aerial.jpg"
+          alt="Aerial view of coastal architecture in Mexico"
+          fill
+          className="object-cover"
+        />
+        <div className="absolute inset-0 bg-[rgba(8,8,8,0.65)]" />
+        <div className="relative z-10 flex h-full items-center justify-center px-6">
+          <div className="text-center">
+            <p className="font-sans text-[13px] uppercase tracking-[0.15em] text-accent-gold">
+              3 regions · 4 active markets · Every deal verified
+            </p>
+            <p className="mt-4 max-w-md mx-auto font-serif text-[clamp(22px,3vw,28px)] font-light italic leading-[1.5] text-text-primary">
+              Tulum · Riviera Maya · Oaxaca · Puerto Escondido
+            </p>
+          </div>
+        </div>
+      </section>
+    </AnimatedSection>
+  );
+}
+
+/* ─── How It Works — Pillars + Process merged ──────────────── */
+
+function HowItWorks() {
+  const steps = [
     {
       number: "01",
-      title: "Personal Profile",
-      text: "Tell us your goals, budget, and priorities. We build your buyer profile and match opportunities to it — not the other way around.",
+      title: "Build Your Profile",
+      text: "Tell us your goals, budget, timeline, and what matters most. We build your buyer profile — the filter everything else runs through.",
     },
     {
       number: "02",
-      title: "Curated & Verified",
-      text: "Every option is sourced from the full market, verified on-site, and benchmarked against current pricing data — including off-market and pre-sale opportunities not yet publicly listed.",
+      title: "Receive Your Selection",
+      text: "We surface the best available options matched to your profile. Each one audited on-site, benchmarked against market data, and legally cleared — including off-market and pre-sale deals not yet publicly listed.",
     },
     {
       number: "03",
-      title: "Guided to Close",
-      text: "Full transparency from first contact to notarial close. No hidden fees. Legal support, partner network, and clear process at every step — or audit your own found deal on demand.",
+      title: "Acquire with Clarity",
+      text: "From first review to notarial close. Legal coordination, partner network, full transparency on costs. Or audit a deal you found yourself — on demand.",
     },
   ];
 
   return (
-    <section className="py-[120px]">
+    <section className="py-[100px]">
       <div className="mx-auto max-w-content px-6">
         <AnimatedSection className="max-w-2xl">
-          <SectionLabel text="What we are" />
+          <SectionLabel text="How it works" />
           <h2 className="mt-6">
             We Don&apos;t Show You Everything.
             <br />
@@ -193,76 +240,24 @@ function WhatIsVirezia() {
           </h2>
         </AnimatedSection>
 
-        {/* Three pillar cards */}
-        <div className="mt-16 grid gap-6 md:grid-cols-3">
-          {pillars.map((pillar, i) => (
-            <AnimatedSection key={pillar.number} delay={i * 0.1}>
+        {/* Three step cards */}
+        <div className="mt-14 grid gap-6 md:grid-cols-3">
+          {steps.map((step, i) => (
+            <AnimatedSection key={step.number} delay={i * 0.1}>
               <div className="group border border-border bg-bg-card p-10 transition-colors duration-200 hover:border-accent-gold/30">
                 <span className="font-serif text-[48px] font-light leading-none text-accent-gold/20">
-                  {pillar.number}
+                  {step.number}
                 </span>
-                <h3 className="mt-4 text-[24px]">{pillar.title}</h3>
+                <h3 className="mt-4 text-[24px]">{step.title}</h3>
                 <p className="mt-4 font-sans text-sm font-light leading-relaxed text-text-secondary">
-                  {pillar.text}
+                  {step.text}
                 </p>
               </div>
             </AnimatedSection>
           ))}
         </div>
-      </div>
-    </section>
-  );
-}
 
-/* ─── Process — 3 Steps ────────────────────────────────────── */
-
-function Process() {
-  const steps = [
-    {
-      num: "01",
-      title: "Build Your Profile",
-      text: "Tell us your goals, budget, timeline, and what matters most. We build your buyer profile — the filter everything else runs through.",
-    },
-    {
-      num: "02",
-      title: "Receive Your Selection",
-      text: "We surface the best available options matched to your profile. Each one audited, benchmarked, and cleared before it reaches you — including off-market and pre-sale deals.",
-    },
-    {
-      num: "03",
-      title: "Acquire with Clarity",
-      text: "From first review to notarial close. Legal coordination, partner network, full transparency on costs. Or audit a deal you found yourself — on demand.",
-    },
-  ];
-
-  return (
-    <section className="bg-bg-secondary py-[120px]">
-      <div className="mx-auto max-w-content px-6">
-        <AnimatedSection>
-          <SectionLabel text="The process" />
-        </AnimatedSection>
-
-        <div className="mt-16 space-y-0">
-          {steps.map((step, i) => (
-            <AnimatedSection key={step.num} delay={i * 0.1}>
-              <div className="grid items-start gap-8 border-t border-border py-12 md:grid-cols-[120px_1fr]">
-                {/* Large number */}
-                <span className="font-serif text-[72px] font-light leading-none text-accent-gold/15">
-                  {step.num}
-                </span>
-                {/* Content */}
-                <div className="max-w-lg">
-                  <h3 className="text-[24px]">{step.title}</h3>
-                  <p className="mt-3 font-sans text-[15px] font-light leading-relaxed text-text-secondary">
-                    {step.text}
-                  </p>
-                </div>
-              </div>
-            </AnimatedSection>
-          ))}
-        </div>
-
-        <AnimatedSection className="mt-4">
+        <AnimatedSection className="mt-10">
           <Link
             href="/how-it-works"
             className="font-sans text-[12px] uppercase tracking-[0.1em] text-accent-gold transition-colors hover:text-accent-gold-light"
@@ -294,13 +289,13 @@ function ForWhom() {
   ];
 
   return (
-    <section className="py-[120px]">
+    <section className="bg-bg-secondary py-[100px]">
       <div className="mx-auto max-w-content px-6">
         <AnimatedSection>
           <SectionLabel text="Who this is for" />
         </AnimatedSection>
 
-        <div className="mt-16 grid gap-16 md:grid-cols-2">
+        <div className="mt-14 grid gap-16 md:grid-cols-2">
           <AnimatedSection>
             <h3 className="text-2xl text-text-primary">VIREZIA is for:</h3>
             <ul className="mt-8 space-y-4">
@@ -324,11 +319,17 @@ function ForWhom() {
           </AnimatedSection>
         </div>
 
-        <AnimatedSection className="mt-12 border-t border-border-subtle pt-8">
-          <p className="font-sans text-sm text-text-muted">
-            Access is limited. Each application is reviewed individually.
-          </p>
-          <p className="mt-6 font-serif text-[18px] italic text-text-secondary">
+        {/* Access limited — boosted visual weight */}
+        <AnimatedSection className="mt-14">
+          <div className="border border-border bg-bg-card px-8 py-6 max-w-md">
+            <p className="font-sans text-[15px] text-text-primary">
+              Access is limited. Each application is reviewed individually.
+            </p>
+          </div>
+        </AnimatedSection>
+
+        <AnimatedSection className="mt-8">
+          <p className="font-serif text-[18px] italic text-text-secondary">
             For investors seeking pre-market deal access before public release —
             VIREZIA Circle operates by invitation only.{" "}
             <Link href="/circle" className="text-accent-gold transition-colors hover:text-accent-gold-light">→</Link>
@@ -346,28 +347,28 @@ function HowWeWork() {
     {
       headline: "3 Focus Regions",
       sub: "Tulum · Riviera Maya · Oaxaca",
-      detail: "Markets monitored daily for pricing, demand, and legal shifts.",
+      detail: "Markets monitored daily for pricing, demand, and legal shifts. Each region personally audited.",
     },
     {
       headline: "Verification Standard",
-      sub: "Legal title · On-site inspection · Registro Público records",
-      detail: "Every deal audited by our due diligence partner before you see it.",
+      sub: "Legal title · On-site inspection · Registro Público",
+      detail: "Every deal audited by our due diligence partner — a registered Mexican entity operating under Swiss standards.",
     },
     {
       headline: "End-to-End Guidance",
       sub: "First inquiry to notarial close.",
-      detail: "Legal, notarial, and relocation partners coordinated by us.",
+      detail: "Legal, notarial, and relocation partners coordinated by us. No handoff, no disappearing act.",
     },
   ];
 
   return (
-    <section className="bg-bg-secondary py-[120px]">
+    <section className="py-[100px]">
       <div className="mx-auto max-w-content px-6">
         <AnimatedSection>
           <SectionLabel text="How we work" />
         </AnimatedSection>
 
-        <div className="mt-16 grid gap-6 md:grid-cols-3">
+        <div className="mt-14 grid gap-6 md:grid-cols-3">
           {stats.map((stat, i) => (
             <AnimatedSection key={stat.headline} delay={i * 0.1}>
               <div className="group border border-border bg-bg-card p-8 transition-colors duration-200 hover:border-accent-gold/30">
@@ -379,8 +380,8 @@ function HowWeWork() {
           ))}
         </div>
 
-        {/* Process statement instead of fake case study */}
-        <AnimatedSection className="mt-12">
+        {/* Process statement — more spacing from cards */}
+        <AnimatedSection className="mt-16">
           <div className="max-w-2xl border-l-2 border-accent-gold/30 py-2 pl-8">
             <p className="font-serif text-[22px] font-light italic leading-[1.6] text-text-secondary">
               Every client engagement begins with a profile call.
@@ -394,38 +395,13 @@ function HowWeWork() {
   );
 }
 
-/* ─── Visual Break — Aerial ─────────────────────────────────── */
-
-function VisualBreak() {
-  return (
-    <AnimatedSection>
-      <section className="relative h-[50vh] min-h-[350px] overflow-hidden">
-        <Image
-          src="/images/tulum-aerial.jpg"
-          alt="Aerial view of coastal architecture in Mexico"
-          fill
-          className="object-cover"
-        />
-        <div className="absolute inset-0 bg-[rgba(8,8,8,0.65)]" />
-        <div className="relative z-10 flex h-full items-center justify-center px-6">
-          <p className="max-w-lg text-center font-serif text-[clamp(24px,3.5vw,32px)] font-light italic leading-[1.5] text-text-primary">
-            Mexico&apos;s real estate market is full of noise.
-            <br />
-            <span className="text-accent-gold">VIREZIA is the filter.</span>
-          </p>
-        </div>
-      </section>
-    </AnimatedSection>
-  );
-}
-
 /* ─── Behind VIREZIA ───────────────────────────────────────── */
 
 function BehindVirezia() {
   return (
-    <section className="py-[120px]">
+    <section className="bg-bg-secondary py-[100px]">
       <div className="mx-auto max-w-content px-6">
-        <div className="grid items-start gap-16 md:grid-cols-[1fr_280px]">
+        <div className="grid items-center gap-16 md:grid-cols-[1fr_240px]">
           <AnimatedSection>
             <SectionLabel text="Who we are" />
             <p className="mt-8 font-serif text-[28px] font-light leading-[1.3] text-text-primary">
@@ -434,25 +410,26 @@ function BehindVirezia() {
             <p className="mt-1 font-sans text-[13px] text-text-muted">
               Founder, VIREZIA
             </p>
-            <p className="mt-8 max-w-lg font-sans text-base font-light leading-relaxed text-text-secondary">
-              I built VIREZIA after years of watching foreign buyers navigate
-              Mexico&apos;s real estate market without a reliable guide —
-              overpaying, under-informed, and alone in the process.
-            </p>
-            <p className="mt-4 max-w-lg font-sans text-base font-light leading-relaxed text-text-secondary">
-              VIREZIA is the infrastructure I wish had existed.
-            </p>
+            <div className="mt-8 max-w-xl">
+              <p className="font-sans text-base font-light leading-relaxed text-text-secondary">
+                I built VIREZIA after years of watching foreign buyers navigate
+                Mexico&apos;s real estate market without a reliable guide —
+                overpaying, under-informed, and alone in the process.
+              </p>
+              <p className="mt-4 font-serif text-[20px] font-light italic text-text-primary">
+                VIREZIA is the infrastructure I wish had existed.
+              </p>
+            </div>
           </AnimatedSection>
 
-          {/* Photo placeholder — replace with real photo */}
           <AnimatedSection delay={0.2} className="hidden md:block">
-            <div className="relative aspect-[3/4] overflow-hidden bg-bg-card">
-              {/* Placeholder — replace /images/lucas-hubert.jpg when available */}
-              <div className="flex h-full items-center justify-center">
-                <p className="font-sans text-[11px] uppercase tracking-[0.15em] text-text-muted">
-                  Photo coming soon
-                </p>
-              </div>
+            <div className="relative aspect-[3/4] overflow-hidden">
+              <Image
+                src="/images/lucas-hubert.jpg"
+                alt="Lucas Hubert, Founder of VIREZIA"
+                fill
+                className="object-cover grayscale"
+              />
             </div>
           </AnimatedSection>
         </div>
@@ -466,7 +443,7 @@ function BehindVirezia() {
 function FinalCTA() {
   return (
     <section
-      className="relative py-[120px]"
+      className="py-[80px]"
       style={{
         background: `radial-gradient(ellipse at 50% 100%, rgba(201,169,110,0.06) 0%, transparent 60%), #080808`,
       }}
@@ -478,11 +455,11 @@ function FinalCTA() {
             <br />
             Reviewed Individually.
           </h2>
-          <p className="mt-8 font-sans text-base font-light text-text-secondary">
+          <p className="mt-6 font-sans text-base font-light text-text-secondary">
             Submit your application and tell us what you are looking for. We
             review every request and respond within 48 hours.
           </p>
-          <div className="mt-10">
+          <div className="mt-8">
             <Link
               href="/apply"
               className="inline-block bg-accent-gold px-8 py-[14px] font-sans text-[13px] uppercase tracking-[0.1em] text-bg-primary transition-opacity duration-200 hover:opacity-90"
@@ -493,7 +470,7 @@ function FinalCTA() {
           <p className="mt-4 font-sans text-sm text-text-muted">
             No commitment. No browsing. Just clarity.
           </p>
-          <p className="mt-6 font-sans text-[12px] text-text-muted opacity-60 transition-opacity hover:opacity-100">
+          <p className="mt-5 font-sans text-[12px] text-text-muted opacity-60 transition-opacity hover:opacity-100">
             Already a member?{" "}
             <Link href="/circle" className="text-text-secondary hover:text-accent-gold">→ VIREZIA Circle</Link>
           </p>
@@ -511,8 +488,7 @@ export default function HomePage() {
       <Hero />
       <ProblemContrast />
       <VisualBreak />
-      <WhatIsVirezia />
-      <Process />
+      <HowItWorks />
       <ForWhom />
       <HowWeWork />
       <BehindVirezia />
