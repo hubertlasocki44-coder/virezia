@@ -63,7 +63,7 @@ function Hero() {
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             <span className="block h-[2px] w-6 bg-accent-gold" />
-            <SectionLabel text="Private Real Estate Intelligence · Emerging Markets" />
+            <SectionLabel text="Private Real Estate Intelligence · Mexico & Latin America" />
           </motion.div>
 
           <motion.h1
@@ -84,8 +84,8 @@ function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.8 }}
           >
-            Verified opportunities. Matched to your profile.
-            No noise. No hidden fees.
+            Verified real estate in Mexico&apos;s emerging markets —
+            matched to your profile, with no hidden fees.
           </motion.p>
 
           {/* CTA row */}
@@ -200,10 +200,7 @@ function VisualBreak() {
         <div className="relative z-10 flex h-full items-center justify-center px-6">
           <div className="text-center">
             <p className="font-sans text-[13px] uppercase tracking-[0.15em] text-accent-gold">
-              Every deal verified · Every client profiled · Every option matched
-            </p>
-            <p className="mt-4 max-w-md mx-auto font-serif text-[clamp(22px,3vw,28px)] font-light italic leading-[1.5] text-text-primary">
-              Mexico · Latin America · Emerging Markets
+              Verified real estate · Mexico &amp; Latin America · Every deal matched to your profile
             </p>
           </div>
         </div>
