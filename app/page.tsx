@@ -63,7 +63,7 @@ function Hero() {
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             <span className="block h-[2px] w-6 bg-accent-gold" />
-            <SectionLabel text="Private Real Estate Intelligence · Mexico" />
+            <SectionLabel text="Private Real Estate Intelligence · Emerging Markets" />
           </motion.div>
 
           <motion.h1
@@ -84,9 +84,8 @@ function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.8 }}
           >
-            We filter, audit and deliver only verified real estate
-            opportunities in Mexico — curated from the full market,
-            matched to your profile, with no hidden fees.
+            Verified opportunities. Matched to your profile.
+            No noise. No hidden fees.
           </motion.p>
 
           {/* CTA row */}
@@ -201,10 +200,10 @@ function VisualBreak() {
         <div className="relative z-10 flex h-full items-center justify-center px-6">
           <div className="text-center">
             <p className="font-sans text-[13px] uppercase tracking-[0.15em] text-accent-gold">
-              3 regions · 4 active markets · Every deal verified
+              Every deal verified · Every client profiled · Every option matched
             </p>
             <p className="mt-4 max-w-md mx-auto font-serif text-[clamp(22px,3vw,28px)] font-light italic leading-[1.5] text-text-primary">
-              Tulum · Riviera Maya · Oaxaca · Puerto Escondido
+              Mexico · Latin America · Emerging Markets
             </p>
           </div>
         </div>
@@ -225,7 +224,7 @@ function HowItWorks() {
     {
       number: "02",
       title: "Receive Your Selection",
-      text: "We surface the best available options matched to your profile. Each one audited on-site, benchmarked against market data, and legally cleared — including off-market and pre-sale deals not yet publicly listed.",
+      text: "We surface the best available options matched to your profile. Each one cleared by our verification standard before it reaches you.",
     },
     {
       number: "03",
@@ -263,12 +262,18 @@ function HowItWorks() {
           ))}
         </div>
 
-        <AnimatedSection className="mt-10">
+        <AnimatedSection className="mt-10 flex flex-col gap-4">
           <Link
             href="/how-it-works"
             className="font-sans text-[12px] uppercase tracking-[0.1em] text-accent-gold transition-colors hover:text-accent-gold-light"
           >
             Full process breakdown →
+          </Link>
+          <Link
+            href="/how-it-works"
+            className="font-sans text-[13px] text-text-muted underline underline-offset-4 decoration-text-muted/40 transition-colors hover:text-text-secondary hover:decoration-text-secondary/40"
+          >
+            Already found a property? Commission an independent verification →
           </Link>
         </AnimatedSection>
       </div>
@@ -351,14 +356,14 @@ function ForWhom() {
 function HowWeWork() {
   const stats = [
     {
-      headline: "3 Focus Regions",
-      sub: "Tulum · Riviera Maya · Oaxaca",
-      detail: "Markets monitored daily for pricing, demand, and legal shifts. Each region personally audited.",
+      headline: "Emerging Market Focus",
+      sub: "Active markets in Mexico and Latin America.",
+      detail: "Markets monitored daily for pricing, demand, and legal shifts.",
     },
     {
       headline: "Verification Standard",
-      sub: "Legal title · On-site inspection · Registro Público",
-      detail: "Every deal audited by our due diligence partner — a registered Mexican entity operating under Swiss standards.",
+      sub: "Every deal cleared before delivery.",
+      detail: "Each opportunity passes our independent verification process before it reaches any buyer profile.",
     },
     {
       headline: "End-to-End Guidance",
