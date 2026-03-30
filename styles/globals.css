@@ -19,26 +19,13 @@
   --max-width-content: 1200px;
 }
 
-:root {
-  --bg-primary: #080808;
-  --bg-secondary: #111111;
-  --bg-card: #161616;
-  --text-primary: #f0ece4;
-  --text-secondary: #9a9690;
-  --text-muted: #5a5650;
-  --accent-gold: #c9a96e;
-  --accent-gold-light: #e8d5b0;
-  --border: #222222;
-  --border-subtle: #1a1a1a;
-}
-
 html {
   scroll-behavior: smooth;
 }
 
 body {
-  background-color: var(--bg-primary);
-  color: var(--text-primary);
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
   font-family: var(--font-dm-sans), "DM Sans", sans-serif;
   font-weight: 300;
   line-height: 1.7;
@@ -58,7 +45,7 @@ body::after {
 
 h1, h2, h3 {
   font-family: var(--font-cormorant), "Cormorant Garamond", serif;
-  color: var(--text-primary);
+  color: var(--color-text-primary);
   line-height: 1.1;
 }
 
@@ -80,5 +67,5 @@ h3 {
 
 ::selection {
   background-color: rgba(201, 169, 110, 0.3);
-  color: var(--text-primary);
+  color: var(--color-text-primary);
 }

@@ -17,7 +17,7 @@ function Hero() {
       {/* Hero image — low opacity, blended from right */}
       <div className="absolute inset-0">
         <Image
-          src="/images/hero-bg.png"
+          src="/images/hero-bg.webp"
           alt=""
           fill
           className="object-cover object-right"
@@ -63,7 +63,7 @@ function Hero() {
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             <span className="block h-[2px] w-6 bg-accent-gold" />
-            <SectionLabel text="Private Real Estate Intelligence · Mexico & Latin America" />
+            <SectionLabel text="Private Real Estate Intelligence · Emerging Markets" />
           </motion.div>
 
           <motion.h1
@@ -84,8 +84,7 @@ function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.8 }}
           >
-            Verified real estate in Mexico&apos;s emerging markets —
-            matched to your profile, with no hidden fees.
+            Verified opportunities. Matched to your profile. No noise. No hidden fees.
           </motion.p>
 
           {/* CTA row */}
@@ -191,7 +190,7 @@ function VisualBreak() {
     <AnimatedSection>
       <section className="relative h-[45vh] min-h-[320px] overflow-hidden">
         <Image
-          src="/images/tulum-aerial.jpg"
+          src="/images/tulum-aerial.webp"
           alt="Aerial view of coastal architecture in Mexico"
           fill
           className="object-cover"
@@ -200,7 +199,7 @@ function VisualBreak() {
         <div className="relative z-10 flex h-full items-center justify-center px-6">
           <div className="text-center">
             <p className="font-sans text-[13px] uppercase tracking-[0.15em] text-accent-gold">
-              Verified real estate · Mexico &amp; Latin America · Every deal matched to your profile
+              Every deal verified · Every client profiled · Every option matched
             </p>
           </div>
         </div>
