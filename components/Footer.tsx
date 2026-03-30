@@ -21,7 +21,7 @@ export default function Footer() {
               Bespoke Living
             </p>
             <p className="mt-2 font-sans text-[12px] text-text-muted">
-              Cancun · Mexico
+              Emerging Markets
             </p>
           </div>
 
@@ -42,11 +42,12 @@ export default function Footer() {
         </div>
 
         <div className="mt-12 flex flex-wrap items-center justify-between gap-4 border-t border-border-subtle pt-8">
-          <p className="font-sans text-[11px] text-text-muted">© 2026 VIREZIA. All rights reserved.</p>
+          <p className="font-sans text-[11px] text-text-muted">© 2026 VIREZIA — operated by KONAMIYA LLC</p>
           <div className="flex gap-6">
             <Link href="/privacy" className="font-sans text-[11px] text-text-muted transition-colors hover:text-text-secondary">Privacy Policy</Link>
             <Link href="/terms" className="font-sans text-[11px] text-text-muted transition-colors hover:text-text-secondary">Terms</Link>
             <Link href="/partners" className="font-sans text-[11px] text-text-muted transition-colors hover:text-text-secondary">List Your Property</Link>
+            <Link href="/privacy#cookies" className="font-sans text-[11px] text-text-muted transition-colors hover:text-text-secondary">Cookie Policy</Link>
           </div>
         </div>
       </div>

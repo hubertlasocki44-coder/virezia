@@ -55,8 +55,8 @@ export default function PartnersPage() {
               We Will Review Your Submission.
             </h1>
             <p className="mt-6 font-sans text-base font-light text-text-secondary">
-              Every partner application is reviewed by our team. We respond
-              within 5 business days.
+              We review every partner application individually. Expect a
+              response within 5 business days.
             </p>
           </AnimatedSection>
         </div>
@@ -70,7 +70,7 @@ export default function PartnersPage() {
         <AnimatedSection className="max-w-2xl">
           <SectionLabel text="For developers & partners" />
           <h1 className="mt-6 font-serif text-[clamp(36px,5vw,56px)] font-light">
-            List With VIREZIA.
+            Partner With VIREZIA.
           </h1>
           <p className="mt-6 font-sans text-base font-light leading-relaxed text-text-secondary">
             We help landowners and developers place their assets with qualified

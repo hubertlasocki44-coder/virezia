@@ -8,7 +8,7 @@ import { MARKET_REGIONS, MONITORING_AREAS } from "@/lib/constants/market-data";
 export const metadata: Metadata = {
   title: "Market Intelligence — VIREZIA",
   description:
-    "Real-time monitoring of emerging real estate markets in Mexico and Latin America. Regional analysis, risk factors, and verified market data for informed buyers.",
+    "Verified market intelligence for emerging real estate markets. Regional analysis, risk factors, and curated data for informed decisions.",
   alternates: {
     canonical: "https://virezia.com/market",
   },
@@ -30,8 +30,8 @@ function Hero() {
           <p className="mt-6 max-w-xl font-sans text-base font-light leading-relaxed text-text-secondary">
             Emerging markets move fast. Pricing shifts, new developments
             launch, regulations change. We track the signals that matter
-            across Mexico and Latin America — and filter them through our
-            verification standard before anything reaches your profile.
+            — and filter them through our verification standard before
+            anything reaches your profile.
           </p>
         </AnimatedSection>
       </div>
@@ -56,7 +56,7 @@ function RegionCards() {
           </p>
         </AnimatedSection>
 
-        <div className="mt-14 grid gap-8 md:grid-cols-3">
+        <div className="mt-14 grid gap-8 md:grid-cols-2 lg:grid-cols-4">
           {MARKET_REGIONS.map((region, i) => (
             <AnimatedSection key={region.id} delay={i * 0.1}>
               <div className="group flex h-full flex-col border border-border bg-bg-card transition-colors duration-200 hover:border-accent-gold/30">
@@ -73,9 +73,16 @@ function RegionCards() {
                     <h3 className="font-serif text-[24px] font-light text-text-primary">
                       {region.name}
                     </h3>
-                    <span className="font-sans text-[12px] uppercase tracking-[0.1em] text-accent-gold">
-                      {region.state}
-                    </span>
+                    <div className="flex items-center gap-2">
+                      <span className="font-sans text-[12px] uppercase tracking-[0.1em] text-accent-gold">
+                        {region.state}
+                      </span>
+                      {"status" in region && region.status === "monitoring" && (
+                        <span className="rounded-sm bg-accent-gold/20 px-1.5 py-0.5 font-sans text-[9px] uppercase tracking-[0.12em] text-accent-gold">
+                          Monitoring
+                        </span>
+                      )}
+                    </div>
                   </div>
                 </div>
 
@@ -175,9 +182,9 @@ function WhatWeMonitor() {
               What We Monitor
             </h2>
             <p className="mt-4 max-w-md font-sans text-base font-light text-text-secondary">
-              Market intelligence is not a snapshot — it is a continuous
-              process. We track the following across every active region,
-              updated as conditions change.
+              In markets most buyers navigate blind, intelligence is not a
+              snapshot — it is a continuous process. We track the following
+              across every active region, updated as conditions change.
             </p>
           </AnimatedSection>
 

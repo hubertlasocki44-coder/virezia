@@ -137,7 +137,7 @@ function HowItWorks() {
     {
       number: "02",
       title: "Receive Your Selection",
-      text: "We surface the best available options matched to your profile. Each one cleared by our verification standard before it reaches you.",
+      text: "We surface a curated selection matched to your profile. Each one cleared by our verification standard before it reaches you.",
     },
     {
       number: "03",
@@ -206,10 +206,10 @@ function ForWhom() {
   ];
 
   const notForList = [
-    "Browsing hundreds of listings",
+    "Scrolling through hundreds of options without guidance",
     "Comparing options without intent to buy",
     "Those expecting an automated platform",
-    "Mass-market property search",
+    "Volume-driven platforms with no curation",
   ];
 
   return (
@@ -350,9 +350,9 @@ function BehindVirezia() {
             </p>
             <div className="mt-8 max-w-xl">
               <p className="font-sans text-base font-light leading-relaxed text-text-secondary">
-                I built VIREZIA after years of watching foreign buyers navigate
-                Mexico&apos;s real estate market without a reliable guide —
-                overpaying, under-informed, and alone in the process.
+                We built VIREZIA after seeing what foreign buyers actually face
+                in emerging real estate markets — inflated prices, unreliable
+                information, and no one aligned with their outcome.
               </p>
               <p className="mt-4 font-serif text-[20px] font-light italic text-text-primary">
                 VIREZIA is the infrastructure I wish had existed.

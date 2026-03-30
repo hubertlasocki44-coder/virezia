@@ -36,7 +36,7 @@ const TIMELINES = [
   { value: "short", label: "Short-term (3-6 months)" },
   { value: "medium", label: "Medium-term (6-12 months)" },
   { value: "long", label: "Long-term (12+ months)" },
-  { value: "exploring", label: "Just exploring" },
+  { value: "exploring", label: "Evaluating the market" },
 ];
 
 const BUDGETS = [

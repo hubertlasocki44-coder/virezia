@@ -21,13 +21,13 @@ function Hero() {
         <AnimatedSection className="max-w-2xl">
           <SectionLabel text="How it works" />
           <h1 className="mt-6 font-serif text-[clamp(40px,5.5vw,72px)] font-light leading-[1.1] text-text-primary">
-            A Different Way to Enter the Market
+            Clarity in Markets Designed to Confuse
           </h1>
           <p className="mt-8 max-w-xl font-sans text-[17px] font-light leading-[1.75] text-text-secondary">
-            VIREZIA does not aggregate listings or connect you with local agents.
-            We operate as a private intelligence layer — sourcing, verifying,
-            and matching opportunities to individual buyer profiles before
-            anything is presented.
+            In most emerging markets, reliable data does not exist. Pricing is
+            opaque, due diligence is inconsistent, and the information gap
+            between local operators and foreign buyers is the single largest
+            source of risk. VIREZIA exists to eliminate that asymmetry.
           </p>
           <p className="mt-4 max-w-xl font-sans text-[15px] font-light leading-[1.75] text-text-muted">
             Every step is deliberate. Every recommendation is earned.
@@ -54,11 +54,9 @@ function MarketApproach() {
         <div className="mt-12 grid gap-12 md:grid-cols-2">
           <AnimatedSection>
             <p className="font-sans text-base font-light leading-relaxed text-text-secondary">
-              We monitor pricing trends, absorption rates, and legal compliance
-              across emerging markets in Mexico and Latin America. Our process
-              combines ground-level intelligence with structured data review —
-              tracking demand shifts, permit activity, and developer behavior
-              over time.
+              We maintain a continuous, layered view of the markets we operate
+              in — combining on-the-ground intelligence with structured analysis
+              to separate real opportunity from noise.
             </p>
             <p className="mt-6 font-sans text-base font-light leading-relaxed text-text-secondary">
               This is not a search engine. It is an ongoing audit of the markets
@@ -103,7 +101,7 @@ function VerificationStandard() {
     {
       title: "Price Benchmarking",
       description:
-        "Asking price compared against recent comparable transactions, area trends, and development stage.",
+        "Asking price independently benchmarked against verified market data to confirm fair value.",
     },
     {
       title: "Permit Confirmation",
@@ -113,7 +111,7 @@ function VerificationStandard() {
     {
       title: "Developer Track Record",
       description:
-        "Prior project delivery, financial standing, and reputation audited through independent channels.",
+        "Prior project delivery, financial standing, and reputation independently verified.",
     },
   ];
 

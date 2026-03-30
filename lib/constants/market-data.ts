@@ -31,7 +31,7 @@ export const MARKET_REGIONS = [
     id: "oaxaca",
     name: "Oaxaca & Puerto Escondido",
     state: "Oaxaca",
-    description: "Where informed capital is moving. Digital nomad demand, authentic culture, and significantly lower entry points. Early-stage market with high upside for positioned buyers.",
+    description: "Early-stage market attracting remote-worker demand with lower entry points. Limited comparable data — deeper due diligence required.",
     metrics: {
       pricePerSqm: "$1,100–$2,000 USD",
       avgStrYield: "10–15%",
@@ -40,6 +40,21 @@ export const MARKET_REGIONS = [
     highlights: ["Lower entry prices", "Digital nomad demand", "Cultural authenticity", "Early-stage upside"],
     riskFactors: ["Limited infrastructure", "Fewer comparable sales", "Remote logistics"],
     image: "/images/jungle.webp",
+  },
+  {
+    id: "buenos_aires",
+    name: "Buenos Aires",
+    state: "Argentina",
+    description: "Stabilizing market with strong rental yields and growing foreign buyer interest. Early-stage intelligence gathering underway.",
+    metrics: {
+      pricePerSqm: "$1,800–$2,600 USD",
+      avgStrYield: "5–7%",
+      demandTrend: "rising" as const,
+    },
+    highlights: ["Strong rental yields in USD terms", "Growing foreign buyer interest", "Cultural and economic capital", "Undervalued relative to comparable cities"],
+    riskFactors: ["Currency volatility", "Regulatory unpredictability", "Limited on-the-ground network"],
+    image: "/images/luxury-villa.webp",
+    status: "monitoring" as const,
   },
 ];
 

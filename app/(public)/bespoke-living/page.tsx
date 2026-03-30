@@ -8,7 +8,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Bespoke Living — VIREZIA",
   description:
-    "Expert insights on real estate in emerging markets. Due diligence, market analysis, and investment guidance from VIREZIA.",
+    "Verified market analysis, legal frameworks, and investment intelligence for emerging real estate markets. Published by VIREZIA.",
   alternates: {
     canonical: "https://virezia.com/bespoke-living",
   },

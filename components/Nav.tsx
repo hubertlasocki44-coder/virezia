@@ -40,7 +40,7 @@ export default function Nav() {
         <Link href="/" className="relative block">
           <Image
             src="/logo.png"
-            alt="VIREZIA — Bespoke Living"
+            alt="VIREZIA"
             width={140}
             height={36}
             className="h-8 w-auto brightness-0 invert lg:h-9"
