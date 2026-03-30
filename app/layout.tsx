@@ -15,6 +15,9 @@ export const metadata: Metadata = {
   icons: {
     icon: "/favicon.png",
   },
+  alternates: {
+    canonical: BASE_URL,
+  },
   openGraph: {
     title: "VIREZIA — Private Real Estate Intelligence · Emerging Markets",
     description:
@@ -64,7 +67,7 @@ export default function RootLayout({
                 email: "hello@virezia.com",
                 contactType: "customer service",
               },
-              sameAs: [],
+
             }),
           }}
         />

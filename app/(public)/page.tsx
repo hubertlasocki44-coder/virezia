@@ -1,10 +1,8 @@
-"use client";
-
-import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import AnimatedSection from "@/components/AnimatedSection";
 import SectionLabel from "@/components/SectionLabel";
+import HeroContent from "@/components/HeroAnimations";
 
 /* ─── Hero ─────────────────────────────────────────────────── */
 
@@ -53,88 +51,7 @@ function Hero() {
         }}
       />
 
-      <div className="relative z-10 mx-auto w-full max-w-content px-6" style={{ marginTop: "-5vh" }}>
-        <div className="max-w-[620px]">
-          {/* Label with gold line */}
-          <motion.div
-            className="flex items-center gap-4"
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-          >
-            <span className="block h-[2px] w-6 bg-accent-gold" />
-            <SectionLabel text="Private Real Estate Intelligence · Emerging Markets" />
-          </motion.div>
-
-          <motion.h1
-            className="mt-8"
-            style={{ fontSize: "clamp(52px, 7vw, 88px)" }}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.5 }}
-          >
-            Fewer Options.
-            <br />
-            Better Ones. Yours.
-          </motion.h1>
-
-          <motion.p
-            className="mt-6 max-w-[500px] font-sans text-[17px] font-light leading-[1.75] text-text-secondary"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.8 }}
-          >
-            Verified opportunities. Matched to your profile. No noise. No hidden fees.
-          </motion.p>
-
-          {/* CTA row */}
-          <motion.div
-            className="mt-10 flex flex-wrap items-center gap-6"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 1.1 }}
-          >
-            <Link
-              href="/apply"
-              className="bg-accent-gold px-8 py-[14px] font-sans text-[13px] uppercase tracking-[0.1em] text-bg-primary transition-opacity duration-200 hover:opacity-90"
-            >
-              Apply for Private Access
-            </Link>
-            <Link
-              href="/how-it-works"
-              className="border-b border-text-secondary pb-px font-sans text-[13px] text-text-secondary transition-colors duration-200 hover:text-text-primary hover:border-text-primary"
-            >
-              Learn how it works →
-            </Link>
-          </motion.div>
-        </div>
-      </div>
-
-      {/* Bottom note — increased contrast */}
-      <motion.div
-        className="absolute bottom-10 left-0 right-0 px-6"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.8, delay: 1.4 }}
-      >
-        <p className="mx-auto max-w-content text-center font-sans text-[12px] tracking-[0.05em] text-text-secondary">
-          Not a listing portal. Every option is selected for you specifically.
-        </p>
-      </motion.div>
-
-      {/* Scroll indicator */}
-      <motion.div
-        className="absolute bottom-4 left-1/2 -translate-x-1/2"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 0.4 }}
-        transition={{ duration: 0.8, delay: 1.6 }}
-      >
-        <motion.div
-          className="h-6 w-px bg-text-muted"
-          animate={{ scaleY: [1, 0.5, 1] }}
-          transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-        />
-      </motion.div>
+      <HeroContent />
     </section>
   );
 }
@@ -352,14 +269,14 @@ function ForWhom() {
 function HowWeWork() {
   const stats = [
     {
-      headline: "Emerging Market Focus",
-      sub: "Active markets in Mexico and Latin America.",
-      detail: "Markets monitored daily for pricing, demand, and legal shifts.",
+      headline: "3 Focus Regions",
+      sub: "Tulum · Riviera Maya · Oaxaca",
+      detail: "Markets monitored daily for pricing, demand, and legal shifts. Expanding into select Latin American markets.",
     },
     {
-      headline: "Verification Standard",
+      headline: "Independent Verification",
       sub: "Every deal cleared before delivery.",
-      detail: "Each opportunity passes our independent verification process before it reaches any buyer profile.",
+      detail: "Legal title, physical inspection, Registro Publico records. Verification starts at $890.",
     },
     {
       headline: "End-to-End Guidance",
@@ -387,8 +304,22 @@ function HowWeWork() {
           ))}
         </div>
 
-        {/* Process statement — more spacing from cards */}
+        {/* Case study */}
         <AnimatedSection className="mt-16">
+          <div className="max-w-2xl border border-border bg-bg-card p-10">
+            <p className="font-serif text-[20px] font-light italic leading-[1.6] text-text-primary">
+              &ldquo;A US-based founder with a $280k budget and a 90-day timeline
+              received three verified options in Tulum within 5 days.
+              Acquisition completed in 7 weeks.&rdquo;
+            </p>
+            <p className="mt-4 font-sans text-[12px] uppercase tracking-[0.1em] text-text-muted">
+              Anonymous · Q1 2026
+            </p>
+          </div>
+        </AnimatedSection>
+
+        {/* Process statement */}
+        <AnimatedSection className="mt-12">
           <div className="max-w-2xl border-l-2 border-accent-gold/30 py-2 pl-8">
             <p className="font-serif text-[22px] font-light italic leading-[1.6] text-text-secondary">
               Every client engagement begins with a profile call.

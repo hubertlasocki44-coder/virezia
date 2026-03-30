@@ -2,9 +2,11 @@
 
 import { createClient } from "@/lib/supabase/server";
 import { revalidatePath } from "next/cache";
+import { requireEmployee } from "@/lib/auth-guard";
 import type { InteractionType } from "@/lib/types";
 
 export async function getInteractions(leadId: string) {
+  await requireEmployee();
   const supabase = await createClient();
   const { data, error } = await supabase
     .from("interactions")
@@ -22,6 +24,7 @@ export async function addInteraction(
   content: string,
   visibleToPartner: boolean = false
 ) {
+  await requireEmployee();
   const supabase = await createClient();
   const {
     data: { user },

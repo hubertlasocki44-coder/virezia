@@ -2,9 +2,11 @@
 
 import { createClient } from "@/lib/supabase/server";
 import { revalidatePath } from "next/cache";
+import { requireEmployee, requireSuperAdmin } from "@/lib/auth-guard";
 import type { UserRole, EmployeeModule } from "@/lib/types";
 
 export async function getUsers() {
+  await requireEmployee();
   const supabase = await createClient();
   const { data, error } = await supabase
     .from("profiles")
@@ -15,6 +17,7 @@ export async function getUsers() {
 }
 
 export async function updateUserRole(userId: string, role: UserRole) {
+  await requireSuperAdmin();
   const supabase = await createClient();
   const { error } = await supabase
     .from("profiles")
@@ -25,6 +28,7 @@ export async function updateUserRole(userId: string, role: UserRole) {
 }
 
 export async function updateUserStatus(userId: string, status: string) {
+  await requireSuperAdmin();
   const supabase = await createClient();
   const { error } = await supabase
     .from("profiles")
@@ -38,6 +42,7 @@ export async function updateEmployeeModules(
   userId: string,
   modules: EmployeeModule[]
 ) {
+  await requireSuperAdmin();
   const supabase = await createClient();
 
   // Upsert employee_permissions

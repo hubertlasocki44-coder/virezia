@@ -1,5 +1,14 @@
 import { Resend } from "resend";
 
+function escapeHtml(str: string): string {
+  return str
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+}
+
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 const FROM_EMAIL = "VIREZIA <onboarding@resend.dev>";
@@ -24,30 +33,36 @@ export async function sendNotification(subject: string, html: string) {
 }
 
 export async function notifyNewApplication(name: string, email: string, type: string) {
+  const safeName = escapeHtml(name);
+  const safeEmail = escapeHtml(email);
+  const safeType = escapeHtml(type);
   await sendNotification(
-    `New Application: ${name}`,
-    `<h2>New ${type} application</h2>
-    <p><strong>Name:</strong> ${name}</p>
-    <p><strong>Email:</strong> ${email}</p>
-    <p><strong>Type:</strong> ${type}</p>
+    `New Application: ${safeName}`,
+    `<h2>New ${safeType} application</h2>
+    <p><strong>Name:</strong> ${safeName}</p>
+    <p><strong>Email:</strong> ${safeEmail}</p>
+    <p><strong>Type:</strong> ${safeType}</p>
     <p>Review in the <a href="${process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"}/admin/applications">admin panel</a>.</p>`
   );
 }
 
 export async function notifyCircleRequest(email: string) {
+  const safeEmail = escapeHtml(email);
   await sendNotification(
-    `Circle Request: ${email}`,
+    `Circle Request: ${safeEmail}`,
     `<h2>New VIREZIA Circle Request</h2>
-    <p><strong>Email:</strong> ${email}</p>`
+    <p><strong>Email:</strong> ${safeEmail}</p>`
   );
 }
 
 export async function notifyPartnerSubmission(name: string, company: string) {
+  const safeName = escapeHtml(name);
+  const safeCompany = escapeHtml(company);
   await sendNotification(
-    `Partner Application: ${company}`,
+    `Partner Application: ${safeCompany}`,
     `<h2>New Partner Application</h2>
-    <p><strong>Name:</strong> ${name}</p>
-    <p><strong>Company:</strong> ${company}</p>
+    <p><strong>Name:</strong> ${safeName}</p>
+    <p><strong>Company:</strong> ${safeCompany}</p>
     <p>Review in the <a href="${process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"}/admin/partners">admin panel</a>.</p>`
   );
 }

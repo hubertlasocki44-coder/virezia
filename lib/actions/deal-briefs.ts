@@ -2,8 +2,10 @@
 
 import { createClient } from "@/lib/supabase/server";
 import { revalidatePath } from "next/cache";
+import { requireEmployee } from "@/lib/auth-guard";
 
 export async function getDealBriefs() {
+  await requireEmployee();
   const supabase = await createClient();
   const { data, error } = await supabase
     .from("deal_briefs")
@@ -19,6 +21,7 @@ export async function createDealBrief(brief: {
   metrics: Record<string, unknown>;
   published?: boolean;
 }) {
+  await requireEmployee();
   const supabase = await createClient();
   const { error } = await supabase.from("deal_briefs").insert(brief);
   if (error) throw error;
@@ -33,6 +36,7 @@ export async function updateDealBrief(
     published: boolean;
   }>
 ) {
+  await requireEmployee();
   const supabase = await createClient();
   const { error } = await supabase
     .from("deal_briefs")

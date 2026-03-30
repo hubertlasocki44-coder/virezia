@@ -405,10 +405,15 @@ create policy "profiles: super_admin delete"
   on public.profiles for delete
   using (public.is_super_admin());
 
--- Allow users to update their own profile.
-create policy "profiles: users update own"
+-- Allow users to update their own profile (safe fields only).
+create policy "profiles: users update own safe fields"
   on public.profiles for update
-  using (auth.uid() = id);
+  using (auth.uid() = id)
+  with check (
+    auth.uid() = id
+    and role = (select role from public.profiles where id = auth.uid())
+    and status = (select status from public.profiles where id = auth.uid())
+  );
 
 -- The service_role key (used by the trigger) bypasses RLS, so the
 -- handle_new_user trigger will still insert. However, if you want the

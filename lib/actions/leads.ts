@@ -2,6 +2,7 @@
 
 import { createClient } from "@/lib/supabase/server";
 import { revalidatePath } from "next/cache";
+import { requireEmployee } from "@/lib/auth-guard";
 import type { LeadStatus, LeadPriority } from "@/lib/types";
 
 export async function getLeads(filters?: {
@@ -9,6 +10,7 @@ export async function getLeads(filters?: {
   priority?: string;
   source?: string;
 }) {
+  await requireEmployee();
   const supabase = await createClient();
   let query = supabase
     .from("leads")
@@ -25,6 +27,7 @@ export async function getLeads(filters?: {
 }
 
 export async function getLead(id: string) {
+  await requireEmployee();
   const supabase = await createClient();
   const { data, error } = await supabase
     .from("leads")
@@ -37,6 +40,7 @@ export async function getLead(id: string) {
 }
 
 export async function updateLeadStatus(id: string, status: LeadStatus) {
+  await requireEmployee();
   const supabase = await createClient();
   const { error } = await supabase
     .from("leads")
@@ -48,6 +52,7 @@ export async function updateLeadStatus(id: string, status: LeadStatus) {
 }
 
 export async function updateLeadPriority(id: string, priority: LeadPriority) {
+  await requireEmployee();
   const supabase = await createClient();
   const { error } = await supabase
     .from("leads")
@@ -58,6 +63,7 @@ export async function updateLeadPriority(id: string, priority: LeadPriority) {
 }
 
 export async function updateLeadScore(id: string, score: number) {
+  await requireEmployee();
   const supabase = await createClient();
   const { error } = await supabase
     .from("leads")
@@ -68,6 +74,7 @@ export async function updateLeadScore(id: string, score: number) {
 }
 
 export async function assignEmployee(leadId: string, employeeId: string) {
+  await requireEmployee();
   const supabase = await createClient();
   const { error } = await supabase
     .from("leads")

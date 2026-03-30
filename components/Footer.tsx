@@ -6,7 +6,7 @@ export default function Footer() {
     <footer className="border-t border-border-subtle bg-bg-primary">
       <div className="mx-auto max-w-content px-6 py-16">
         <div className="grid gap-12 md:grid-cols-3">
-          {/* Left — Logo */}
+          {/* Left — Logo + tagline */}
           <div>
             <Link href="/">
               <Image
@@ -17,6 +17,12 @@ export default function Footer() {
                 className="h-6 w-auto brightness-0 invert opacity-60"
               />
             </Link>
+            <p className="mt-3 font-sans text-[11px] uppercase tracking-[0.12em] text-text-muted">
+              Bespoke Living
+            </p>
+            <p className="mt-2 font-sans text-[12px] text-text-muted">
+              Cancun · Mexico
+            </p>
           </div>
 
           {/* Center — Links */}

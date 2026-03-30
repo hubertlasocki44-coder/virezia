@@ -2,8 +2,10 @@
 
 import { createClient } from "@/lib/supabase/server";
 import { revalidatePath } from "next/cache";
+import { requireEmployee } from "@/lib/auth-guard";
 
 export async function getBlogPosts() {
+  await requireEmployee();
   const supabase = await createClient();
   const { data, error } = await supabase
     .from("blog_posts")
@@ -23,6 +25,7 @@ export async function createBlogPost(post: {
   seo_title?: string;
   seo_description?: string;
 }) {
+  await requireEmployee();
   const supabase = await createClient();
   const {
     data: { user },
@@ -52,6 +55,7 @@ export async function updateBlogPost(
     seo_description: string;
   }>
 ) {
+  await requireEmployee();
   const supabase = await createClient();
   const { error } = await supabase
     .from("blog_posts")
@@ -67,6 +71,7 @@ export async function updateBlogPost(
 }
 
 export async function deleteBlogPost(id: string) {
+  await requireEmployee();
   const supabase = await createClient();
   const { error } = await supabase.from("blog_posts").delete().eq("id", id);
   if (error) throw error;

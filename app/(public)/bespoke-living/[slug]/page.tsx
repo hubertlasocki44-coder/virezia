@@ -14,7 +14,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const supabase = await createClient();
   const { data: post } = await supabase
     .from("blog_posts")
-    .select("title, seo_title, seo_description, excerpt")
+    .select("title, seo_title, seo_description, excerpt, featured_image")
     .eq("slug", slug)
     .eq("published", true)
     .single();
@@ -24,6 +24,16 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: post.seo_title || `${post.title} — VIREZIA`,
     description: post.seo_description || post.excerpt || "",
+    alternates: {
+      canonical: `https://virezia.com/bespoke-living/${slug}`,
+    },
+    openGraph: {
+      title: post.seo_title || post.title,
+      description: post.seo_description || post.excerpt || undefined,
+      ...(post.featured_image ? {
+        images: [{ url: post.featured_image, alt: post.title }],
+      } : {}),
+    },
   };
 }
 

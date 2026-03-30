@@ -7,6 +7,9 @@ export const metadata: Metadata = {
   title: "How It Works — VIREZIA | Private Real Estate Intelligence",
   description:
     "Learn how VIREZIA operates: verified properties, bespoke buyer profiles, independent audits, and end-to-end acquisition support in emerging markets.",
+  alternates: {
+    canonical: "https://virezia.com/how-it-works",
+  },
 };
 
 /* ─── Hero ─────────────────────────────────────────────────── */
@@ -220,7 +223,7 @@ function ProcessTimeline() {
     },
     {
       number: "02",
-      title: "Profile Call with VIREZIA Team",
+      title: "Profile Call with VIREZIA",
       text: "A structured conversation to understand your goals, constraints, and timeline. This builds your Bespoke Property Profile.",
     },
     {
@@ -249,8 +252,8 @@ function ProcessTimeline() {
             From First Contact to Close
           </h2>
           <p className="mt-6 font-sans text-base font-light leading-relaxed text-text-secondary">
-            Five steps. No surprises. Every stage is coordinated by the VIREZIA
-            team, with complete visibility into what happens next.
+            Five steps. No surprises. Every stage is coordinated by VIREZIA,
+            with complete visibility into what happens next.
           </p>
         </AnimatedSection>
 

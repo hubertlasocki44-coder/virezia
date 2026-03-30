@@ -2,8 +2,10 @@
 
 import { createClient } from "@/lib/supabase/server";
 import { revalidatePath } from "next/cache";
+import { requireEmployee } from "@/lib/auth-guard";
 
 export async function getPartners(status?: string) {
+  await requireEmployee();
   const supabase = await createClient();
   let query = supabase
     .from("profiles")
@@ -18,6 +20,7 @@ export async function getPartners(status?: string) {
 }
 
 export async function approvePartner(id: string) {
+  await requireEmployee();
   const supabase = await createClient();
   const { error } = await supabase
     .from("profiles")
@@ -28,6 +31,7 @@ export async function approvePartner(id: string) {
 }
 
 export async function suspendPartner(id: string) {
+  await requireEmployee();
   const supabase = await createClient();
   const { error } = await supabase
     .from("profiles")
@@ -38,6 +42,7 @@ export async function suspendPartner(id: string) {
 }
 
 export async function rejectPartner(id: string) {
+  await requireEmployee();
   const supabase = await createClient();
   const { error } = await supabase
     .from("profiles")

@@ -1,6 +1,6 @@
 "use client";
 
-import { forwardRef } from "react";
+import { forwardRef, useId } from "react";
 
 interface FormSelectProps extends React.SelectHTMLAttributes<HTMLSelectElement> {
   label: string;
@@ -11,12 +11,14 @@ interface FormSelectProps extends React.SelectHTMLAttributes<HTMLSelectElement> 
 
 const FormSelect = forwardRef<HTMLSelectElement, FormSelectProps>(
   ({ label, error, options, placeholder, className = "", ...props }, ref) => {
+    const autoId = useId();
     return (
       <div className="space-y-2">
-        <label className="block font-sans text-[12px] uppercase tracking-[0.1em] text-text-secondary">
+        <label htmlFor={autoId} className="block font-sans text-[12px] uppercase tracking-[0.1em] text-text-secondary">
           {label}
         </label>
         <select
+          id={autoId}
           ref={ref}
           className={`w-full border bg-bg-card px-4 py-3 font-sans text-sm text-text-primary focus:border-accent-gold focus:outline-none transition-colors appearance-none ${
             error ? "border-red-500/50" : "border-border"

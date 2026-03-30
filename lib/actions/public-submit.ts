@@ -14,12 +14,15 @@ export async function submitApplication(stepData: Record<string, unknown>) {
   let userId: string | null = null;
 
   if (email) {
-    // Check if user already exists
-    const { data: existingUsers } = await supabase.auth.admin.listUsers();
-    const existing = existingUsers?.users?.find((u) => u.email === email);
+    // Check if user already exists via profiles table (not listUsers which loads ALL users)
+    const { data: existingProfile } = await supabase
+      .from("profiles")
+      .select("id")
+      .eq("email", email)
+      .maybeSingle();
 
-    if (existing) {
-      userId = existing.id;
+    if (existingProfile) {
+      userId = existingProfile.id;
     } else {
       // Create account with temporary password
       const { data: authData } = await supabase.auth.admin.createUser({

@@ -2,8 +2,10 @@
 
 import { createClient } from "@/lib/supabase/server";
 import { revalidatePath } from "next/cache";
+import { requireEmployee } from "@/lib/auth-guard";
 
 export async function getAuditRequests(status?: string) {
+  await requireEmployee();
   const supabase = await createClient();
   let query = supabase
     .from("audit_requests")
@@ -17,6 +19,7 @@ export async function getAuditRequests(status?: string) {
 }
 
 export async function updateAuditStatus(id: string, status: string) {
+  await requireEmployee();
   const supabase = await createClient();
   const { error } = await supabase
     .from("audit_requests")
@@ -27,6 +30,7 @@ export async function updateAuditStatus(id: string, status: string) {
 }
 
 export async function assignAudit(id: string, employeeId: string) {
+  await requireEmployee();
   const supabase = await createClient();
   const { error } = await supabase
     .from("audit_requests")

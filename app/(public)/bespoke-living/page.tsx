@@ -9,6 +9,9 @@ export const metadata: Metadata = {
   title: "Bespoke Living — VIREZIA",
   description:
     "Expert insights on real estate in emerging markets. Due diligence, market analysis, and investment guidance from VIREZIA.",
+  alternates: {
+    canonical: "https://virezia.com/bespoke-living",
+  },
 };
 
 export default async function BespokeLivingPage() {

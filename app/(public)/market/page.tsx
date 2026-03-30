@@ -9,6 +9,9 @@ export const metadata: Metadata = {
   title: "Market Intelligence — VIREZIA",
   description:
     "Real-time monitoring of emerging real estate markets in Mexico and Latin America. Regional analysis, risk factors, and verified market data for informed buyers.",
+  alternates: {
+    canonical: "https://virezia.com/market",
+  },
 };
 
 /* ─── Hero ─────────────────────────────────────────────────── */
@@ -81,6 +84,38 @@ function RegionCards() {
                   <p className="font-sans text-sm font-light leading-relaxed text-text-secondary">
                     {region.description}
                   </p>
+
+                  {/* Market metrics */}
+                  <div className="mt-6 grid grid-cols-3 gap-3 border border-border-subtle bg-bg-primary/50 p-4">
+                    <div>
+                      <span className="block font-sans text-[10px] uppercase tracking-[0.1em] text-text-muted">
+                        Price / m²
+                      </span>
+                      <span className="mt-1 block font-sans text-[14px] font-light text-text-primary">
+                        {region.metrics.pricePerSqm}
+                      </span>
+                    </div>
+                    <div>
+                      <span className="block font-sans text-[10px] uppercase tracking-[0.1em] text-text-muted">
+                        STR Yield
+                      </span>
+                      <span className="mt-1 block font-sans text-[14px] font-light text-text-primary">
+                        {region.metrics.avgStrYield}
+                      </span>
+                    </div>
+                    <div>
+                      <span className="block font-sans text-[10px] uppercase tracking-[0.1em] text-text-muted">
+                        Demand
+                      </span>
+                      <span className={`mt-1 block font-sans text-[14px] font-light ${
+                        region.metrics.demandTrend === "rising"
+                          ? "text-accent-gold"
+                          : "text-text-primary"
+                      }`}>
+                        {region.metrics.demandTrend === "rising" ? "↑ Rising" : region.metrics.demandTrend === "stable" ? "→ Stable" : "↓ Cooling"}
+                      </span>
+                    </div>
+                  </div>
 
                   {/* Highlights */}
                   <div className="mt-6">

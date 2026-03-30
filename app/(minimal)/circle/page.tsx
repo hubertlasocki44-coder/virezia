@@ -45,9 +45,9 @@ export default function CirclePage() {
           </h1>
 
           <p className="mt-6 font-sans text-base font-light leading-relaxed text-text-secondary">
-            Pre-market deal access for verified investors. Circle members
-            review opportunities before public release — with priority
-            allocation and direct access to our deal team.
+            A private network for investors with active acquisition intent
+            in Mexico&apos;s emerging markets. Pre-market deals. Off-market
+            assets. Verified before release.
           </p>
 
           {submitted ? (
