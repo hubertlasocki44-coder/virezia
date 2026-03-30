@@ -2,7 +2,6 @@ import { createClient } from "@/lib/supabase/server";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import AnimatedSection from "@/components/AnimatedSection";
-import DOMPurify from "isomorphic-dompurify";
 import type { Metadata } from "next";
 
 interface Props {
@@ -105,7 +104,7 @@ export default async function ArticlePage({ params }: Props) {
               [&_strong]:font-medium [&_strong]:text-text-primary
               [&_a]:text-accent-gold [&_a]:underline [&_a]:underline-offset-4
               [&_blockquote]:border-l-2 [&_blockquote]:border-accent-gold/30 [&_blockquote]:pl-6 [&_blockquote]:italic [&_blockquote]:text-text-secondary"
-            dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(post.content) }}
+            dangerouslySetInnerHTML={{ __html: post.content }}
           />
         </AnimatedSection>
 
