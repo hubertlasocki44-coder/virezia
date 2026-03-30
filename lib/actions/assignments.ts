@@ -2,11 +2,11 @@
 
 import { createClient } from "@/lib/supabase/server";
 import { revalidatePath } from "next/cache";
-import { requireEmployee } from "@/lib/auth-guard";
+import { requireEmployeeWithModule } from "@/lib/auth-guard";
 import type { VisibilityLevel } from "@/lib/types";
 
 export async function getAssignments(leadId: string) {
-  await requireEmployee();
+  await requireEmployeeWithModule("leads");
   const supabase = await createClient();
   const { data, error } = await supabase
     .from("lead_assignments")
@@ -24,7 +24,7 @@ export async function assignPartner(
   visibilityLevel: VisibilityLevel,
   notes?: string
 ) {
-  await requireEmployee();
+  await requireEmployeeWithModule("leads");
   const supabase = await createClient();
   const {
     data: { user },
@@ -55,7 +55,7 @@ export async function assignPartner(
 }
 
 export async function revokeAssignment(assignmentId: string, leadId: string) {
-  await requireEmployee();
+  await requireEmployeeWithModule("leads");
   const supabase = await createClient();
   const { error } = await supabase
     .from("lead_assignments")

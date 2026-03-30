@@ -7,7 +7,7 @@ import AdminModal from "@/components/admin/AdminModal";
 import FormSelect from "@/components/forms/FormSelect";
 import FormTextarea from "@/components/forms/FormTextarea";
 import FormInput from "@/components/forms/FormInput";
-import { updateLeadStatus, updateLeadPriority, updateLeadScore } from "@/lib/actions/leads";
+import { updateLeadStatus, updateLeadPriority, updateLeadScore, assignEmployee } from "@/lib/actions/leads";
 import { addInteraction } from "@/lib/actions/interactions";
 import { assignPartner, revokeAssignment } from "@/lib/actions/assignments";
 import type { InteractionType, VisibilityLevel, LeadStatus, LeadPriority } from "@/lib/types";
@@ -39,6 +39,9 @@ export default function LeadDetailClient({
   const [tab, setTab] = useState("Profile");
   const [assignModal, setAssignModal] = useState(false);
   const [interactionModal, setInteractionModal] = useState(false);
+  const [score, setScore] = useState(String(lead.score ?? ""));
+  const [scoreSaving, setScoreSaving] = useState(false);
+  const [employeeSaving, setEmployeeSaving] = useState(false);
 
   const client = lead.client as Record<string, unknown> | null;
 
@@ -62,8 +65,13 @@ export default function LeadDetailClient({
               Priority: {lead.priority as string}
             </span>
             <span className="font-sans text-sm text-text-muted">
-              Score: {lead.score as number}
+              Score: {lead.score as number ?? "—"}
             </span>
+            {(lead.employee as Record<string, unknown> | null)?.full_name ? (
+              <span className="font-sans text-sm text-text-muted">
+                Owner: {(lead.employee as Record<string, unknown>).full_name as string}
+              </span>
+            ) : null}
             {lead.source ? (
               <span className="font-sans text-[11px] text-text-muted">
                 Source: {lead.source as string}
@@ -96,6 +104,52 @@ export default function LeadDetailClient({
           >
             {PRIORITIES.map((p) => (
               <option key={p} value={p}>{p}</option>
+            ))}
+          </select>
+          <form
+            onSubmit={async (e) => {
+              e.preventDefault();
+              const parsed = Number(score);
+              if (isNaN(parsed) || parsed < 0 || parsed > 100) return;
+              setScoreSaving(true);
+              await updateLeadScore(lead.id as string, parsed);
+              setScoreSaving(false);
+            }}
+            className="flex items-center gap-1"
+          >
+            <input
+              type="number"
+              min={0}
+              max={100}
+              value={score}
+              onChange={(e) => setScore(e.target.value)}
+              placeholder="Score"
+              className="w-[72px] border border-border bg-bg-card px-2 py-1.5 font-sans text-sm text-text-secondary [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
+            />
+            <button
+              type="submit"
+              disabled={scoreSaving}
+              className="border border-border bg-bg-card px-2 py-1.5 font-sans text-[11px] text-text-muted hover:text-text-secondary disabled:opacity-50"
+            >
+              {scoreSaving ? "..." : "Set"}
+            </button>
+          </form>
+          <select
+            defaultValue={(lead.assigned_employee as string) ?? ""}
+            onChange={async (e) => {
+              if (!e.target.value) return;
+              setEmployeeSaving(true);
+              await assignEmployee(lead.id as string, e.target.value);
+              setEmployeeSaving(false);
+            }}
+            disabled={employeeSaving}
+            className="border border-border bg-bg-card px-3 py-1.5 font-sans text-sm text-text-secondary disabled:opacity-50"
+          >
+            <option value="">Assign employee</option>
+            {employees.map((emp) => (
+              <option key={emp.id as string} value={emp.id as string}>
+                {(emp.full_name as string) || (emp.email as string)}
+              </option>
             ))}
           </select>
           <button

@@ -9,19 +9,31 @@ function escapeHtml(str: string): string {
     .replace(/'/g, "&#039;");
 }
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 const FROM_EMAIL = "VIREZIA <onboarding@resend.dev>";
 const NOTIFY_EMAIL = "hello@virezia.com";
 
-export async function sendNotification(subject: string, html: string) {
-  if (!process.env.RESEND_API_KEY || process.env.RESEND_API_KEY === "your-resend-api-key-here") {
-    console.log("[Email] Skipped (no API key):", subject);
-    return;
-  }
+let resendClient: Resend | null = null;
 
+function getResendClient(): Resend | null {
+  const key = process.env.RESEND_API_KEY;
+  if (!key || key === "your-resend-api-key-here") {
+    return null;
+  }
+  if (!resendClient) {
+    resendClient = new Resend(key);
+  }
+  return resendClient;
+}
+
+export async function sendNotification(subject: string, html: string) {
   try {
-    await resend.emails.send({
+    const client = getResendClient();
+    if (!client) {
+      console.log("[Email] Skipped (no API key):", subject);
+      return;
+    }
+
+    await client.emails.send({
       from: FROM_EMAIL,
       to: NOTIFY_EMAIL,
       subject,

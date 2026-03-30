@@ -3,7 +3,11 @@
 import { createClient } from "@/lib/supabase/server";
 import { redirect } from "next/navigation";
 
-export async function signIn(formData: { email: string; password: string }) {
+export async function signIn(formData: {
+  email: string;
+  password: string;
+  redirectTo?: string;
+}) {
   const supabase = await createClient();
 
   const { error } = await supabase.auth.signInWithPassword({
@@ -15,7 +19,14 @@ export async function signIn(formData: { email: string; password: string }) {
     return { error: error.message };
   }
 
-  // Get user role for redirect
+  // Honour the redirect param from the middleware (e.g. /admin/leads/abc)
+  // but validate it to prevent open redirects.
+  const next = formData.redirectTo;
+  if (next && next.startsWith("/") && !next.startsWith("//")) {
+    redirect(next);
+  }
+
+  // Default: route by role
   const {
     data: { user },
   } = await supabase.auth.getUser();

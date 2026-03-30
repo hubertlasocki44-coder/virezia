@@ -15,9 +15,19 @@ const TEMPLATES = [
   { value: "developer_unblocked", label: "Developer Unblocked" },
 ];
 
+interface Brief {
+  id: string;
+  template_type: string;
+  content: string;
+  metrics: Record<string, unknown> | null;
+  published: boolean;
+  created_at: string;
+}
+
 export default function BriefsPage() {
-  const [briefs, setBriefs] = useState<Record<string, unknown>[]>([]);
+  const [briefs, setBriefs] = useState<Brief[]>([]);
   const [showNew, setShowNew] = useState(false);
+  const [editing, setEditing] = useState<Brief | null>(null);
   const [loading, setLoading] = useState(true);
 
   const fetchBriefs = async () => {
@@ -26,11 +36,27 @@ export default function BriefsPage() {
       .from("deal_briefs")
       .select("*")
       .order("created_at", { ascending: false });
-    setBriefs(data ?? []);
+    setBriefs((data as Brief[]) ?? []);
     setLoading(false);
   };
 
   useEffect(() => { fetchBriefs(); }, []);
+
+  const handleTogglePublish = async (brief: Brief) => {
+    const supabase = createClient();
+    await supabase
+      .from("deal_briefs")
+      .update({ published: !brief.published })
+      .eq("id", brief.id);
+    fetchBriefs();
+  };
+
+  const handleDelete = async (id: string) => {
+    if (!confirm("Delete this brief? This cannot be undone.")) return;
+    const supabase = createClient();
+    await supabase.from("deal_briefs").delete().eq("id", id);
+    fetchBriefs();
+  };
 
   return (
     <div>
@@ -55,17 +81,46 @@ export default function BriefsPage() {
           </div>
         )}
         {briefs.map((b) => (
-          <div key={b.id as string} className="border border-border bg-bg-card p-6">
-            <div className="flex items-center gap-3">
-              <span className="font-sans text-[11px] uppercase tracking-[0.05em] text-accent-gold">
-                {(b.template_type as string).replace(/_/g, " ")}
-              </span>
-              <AdminStatusBadge status={b.published ? "active" : "pending"} />
+          <div key={b.id} className="border border-border bg-bg-card p-6">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-3">
+                <span className="font-sans text-[11px] uppercase tracking-[0.05em] text-accent-gold">
+                  {b.template_type.replace(/_/g, " ")}
+                </span>
+                <AdminStatusBadge status={b.published ? "active" : "pending"} />
+              </div>
+              <div className="flex items-center gap-2">
+                <button
+                  onClick={() => handleTogglePublish(b)}
+                  className="font-sans text-[11px] uppercase tracking-[0.05em] text-text-muted transition-colors hover:text-text-secondary"
+                >
+                  {b.published ? "Unpublish" : "Publish"}
+                </button>
+                <span className="text-border">|</span>
+                <button
+                  onClick={() => setEditing(b)}
+                  className="font-sans text-[11px] uppercase tracking-[0.05em] text-text-muted transition-colors hover:text-text-secondary"
+                >
+                  Edit
+                </button>
+                <span className="text-border">|</span>
+                <button
+                  onClick={() => handleDelete(b.id)}
+                  className="font-sans text-[11px] uppercase tracking-[0.05em] text-text-muted transition-colors hover:text-red-400"
+                >
+                  Delete
+                </button>
+              </div>
             </div>
-            <p className="mt-3 font-sans text-sm text-text-secondary">{b.content as string}</p>
+            <p
+              className="mt-3 cursor-pointer font-sans text-sm text-text-secondary transition-colors hover:text-text-primary"
+              onClick={() => setEditing(b)}
+            >
+              {b.content}
+            </p>
             {b.metrics ? (
               <div className="mt-3 flex gap-4">
-                {Object.entries(b.metrics as Record<string, unknown>).map(([k, v]) => (
+                {Object.entries(b.metrics).map(([k, v]) => (
                   <span key={k} className="font-sans text-[12px] text-text-muted">
                     {k}: <span className="text-text-secondary">{String(v)}</span>
                   </span>
@@ -77,6 +132,7 @@ export default function BriefsPage() {
       </div>
 
       <NewBriefModal open={showNew} onClose={() => { setShowNew(false); fetchBriefs(); }} />
+      <EditBriefModal brief={editing} onClose={() => { setEditing(null); fetchBriefs(); }} />
     </div>
   );
 }
@@ -100,6 +156,9 @@ function NewBriefModal({ open, onClose }: { open: boolean; onClose: () => void }
     });
     setLoading(false);
     setContent("");
+    setTimeMetric("");
+    setOutcomeMetric("");
+    setPublished(false);
     onClose();
   };
 
@@ -120,6 +179,65 @@ function NewBriefModal({ open, onClose }: { open: boolean; onClose: () => void }
           className="w-full bg-accent-gold px-6 py-2.5 font-sans text-[13px] uppercase tracking-[0.1em] text-bg-primary transition-opacity hover:opacity-90 disabled:opacity-50"
         >
           {loading ? "Creating..." : "Create Brief"}
+        </button>
+      </div>
+    </AdminModal>
+  );
+}
+
+function EditBriefModal({ brief, onClose }: { brief: Brief | null; onClose: () => void }) {
+  const [type, setType] = useState("");
+  const [content, setContent] = useState("");
+  const [timeMetric, setTimeMetric] = useState("");
+  const [outcomeMetric, setOutcomeMetric] = useState("");
+  const [published, setPublished] = useState(false);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    if (brief) {
+      setType(brief.template_type);
+      setContent(brief.content);
+      const metrics = brief.metrics as Record<string, string> | null;
+      setTimeMetric(metrics?.time ?? "");
+      setOutcomeMetric(metrics?.outcome ?? "");
+      setPublished(brief.published);
+    }
+  }, [brief]);
+
+  const handleSave = async () => {
+    if (!brief) return;
+    setLoading(true);
+    const supabase = createClient();
+    await supabase
+      .from("deal_briefs")
+      .update({
+        template_type: type,
+        content,
+        metrics: { time: timeMetric, outcome: outcomeMetric },
+        published,
+      })
+      .eq("id", brief.id);
+    setLoading(false);
+    onClose();
+  };
+
+  return (
+    <AdminModal title="Edit Deal Brief" open={!!brief} onClose={onClose}>
+      <div className="space-y-4">
+        <FormSelect label="Template" options={TEMPLATES} value={type} onChange={(e) => setType(e.target.value)} />
+        <FormTextarea label="Content (max 5 sentences, anonymized)" value={content} onChange={(e) => setContent(e.target.value)} placeholder="A developer in [region] had been holding [X] units for [Y] months..." />
+        <FormInput label="Time Metric" value={timeMetric} onChange={(e) => setTimeMetric(e.target.value)} placeholder="e.g. 14 days from intake to first qualified lead" />
+        <FormInput label="Outcome Metric" value={outcomeMetric} onChange={(e) => setOutcomeMetric(e.target.value)} placeholder="e.g. 3 of 8 units placed within 60 days" />
+        <label className="flex items-center gap-2">
+          <input type="checkbox" checked={published} onChange={(e) => setPublished(e.target.checked)} className="h-4 w-4" />
+          <span className="font-sans text-sm text-text-secondary">Published</span>
+        </label>
+        <button
+          onClick={handleSave}
+          disabled={!content || loading}
+          className="w-full bg-accent-gold px-6 py-2.5 font-sans text-[13px] uppercase tracking-[0.1em] text-bg-primary transition-opacity hover:opacity-90 disabled:opacity-50"
+        >
+          {loading ? "Saving..." : "Save Changes"}
         </button>
       </div>
     </AdminModal>

@@ -2,10 +2,10 @@
 
 import { createClient } from "@/lib/supabase/server";
 import { revalidatePath } from "next/cache";
-import { requireEmployee } from "@/lib/auth-guard";
+import { requireEmployeeWithModule } from "@/lib/auth-guard";
 
 export async function getDealBriefs() {
-  await requireEmployee();
+  await requireEmployeeWithModule("briefs");
   const supabase = await createClient();
   const { data, error } = await supabase
     .from("deal_briefs")
@@ -21,7 +21,7 @@ export async function createDealBrief(brief: {
   metrics: Record<string, unknown>;
   published?: boolean;
 }) {
-  await requireEmployee();
+  await requireEmployeeWithModule("briefs");
   const supabase = await createClient();
   const { error } = await supabase.from("deal_briefs").insert(brief);
   if (error) throw error;
@@ -36,12 +36,20 @@ export async function updateDealBrief(
     published: boolean;
   }>
 ) {
-  await requireEmployee();
+  await requireEmployeeWithModule("briefs");
   const supabase = await createClient();
   const { error } = await supabase
     .from("deal_briefs")
     .update(updates)
     .eq("id", id);
   if (error) throw error;
+  revalidatePath("/admin/briefs");
+}
+
+export async function deleteDealBrief(id: string) {
+  await requireEmployeeWithModule("briefs");
+  const supabase = await createClient();
+  const { error } = await supabase.from("deal_briefs").delete().eq("id", id);
+  if (error) throw new Error(error.message);
   revalidatePath("/admin/briefs");
 }

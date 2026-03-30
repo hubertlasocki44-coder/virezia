@@ -2,10 +2,10 @@
 
 import { createClient } from "@/lib/supabase/server";
 import { revalidatePath } from "next/cache";
-import { requireEmployee } from "@/lib/auth-guard";
+import { requireEmployeeWithModule } from "@/lib/auth-guard";
 
 export async function getApplications(status?: string) {
-  await requireEmployee();
+  await requireEmployeeWithModule("applications");
   const supabase = await createClient();
   let query = supabase
     .from("applications")
@@ -19,7 +19,7 @@ export async function getApplications(status?: string) {
 }
 
 export async function updateApplicationStatus(id: string, status: string) {
-  await requireEmployee();
+  await requireEmployeeWithModule("applications");
   const supabase = await createClient();
   const { error } = await supabase
     .from("applications")
@@ -30,7 +30,7 @@ export async function updateApplicationStatus(id: string, status: string) {
 }
 
 export async function convertToLead(applicationId: string) {
-  await requireEmployee();
+  await requireEmployeeWithModule("applications");
   const supabase = await createClient();
   const { data: app } = await supabase
     .from("applications")

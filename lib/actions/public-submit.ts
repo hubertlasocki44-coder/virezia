@@ -60,9 +60,13 @@ export async function submitApplication(stepData: Record<string, unknown>) {
     }, { onConflict: "user_id" });
   }
 
-  // Send email notification
-  if (fullName && email) {
-    await notifyNewApplication(fullName, email, accountType);
+  // Send email notification (never block form success on email failure)
+  try {
+    if (fullName && email) {
+      await notifyNewApplication(fullName, email, accountType);
+    }
+  } catch (error) {
+    console.error("[submitApplication] Email notification failed:", error);
   }
 
   return { success: true };
@@ -79,7 +83,12 @@ export async function submitCircleRequest(email: string) {
     return { error: "Something went wrong. Try again or email hello@virezia.com." };
   }
 
-  await notifyCircleRequest(email);
+  try {
+    await notifyCircleRequest(email);
+  } catch (err) {
+    console.error("[submitCircleRequest] Email notification failed:", err);
+  }
+
   return { success: true };
 }
 
@@ -96,10 +105,14 @@ export async function submitPartnerApplication(data: Record<string, unknown>) {
     return { error: "Something went wrong. Try again or email hello@virezia.com." };
   }
 
-  const fullName = data.full_name as string;
-  const company = data.company_name as string;
-  if (fullName && company) {
-    await notifyPartnerSubmission(fullName, company);
+  try {
+    const fullName = data.full_name as string;
+    const company = data.company_name as string;
+    if (fullName && company) {
+      await notifyPartnerSubmission(fullName, company);
+    }
+  } catch (err) {
+    console.error("[submitPartnerApplication] Email notification failed:", err);
   }
 
   return { success: true };

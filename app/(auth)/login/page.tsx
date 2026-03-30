@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { Suspense, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -8,9 +9,11 @@ import { loginSchema, type LoginInput } from "@/lib/validations/auth";
 import { signIn } from "@/lib/actions/auth";
 import FormInput from "@/components/forms/FormInput";
 
-export default function LoginPage() {
+function LoginForm() {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const searchParams = useSearchParams();
+  const redirectTo = searchParams.get("redirect") || undefined;
 
   const {
     register,
@@ -23,7 +26,7 @@ export default function LoginPage() {
   const onSubmit = async (data: LoginInput) => {
     setLoading(true);
     setError("");
-    const result = await signIn(data);
+    const result = await signIn({ ...data, redirectTo });
     if (result?.error) {
       setError(result.error);
       setLoading(false);
@@ -78,5 +81,13 @@ export default function LoginPage() {
         </Link>
       </p>
     </div>
+  );
+}
+
+export default function LoginPage() {
+  return (
+    <Suspense>
+      <LoginForm />
+    </Suspense>
   );
 }
