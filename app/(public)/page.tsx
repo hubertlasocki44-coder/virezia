@@ -269,8 +269,8 @@ function ForWhom() {
 function HowWeWork() {
   const stats = [
     {
-      headline: "3 Focus Regions",
-      sub: "Tulum · Riviera Maya · Oaxaca",
+      headline: "4 Focus Regions",
+      sub: "Tulum · Riviera Maya · Oaxaca · Buenos Aires",
       detail: "Markets monitored daily for pricing, demand, and legal shifts. Expanding into select Latin American markets.",
     },
     {

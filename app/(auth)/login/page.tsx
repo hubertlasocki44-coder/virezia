@@ -51,6 +51,7 @@ function LoginForm() {
           label="Email"
           type="email"
           placeholder="you@example.com"
+          autoComplete="email"
           {...register("email")}
           error={errors.email?.message}
         />
@@ -58,6 +59,7 @@ function LoginForm() {
           label="Password"
           type="password"
           placeholder="Your password"
+          autoComplete="current-password"
           {...register("password")}
           error={errors.password?.message}
         />
@@ -71,7 +73,26 @@ function LoginForm() {
         </button>
       </form>
 
-      <p className="mt-6 text-center font-sans text-sm text-text-muted">
+      <p className="mt-4 text-center font-sans text-sm text-text-muted">
+        <Link
+          href="#"
+          onClick={async (e) => {
+            e.preventDefault();
+            const email = prompt("Enter your email address:");
+            if (email) {
+              const { resetPassword } = await import("@/lib/actions/auth");
+              const result = await resetPassword(email);
+              if (result?.error) alert(result.error);
+              else alert("Check your email for a password reset link.");
+            }
+          }}
+          className="text-text-muted transition-colors hover:text-accent-gold"
+        >
+          Forgot your password?
+        </Link>
+      </p>
+
+      <p className="mt-3 text-center font-sans text-sm text-text-muted">
         No account?{" "}
         <Link
           href="/signup"

@@ -16,7 +16,7 @@ export default function HeroContent() {
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             <span className="block h-[2px] w-6 bg-accent-gold" />
-            <SectionLabel text="Private Real Estate Intelligence · Mexico & Emerging Markets" />
+            <SectionLabel text="Private Real Estate Intelligence · Emerging Markets" />
           </motion.div>
 
           <motion.h1
