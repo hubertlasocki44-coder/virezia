@@ -1,32 +1,10 @@
 "use client";
 
-import { useState, useEffect, useRef, Suspense } from "react";
-import { useSearchParams, useRouter } from "next/navigation";
+import { useState, Suspense } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 import AnimatedSection from "@/components/AnimatedSection";
-import FormInput from "@/components/forms/FormInput";
-import FormRadioGroup from "@/components/forms/FormRadioGroup";
-import { submitLasOrcasForm } from "@/lib/actions/campaign-submit";
-
-const INVESTMENT_OPTIONS = [
-  { value: "under_500k", label: "Under $500K" },
-  { value: "500k_1m", label: "$500K \u2013 $1M" },
-  { value: "1m_2m", label: "$1M \u2013 $2M" },
-  { value: "2m_plus", label: "$2M+" },
-];
-
-const TIMELINE_OPTIONS = [
-  { value: "ready_now", label: "Ready now" },
-  { value: "3_6_months", label: "3\u20136 months" },
-  { value: "exploring", label: "Exploring" },
-];
-
-const INTENT_OPTIONS = [
-  { value: "personal_residence", label: "Personal residence" },
-  { value: "mixed", label: "Mixed" },
-  { value: "investment_yield", label: "Investment yield" },
-];
 
 /* -- YouTube video teaser (19s clip: 3:29-3:48) -------------------- */
 function VideoTeaser() {
@@ -48,7 +26,7 @@ function VideoTeaser() {
           className="absolute inset-0 w-full h-full group cursor-pointer"
         >
           <Image
-            src={`https://img.youtube.com/vi/scE6aC4XyyY/maxresdefault.jpg`}
+            src="https://img.youtube.com/vi/scE6aC4XyyY/maxresdefault.jpg"
             alt="Robert Couturier on Las Orcas"
             fill
             className="object-cover opacity-70 group-hover:opacity-80 transition-opacity"
@@ -67,8 +45,6 @@ function VideoTeaser() {
 }
 
 /* ================================================================== */
-/*  Main page component                                               */
-/* ================================================================== */
 export default function LasOrcasPage() {
   return (
     <Suspense>
@@ -78,74 +54,6 @@ export default function LasOrcasPage() {
 }
 
 function LasOrcasContent() {
-  const router = useRouter();
-  const searchParams = useSearchParams();
-
-  // Form state
-  const [investmentRange, setInvestmentRange] = useState("");
-  const [timeline, setTimeline] = useState("");
-  const [intent, setIntent] = useState("");
-  const [fullName, setFullName] = useState("");
-  const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
-
-  // Capture UTMs once
-  const utmRef = useRef({
-    utmSource: "",
-    utmMedium: "",
-    utmCampaign: "",
-    utmContent: "",
-    utmTerm: "",
-  });
-
-  useEffect(() => {
-    utmRef.current = {
-      utmSource: searchParams.get("utm_source") || "",
-      utmMedium: searchParams.get("utm_medium") || "",
-      utmCampaign: searchParams.get("utm_campaign") || "",
-      utmContent: searchParams.get("utm_content") || "",
-      utmTerm: searchParams.get("utm_term") || "",
-    };
-  }, [searchParams]);
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-
-    if (!investmentRange || !timeline || !intent || !fullName || !email || !phone) {
-      setError("Please complete all fields.");
-      return;
-    }
-
-    setLoading(true);
-    setError("");
-
-    try {
-      const result = await submitLasOrcasForm({
-        fullName,
-        email,
-        phone,
-        investmentRange,
-        timeline,
-        intent,
-        ...utmRef.current,
-      });
-
-      if (result.error) {
-        setError(result.error);
-      } else if (result.matched) {
-        router.push("/las-orcas/confirmed");
-      } else {
-        router.push("/las-orcas/welcome");
-      }
-    } catch {
-      setError("Something went wrong. Please try again or email hello@virezia.com.");
-    } finally {
-      setLoading(false);
-    }
-  };
-
   return (
     <>
       {/* ============================================================ */}
@@ -181,15 +89,12 @@ function LasOrcasContent() {
               <br className="hidden md:block" />
               he returns to the Pacific.
             </h1>
-            <p className="font-sans text-base font-light text-text-secondary mt-8 max-w-xl">
-              Robert Couturier &mdash; the architect behind Cuixmala, one of the greatest private estates ever built &mdash; designs six beachfront residences in Puerto Escondido, Oaxaca.
-            </p>
           </motion.div>
         </div>
       </section>
 
       {/* ============================================================ */}
-      {/* 2. THE CUIXMALA YEARS                                        */}
+      {/* 2. THE COMMISSION                                            */}
       {/* ============================================================ */}
       <section className="py-28 md:py-40">
         <div className="mx-auto max-w-content px-6 md:px-10">
@@ -206,21 +111,24 @@ function LasOrcasContent() {
               </div>
             </AnimatedSection>
 
-            <AnimatedSection delay={0.15} className="md:pt-16">
-              <p className="font-sans text-[11px] uppercase tracking-[0.15em] text-accent-gold mb-4">
-                Robert Couturier
-              </p>
-              <p className="font-sans text-[11px] uppercase tracking-[0.15em] text-text-muted mb-8">
-                Paris-trained architect &middot; AD100 &middot; Four continents
+            <AnimatedSection delay={0.15} className="md:pt-8">
+              <p className="font-sans text-[11px] uppercase tracking-[0.15em] text-accent-gold mb-8">
+                1987
               </p>
               <p className="font-sans text-base font-light leading-relaxed text-text-secondary">
-                In 1987, Sir James Goldsmith entrusted a thirty-two-year-old French architect with the single greatest private commission of modern times: a 20,000-acre estate on Mexico&apos;s Pacific Coast.
+                In the autumn of 1987, after the stock market crash, Sir James Goldsmith &mdash; the Anglo-French financier &mdash; withdrew from the world he had spent thirty years building. He bought twenty thousand acres on the Pacific Coast of Mexico and began to imagine what it might become.
               </p>
               <p className="font-sans text-base font-light leading-relaxed text-text-secondary mt-6">
-                The result was Cuixmala &mdash; later named by Architectural Digest among the seven most beautiful resorts of the Pacific. The commission lasted a decade. It launched Robert Couturier&apos;s career.
+                He had recently commissioned a young French architect, newly arrived in New York, to decorate his Manhattan townhouse. He now offered him something larger: the design of an entire world.
               </p>
-              <p className="font-serif text-xl text-accent-gold mt-10">
-                Las Orcas is his return.
+              <p className="font-sans text-base font-light leading-relaxed text-text-secondary mt-6">
+                Robert Couturier was thirty-two. The commission was, by his own biographer&apos;s account, the single greatest private commission of modern times. It would last a decade. It would expand to include a sixty-thousand-square-foot palace called La Loma, its blue-and-yellow tiled dome modeled after Hagia Sophia. A Boeing 757 &mdash; &ldquo;a flying carpet with a motor,&rdquo; Couturier called it. A French ch&acirc;teau. A double-width Manhattan home.
+              </p>
+              <p className="font-sans text-base font-light leading-relaxed text-text-secondary mt-6">
+                The estate became Cuixmala &mdash; &ldquo;the soul&apos;s resting place&rdquo; in the Nahuatl language. Architectural Digest later named it among the seven most beautiful resorts on Mexico&apos;s Pacific Coast. It hosted Henry Kissinger, Madonna, Bill Gates. It launched Robert Couturier&apos;s career.
+              </p>
+              <p className="font-serif text-[clamp(20px,2.5vw,28px)] text-accent-gold mt-12 leading-snug">
+                Las Orcas is his return to that coast.
               </p>
             </AnimatedSection>
           </div>
@@ -242,49 +150,65 @@ function LasOrcasContent() {
                 The full conversation is shared with members of the VIREZIA Circle.
               </p>
             </div>
-
-            {/* Press logos */}
-            <div className="mt-16 pt-12 border-t border-border/50">
-              <p className="font-sans text-[10px] uppercase tracking-[0.2em] text-text-muted text-center mb-8">
-                Robert Couturier&apos;s work featured in
-              </p>
-              <div className="flex items-center justify-center gap-8 md:gap-14 flex-wrap">
-                <Image
-                  src="/images/las-orcas/logo-ad.png"
-                  alt="Architectural Digest"
-                  width={102}
-                  height={75}
-                  className="h-6 md:h-8 w-auto opacity-40 hover:opacity-60 transition-opacity"
-                />
-                <Image
-                  src="/images/las-orcas/logo-nyt.png"
-                  alt="The New York Times"
-                  width={94}
-                  height={75}
-                  className="h-6 md:h-8 w-auto opacity-40 hover:opacity-60 transition-opacity"
-                />
-                <Image
-                  src="/images/las-orcas/logo-elle.png"
-                  alt="Elle"
-                  width={210}
-                  height={75}
-                  className="h-6 md:h-8 w-auto opacity-40 hover:opacity-60 transition-opacity"
-                />
-                <Image
-                  src="/images/las-orcas/logo-1stdibs.png"
-                  alt="1stDibs"
-                  width={243}
-                  height={75}
-                  className="h-6 md:h-8 w-auto opacity-40 hover:opacity-60 transition-opacity"
-                />
-              </div>
-            </div>
           </AnimatedSection>
         </div>
       </section>
 
       {/* ============================================================ */}
-      {/* 4. ON LUXURY (manifest quote)                                */}
+      {/* 4. WHY HE RETURNED                                           */}
+      {/* ============================================================ */}
+      <section className="py-28 md:py-40">
+        <div className="mx-auto max-w-2xl px-6 md:px-10">
+          <AnimatedSection>
+            <p className="font-sans text-[10px] uppercase tracking-[0.2em] text-accent-gold mb-10 text-center">
+              Why He Returned
+            </p>
+            <p className="font-sans text-base font-light leading-relaxed text-text-secondary text-center mb-16">
+              Couturier has worked in Mexico for over four decades. When the developers of Las Orcas approached him about Puerto Escondido, his answer was personal before it was professional.
+            </p>
+
+            <div className="space-y-16">
+              <blockquote className="text-center">
+                <p className="font-serif text-[clamp(20px,3vw,32px)] font-light leading-[1.35]">
+                  &ldquo;What I love about Mexico is the incredible kindness of its people, the devotion of its workers, and their intelligence in making your dream come true.&rdquo;
+                </p>
+              </blockquote>
+
+              <blockquote className="text-center">
+                <p className="font-serif text-[clamp(20px,3vw,32px)] font-light leading-[1.35]">
+                  &ldquo;Puerto Escondido is being discovered. Most of the developments there are environmentally friendly, family-friendly. You don&apos;t have the feeling that you live on top of each other.&rdquo;
+                </p>
+              </blockquote>
+            </div>
+
+            <p className="font-sans text-[11px] uppercase tracking-[0.15em] text-accent-gold mt-12 text-center">
+              &mdash; Robert Couturier
+            </p>
+          </AnimatedSection>
+        </div>
+      </section>
+
+      {/* ============================================================ */}
+      {/* 5. LOGO WALL                                                 */}
+      {/* ============================================================ */}
+      <section className="py-12 md:py-16">
+        <div className="mx-auto max-w-content px-6 md:px-10">
+          <div className="border-t border-b border-border/50 py-12">
+            <p className="font-sans text-[10px] uppercase tracking-[0.2em] text-text-muted text-center mb-8">
+              Published in
+            </p>
+            <div className="flex items-center justify-center gap-8 md:gap-14 flex-wrap">
+              <Image src="/images/las-orcas/logo-ad.png" alt="Architectural Digest" width={102} height={75} className="h-6 md:h-8 w-auto opacity-40 hover:opacity-60 transition-opacity" />
+              <Image src="/images/las-orcas/logo-nyt.png" alt="The New York Times" width={94} height={75} className="h-6 md:h-8 w-auto opacity-40 hover:opacity-60 transition-opacity" />
+              <Image src="/images/las-orcas/logo-elle.png" alt="Elle" width={210} height={75} className="h-6 md:h-8 w-auto opacity-40 hover:opacity-60 transition-opacity" />
+              <Image src="/images/las-orcas/logo-1stdibs.png" alt="1stDibs" width={243} height={75} className="h-6 md:h-8 w-auto opacity-40 hover:opacity-60 transition-opacity" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ============================================================ */}
+      {/* 6. ON LUXURY (manifest)                                      */}
       {/* ============================================================ */}
       <section className="py-32 md:py-48">
         <div className="mx-auto max-w-3xl px-6 md:px-10">
@@ -300,7 +224,7 @@ function LasOrcasContent() {
       </section>
 
       {/* ============================================================ */}
-      {/* 5. VIREZIA SELECTIONS (trust block)                          */}
+      {/* 7. VIREZIA SELECTIONS (trust block)                          */}
       {/* ============================================================ */}
       <section className="py-20 md:py-28">
         <div className="mx-auto max-w-2xl px-6 md:px-10">
@@ -316,7 +240,7 @@ function LasOrcasContent() {
       </section>
 
       {/* ============================================================ */}
-      {/* 6. THE WORK                                                  */}
+      {/* 8. THE WORK                                                  */}
       {/* ============================================================ */}
       <section className="py-28 md:py-40">
         <div className="mx-auto max-w-content px-6 md:px-10">
@@ -333,14 +257,20 @@ function LasOrcasContent() {
               </div>
             </AnimatedSection>
 
-            <AnimatedSection delay={0.15} className="md:pt-20">
+            <AnimatedSection delay={0.15} className="md:pt-12">
               <p className="font-sans text-[11px] uppercase tracking-[0.15em] text-accent-gold mb-8">
                 Las Orcas
               </p>
               <p className="font-sans text-base font-light leading-relaxed text-text-secondary">
-                Six villas. Five remaining. Beachfront, Puerto Escondido, Oaxaca. Pre-construction. Pre-titled lots. Designed by Robert Couturier.
+                Seven private residences on a single beachfront parcel in Puerto Escondido, Oaxaca &mdash; four villas and three casitas, designed by Robert Couturier as a small village. &ldquo;So that when you walk through from the entrance to the upper bungalows,&rdquo; he says, &ldquo;you have a feeling that you&apos;re walking through a small little city.&rdquo;
               </p>
-              <p className="font-sans text-lg font-normal text-text-primary mt-8">
+              <p className="font-sans text-base font-light leading-relaxed text-text-secondary mt-6">
+                The construction is in concrete and stone &mdash; materials chosen, in his words, &ldquo;that will live in the sea air and age gracefully &mdash; as we all should.&rdquo; Spaces are designed to be open but cozy. &ldquo;You don&apos;t have the feeling that you live outside all the time. You have the ability to be outside, and the ability to stay inside and read a book.&rdquo;
+              </p>
+              <p className="font-sans text-base font-light leading-relaxed text-text-secondary mt-6">
+                Each residence has its own private deed and rooftop plunge pool. Pre-construction. Pre-titled lots. Direct access to the uncrowded beach of La Barra. Five residences remain available to founding members.
+              </p>
+              <p className="font-sans text-lg font-normal text-text-primary mt-10">
                 From $561,000.
               </p>
             </AnimatedSection>
@@ -349,7 +279,7 @@ function LasOrcasContent() {
       </section>
 
       {/* ============================================================ */}
-      {/* 7. COUTURIER ON LAS ORCAS (quotes)                           */}
+      {/* 9. COUTURIER ON LAS ORCAS (quotes)                           */}
       {/* ============================================================ */}
       <section className="py-28 md:py-40">
         <div className="mx-auto max-w-3xl px-6 md:px-10">
@@ -373,90 +303,119 @@ function LasOrcasContent() {
       </section>
 
       {/* ============================================================ */}
-      {/* 8. QUALIFIER (form)                                          */}
+      {/* 10. THE NEIGHBORHOOD                                         */}
       {/* ============================================================ */}
-      <section id="join" className="bg-bg-secondary py-28 md:py-40">
-        <div className="mx-auto max-w-xl px-6 md:px-10">
+      <section className="py-28 md:py-40">
+        <div className="mx-auto max-w-2xl px-6 md:px-10">
           <AnimatedSection>
-            <p className="font-sans text-[10px] uppercase tracking-[0.2em] text-accent-gold mb-6 text-center">
-              Join the VIREZIA Circle
+            <p className="font-sans text-[10px] uppercase tracking-[0.2em] text-accent-gold mb-10 text-center">
+              The Neighborhood
             </p>
-            <p className="font-sans text-base font-light leading-relaxed text-text-secondary text-center mb-12">
-              Las Orcas is offered through the VIREZIA Circle. Three questions to join, and the full conversation with Robert Couturier is shared.
+            <p className="font-sans text-base font-light leading-relaxed text-text-secondary text-center mb-16">
+              The Pacific Coast of Oaxaca has become, quietly, the most concentrated architectural destination in Mexico. Within thirty minutes of Las Orcas:
             </p>
 
-            <form onSubmit={handleSubmit} className="space-y-8">
-              <FormRadioGroup
-                label="Investment range"
-                name="investment_range"
-                options={INVESTMENT_OPTIONS}
-                value={investmentRange}
-                onChange={setInvestmentRange}
-              />
+            <div className="space-y-6 max-w-lg mx-auto">
+              <p className="font-sans text-[15px] font-light text-text-secondary">
+                <span className="text-text-primary">Casa Wabi</span> &mdash; Tadao Ando. Pritzker Prize, 1995. With pavilions by &Aacute;lvaro Siza, Kengo Kuma, Alberto Kalach, Solano Ben&iacute;tez and Gloria Cabral.
+              </p>
+              <p className="font-sans text-[15px] font-light text-text-secondary">
+                <span className="text-text-primary">Casona Sforza</span> &mdash; Alberto Kalach. La Barra.
+              </p>
+              <p className="font-sans text-[15px] font-light text-text-secondary">
+                <span className="text-text-primary">Hotel Escondido</span> &mdash; Grupo Habita. Member of Design Hotels.
+              </p>
+              <p className="font-sans text-[15px] font-light text-text-secondary">
+                <span className="text-text-primary">Hotel Terrestre</span> &mdash; Alberto Kalach. Solar-powered, member of Design Hotels.
+              </p>
+              <p className="font-sans text-[15px] font-light text-text-secondary">
+                <span className="text-text-primary">Casa TO</span> &mdash; Ludwig Godefroy. La Punta.
+              </p>
+            </div>
 
-              <FormRadioGroup
-                label="Timeline"
-                name="timeline"
-                options={TIMELINE_OPTIONS}
-                value={timeline}
-                onChange={setTimeline}
-              />
-
-              <FormRadioGroup
-                label="Primary intent"
-                name="intent"
-                options={INTENT_OPTIONS}
-                value={intent}
-                onChange={setIntent}
-              />
-
-              <div className="pt-4 space-y-4">
-                <FormInput
-                  label="Full name"
-                  type="text"
-                  placeholder="Your full name"
-                  value={fullName}
-                  onChange={(e) => setFullName(e.target.value)}
-                />
-                <FormInput
-                  label="Email"
-                  type="email"
-                  placeholder="you@example.com"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                />
-                <FormInput
-                  label="Phone (with country code)"
-                  type="tel"
-                  placeholder="+1 555 000 0000"
-                  value={phone}
-                  onChange={(e) => setPhone(e.target.value)}
-                />
-              </div>
-
-              {error && (
-                <p className="font-sans text-sm text-red-400 text-center">{error}</p>
-              )}
-
-              <div className="text-center pt-4">
-                <button
-                  type="submit"
-                  disabled={loading}
-                  className="bg-accent-gold px-10 py-4 font-sans text-[13px] uppercase tracking-[0.1em] text-bg-primary transition-opacity hover:opacity-90 disabled:opacity-50"
-                >
-                  {loading ? "Submitting..." : "Join the VIREZIA Circle"}
-                </button>
-                <p className="font-sans text-[12px] text-text-muted mt-4">
-                  A response within 24 hours.
-                </p>
-              </div>
-            </form>
+            <div className="mt-16 text-center">
+              <p className="font-sans text-base font-light leading-relaxed text-text-secondary">
+                Until now, this architecture could be visited. It could not be inhabited.
+              </p>
+              <p className="font-serif text-xl text-accent-gold mt-6">
+                Las Orcas is the first private residential project at this tier on the Oaxacan Coast.
+              </p>
+            </div>
           </AnimatedSection>
         </div>
       </section>
 
       {/* ============================================================ */}
-      {/* 9. FOOTER                                                    */}
+      {/* 11. THE BUILD                                                */}
+      {/* ============================================================ */}
+      <section className="py-20 md:py-28">
+        <div className="mx-auto max-w-2xl px-6 md:px-10">
+          <AnimatedSection className="text-center">
+            <p className="font-sans text-[10px] uppercase tracking-[0.2em] text-accent-gold mb-10">
+              The Build
+            </p>
+            <p className="font-sans text-base font-light leading-relaxed text-text-secondary">
+              Construction by Quantia, the Puerto Escondido studio responsible for Casa Sicar&uacute; and Casa Madrina. Materials drawn from the region &mdash; Cantera Verde stone, Parota wood, Talavera tile, breeze blocks &mdash; selected for permanence in the sea air. Saltwater pools. Whole-home water filtration. Ten-inch walls and dual-pane glass to soften the climate. Each residence is delivered with private deed under Mexican federal title.
+            </p>
+            <p className="font-sans text-sm text-text-muted mt-8">
+              Estimated construction: Q2 2026 &mdash; Q3 2027.
+            </p>
+          </AnimatedSection>
+        </div>
+      </section>
+
+      {/* ============================================================ */}
+      {/* 12. JOIN THE VIREZIA CIRCLE (CTA)                            */}
+      {/* ============================================================ */}
+      <section className="bg-bg-secondary py-28 md:py-40">
+        <div className="mx-auto max-w-2xl px-6 md:px-10">
+          <AnimatedSection className="text-center">
+            <p className="font-sans text-[10px] uppercase tracking-[0.2em] text-accent-gold mb-8">
+              Join the VIREZIA Circle
+            </p>
+            <p className="font-serif text-[clamp(20px,3vw,32px)] font-light leading-[1.4] mb-6">
+              There is more to this story. The full conversation with Robert Couturier, the dossier, and the introductions to Las Orcas and future Selections are shared with members of the VIREZIA Circle.
+            </p>
+            <p className="font-sans text-sm font-light text-text-muted mb-10">
+              Membership is by inquiry. There is no fee.
+            </p>
+            <Link
+              href="/circle/join"
+              className="inline-block bg-accent-gold px-12 py-4 font-sans text-[13px] uppercase tracking-[0.1em] text-bg-primary transition-opacity hover:opacity-90"
+            >
+              Join the VIREZIA Circle
+            </Link>
+          </AnimatedSection>
+        </div>
+      </section>
+
+      {/* ============================================================ */}
+      {/* 13. FOUNDING MEMBERS                                         */}
+      {/* ============================================================ */}
+      <section className="py-28 md:py-40">
+        <div className="mx-auto max-w-2xl px-6 md:px-10">
+          <AnimatedSection className="text-center">
+            <p className="font-sans text-[10px] uppercase tracking-[0.2em] text-accent-gold mb-10">
+              Founding Members
+            </p>
+            <p className="font-sans text-base font-light leading-relaxed text-text-secondary">
+              Las Orcas opens to seven founding members &mdash; the first owners of a Robert Couturier residence on the Oaxacan Coast. Founding members select their residence from those remaining. They participate, where they wish, in the architect&apos;s final decisions on their home. They join a small group whose names will be associated with the project&apos;s first chapter.
+            </p>
+            <p className="font-sans text-base font-light leading-relaxed text-text-secondary mt-6">
+              Founding membership is offered to members of the VIREZIA Circle who indicate alignment with the project. A short conversation precedes any introduction to the developer.
+            </p>
+            <Link
+              href="/circle/join?intent=founding"
+              className="inline-block mt-10 border border-accent-gold/60 px-10 py-4 font-sans text-[13px] uppercase tracking-[0.1em] text-accent-gold transition-all hover:bg-accent-gold/10 hover:border-accent-gold"
+            >
+              Express Interest as a Founding Member
+            </Link>
+          </AnimatedSection>
+        </div>
+      </section>
+
+      {/* ============================================================ */}
+      {/* 14. FOOTER                                                   */}
       {/* ============================================================ */}
       <footer className="py-16 border-t border-border">
         <div className="mx-auto max-w-content px-6 md:px-10 text-center">
