@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef, Suspense } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import { motion } from "framer-motion";
+import Image from "next/image";
 import AnimatedSection from "@/components/AnimatedSection";
 import FormInput from "@/components/forms/FormInput";
 import FormRadioGroup from "@/components/forms/FormRadioGroup";
@@ -27,63 +28,40 @@ const INTENT_OPTIONS = [
   { value: "investment_yield", label: "Investment yield" },
 ];
 
-/* -- Video teaser component ---------------------------------------- */
+/* -- YouTube video teaser (19s clip: 3:29-3:48) -------------------- */
 function VideoTeaser() {
-  const videoRef = useRef<HTMLDivElement>(null);
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    const el = videoRef.current;
-    if (!el) return;
-    const observer = new IntersectionObserver(
-      ([entry]) => setIsVisible(entry.isIntersecting),
-      { threshold: 0.3 }
-    );
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, []);
+  const [showVideo, setShowVideo] = useState(false);
 
   return (
-    <div ref={videoRef} className="relative aspect-video w-full max-w-4xl mx-auto bg-bg-secondary">
-      {/* PLACEHOLDER: Replace with Vimeo embed (19s teaser, timestamp 3:29-3:48)
-          Example: <iframe src="https://player.vimeo.com/video/VIDEO_ID?autoplay=1&muted=1&loop=1&background=1#t=209s" ... />
-      */}
-      <div className="absolute inset-0 flex items-center justify-center border border-border">
-        <div className="text-center px-8">
-          <div className="w-16 h-16 mx-auto mb-4 rounded-full border border-accent-gold/40 flex items-center justify-center">
-            <svg className="w-6 h-6 text-accent-gold ml-1" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M8 5v14l11-7z" />
-            </svg>
+    <div className="relative aspect-video w-full max-w-4xl mx-auto bg-black overflow-hidden">
+      {showVideo ? (
+        <iframe
+          src="https://www.youtube.com/embed/scE6aC4XyyY?start=209&end=228&autoplay=1&rel=0&modestbranding=1&color=white"
+          title="Robert Couturier on Las Orcas"
+          allow="autoplay; encrypted-media"
+          allowFullScreen
+          className="absolute inset-0 w-full h-full"
+        />
+      ) : (
+        <button
+          onClick={() => setShowVideo(true)}
+          className="absolute inset-0 w-full h-full group cursor-pointer"
+        >
+          <Image
+            src={`https://img.youtube.com/vi/scE6aC4XyyY/maxresdefault.jpg`}
+            alt="Robert Couturier on Las Orcas"
+            fill
+            className="object-cover opacity-70 group-hover:opacity-80 transition-opacity"
+          />
+          <div className="absolute inset-0 flex items-center justify-center">
+            <div className="w-20 h-20 rounded-full border-2 border-white/60 flex items-center justify-center group-hover:border-white/90 group-hover:scale-105 transition-all">
+              <svg className="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M8 5v14l11-7z" />
+              </svg>
+            </div>
           </div>
-          <p className="font-sans text-xs text-text-muted uppercase tracking-label">
-            Video teaser placeholder
-          </p>
-          <p className="font-sans text-[11px] text-text-muted mt-1">
-            19-second Couturier clip (Vimeo embed)
-          </p>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-/* -- Image placeholder --------------------------------------------- */
-function ImagePlaceholder({
-  label,
-  aspect = "aspect-[4/3]",
-  className = "",
-}: {
-  label: string;
-  aspect?: string;
-  className?: string;
-}) {
-  return (
-    <div className={`relative ${aspect} w-full bg-bg-secondary border border-border ${className}`}>
-      <div className="absolute inset-0 flex items-center justify-center">
-        <p className="font-sans text-xs text-text-muted uppercase tracking-label text-center px-4">
-          {label}
-        </p>
-      </div>
+        </button>
+      )}
     </div>
   );
 }
@@ -174,17 +152,16 @@ function LasOrcasContent() {
       {/* 1. HERO                                                      */}
       {/* ============================================================ */}
       <section className="relative min-h-screen flex items-end pb-20 md:pb-28">
-        {/* Background image placeholder */}
-        <div className="absolute inset-0 bg-bg-primary">
-          {/* PLACEHOLDER: Replace with Next.js Image of hero render
-              <Image src="/images/las-orcas/hero.jpg" alt="Las Orcas villa" fill className="object-cover opacity-60" priority />
-          */}
-          <div className="absolute inset-0 bg-gradient-to-b from-bg-primary/40 via-transparent to-bg-primary" />
-          <ImagePlaceholder
-            label="Hero render — Las Orcas villa, editorial landscape crop"
-            aspect="aspect-auto"
-            className="absolute inset-0 border-0 opacity-30"
+        <div className="absolute inset-0">
+          <Image
+            src="/images/las-orcas/hero-aerial.webp"
+            alt="Las Orcas — beachfront villas, Puerto Escondido"
+            fill
+            className="object-cover"
+            priority
+            sizes="100vw"
           />
+          <div className="absolute inset-0 bg-gradient-to-b from-bg-primary/50 via-bg-primary/20 to-bg-primary" />
         </div>
 
         <div className="relative z-10 mx-auto w-full max-w-content px-6 md:px-10">
@@ -215,11 +192,15 @@ function LasOrcasContent() {
         <div className="mx-auto max-w-content px-6 md:px-10">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-start">
             <AnimatedSection>
-              <ImagePlaceholder
-                label="Cuixmala / La Loma &mdash; B&W photo (rights TBC)"
-                aspect="aspect-[3/4]"
-                className="grayscale"
-              />
+              <div className="relative aspect-[3/4] w-full overflow-hidden">
+                <Image
+                  src="/images/las-orcas/couturier-architecture.jpg"
+                  alt="Robert Couturier — architect"
+                  fill
+                  className="object-cover grayscale"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                />
+              </div>
             </AnimatedSection>
 
             <AnimatedSection delay={0.15} className="md:pt-16">
@@ -298,10 +279,15 @@ function LasOrcasContent() {
         <div className="mx-auto max-w-content px-6 md:px-10">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-start">
             <AnimatedSection>
-              <ImagePlaceholder
-                label="Villa exterior render &mdash; editorial"
-                aspect="aspect-[4/5]"
-              />
+              <div className="relative aspect-[4/5] w-full overflow-hidden">
+                <Image
+                  src="/images/las-orcas/villa-front.webp"
+                  alt="Las Orcas villa — designed by Robert Couturier"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                />
+              </div>
             </AnimatedSection>
 
             <AnimatedSection delay={0.15} className="md:pt-20">

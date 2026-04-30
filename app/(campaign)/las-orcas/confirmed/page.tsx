@@ -32,25 +32,14 @@ export default function LasOrcasConfirmedPage() {
       <section className="bg-bg-secondary py-20 md:py-28">
         <div className="mx-auto max-w-3xl px-6 md:px-10">
           <AnimatedSection>
-            <div className="relative aspect-video w-full bg-bg-primary border border-border">
-              {/* PLACEHOLDER: Replace with Vimeo embed (full 4-min video)
-                  <iframe src="https://player.vimeo.com/video/VIDEO_ID" ... />
-              */}
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="text-center px-8">
-                  <div className="w-16 h-16 mx-auto mb-4 rounded-full border border-accent-gold/40 flex items-center justify-center">
-                    <svg className="w-6 h-6 text-accent-gold ml-1" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M8 5v14l11-7z" />
-                    </svg>
-                  </div>
-                  <p className="font-sans text-xs text-text-muted uppercase tracking-label">
-                    Full Couturier video (4 min)
-                  </p>
-                  <p className="font-sans text-[11px] text-text-muted mt-1">
-                    Vimeo embed placeholder
-                  </p>
-                </div>
-              </div>
+            <div className="relative aspect-video w-full bg-black overflow-hidden">
+              <iframe
+                src="https://www.youtube.com/embed/scE6aC4XyyY?rel=0&modestbranding=1&color=white"
+                title="Robert Couturier on Las Orcas — full conversation"
+                allow="autoplay; encrypted-media"
+                allowFullScreen
+                className="absolute inset-0 w-full h-full"
+              />
             </div>
             <p className="font-sans text-sm font-light text-text-secondary text-center mt-8">
               Robert Couturier on Las Orcas &mdash; the full conversation.
