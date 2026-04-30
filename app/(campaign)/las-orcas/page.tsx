@@ -157,11 +157,11 @@ function LasOrcasContent() {
             src="/images/las-orcas/hero-aerial.webp"
             alt="Las Orcas — beachfront villas, Puerto Escondido"
             fill
-            className="object-cover"
+            className="object-cover opacity-40"
             priority
             sizes="100vw"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-bg-primary/50 via-bg-primary/20 to-bg-primary" />
+          <div className="absolute inset-0 bg-gradient-to-b from-bg-primary/70 via-bg-primary/40 to-bg-primary" />
         </div>
 
         <div className="relative z-10 mx-auto w-full max-w-content px-6 md:px-10">
@@ -170,10 +170,10 @@ function LasOrcasContent() {
             animate={{ opacity: 1 }}
             transition={{ duration: 1.2, delay: 0.3 }}
           >
-            <p className="font-sans text-[10px] uppercase tracking-[0.2em] text-text-muted mb-4">
+            <p className="font-sans text-[11px] uppercase tracking-[0.2em] text-accent-gold/90 mb-4">
               A VIREZIA Selection
             </p>
-            <p className="font-sans text-[11px] uppercase tracking-[0.15em] text-accent-gold mb-8">
+            <p className="font-sans text-[12px] uppercase tracking-[0.15em] text-text-primary/70 mb-10">
               Robert Couturier &middot; Oaxacan Coast &middot; 2026
             </p>
             <h1 className="font-serif text-[clamp(36px,7vw,80px)] font-light leading-[1.05] max-w-4xl">
@@ -181,6 +181,9 @@ function LasOrcasContent() {
               <br className="hidden md:block" />
               he returns to the Pacific.
             </h1>
+            <p className="font-sans text-base font-light text-text-secondary mt-8 max-w-xl">
+              Robert Couturier &mdash; the architect behind Cuixmala, one of the greatest private estates ever built &mdash; designs six beachfront residences in Puerto Escondido, Oaxaca.
+            </p>
           </motion.div>
         </div>
       </section>
@@ -204,8 +207,11 @@ function LasOrcasContent() {
             </AnimatedSection>
 
             <AnimatedSection delay={0.15} className="md:pt-16">
-              <p className="font-sans text-[11px] uppercase tracking-[0.15em] text-accent-gold mb-8">
-                1987
+              <p className="font-sans text-[11px] uppercase tracking-[0.15em] text-accent-gold mb-4">
+                Robert Couturier
+              </p>
+              <p className="font-sans text-[11px] uppercase tracking-[0.15em] text-text-muted mb-8">
+                Paris-trained architect &middot; AD100 &middot; Four continents
               </p>
               <p className="font-sans text-base font-light leading-relaxed text-text-secondary">
                 In 1987, Sir James Goldsmith entrusted a thirty-two-year-old French architect with the single greatest private commission of modern times: a 20,000-acre estate on Mexico&apos;s Pacific Coast.
@@ -235,6 +241,43 @@ function LasOrcasContent() {
               <p className="font-sans text-sm font-light leading-relaxed text-text-muted mt-3">
                 The full conversation is shared with members of the VIREZIA Circle.
               </p>
+            </div>
+
+            {/* Press logos */}
+            <div className="mt-16 pt-12 border-t border-border/50">
+              <p className="font-sans text-[10px] uppercase tracking-[0.2em] text-text-muted text-center mb-8">
+                Robert Couturier&apos;s work featured in
+              </p>
+              <div className="flex items-center justify-center gap-8 md:gap-14 flex-wrap">
+                <Image
+                  src="/images/las-orcas/logo-ad.png"
+                  alt="Architectural Digest"
+                  width={102}
+                  height={75}
+                  className="h-6 md:h-8 w-auto opacity-40 hover:opacity-60 transition-opacity"
+                />
+                <Image
+                  src="/images/las-orcas/logo-nyt.png"
+                  alt="The New York Times"
+                  width={94}
+                  height={75}
+                  className="h-6 md:h-8 w-auto opacity-40 hover:opacity-60 transition-opacity"
+                />
+                <Image
+                  src="/images/las-orcas/logo-elle.png"
+                  alt="Elle"
+                  width={210}
+                  height={75}
+                  className="h-6 md:h-8 w-auto opacity-40 hover:opacity-60 transition-opacity"
+                />
+                <Image
+                  src="/images/las-orcas/logo-1stdibs.png"
+                  alt="1stDibs"
+                  width={243}
+                  height={75}
+                  className="h-6 md:h-8 w-auto opacity-40 hover:opacity-60 transition-opacity"
+                />
+              </div>
             </div>
           </AnimatedSection>
         </div>
