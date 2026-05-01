@@ -2,45 +2,51 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import SectionLabel from "@/components/SectionLabel";
 
 export default function HeroContent() {
   return (
     <>
       <div className="relative z-10 mx-auto w-full max-w-content px-6" style={{ marginTop: "-5vh" }}>
-        <div className="max-w-[620px]">
-          <motion.div
-            className="flex items-center gap-4"
+        <div className="max-w-[640px]">
+          <motion.p
+            className="font-sans text-[11px] uppercase tracking-[0.2em] text-accent-gold"
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <span className="block h-[2px] w-6 bg-accent-gold" />
-            <SectionLabel text="Private Real Estate Intelligence · Emerging Markets" />
-          </motion.div>
+            By Invitation
+          </motion.p>
 
           <motion.h1
             className="mt-8"
-            style={{ fontSize: "clamp(52px, 7vw, 88px)" }}
+            style={{ fontSize: "clamp(48px, 7vw, 88px)" }}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.5 }}
           >
-            Fewer Options.
+            Real estate,
             <br />
-            Better Ones. Yours.
+            curated like art.
           </motion.h1>
 
-          <motion.p
-            className="mt-6 max-w-[500px] font-sans text-[17px] font-light leading-[1.75] text-text-secondary"
+          <motion.div
+            className="mt-8 max-w-[520px]"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.8 }}
           >
-            We help expats and foreign investors buy property in Mexico
-            with full confidence. Verified opportunities matched to your
-            profile. No noise. No hidden fees.
-          </motion.p>
+            <p className="font-sans text-[16px] font-light leading-[1.8] text-text-secondary">
+              A small selection of exceptional homes &mdash;
+              <br />
+              told as story, offered by invitation.
+            </p>
+            <p className="font-sans text-[16px] font-light leading-[1.8] text-text-secondary mt-4">
+              Each featured property is curated personally
+              for its design, architecture, place, or character.
+              Currently featuring across Latin America.
+              Welcoming exceptional properties worldwide.
+            </p>
+          </motion.div>
 
           <motion.div
             className="mt-10 flex flex-wrap items-center gap-6"
@@ -50,42 +56,37 @@ export default function HeroContent() {
           >
             <Link
               href="/apply"
-              className="bg-accent-gold px-8 py-[14px] font-sans text-[13px] uppercase tracking-[0.1em] text-bg-primary transition-opacity duration-200 hover:opacity-90"
+              className="border border-accent-gold px-8 py-[14px] font-sans text-[13px] uppercase tracking-[0.1em] text-accent-gold transition-all duration-200 hover:bg-accent-gold hover:text-bg-primary"
             >
               Apply for Private Access
             </Link>
             <Link
-              href="/how-it-works"
+              href="#featured"
               className="border-b border-text-secondary pb-px font-sans text-[13px] text-text-secondary transition-colors duration-200 hover:text-text-primary hover:border-text-primary"
             >
-              Learn how it works →
+              Currently featured &rarr;
             </Link>
           </motion.div>
         </div>
       </div>
 
       <motion.div
-        className="absolute bottom-10 left-0 right-0 px-6"
+        className="absolute bottom-12 left-0 right-0 px-6"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8, delay: 1.4 }}
       >
-        <p className="mx-auto max-w-content text-center font-sans text-[12px] tracking-[0.05em] text-text-secondary">
-          Not a listing portal. Every option is selected for you specifically.
-        </p>
-      </motion.div>
-
-      <motion.div
-        className="absolute bottom-4 left-1/2 -translate-x-1/2"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 0.4 }}
-        transition={{ duration: 0.8, delay: 1.6 }}
-      >
-        <motion.div
-          className="h-6 w-px bg-text-muted"
-          animate={{ scaleY: [1, 0.5, 1] }}
-          transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-        />
+        <div className="mx-auto max-w-content">
+          <div className="border-t border-border-subtle pt-5">
+            <p className="font-sans text-[12px] tracking-[0.05em] text-text-muted">
+              Not a listing portal. Each property is selected personally.
+            </p>
+            <p className="mt-2 font-serif text-[14px] italic text-accent-gold/60">
+              VIREZIA Circle &mdash; by invitation only.{" "}
+              <Link href="/circle" className="hover:text-accent-gold transition-colors">&rarr;</Link>
+            </p>
+          </div>
+        </div>
       </motion.div>
     </>
   );

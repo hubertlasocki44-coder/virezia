@@ -11,7 +11,6 @@ export default function Nav() {
   const [menuOpen, setMenuOpen] = useState(false);
   const pathname = usePathname();
 
-  // Close mobile menu on route change
   useEffect(() => {
     setMenuOpen(false);
   }, [pathname]);
@@ -23,8 +22,8 @@ export default function Nav() {
   }, []);
 
   const navLinks = [
-    { href: "/how-it-works", label: "How It Works" },
-    { href: "/market", label: "Market" },
+    { href: "/#featured", label: "Featured" },
+    { href: "/approach", label: "Approach" },
     { href: "/bespoke-living", label: "Bespoke Living" },
   ];
 
@@ -63,7 +62,7 @@ export default function Nav() {
             href="/apply"
             className="border border-accent-gold px-5 py-2 font-sans text-[12px] uppercase tracking-[0.1em] text-accent-gold transition-all duration-200 hover:bg-accent-gold hover:text-bg-primary"
           >
-            Apply →
+            Apply &rarr;
           </Link>
         </div>
 
@@ -97,7 +96,7 @@ export default function Nav() {
               className="inline-block border border-accent-gold px-5 py-3 text-center font-sans text-sm uppercase tracking-[0.1em] text-accent-gold"
               onClick={() => setMenuOpen(false)}
             >
-              Apply →
+              Apply &rarr;
             </Link>
           </div>
         </div>
