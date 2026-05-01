@@ -6,9 +6,9 @@ import SectionLabel from "@/components/SectionLabel";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Bespoke Living — VIREZIA",
+  title: "Bespoke Living",
   description:
-    "Verified market analysis, legal frameworks, and investment intelligence for emerging real estate markets. Published by VIREZIA.",
+    "Notes on architecture, design, and life across the places VIREZIA features.",
   alternates: {
     canonical: "https://virezia.com/bespoke-living",
   },
@@ -28,11 +28,11 @@ export default async function BespokeLivingPage() {
         <AnimatedSection>
           <SectionLabel text="Bespoke Living" />
           <h1 className="mt-6 font-serif text-[clamp(36px,5vw,56px)] font-light">
-            Intelligence, Not Opinions.
+            Bespoke Living
           </h1>
           <p className="mt-4 max-w-xl font-sans text-base font-light text-text-secondary">
-            Market analysis, legal frameworks, and verified insights for
-            informed decisions in emerging real estate markets.
+            Notes on architecture, design, and life across the places
+            VIREZIA features.
           </p>
         </AnimatedSection>
 

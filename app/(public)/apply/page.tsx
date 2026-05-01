@@ -23,12 +23,11 @@ import {
 import { submitApplication } from "@/lib/actions/public-submit";
 
 const REGIONS = [
-  { value: "tulum", label: "Tulum" },
-  { value: "riviera_maya", label: "Riviera Maya" },
-  { value: "oaxaca", label: "Oaxaca & Puerto Escondido" },
-  { value: "mexico_city", label: "Mexico City" },
-  { value: "other_mexico", label: "Other (Mexico)" },
-  { value: "other_latam", label: "Other (Latin America)" },
+  { value: "mexico", label: "Mexico" },
+  { value: "argentina", label: "Argentina" },
+  { value: "other_latam", label: "Other Latin America" },
+  { value: "europe", label: "Europe" },
+  { value: "other", label: "Other" },
 ];
 
 const TIMELINES = [
@@ -40,12 +39,11 @@ const TIMELINES = [
 ];
 
 const BUDGETS = [
-  { value: "under_200k", label: "Under $200,000" },
-  { value: "200k_500k", label: "$200,000 – $500,000" },
+  { value: "under_500k", label: "Under $500,000" },
   { value: "500k_1m", label: "$500,000 – $1,000,000" },
   { value: "1m_3m", label: "$1,000,000 – $3,000,000" },
   { value: "3m_plus", label: "$3,000,000+" },
-  { value: "undecided", label: "Not yet decided" },
+  { value: "undecided", label: "Prefer not to say" },
 ];
 
 const ACCOUNT_TYPES = [
@@ -157,15 +155,14 @@ export default function ApplyPage() {
           <AnimatedSection className="max-w-xl">
             <SectionLabel text="Application received" />
             <h1 className="mt-6 font-serif text-[clamp(36px,5vw,56px)] font-light">
-              We Will Be in Touch.
+              Your application has been received.
             </h1>
             <p className="mt-6 font-sans text-base font-light text-text-secondary">
-              Your application has been submitted. We review each request
-              individually and respond within 48 hours.
+              We review every request individually
+              and will be in touch within 48 hours.
             </p>
-            <p className="mt-4 font-sans text-sm text-text-muted">
-              Check your email for a confirmation. If you have questions,
-              contact us at hello@virezia.com.
+            <p className="mt-6 font-sans text-sm text-text-muted">
+              &mdash; VIREZIA
             </p>
           </AnimatedSection>
         </div>
@@ -179,10 +176,11 @@ export default function ApplyPage() {
         <AnimatedSection className="max-w-2xl">
           <SectionLabel text="Apply for private access" />
           <h1 className="mt-6 font-serif text-[clamp(36px,5vw,56px)] font-light">
-            Tell Us About Yourself.
+            Apply for Private Access
           </h1>
           <p className="mt-4 font-sans text-base font-light text-text-secondary">
-            Every application is reviewed individually. We respond within 48 hours.
+            VIREZIA works with a limited number of buyers at any time.
+            Submit your profile and we&apos;ll review your request within 48 hours.
           </p>
         </AnimatedSection>
 
@@ -266,10 +264,10 @@ function Step1Form({ onSubmit }: { onSubmit: (data: ApplyStep1Input) => void }) 
         label="How did you hear about us?"
         placeholder="Select one"
         options={[
+          { value: "featured_property", label: "Featured property" },
           { value: "referral", label: "Referral" },
-          { value: "search", label: "Online search" },
-          { value: "social", label: "Social media" },
-          { value: "press", label: "Press / Media" },
+          { value: "linkedin", label: "LinkedIn" },
+          { value: "bespoke_living", label: "Bespoke Living" },
           { value: "other", label: "Other" },
         ]}
         {...register("referral_source")}
@@ -319,10 +317,9 @@ function Step2BuyerForm({
         label="I am looking to..."
         name="investment_type"
         options={[
-          { value: "personal", label: "Buy for personal use" },
-          { value: "investment", label: "Invest" },
-          { value: "relocation", label: "Relocate" },
-          { value: "both", label: "Both personal use and investment" },
+          { value: "personal", label: "Acquire a primary residence" },
+          { value: "investment", label: "Acquire as investment" },
+          { value: "both", label: "Both" },
           { value: "exploring", label: "Still exploring" },
         ]}
         value={investmentType}
@@ -462,7 +459,7 @@ function Step3Form({
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
       <FormTextarea
         label="Tell us what you are looking for"
-        placeholder="What matters most to you? Any specific requirements, constraints, or context that would help us understand your situation."
+        placeholder="Tell us what would make a property worth your attention. Specific architects, places, lifestyles, or stories you've followed."
         {...register("context")}
         error={errors.context?.message}
       />

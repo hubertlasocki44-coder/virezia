@@ -45,9 +45,11 @@ export default function CirclePage() {
           </h1>
 
           <p className="mt-6 font-sans text-base font-light leading-relaxed text-text-secondary">
-            A private network for investors with active acquisition intent
-            in Mexico&apos;s emerging markets. Pre-market deals. Off-market
-            assets. Verified before release.
+            A private network for those with active acquisition intent
+            in markets we cover.
+          </p>
+          <p className="mt-4 font-sans text-base font-light leading-relaxed text-text-secondary">
+            Membership is granted by invitation or direct referral.
           </p>
 
           {submitted ? (
@@ -77,8 +79,8 @@ export default function CirclePage() {
           )}
 
           <p className="mt-8 font-sans text-[12px] text-text-muted">
-            VIREZIA Circle is not publicly described. Membership is
-            extended based on investor profile and alignment.
+            All requests are reviewed personally.
+            Current availability is limited.
           </p>
         </AnimatedSection>
       </div>
