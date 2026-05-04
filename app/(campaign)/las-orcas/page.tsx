@@ -461,51 +461,35 @@ function LasOrcasContent() {
       </section>
 
       {/* ============================================================ */}
-      {/* 12. JOIN THE VIREZIA CIRCLE (CTA)                            */}
+      {/* 12. BECOME A FOUNDING MEMBER (single CTA)                    */}
       {/* ============================================================ */}
       <section className="bg-bg-secondary py-28 md:py-40">
-        <div className="mx-auto max-w-2xl px-6 md:px-10">
-          <AnimatedSection className="text-center">
-            <p className="font-sans text-[10px] uppercase tracking-[0.2em] text-accent-gold mb-8">
-              Join the VIREZIA Circle
-            </p>
-            <p className="font-serif text-[clamp(20px,3vw,32px)] font-light leading-[1.4] mb-6">
-              There is more to this story. The full conversation with Robert Couturier, the dossier, and the introductions to Las Orcas and future Selections are shared with members of the VIREZIA Circle.
-            </p>
-            <p className="font-sans text-sm font-light text-text-muted mb-10">
-              Membership is by inquiry. There is no fee.
-            </p>
-            <Link
-              href="/circle/join"
-              className="inline-block bg-accent-gold px-12 py-4 font-sans text-[13px] uppercase tracking-[0.1em] text-bg-primary transition-opacity hover:opacity-90"
-            >
-              Join the VIREZIA Circle
-            </Link>
-          </AnimatedSection>
-        </div>
-      </section>
-
-      {/* ============================================================ */}
-      {/* 13. FOUNDING MEMBERS                                         */}
-      {/* ============================================================ */}
-      <section className="py-28 md:py-40">
         <div className="mx-auto max-w-2xl px-6 md:px-10">
           <AnimatedSection className="text-center">
             <p className="font-sans text-[10px] uppercase tracking-[0.2em] text-accent-gold mb-10">
               Founding Members
             </p>
+            <h2 className="font-serif text-[clamp(28px,4vw,44px)] font-light leading-[1.2] mb-8">
+              Six residences remain.
+            </h2>
             <p className="font-sans text-base font-light leading-relaxed text-text-secondary">
-              Las Orcas opens to seven founding members &mdash; the first owners of a Robert Couturier residence on the Oaxacan Coast. Founding members select their residence from those remaining. They participate, where they wish, in the architect&apos;s final decisions on their home. They join a small group whose names will be associated with the project&apos;s first chapter.
+              If this project speaks to you &mdash; whether as a personal residence on the Pacific or as an investment in one of the most distinctive coastal developments in Mexico &mdash; you can become one of six founding members.
             </p>
             <p className="font-sans text-base font-light leading-relaxed text-text-secondary mt-6">
-              Founding membership is offered to members of the VIREZIA Circle who indicate alignment with the project. A short conversation precedes any introduction to the developer.
+              Founding members select their residence from those remaining. They participate, where they wish, in the architect&apos;s final decisions on their home. They join a small group whose names will be associated with the project&apos;s first chapter.
+            </p>
+            <p className="font-sans text-base font-light leading-relaxed text-text-secondary mt-6">
+              A short conversation precedes any introduction. There is no obligation.
             </p>
             <Link
               href="/circle/join?intent=founding"
-              className="inline-block mt-10 border border-accent-gold/60 px-10 py-4 font-sans text-[13px] uppercase tracking-[0.1em] text-accent-gold transition-all hover:bg-accent-gold/10 hover:border-accent-gold"
+              className="inline-block mt-10 bg-accent-gold px-12 py-4 font-sans text-[13px] uppercase tracking-[0.1em] text-bg-primary transition-opacity hover:opacity-90"
             >
-              Express Interest as a Founding Member
+              Become a Founding Member
             </Link>
+            <p className="font-sans text-[12px] text-text-muted mt-4">
+              A response within 24 hours.
+            </p>
           </AnimatedSection>
         </div>
       </section>
