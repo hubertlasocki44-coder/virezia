@@ -9,7 +9,7 @@ export default function HeroContent() {
       <div className="relative z-10 mx-auto w-full max-w-content px-6">
         <div className="max-w-[640px]">
           <motion.p
-            className="font-sans text-[11px] uppercase tracking-[0.2em] text-accent-gold"
+            className="font-sans text-[10px] uppercase tracking-[0.2em] text-accent-gold/60"
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
