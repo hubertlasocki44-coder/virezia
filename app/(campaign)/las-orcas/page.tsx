@@ -105,8 +105,8 @@ function LasOrcasContent() {
             <AnimatedSection>
               <div className="relative aspect-[3/4] w-full overflow-hidden">
                 <Image
-                  src="/images/las-orcas/couturier-architecture.jpg"
-                  alt="Robert Couturier"
+                  src="/images/las-orcas/robert-couturier-portrait.webp"
+                  alt="Robert Couturier — portrait"
                   fill
                   className="object-cover"
                   sizes="(max-width: 768px) 100vw, 280px"
@@ -253,12 +253,14 @@ function LasOrcasContent() {
               The Residences
             </p>
           </AnimatedSection>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+          {/* Row 1: Terrace + Living Room */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <AnimatedSection>
-              <div className="relative aspect-[4/3] w-full overflow-hidden">
+              <div className="relative aspect-[16/9] w-full overflow-hidden">
                 <Image
-                  src="/images/las-orcas/villa-exterior.webp"
-                  alt="Las Orcas — villa exterior render"
+                  src="/images/las-orcas/villa-terrace.webp"
+                  alt="Las Orcas — villa terrace with plunge pool"
                   fill
                   className="object-cover"
                   sizes="(max-width: 768px) 100vw, 50vw"
@@ -266,10 +268,10 @@ function LasOrcasContent() {
               </div>
             </AnimatedSection>
             <AnimatedSection delay={0.1}>
-              <div className="relative aspect-[4/3] w-full overflow-hidden">
+              <div className="relative aspect-[16/9] w-full overflow-hidden">
                 <Image
-                  src="/images/las-orcas/villa-detail.webp"
-                  alt="Las Orcas — villa detail"
+                  src="/images/las-orcas/villa-living-room.webp"
+                  alt="Las Orcas — villa living room"
                   fill
                   className="object-cover"
                   sizes="(max-width: 768px) 100vw, 50vw"
@@ -277,18 +279,49 @@ function LasOrcasContent() {
               </div>
             </AnimatedSection>
           </div>
-          <AnimatedSection className="mt-6">
+
+          {/* Row 2: Community panorama */}
+          <AnimatedSection className="mt-4">
             <div className="relative aspect-[21/9] w-full overflow-hidden">
               <Image
-                src="/images/las-orcas/location-coast.webp"
-                alt="Puerto Escondido — Oaxacan Coast"
+                src="/images/las-orcas/community-view.webp"
+                alt="Las Orcas — community view, Puerto Escondido"
                 fill
                 className="object-cover"
                 sizes="100vw"
               />
             </div>
-            <p className="font-sans text-[11px] text-text-muted mt-3 text-center">
-              Puerto Escondido, Oaxaca &mdash; the Oaxacan Coast
+          </AnimatedSection>
+
+          {/* Row 3: Interior + Rooftop */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+            <AnimatedSection>
+              <div className="relative aspect-[16/9] w-full overflow-hidden">
+                <Image
+                  src="/images/las-orcas/casita-interior.webp"
+                  alt="Las Orcas — casita interior"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                />
+              </div>
+            </AnimatedSection>
+            <AnimatedSection delay={0.1}>
+              <div className="relative aspect-[16/9] w-full overflow-hidden">
+                <Image
+                  src="/images/las-orcas/rooftop-view.webp"
+                  alt="Las Orcas — rooftop view"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                />
+              </div>
+            </AnimatedSection>
+          </div>
+
+          <AnimatedSection className="mt-6">
+            <p className="font-sans text-[11px] text-text-muted text-center">
+              Renders: Las Orcas &mdash; Puerto Escondido, Oaxaca
             </p>
           </AnimatedSection>
         </div>
