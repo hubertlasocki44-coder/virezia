@@ -89,6 +89,9 @@ function LasOrcasContent() {
               <br className="hidden md:block" />
               he returns to the Pacific.
             </h1>
+            <p className="font-sans text-base font-light text-text-secondary mt-8 max-w-xl">
+              Design legend Robert Couturier &mdash; the architect behind one of the greatest private estates ever built &mdash; designs seven beachfront residences in Puerto Escondido, Oaxaca.
+            </p>
           </motion.div>
         </div>
       </section>
@@ -103,12 +106,15 @@ function LasOrcasContent() {
               <div className="relative aspect-[3/4] w-full overflow-hidden">
                 <Image
                   src="/images/las-orcas/couturier-architecture.jpg"
-                  alt="Robert Couturier — architect"
+                  alt="Robert Couturier — Las Orcas architectural vision"
                   fill
-                  className="object-cover grayscale"
+                  className="object-cover"
                   sizes="(max-width: 768px) 100vw, 50vw"
                 />
               </div>
+              <p className="font-sans text-[11px] text-text-muted mt-3">
+                Robert Couturier &mdash; Paris-trained architect, AD100
+              </p>
             </AnimatedSection>
 
             <AnimatedSection delay={0.15} className="md:pt-8">
@@ -183,6 +189,57 @@ function LasOrcasContent() {
 
             <p className="font-sans text-[11px] uppercase tracking-[0.15em] text-accent-gold mt-12 text-center">
               &mdash; Robert Couturier
+            </p>
+          </AnimatedSection>
+        </div>
+      </section>
+
+      {/* ============================================================ */}
+      {/* 4b. THE RESIDENCES (image gallery)                           */}
+      {/* ============================================================ */}
+      <section className="bg-bg-secondary py-28 md:py-40">
+        <div className="mx-auto max-w-content px-6 md:px-10">
+          <AnimatedSection>
+            <p className="font-sans text-[10px] uppercase tracking-[0.2em] text-accent-gold mb-10 text-center">
+              The Residences
+            </p>
+          </AnimatedSection>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <AnimatedSection>
+              <div className="relative aspect-[4/3] w-full overflow-hidden">
+                <Image
+                  src="/images/las-orcas/villa-exterior.webp"
+                  alt="Las Orcas — villa exterior render"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                />
+              </div>
+            </AnimatedSection>
+            <AnimatedSection delay={0.1}>
+              <div className="relative aspect-[4/3] w-full overflow-hidden">
+                <Image
+                  src="/images/las-orcas/villa-detail.webp"
+                  alt="Las Orcas — villa detail"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                />
+              </div>
+            </AnimatedSection>
+          </div>
+          <AnimatedSection className="mt-6">
+            <div className="relative aspect-[21/9] w-full overflow-hidden">
+              <Image
+                src="/images/las-orcas/location-coast.webp"
+                alt="Puerto Escondido — Oaxacan Coast"
+                fill
+                className="object-cover"
+                sizes="100vw"
+              />
+            </div>
+            <p className="font-sans text-[11px] text-text-muted mt-3 text-center">
+              Puerto Escondido, Oaxaca &mdash; the Oaxacan Coast
             </p>
           </AnimatedSection>
         </div>
