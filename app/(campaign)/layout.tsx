@@ -18,9 +18,9 @@ export default function CampaignLayout({
           <Image
             src="/logo.png"
             alt="VIREZIA"
-            width={100}
-            height={26}
-            className="h-5 w-auto brightness-0 invert opacity-70 hover:opacity-100 transition-opacity"
+            width={140}
+            height={36}
+            className="h-8 w-auto brightness-0 invert opacity-80 hover:opacity-100 transition-opacity"
             priority
           />
         </Link>

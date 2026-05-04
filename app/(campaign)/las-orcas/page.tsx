@@ -97,6 +97,55 @@ function LasOrcasContent() {
       </section>
 
       {/* ============================================================ */}
+      {/* 1b. THE ARCHITECT                                            */}
+      {/* ============================================================ */}
+      <section className="border-t border-border-subtle py-28 md:py-36">
+        <div className="mx-auto max-w-content px-6 md:px-10">
+          <div className="grid grid-cols-1 md:grid-cols-[280px_1fr] gap-12 md:gap-16 items-start">
+            <AnimatedSection>
+              <div className="relative aspect-[3/4] w-full overflow-hidden">
+                <Image
+                  src="/images/las-orcas/couturier-architecture.jpg"
+                  alt="Robert Couturier"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 280px"
+                />
+              </div>
+            </AnimatedSection>
+
+            <AnimatedSection delay={0.15}>
+              <p className="font-sans text-[10px] uppercase tracking-[0.2em] text-accent-gold mb-6">
+                The Architect
+              </p>
+              <h2 className="font-serif text-[clamp(28px,4vw,44px)] font-light leading-[1.15]">
+                Robert Couturier
+              </h2>
+              <p className="font-sans text-base font-light leading-relaxed text-text-secondary mt-6">
+                Paris-trained architect and interior designer. Based in New York since 1981. His work spans four continents &mdash; from Manhattan townhouses to estates in France, England, Russia, the Middle East, and Mexico.
+              </p>
+              <p className="font-sans text-base font-light leading-relaxed text-text-secondary mt-4">
+                Named to the <span className="text-text-primary">AD100</span> &mdash; Architectural Digest&apos;s definitive list of the world&apos;s top architects and designers. Author of <span className="text-text-primary italic">Designing Paradises</span>, published by Rizzoli. Clients have included Sir James Goldsmith and Jeff Koons.
+              </p>
+
+              {/* Press logos inline */}
+              <div className="mt-8 pt-6 border-t border-border/40">
+                <p className="font-sans text-[10px] uppercase tracking-[0.2em] text-text-muted mb-5">
+                  Published in
+                </p>
+                <div className="flex items-center gap-6 md:gap-10 flex-wrap">
+                  <Image src="/images/las-orcas/logo-ad.png" alt="Architectural Digest" width={102} height={75} className="h-5 md:h-6 w-auto opacity-50" />
+                  <Image src="/images/las-orcas/logo-nyt.png" alt="The New York Times" width={94} height={75} className="h-5 md:h-6 w-auto opacity-50" />
+                  <Image src="/images/las-orcas/logo-elle.png" alt="Elle" width={210} height={75} className="h-5 md:h-6 w-auto opacity-50" />
+                  <Image src="/images/las-orcas/logo-1stdibs.png" alt="1stDibs" width={243} height={75} className="h-5 md:h-6 w-auto opacity-50" />
+                </div>
+              </div>
+            </AnimatedSection>
+          </div>
+        </div>
+      </section>
+
+      {/* ============================================================ */}
       {/* 2. THE COMMISSION                                            */}
       {/* ============================================================ */}
       <section className="py-28 md:py-40">
@@ -105,15 +154,15 @@ function LasOrcasContent() {
             <AnimatedSection>
               <div className="relative aspect-[3/4] w-full overflow-hidden">
                 <Image
-                  src="/images/las-orcas/couturier-architecture.jpg"
-                  alt="Robert Couturier — Las Orcas architectural vision"
+                  src="/images/las-orcas/villa-exterior.webp"
+                  alt="Las Orcas — villa render by Robert Couturier"
                   fill
                   className="object-cover"
                   sizes="(max-width: 768px) 100vw, 50vw"
                 />
               </div>
               <p className="font-sans text-[11px] text-text-muted mt-3">
-                Robert Couturier &mdash; Paris-trained architect, AD100
+                Las Orcas &mdash; Puerto Escondido, Oaxaca
               </p>
             </AnimatedSection>
 
@@ -242,25 +291,6 @@ function LasOrcasContent() {
               Puerto Escondido, Oaxaca &mdash; the Oaxacan Coast
             </p>
           </AnimatedSection>
-        </div>
-      </section>
-
-      {/* ============================================================ */}
-      {/* 5. LOGO WALL                                                 */}
-      {/* ============================================================ */}
-      <section className="py-12 md:py-16">
-        <div className="mx-auto max-w-content px-6 md:px-10">
-          <div className="border-t border-b border-border/50 py-12">
-            <p className="font-sans text-[10px] uppercase tracking-[0.2em] text-text-muted text-center mb-8">
-              Published in
-            </p>
-            <div className="flex items-center justify-center gap-8 md:gap-14 flex-wrap">
-              <Image src="/images/las-orcas/logo-ad.png" alt="Architectural Digest" width={102} height={75} className="h-6 md:h-8 w-auto opacity-40 hover:opacity-60 transition-opacity" />
-              <Image src="/images/las-orcas/logo-nyt.png" alt="The New York Times" width={94} height={75} className="h-6 md:h-8 w-auto opacity-40 hover:opacity-60 transition-opacity" />
-              <Image src="/images/las-orcas/logo-elle.png" alt="Elle" width={210} height={75} className="h-6 md:h-8 w-auto opacity-40 hover:opacity-60 transition-opacity" />
-              <Image src="/images/las-orcas/logo-1stdibs.png" alt="1stDibs" width={243} height={75} className="h-6 md:h-8 w-auto opacity-40 hover:opacity-60 transition-opacity" />
-            </div>
-          </div>
         </div>
       </section>
 
