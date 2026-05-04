@@ -191,7 +191,16 @@ function LasOrcasContent() {
       </section>
 
       {/* ============================================================ */}
-      {/* 3. IN HIS WORDS (video)                                      */}
+      {/* 3. IMAGE: Villa Terrace                                      */}
+      {/* ============================================================ */}
+      <AnimatedSection>
+        <div className="relative aspect-[21/9] w-full overflow-hidden">
+          <Image src="/images/las-orcas/villa-terrace.webp" alt="Las Orcas — villa terrace with plunge pool" fill className="object-cover" sizes="100vw" />
+        </div>
+      </AnimatedSection>
+
+      {/* ============================================================ */}
+      {/* 4. IN HIS WORDS (video)                                      */}
       {/* ============================================================ */}
       <section className="bg-bg-secondary py-28 md:py-40">
         <div className="mx-auto max-w-content px-6 md:px-10">
@@ -210,125 +219,7 @@ function LasOrcasContent() {
       </section>
 
       {/* ============================================================ */}
-      {/* 4. WHY HE RETURNED                                           */}
-      {/* ============================================================ */}
-      <section className="py-28 md:py-40">
-        <div className="mx-auto max-w-2xl px-6 md:px-10">
-          <AnimatedSection>
-            <p className="font-sans text-[10px] uppercase tracking-[0.2em] text-accent-gold mb-10 text-center">
-              Why He Returned
-            </p>
-            <p className="font-sans text-base font-light leading-relaxed text-text-secondary text-center mb-16">
-              Couturier has worked in Mexico for over four decades. When the developers of Las Orcas approached him about Puerto Escondido, his answer was personal before it was professional.
-            </p>
-
-            <div className="space-y-16">
-              <blockquote className="text-center">
-                <p className="font-serif text-[clamp(20px,3vw,32px)] font-light leading-[1.35]">
-                  &ldquo;What I love about Mexico is the incredible kindness of its people, the devotion of its workers, and their intelligence in making your dream come true.&rdquo;
-                </p>
-              </blockquote>
-
-              <blockquote className="text-center">
-                <p className="font-serif text-[clamp(20px,3vw,32px)] font-light leading-[1.35]">
-                  &ldquo;Puerto Escondido is being discovered. Most of the developments there are environmentally friendly, family-friendly. You don&apos;t have the feeling that you live on top of each other.&rdquo;
-                </p>
-              </blockquote>
-            </div>
-
-            <p className="font-sans text-[11px] uppercase tracking-[0.15em] text-accent-gold mt-12 text-center">
-              &mdash; Robert Couturier
-            </p>
-          </AnimatedSection>
-        </div>
-      </section>
-
-      {/* ============================================================ */}
-      {/* 4b. THE RESIDENCES (image gallery)                           */}
-      {/* ============================================================ */}
-      <section className="bg-bg-secondary py-28 md:py-40">
-        <div className="mx-auto max-w-content px-6 md:px-10">
-          <AnimatedSection>
-            <p className="font-sans text-[10px] uppercase tracking-[0.2em] text-accent-gold mb-10 text-center">
-              The Residences
-            </p>
-          </AnimatedSection>
-
-          {/* Row 1: Terrace + Living Room */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <AnimatedSection>
-              <div className="relative aspect-[16/9] w-full overflow-hidden">
-                <Image
-                  src="/images/las-orcas/villa-terrace.webp"
-                  alt="Las Orcas — villa terrace with plunge pool"
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                />
-              </div>
-            </AnimatedSection>
-            <AnimatedSection delay={0.1}>
-              <div className="relative aspect-[16/9] w-full overflow-hidden">
-                <Image
-                  src="/images/las-orcas/villa-living-room.webp"
-                  alt="Las Orcas — villa living room"
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                />
-              </div>
-            </AnimatedSection>
-          </div>
-
-          {/* Row 2: Community panorama */}
-          <AnimatedSection className="mt-4">
-            <div className="relative aspect-[21/9] w-full overflow-hidden">
-              <Image
-                src="/images/las-orcas/community-view.webp"
-                alt="Las Orcas — community view, Puerto Escondido"
-                fill
-                className="object-cover"
-                sizes="100vw"
-              />
-            </div>
-          </AnimatedSection>
-
-          {/* Row 3: Interior + Rooftop */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
-            <AnimatedSection>
-              <div className="relative aspect-[16/9] w-full overflow-hidden">
-                <Image
-                  src="/images/las-orcas/casita-interior.webp"
-                  alt="Las Orcas — casita interior"
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                />
-              </div>
-            </AnimatedSection>
-            <AnimatedSection delay={0.1}>
-              <div className="relative aspect-[16/9] w-full overflow-hidden">
-                <Image
-                  src="/images/las-orcas/rooftop-view.webp"
-                  alt="Las Orcas — rooftop view"
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                />
-              </div>
-            </AnimatedSection>
-          </div>
-
-          <AnimatedSection className="mt-6">
-            <p className="font-sans text-[11px] text-text-muted text-center">
-              Renders: Las Orcas &mdash; Puerto Escondido, Oaxaca
-            </p>
-          </AnimatedSection>
-        </div>
-      </section>
-
-      {/* ============================================================ */}
-      {/* 6. ON LUXURY (manifest)                                      */}
+      {/* 5. ON LUXURY (manifest quote)                                */}
       {/* ============================================================ */}
       <section className="py-32 md:py-48">
         <div className="mx-auto max-w-3xl px-6 md:px-10">
@@ -344,23 +235,67 @@ function LasOrcasContent() {
       </section>
 
       {/* ============================================================ */}
-      {/* 7. VIREZIA SELECTIONS (trust block)                          */}
+      {/* 6. IMAGE: Community View                                     */}
       {/* ============================================================ */}
-      <section className="py-20 md:py-28">
-        <div className="mx-auto max-w-2xl px-6 md:px-10">
-          <AnimatedSection className="text-center">
-            <p className="font-sans text-[10px] uppercase tracking-[0.2em] text-accent-gold mb-8">
-              VIREZIA Selections
-            </p>
-            <p className="font-sans text-base font-light leading-relaxed text-text-secondary">
-              Las Orcas is part of VIREZIA Selections &mdash; a small set of curated opportunities selected for architectural significance, location, and the story behind them.
-            </p>
-          </AnimatedSection>
+      <AnimatedSection>
+        <div className="relative aspect-[21/9] w-full overflow-hidden">
+          <Image src="/images/las-orcas/community-view.webp" alt="Las Orcas — community view" fill className="object-cover" sizes="100vw" />
+        </div>
+      </AnimatedSection>
+
+      {/* ============================================================ */}
+      {/* 7. THE PLACE — Puerto Escondido                              */}
+      {/* ============================================================ */}
+      <section className="py-28 md:py-40">
+        <div className="mx-auto max-w-content px-6 md:px-10">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-start">
+            <AnimatedSection>
+              <p className="font-sans text-[10px] uppercase tracking-[0.2em] text-accent-gold mb-8">
+                The Place
+              </p>
+              <h2 className="font-serif text-[clamp(28px,4vw,44px)] font-light leading-[1.15]">
+                Puerto Escondido, Oaxaca
+              </h2>
+              <p className="font-sans text-base font-light leading-relaxed text-text-secondary mt-8">
+                Puerto Escondido began as a surfers&apos; secret &mdash; a stretch of Pacific coastline known only to those who sought it out. It has since become one of Mexico&apos;s most compelling destinations: unhurried, culturally rich, and architecturally awake in a way that few coastal towns anywhere in the world can match.
+              </p>
+              <p className="font-sans text-base font-light leading-relaxed text-text-secondary mt-6">
+                Oaxaca&apos;s food culture &mdash; rooted in indigenous tradition, refined by a generation of internationally recognized chefs &mdash; is considered among the most sophisticated in Mexico. The coast itself remains uncrowded. The pace is slow. The light is extraordinary.
+              </p>
+              <p className="font-sans text-base font-light leading-relaxed text-text-secondary mt-6">
+                In the last five years, this stretch of coast has quietly attracted the greatest concentration of world-class architecture in Mexico: Tadao Ando, Alberto Kalach, Ludwig Godefroy. Until now, that architecture could only be visited. Las Orcas is the first opportunity to inhabit it.
+              </p>
+            </AnimatedSection>
+
+            <AnimatedSection delay={0.15}>
+              <div className="relative aspect-[3/4] w-full overflow-hidden">
+                <Image
+                  src="/images/las-orcas/location-coast.webp"
+                  alt="Puerto Escondido — Oaxacan Coast"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                />
+              </div>
+              <p className="font-sans text-[11px] text-text-muted mt-3">
+                The Oaxacan Coast &mdash; Puerto Escondido
+              </p>
+            </AnimatedSection>
+          </div>
         </div>
       </section>
 
       {/* ============================================================ */}
-      {/* 8. THE WORK                                                  */}
+      {/* 8. IMAGE: Entrance View                                      */}
+      {/* ============================================================ */}
+      <AnimatedSection>
+        <div className="relative aspect-[21/9] w-full overflow-hidden">
+          <Image src="/images/las-orcas/entrance-view.webp" alt="Las Orcas — entrance" fill className="object-cover" sizes="100vw" />
+        </div>
+      </AnimatedSection>
+
+      {/* ============================================================ */}
+      {/* 9. THE WORK                                                  */}
       {/* ============================================================ */}
       <section className="py-28 md:py-40">
         <div className="mx-auto max-w-content px-6 md:px-10">
@@ -382,7 +317,7 @@ function LasOrcasContent() {
                 Las Orcas
               </p>
               <p className="font-sans text-base font-light leading-relaxed text-text-secondary">
-                Seven private residences on a single beachfront parcel in Puerto Escondido, Oaxaca &mdash; four villas and three casitas, designed by Robert Couturier as a small village. &ldquo;So that when you walk through from the entrance to the upper bungalows,&rdquo; he says, &ldquo;you have a feeling that you&apos;re walking through a small little city.&rdquo;
+                Seven private residences on a single beachfront parcel &mdash; four villas and three casitas, designed by Robert Couturier as a small village. &ldquo;So that when you walk through from the entrance to the upper bungalows,&rdquo; he says, &ldquo;you have a feeling that you&apos;re walking through a small little city.&rdquo;
               </p>
               <p className="font-sans text-base font-light leading-relaxed text-text-secondary mt-6">
                 The construction is in concrete and stone &mdash; materials chosen, in his words, &ldquo;that will live in the sea air and age gracefully &mdash; as we all should.&rdquo; Spaces are designed to be open but cozy. &ldquo;You don&apos;t have the feeling that you live outside all the time. You have the ability to be outside, and the ability to stay inside and read a book.&rdquo;
@@ -399,7 +334,23 @@ function LasOrcasContent() {
       </section>
 
       {/* ============================================================ */}
-      {/* 9. COUTURIER ON LAS ORCAS (quotes)                           */}
+      {/* 10. IMAGE: Interior + Rooftop                                */}
+      {/* ============================================================ */}
+      <div className="grid grid-cols-1 md:grid-cols-2">
+        <AnimatedSection>
+          <div className="relative aspect-[4/3] w-full overflow-hidden">
+            <Image src="/images/las-orcas/casita-interior.webp" alt="Las Orcas — casita interior" fill className="object-cover" sizes="(max-width: 768px) 100vw, 50vw" />
+          </div>
+        </AnimatedSection>
+        <AnimatedSection delay={0.1}>
+          <div className="relative aspect-[4/3] w-full overflow-hidden">
+            <Image src="/images/las-orcas/villa-living-room.webp" alt="Las Orcas — villa living room" fill className="object-cover" sizes="(max-width: 768px) 100vw, 50vw" />
+          </div>
+        </AnimatedSection>
+      </div>
+
+      {/* ============================================================ */}
+      {/* 11. COUTURIER QUOTES                                         */}
       {/* ============================================================ */}
       <section className="py-28 md:py-40">
         <div className="mx-auto max-w-3xl px-6 md:px-10">
@@ -418,6 +369,31 @@ function LasOrcasContent() {
                 &mdash; Robert Couturier
               </p>
             </blockquote>
+          </AnimatedSection>
+        </div>
+      </section>
+
+      {/* ============================================================ */}
+      {/* 12. IMAGE: Rooftop                                           */}
+      {/* ============================================================ */}
+      <AnimatedSection>
+        <div className="relative aspect-[21/9] w-full overflow-hidden">
+          <Image src="/images/las-orcas/rooftop-view.webp" alt="Las Orcas — rooftop view" fill className="object-cover" sizes="100vw" />
+        </div>
+      </AnimatedSection>
+
+      {/* ============================================================ */}
+      {/* 13. VIREZIA SELECTIONS (trust block)                         */}
+      {/* ============================================================ */}
+      <section className="py-20 md:py-28">
+        <div className="mx-auto max-w-2xl px-6 md:px-10">
+          <AnimatedSection className="text-center">
+            <p className="font-sans text-[10px] uppercase tracking-[0.2em] text-accent-gold mb-8">
+              VIREZIA Selections
+            </p>
+            <p className="font-sans text-base font-light leading-relaxed text-text-secondary">
+              Las Orcas is part of VIREZIA Selections &mdash; a small set of curated opportunities selected for architectural significance, location, and the story behind them.
+            </p>
           </AnimatedSection>
         </div>
       </section>
