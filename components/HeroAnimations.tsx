@@ -6,7 +6,7 @@ import Link from "next/link";
 export default function HeroContent() {
   return (
     <>
-      <div className="relative z-10 mx-auto w-full max-w-content px-6" style={{ marginTop: "-5vh" }}>
+      <div className="relative z-10 mx-auto w-full max-w-content px-6">
         <div className="max-w-[640px]">
           <motion.p
             className="font-sans text-[11px] uppercase tracking-[0.2em] text-accent-gold"

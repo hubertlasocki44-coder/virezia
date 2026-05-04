@@ -22,7 +22,7 @@ export default function Nav() {
   }, []);
 
   const navLinks = [
-    { href: "/#featured", label: "Featured" },
+    { href: "/las-orcas", label: "Featured" },
     { href: "/approach", label: "Approach" },
     { href: "/bespoke-living", label: "Bespoke Living" },
   ];

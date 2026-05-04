@@ -24,7 +24,7 @@ export default function Footer() {
 
           {/* Center — Links */}
           <div className="flex flex-wrap gap-x-8 gap-y-3 md:justify-center">
-            <Link href="/#featured" className="font-sans text-sm text-text-secondary transition-colors hover:text-text-primary">Featured</Link>
+            <Link href="/las-orcas" className="font-sans text-sm text-text-secondary transition-colors hover:text-text-primary">Featured</Link>
             <Link href="/approach" className="font-sans text-sm text-text-secondary transition-colors hover:text-text-primary">Approach</Link>
             <Link href="/bespoke-living" className="font-sans text-sm text-text-secondary transition-colors hover:text-text-primary">Bespoke Living</Link>
             <Link href="/apply" className="font-sans text-sm text-text-secondary transition-colors hover:text-text-primary">Apply</Link>
