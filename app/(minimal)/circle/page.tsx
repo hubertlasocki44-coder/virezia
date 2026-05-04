@@ -1,12 +1,15 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import AnimatedSection from "@/components/AnimatedSection";
 import FormInput from "@/components/forms/FormInput";
+import FormTextarea from "@/components/forms/FormTextarea";
 import { submitCircleRequest } from "@/lib/actions/public-submit";
 
 export default function CirclePage() {
   const [email, setEmail] = useState("");
+  const [context, setContext] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -52,36 +55,61 @@ export default function CirclePage() {
             Membership is granted by invitation or direct referral.
           </p>
 
+          {/* Separator */}
+          <div className="mt-10 mb-10 w-12 border-t border-accent-gold/40" />
+
           {submitted ? (
-            <div className="mt-10 border border-accent-gold/20 bg-accent-gold/5 px-6 py-5">
+            <div className="border border-accent-gold/20 bg-accent-gold/5 px-6 py-5">
               <p className="font-sans text-sm text-text-primary">
-                Request received. If your profile aligns, we will be in touch.
+                Your request has been noted.
+                If there is a fit, someone will reach out directly.
+              </p>
+              <p className="mt-4 font-sans text-sm text-text-muted">
+                &mdash; VIREZIA
               </p>
             </div>
           ) : (
-            <form onSubmit={handleSubmit} className="mt-10 space-y-4">
-              <FormInput
-                label="Email"
-                type="email"
-                placeholder="you@example.com"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                error={error}
-              />
-              <button
-                type="submit"
-                disabled={loading}
-                className="bg-accent-gold px-8 py-3 font-sans text-[13px] uppercase tracking-[0.1em] text-bg-primary transition-opacity hover:opacity-90 disabled:opacity-50"
-              >
-                {loading ? "Submitting..." : "Request Access"}
-              </button>
-            </form>
+            <>
+              <p className="font-sans text-[12px] uppercase tracking-[0.1em] text-text-secondary mb-6">
+                Request an introduction
+              </p>
+              <form onSubmit={handleSubmit} className="space-y-4">
+                <FormInput
+                  label="Email"
+                  type="email"
+                  placeholder="Your email address"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  error={error}
+                />
+                <FormTextarea
+                  label="Brief context (optional)"
+                  placeholder=""
+                  value={context}
+                  onChange={(e) => setContext(e.target.value)}
+                />
+                <button
+                  type="submit"
+                  disabled={loading}
+                  className="bg-accent-gold px-8 py-3 font-sans text-[13px] uppercase tracking-[0.1em] text-bg-primary transition-opacity hover:opacity-90 disabled:opacity-50"
+                >
+                  {loading ? "Submitting..." : "Submit Request"}
+                </button>
+              </form>
+            </>
           )}
 
           <p className="mt-8 font-sans text-[12px] text-text-muted">
             All requests are reviewed personally.
             Current availability is limited.
           </p>
+
+          <Link
+            href="/"
+            className="mt-10 inline-block font-sans text-[12px] text-text-muted hover:text-text-secondary transition-colors"
+          >
+            &larr; Return to VIREZIA
+          </Link>
         </AnimatedSection>
       </div>
     </section>

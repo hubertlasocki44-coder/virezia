@@ -233,7 +233,7 @@ function LasOrcasContent() {
               VIREZIA Selections
             </p>
             <p className="font-sans text-base font-light leading-relaxed text-text-secondary">
-              Las Orcas is part of VIREZIA Selections &mdash; a small set of curated opportunities reviewed for architectural significance, regulatory integrity, and the seriousness of the process behind them.
+              Las Orcas is part of VIREZIA Selections &mdash; a small set of curated opportunities selected for architectural significance, location, and the story behind them.
             </p>
           </AnimatedSection>
         </div>
@@ -420,7 +420,7 @@ function LasOrcasContent() {
       <footer className="py-16 border-t border-border">
         <div className="mx-auto max-w-content px-6 md:px-10 text-center">
           <p className="font-sans text-[12px] text-text-muted tracking-wide">
-            VIREZIA &middot; Private Real Estate Intelligence &mdash; Curated Selections in Mexico and Latin America
+            VIREZIA &middot; Curated Selections in Mexico and Latin America
           </p>
           <a
             href="/privacy"

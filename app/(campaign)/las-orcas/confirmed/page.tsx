@@ -76,7 +76,7 @@ export default function LasOrcasConfirmedPage() {
       <footer className="py-16 border-t border-border mt-auto">
         <div className="mx-auto max-w-content px-6 md:px-10 text-center">
           <p className="font-sans text-[12px] text-text-muted tracking-wide">
-            VIREZIA &middot; Private Real Estate Intelligence &mdash; Curated Selections in Mexico and Latin America
+            VIREZIA &middot; Curated Selections in Mexico and Latin America
           </p>
         </div>
       </footer>

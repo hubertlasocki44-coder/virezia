@@ -273,7 +273,7 @@ function Step1Form({ onSubmit }: { onSubmit: (data: ApplyStep1Input) => void }) 
         error={errors.country?.message}
       />
       <FormSelect
-        label="How did you hear about us?"
+        label="How did you hear about VIREZIA?"
         placeholder="Select one"
         options={[
           { value: "featured_property", label: "Featured property" },
