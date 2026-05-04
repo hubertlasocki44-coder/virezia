@@ -6,7 +6,7 @@ import Link from "next/link";
 export default function HeroContent() {
   return (
     <>
-      <div className="relative z-10 mx-auto w-full max-w-content px-6">
+      <div className="relative z-10 mx-auto w-full max-w-content px-6 pt-24 md:pt-0">
         <div className="max-w-[640px]">
           <motion.p
             className="font-sans text-[10px] uppercase tracking-[0.2em] text-accent-gold/60"
@@ -79,7 +79,7 @@ export default function HeroContent() {
       </div>
 
       <motion.div
-        className="absolute bottom-12 left-0 right-0 px-6"
+        className="absolute bottom-16 left-0 right-0 px-6"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8, delay: 1.4 }}

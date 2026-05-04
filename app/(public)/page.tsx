@@ -44,7 +44,7 @@ function Hero() {
 
 function WhatVireziaIs() {
   return (
-    <section className="py-[120px]">
+    <section className="border-t border-border-subtle py-[140px]">
       <div className="mx-auto max-w-content px-6">
         <AnimatedSection className="max-w-2xl">
           <SectionLabel text="What VIREZIA Is" />
@@ -75,7 +75,7 @@ function WhatVireziaIs() {
 
 function TheApproach() {
   return (
-    <section className="bg-bg-secondary py-[120px]">
+    <section className="bg-bg-secondary py-[140px]">
       <div className="mx-auto max-w-content px-6">
         <AnimatedSection className="max-w-2xl mx-auto text-center">
           <SectionLabel text="The Approach" />
@@ -118,7 +118,7 @@ function TheApproach() {
 
 function ForWhom() {
   return (
-    <section className="py-[120px]">
+    <section className="py-[140px]">
       <div className="mx-auto max-w-content px-6">
         <AnimatedSection>
           <SectionLabel text="Who this is for" />
@@ -191,7 +191,7 @@ function ForOwners() {
 function FinalCTA() {
   return (
     <section
-      className="py-[120px]"
+      className="py-[140px]"
       style={{
         background: `radial-gradient(ellipse at 50% 100%, rgba(201,169,110,0.06) 0%, transparent 60%), #080808`,
       }}
