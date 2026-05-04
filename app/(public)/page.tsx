@@ -8,7 +8,7 @@ import HeroContent from "@/components/HeroAnimations";
 
 function Hero() {
   return (
-    <section className="relative flex min-h-screen items-center overflow-hidden">
+    <section className="relative overflow-hidden">
       <div className="absolute inset-0 bg-[#080808]" />
       <div className="absolute inset-0">
         <Image

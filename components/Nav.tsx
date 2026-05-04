@@ -42,7 +42,7 @@ export default function Nav() {
             alt="VIREZIA"
             width={140}
             height={36}
-            className="h-6 w-auto brightness-0 invert lg:h-7"
+            className="h-7 w-auto brightness-0 invert lg:h-8"
             priority
           />
         </Link>
