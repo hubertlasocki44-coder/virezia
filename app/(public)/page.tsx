@@ -40,48 +40,31 @@ function Hero() {
   );
 }
 
-/* ─── Currently Featured ──────────────────────────────────── */
+/* ─── What VIREZIA Is ─────────────────────────────────────── */
 
-function CurrentlyFeatured() {
+function WhatVireziaIs() {
   return (
-    <section id="featured" className="py-[120px]">
+    <section className="py-[120px]">
       <div className="mx-auto max-w-content px-6">
-        <AnimatedSection>
-          <SectionLabel text="Currently Featured" />
-        </AnimatedSection>
-
-        {/* Featured 1 — Las Orcas (full-width hero card) */}
-        <AnimatedSection className="mt-14">
-          <Link href="/las-orcas" className="group block">
-            <div className="relative overflow-hidden border border-border bg-bg-card transition-colors duration-300 hover:border-accent-gold/30">
-              <div className="relative aspect-[21/9] w-full overflow-hidden">
-                <Image
-                  src="/images/las-orcas/hero-aerial.webp"
-                  alt="Las Orcas — Robert Couturier residences"
-                  fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-[1.02]"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-bg-card via-transparent to-transparent" />
-              </div>
-              <div className="p-8 md:p-10">
-                <h3 className="font-serif text-[clamp(28px,4vw,40px)] font-light">
-                  Las Orcas
-                </h3>
-                <p className="mt-2 font-sans text-sm text-accent-gold">
-                  A coastal retreat by Robert Couturier
-                </p>
-                <p className="mt-1 font-sans text-[12px] uppercase tracking-[0.1em] text-text-muted">
-                  Pacific Coast &middot; Mexico
-                </p>
-                <p className="mt-5 max-w-xl font-sans text-base font-light leading-relaxed text-text-secondary">
-                  Seven beachfront residences designed by the architect behind Cuixmala &mdash; his return to Mexico&apos;s Pacific Coast after four decades. Pre-construction. Pre-titled lots.
-                </p>
-                <p className="mt-6 font-sans text-[12px] uppercase tracking-[0.1em] text-accent-gold group-hover:text-accent-gold-light transition-colors">
-                  View &rarr;
-                </p>
-              </div>
-            </div>
-          </Link>
+        <AnimatedSection className="max-w-2xl">
+          <SectionLabel text="What VIREZIA Is" />
+          <h2 className="mt-8">
+            A curated real estate network.
+          </h2>
+          <p className="mt-8 font-sans text-base font-light leading-relaxed text-text-secondary">
+            VIREZIA is not a listing portal.
+            We don&apos;t publish properties on the public homepage.
+          </p>
+          <p className="mt-4 font-sans text-base font-light leading-relaxed text-text-secondary">
+            We select real estate from across the market &mdash;
+            architectural, design-led, location-driven, investment-grade &mdash;
+            and present each property inside VIREZIA Circle.
+          </p>
+          <p className="mt-4 font-sans text-base font-light leading-relaxed text-text-secondary">
+            International investors apply to create a profile and access opportunities.
+            Developers and asset owners apply to submit properties for selection.
+            Each application is reviewed personally.
+          </p>
         </AnimatedSection>
       </div>
     </section>
@@ -99,20 +82,25 @@ function TheApproach() {
           <h2 className="mt-8">
             We don&apos;t list properties.
             <br />
-            We feature them.
+            We select them.
           </h2>
           <p className="mt-8 font-sans text-base font-light leading-relaxed text-text-secondary">
-            Every property on VIREZIA is selected personally &mdash;
-            for its architecture, its design, its location, or its story.
+            Every property in VIREZIA Circle is selected personally &mdash;
+            for its architecture, design, location, story,
+            investment thesis, or off-market access.
           </p>
           <p className="mt-4 font-sans text-base font-light leading-relaxed text-text-secondary">
-            We work with a small number of homes at a time,
-            and with the people who own them, to tell each property
-            the way it deserves to be told.
+            We work with the owners and developers behind each property
+            to present it the way it deserves to be presented.
           </p>
           <p className="mt-4 font-sans text-base font-light leading-relaxed text-text-secondary">
-            If something is exceptional, we feature it.
-            If it isn&apos;t, we don&apos;t.
+            Some properties we feature are off the public market.
+            Others are publicly available, but worth a closer look
+            than the noise around them allows.
+          </p>
+          <p className="mt-4 font-sans text-base font-light leading-relaxed text-text-secondary">
+            If a property earns a closer look, we feature it.
+            If it doesn&apos;t, we don&apos;t.
           </p>
           <Link
             href="/approach"
@@ -211,14 +199,11 @@ function FinalCTA() {
       <div className="mx-auto max-w-content px-6">
         <AnimatedSection className="max-w-xl">
           <h2 className="text-[clamp(36px,5vw,56px)]">
-            By invitation.
-            <br />
-            By application.
-            <br />
-            By referral.
+            Create your VIREZIA profile.
           </h2>
           <p className="mt-6 font-sans text-base font-light text-text-secondary">
-            Submit your profile and tell us what you are looking for.
+            Tell us what you&apos;re looking for &mdash;
+            or what you&apos;re offering.
             We respond personally within 48 hours.
           </p>
           <div className="mt-8">
@@ -226,7 +211,7 @@ function FinalCTA() {
               href="/apply"
               className="inline-block border border-accent-gold px-8 py-[14px] font-sans text-[13px] uppercase tracking-[0.1em] text-accent-gold transition-all duration-200 hover:bg-accent-gold hover:text-bg-primary"
             >
-              Apply for Private Access
+              Apply for Access
             </Link>
           </div>
           <p className="mt-4 font-sans text-[12px] text-text-muted">
@@ -244,7 +229,7 @@ export default function HomePage() {
   return (
     <>
       <Hero />
-      <CurrentlyFeatured />
+      <WhatVireziaIs />
       <TheApproach />
       <ForWhom />
       <ForOwners />

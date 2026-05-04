@@ -99,11 +99,11 @@ export default function ForOwnersPage() {
         <AnimatedSection className="mt-14 max-w-2xl">
           <h3 className="font-serif text-[24px] font-light">Selection criteria</h3>
           <div className="mt-6 space-y-3">
-            <p className="font-sans text-[15px] font-light text-text-secondary">&mdash; Architectural or design distinction</p>
-            <p className="font-sans text-[15px] font-light text-text-secondary">&mdash; Location with character or lineage</p>
+            <p className="font-sans text-[15px] font-light text-text-secondary">&mdash; Architectural, design, or location distinction</p>
+            <p className="font-sans text-[15px] font-light text-text-secondary">&mdash; A defined investment thesis or off-market access</p>
             <p className="font-sans text-[15px] font-light text-text-secondary">&mdash; Pricing aligned with market reality</p>
             <p className="font-sans text-[15px] font-light text-text-secondary">&mdash; Clean legal title or clear regularization path</p>
-            <p className="font-sans text-[15px] font-light text-text-secondary">&mdash; Owner willing to support editorial repositioning of the offer</p>
+            <p className="font-sans text-[15px] font-light text-text-secondary">&mdash; Owner willing to support thoughtful presentation of the offer</p>
           </div>
         </AnimatedSection>
 

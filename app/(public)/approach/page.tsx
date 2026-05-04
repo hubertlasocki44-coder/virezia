@@ -49,14 +49,15 @@ export default function ApproachPage() {
               for one or more of the following:
             </p>
             <div className="mt-8 space-y-4">
-              <p className="font-sans text-base font-light text-text-secondary">&mdash; Architectural distinction</p>
-              <p className="font-sans text-base font-light text-text-secondary">&mdash; Design lineage</p>
+              <p className="font-sans text-base font-light text-text-secondary">&mdash; Architectural or design distinction</p>
               <p className="font-sans text-base font-light text-text-secondary">&mdash; Location with character</p>
               <p className="font-sans text-base font-light text-text-secondary">&mdash; A story worth telling</p>
+              <p className="font-sans text-base font-light text-text-secondary">&mdash; A defined investment thesis</p>
+              <p className="font-sans text-base font-light text-text-secondary">&mdash; Off-market access not available elsewhere</p>
             </div>
             <p className="mt-8 font-sans text-base font-light leading-relaxed text-text-secondary">
-              We feature a small number of properties each year.
-              Not the largest. Not the cheapest. The right ones.
+              We feature a defined number of properties at any time.
+              Not the largest. Not the cheapest. The right ones for the right buyer.
             </p>
           </AnimatedSection>
         </div>

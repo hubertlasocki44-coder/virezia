@@ -47,11 +47,23 @@ const BUDGETS = [
 ];
 
 const ACCOUNT_TYPES = [
-  { value: "individual", label: "Individual buyer" },
-  { value: "institutional", label: "Institutional investor" },
-  { value: "developer", label: "Developer / Landowner" },
-  { value: "agent", label: "Agent / Broker" },
-  { value: "partner", label: "Service partner" },
+  { value: "individual", label: "Buyer" },
+  { value: "institutional", label: "Investor" },
+  { value: "developer", label: "Developer" },
+  { value: "asset_owner", label: "Asset owner" },
+  { value: "agent", label: "Real estate professional" },
+  { value: "other", label: "Other" },
+];
+
+const PROPERTY_CHARACTER = [
+  { value: "architectural", label: "Architectural distinction" },
+  { value: "design_lineage", label: "Design lineage" },
+  { value: "coastal", label: "Coastal" },
+  { value: "urban", label: "Urban" },
+  { value: "land", label: "Land" },
+  { value: "investment_grade", label: "Investment-grade" },
+  { value: "off_market", label: "Off-market" },
+  { value: "pre_sale", label: "Pre-sale" },
 ];
 
 const PROPERTY_TYPES = [
@@ -302,6 +314,7 @@ function Step2BuyerForm({
 }) {
   const [investmentType, setInvestmentType] = useState("");
   const [regions, setRegions] = useState<string[]>([]);
+  const [propertyCharacter, setPropertyCharacter] = useState<string[]>([]);
   const {
     register,
     handleSubmit,
@@ -320,6 +333,7 @@ function Step2BuyerForm({
           { value: "personal", label: "Acquire a primary residence" },
           { value: "investment", label: "Acquire as investment" },
           { value: "both", label: "Both" },
+          { value: "submit_property", label: "Submit a property" },
           { value: "exploring", label: "Still exploring" },
         ]}
         value={investmentType}
@@ -328,6 +342,14 @@ function Step2BuyerForm({
           setValue("investment_type", val as ApplyStep2BuyerInput["investment_type"]);
         }}
         error={errors.investment_type?.message}
+      />
+      <FormCheckboxGroup
+        label="Property character that interests you"
+        options={PROPERTY_CHARACTER}
+        values={propertyCharacter}
+        onChange={(vals) => {
+          setPropertyCharacter(vals);
+        }}
       />
       <FormCheckboxGroup
         label="Preferred regions"
@@ -459,7 +481,7 @@ function Step3Form({
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
       <FormTextarea
         label="Tell us what you are looking for"
-        placeholder="Tell us what would make a property worth your attention. Specific architects, places, lifestyles, or stories you've followed."
+        placeholder="Tell us what would make a property worth your attention. Specific architects, locations, lifestyles, investment thesis, or anything else that defines what you're looking for."
         {...register("context")}
         error={errors.context?.message}
       />

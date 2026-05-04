@@ -14,7 +14,7 @@ export default function HeroContent() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            By Invitation
+            A Curated Real Estate Network
           </motion.p>
 
           <motion.h1
@@ -24,27 +24,35 @@ export default function HeroContent() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.5 }}
           >
-            Real estate,
+            Curated real estate,
             <br />
-            curated like art.
+            selected &mdash; not listed.
           </motion.h1>
+
+          <motion.p
+            className="mt-6 font-serif text-[clamp(18px,2.5vw,24px)] font-light leading-[1.5] text-text-secondary"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.7 }}
+          >
+            A network where international investors meet
+            and find good opportunities.
+          </motion.p>
 
           <motion.div
             className="mt-8 max-w-[520px]"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.8 }}
+            transition={{ duration: 0.8, delay: 0.9 }}
           >
             <p className="font-sans text-[16px] font-light leading-[1.8] text-text-secondary">
-              A small selection of exceptional homes &mdash;
-              <br />
-              told as story, offered by invitation.
+              VIREZIA selects properties from across the market &mdash;
+              architectural, design-led, location-driven, investment-grade &mdash;
+              and presents them inside VIREZIA Circle.
             </p>
             <p className="font-sans text-[16px] font-light leading-[1.8] text-text-secondary mt-4">
-              Each featured property is curated personally
-              for its design, architecture, place, or character.
-              Currently featuring across Latin America.
-              Welcoming exceptional properties worldwide.
+              Apply to create your profile.
+              We work with buyers, investors, developers, and asset owners.
             </p>
           </motion.div>
 
@@ -58,13 +66,13 @@ export default function HeroContent() {
               href="/apply"
               className="border border-accent-gold px-8 py-[14px] font-sans text-[13px] uppercase tracking-[0.1em] text-accent-gold transition-all duration-200 hover:bg-accent-gold hover:text-bg-primary"
             >
-              Apply for Private Access
+              Apply for Access
             </Link>
             <Link
-              href="#featured"
+              href="/approach"
               className="border-b border-text-secondary pb-px font-sans text-[13px] text-text-secondary transition-colors duration-200 hover:text-text-primary hover:border-text-primary"
             >
-              Currently featured &rarr;
+              How VIREZIA works &rarr;
             </Link>
           </motion.div>
         </div>
@@ -79,7 +87,7 @@ export default function HeroContent() {
         <div className="mx-auto max-w-content">
           <div className="border-t border-border-subtle pt-5">
             <p className="font-sans text-[12px] tracking-[0.05em] text-text-muted">
-              Not a listing portal. Each property is selected personally.
+              Properties available inside VIREZIA Circle. Apply to create your profile.
             </p>
             <p className="mt-2 font-serif text-[14px] italic text-accent-gold/60">
               VIREZIA Circle &mdash; by invitation only.{" "}
