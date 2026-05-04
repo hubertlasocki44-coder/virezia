@@ -7,11 +7,11 @@ const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://virezia.com";
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
   title: {
-    default: "VIREZIA — Private Real Estate Intelligence · Emerging Markets",
+    default: "VIREZIA — Curated Real Estate, Selected — Not Listed",
     template: "%s — VIREZIA",
   },
   description:
-    "Private real estate intelligence for expats and foreign investors. Verified opportunities matched to your profile — no noise, no hidden fees.",
+    "A curated real estate network. Properties selected for architecture, design, location, and story — presented inside VIREZIA Circle. By invitation.",
   icons: {
     icon: "/favicon.png",
   },
@@ -19,9 +19,9 @@ export const metadata: Metadata = {
     canonical: BASE_URL,
   },
   openGraph: {
-    title: "VIREZIA — Private Real Estate Intelligence · Emerging Markets",
+    title: "VIREZIA — Curated Real Estate, Selected — Not Listed",
     description:
-      "Private real estate intelligence for expats and foreign investors. Verified opportunities matched to your profile — no noise, no hidden fees.",
+      "A curated real estate network. Properties selected for architecture, design, location, and story — presented by invitation.",
     type: "website",
     locale: "en_US",
     siteName: "VIREZIA",
@@ -30,15 +30,15 @@ export const metadata: Metadata = {
         url: "/images/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "VIREZIA — Private Real Estate Intelligence",
+        alt: "VIREZIA — Curated Real Estate",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "VIREZIA — Private Real Estate Intelligence",
+    title: "VIREZIA — Curated Real Estate, Selected — Not Listed",
     description:
-      "Verified opportunities in emerging markets. Matched to your profile. No noise, no hidden fees.",
+      "A curated real estate network. Properties selected for architecture, design, location, and story — by invitation.",
     images: ["/images/og-image.jpg"],
   },
 };
@@ -61,7 +61,7 @@ export default function RootLayout({
               url: BASE_URL,
               logo: `${BASE_URL}/logo.png`,
               description:
-                "Private real estate intelligence for expats and foreign investors in emerging markets.",
+                "A curated real estate network. Properties selected for architecture, design, location, and story — presented by invitation.",
               contactPoint: {
                 "@type": "ContactPoint",
                 email: "hello@virezia.com",
