@@ -1,7 +1,7 @@
 "use client";
 
-import { useState, Suspense } from "react";
-import { motion } from "framer-motion";
+import { useState, useEffect, useRef, Suspense } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import AnimatedSection from "@/components/AnimatedSection";
@@ -44,6 +44,73 @@ function VideoTeaser() {
   );
 }
 
+/* -- Floating CTA -------------------------------------------------- */
+function FloatingCTA() {
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollY = window.scrollY;
+      const viewportH = window.innerHeight;
+      const docH = document.documentElement.scrollHeight;
+      const scrollPercent = scrollY / (docH - viewportH);
+
+      // Show after 15% scroll, hide when near the native CTA (last 20%)
+      const ctaSection = document.getElementById("founding-cta");
+      if (ctaSection) {
+        const rect = ctaSection.getBoundingClientRect();
+        const ctaVisible = rect.top < viewportH && rect.bottom > 0;
+        setVisible(scrollPercent > 0.15 && !ctaVisible);
+      } else {
+        setVisible(scrollPercent > 0.15 && scrollPercent < 0.85);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  return (
+    <AnimatePresence>
+      {visible && (
+        <>
+          {/* Desktop: bottom-right corner */}
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 10 }}
+            transition={{ duration: 0.3 }}
+            className="fixed bottom-8 right-8 z-40 hidden md:block"
+          >
+            <Link
+              href="/circle/join?intent=founding"
+              className="border border-accent-gold/70 bg-bg-primary/80 backdrop-blur-sm px-6 py-3 font-sans text-[12px] uppercase tracking-[0.1em] text-accent-gold transition-all hover:bg-accent-gold hover:text-bg-primary"
+            >
+              Join the Circle
+            </Link>
+          </motion.div>
+
+          {/* Mobile: sticky bottom bar */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 20 }}
+            transition={{ duration: 0.3 }}
+            className="fixed bottom-0 left-0 right-0 z-40 md:hidden"
+          >
+            <Link
+              href="/circle/join?intent=founding"
+              className="flex items-center justify-center h-12 bg-bg-primary/90 backdrop-blur-sm border-t border-accent-gold/30 font-sans text-[12px] uppercase tracking-[0.1em] text-accent-gold"
+            >
+              Join the Circle
+            </Link>
+          </motion.div>
+        </>
+      )}
+    </AnimatePresence>
+  );
+}
+
 /* ================================================================== */
 export default function LasOrcasPage() {
   return (
@@ -56,6 +123,7 @@ export default function LasOrcasPage() {
 function LasOrcasContent() {
   return (
     <>
+      <FloatingCTA />
       {/* ============================================================ */}
       {/* 1. HERO                                                      */}
       {/* ============================================================ */}
@@ -67,7 +135,7 @@ function LasOrcasContent() {
             fill
             className="object-cover opacity-40"
             priority
-            sizes="100vw"
+            sizes="(max-width: 768px) 100vw, 1920px"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-bg-primary/70 via-bg-primary/40 to-bg-primary" />
         </div>
@@ -84,13 +152,11 @@ function LasOrcasContent() {
             <p className="font-sans text-[12px] uppercase tracking-[0.15em] text-text-primary/70 mb-10">
               Robert Couturier &middot; Oaxacan Coast &middot; 2026
             </p>
-            <h1 className="font-serif text-[clamp(36px,7vw,80px)] font-light leading-[1.05] max-w-4xl">
-              Forty years after Cuixmala,
-              <br className="hidden md:block" />
-              he returns to the Pacific.
+            <h1 className="font-serif text-[clamp(36px,7vw,80px)] font-light leading-[1.05] max-w-4xl" style={{ textWrap: "balance" } as React.CSSProperties}>
+              An AD100 architect returns to Mexico&apos;s Pacific Coast.
             </h1>
-            <p className="font-sans text-base font-light text-text-secondary mt-8 max-w-xl">
-              Design legend Robert Couturier &mdash; the architect behind one of the greatest private estates ever built &mdash; designs seven beachfront residences in Puerto Escondido, Oaxaca.
+            <p className="font-sans text-base font-light text-text-secondary mt-8 max-w-xl leading-relaxed">
+              The first private residential project at this tier on the Oaxacan Coast &mdash; designed by Robert Couturier, the architect behind Cuixmala. Seven beachfront residences in Puerto Escondido.
             </p>
           </motion.div>
         </div>
@@ -103,12 +169,12 @@ function LasOrcasContent() {
         <div className="mx-auto max-w-content px-6 md:px-10">
           <div className="grid grid-cols-1 md:grid-cols-[280px_1fr] gap-12 md:gap-16 items-start">
             <AnimatedSection>
-              <div className="relative aspect-[3/4] w-full overflow-hidden">
+              <div className="relative aspect-[3/4] w-full overflow-hidden bg-bg-secondary">
                 <Image
                   src="/images/las-orcas/robert-couturier-portrait.webp"
                   alt="Robert Couturier — portrait"
                   fill
-                  className="object-cover"
+                  className="object-cover grayscale brightness-75 contrast-110"
                   sizes="(max-width: 768px) 100vw, 280px"
                 />
               </div>
@@ -514,7 +580,7 @@ function LasOrcasContent() {
       {/* ============================================================ */}
       {/* 12. BECOME A FOUNDING MEMBER (single CTA)                    */}
       {/* ============================================================ */}
-      <section className="bg-bg-secondary py-28 md:py-40">
+      <section id="founding-cta" className="bg-bg-secondary py-28 md:py-40">
         <div className="mx-auto max-w-2xl px-6 md:px-10">
           <AnimatedSection className="text-center">
             <p className="font-sans text-[10px] uppercase tracking-[0.2em] text-accent-gold mb-10">
