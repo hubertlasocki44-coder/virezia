@@ -559,6 +559,58 @@ function LasOrcasContent() {
       </section>
 
       {/* ============================================================ */}
+      {/* THE COAST                                                    */}
+      {/* ============================================================ */}
+      <section className="py-28 md:py-40">
+        <div className="mx-auto max-w-[720px] px-6 md:px-10">
+          <AnimatedSection className="text-center">
+            <p className="font-sans text-[10px] uppercase tracking-[0.2em] text-accent-gold mb-10">
+              The Coast
+            </p>
+            <p className="font-sans text-base font-light leading-relaxed text-text-secondary">
+              The Pacific Coast of Oaxaca runs for some of the most untouched coastline in Mexico &mdash; three hundred kilometers between Huatulco and Acapulco where the mountains meet the sea, with no high-rise development, no resort chains, and no immediate plans for either.
+            </p>
+            <p className="font-sans text-base font-light leading-relaxed text-text-secondary mt-6">
+              Las Orcas sits in La Barra &mdash; a quiet residential stretch east of Puerto Escondido&apos;s town center, removed from the surf scene of Zicatela and the bars of La Punta. The beach here is wide, walkable, and largely empty. The neighbors are private homes, not hotels.
+            </p>
+          </AnimatedSection>
+        </div>
+
+        {/* Full-width coast image */}
+        <AnimatedSection className="mt-16">
+          <div className="relative aspect-[16/9] w-full overflow-hidden">
+            <Image
+              src="/images/las-orcas/la-barra-coast.webp"
+              alt="La Barra, Puerto Escondido — aerial view"
+              fill
+              className="object-cover"
+              sizes="100vw"
+            />
+          </div>
+          <p className="font-sans text-[11px] text-text-muted mt-3 text-center px-6">
+            La Barra, Puerto Escondido
+          </p>
+        </AnimatedSection>
+
+        <div className="mx-auto max-w-[720px] px-6 md:px-10">
+          <AnimatedSection className="text-center mt-16">
+            <blockquote className="font-serif text-[clamp(20px,3vw,32px)] font-light leading-[1.35]">
+              &ldquo;As we have more and more rarified access to the sea, it makes Las Orcas that much more precious.&rdquo;
+            </blockquote>
+            <p className="font-sans text-[11px] uppercase tracking-[0.15em] text-accent-gold mt-8">
+              &mdash; Robert Couturier
+            </p>
+          </AnimatedSection>
+
+          <AnimatedSection className="text-center mt-16">
+            <p className="font-sans text-base font-light leading-relaxed text-text-secondary">
+              The state of Oaxaca itself is a UNESCO World Heritage region with what Couturier calls &ldquo;probably one of the most refined&rdquo; food traditions in Mexico, a craft tradition older than the country surrounding it, and an hour&apos;s flight from Mexico City. Direct flights from Los Angeles, Houston, and New York are scheduled for 2026 with the expansion of Puerto Escondido International Airport.
+            </p>
+          </AnimatedSection>
+        </div>
+      </section>
+
+      {/* ============================================================ */}
       {/* 11. THE BUILD                                                */}
       {/* ============================================================ */}
       <section className="py-20 md:py-28">
