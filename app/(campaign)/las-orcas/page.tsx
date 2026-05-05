@@ -639,10 +639,10 @@ function LasOrcasContent() {
               Founding Members
             </p>
             <h2 className="font-serif text-[clamp(28px,4vw,44px)] font-light leading-[1.2] mb-8">
-              Six residences remain.
+              Five residences remain.
             </h2>
             <p className="font-sans text-base font-light leading-relaxed text-text-secondary">
-              If this project speaks to you &mdash; whether as a personal residence on the Pacific or as an investment in one of the most distinctive coastal developments in Mexico &mdash; you can become one of six founding members.
+              If this project speaks to you &mdash; whether as a personal residence on the Pacific or as an investment in one of the most distinctive coastal developments in Mexico &mdash; you can become one of five founding members.
             </p>
             <p className="font-sans text-base font-light leading-relaxed text-text-secondary mt-6">
               Founding members select their residence from those remaining. They participate, where they wish, in the architect&apos;s final decisions on their home. They join a small group whose names will be associated with the project&apos;s first chapter.
