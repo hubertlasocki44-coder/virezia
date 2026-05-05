@@ -323,7 +323,7 @@ function LasOrcasContent() {
                 The construction is in concrete and stone &mdash; materials chosen, in his words, &ldquo;that will live in the sea air and age gracefully &mdash; as we all should.&rdquo; Spaces are designed to be open but cozy. &ldquo;You don&apos;t have the feeling that you live outside all the time. You have the ability to be outside, and the ability to stay inside and read a book.&rdquo;
               </p>
               <p className="font-sans text-base font-light leading-relaxed text-text-secondary mt-6">
-                Each residence has its own private deed and rooftop plunge pool. Pre-construction. Pre-titled lots. Direct access to the uncrowded beach of La Barra. Five residences remain available to founding members.
+                Each residence has its own private deed and rooftop plunge pool. Pre-construction. Pre-titled lots. Direct access to the uncrowded beach of La Barra. Seven residences in total &mdash; three casitas and four villas, ranging from two to three bedrooms. Five remain available to founding members.
               </p>
               <p className="font-sans text-lg font-normal text-text-primary mt-10">
                 From $561,000.
@@ -383,7 +383,58 @@ function LasOrcasContent() {
       </AnimatedSection>
 
       {/* ============================================================ */}
-      {/* 13. VIREZIA SELECTIONS (trust block)                         */}
+      {/* 13. RESIDENCES                                               */}
+      {/* ============================================================ */}
+      <section className="py-28 md:py-40">
+        <div className="mx-auto max-w-content px-6 md:px-10">
+          <AnimatedSection className="text-center mb-16">
+            <p className="font-sans text-[10px] uppercase tracking-[0.2em] text-accent-gold mb-8">
+              Residences
+            </p>
+            <p className="font-sans text-base font-light leading-relaxed text-text-secondary max-w-2xl mx-auto">
+              Seven residences. Three casitas and four villas, each with private deed, rooftop plunge pool, and direct access to La Barra beach.
+            </p>
+          </AnimatedSection>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-24 max-w-3xl mx-auto">
+            <AnimatedSection>
+              <p className="font-sans text-[11px] uppercase tracking-[0.15em] text-accent-gold mb-4">
+                Casitas
+              </p>
+              <p className="font-sans text-base font-light leading-relaxed text-text-secondary">
+                Two-bedroom residences. Built area from 180 m&sup2;. Land from 78 m&sup2;.
+              </p>
+              <p className="font-sans text-sm font-light italic text-text-muted mt-3">
+                Three casitas, two remaining.
+              </p>
+            </AnimatedSection>
+
+            <AnimatedSection delay={0.1}>
+              <p className="font-sans text-[11px] uppercase tracking-[0.15em] text-accent-gold mb-4">
+                Villas
+              </p>
+              <p className="font-sans text-base font-light leading-relaxed text-text-secondary">
+                Three-bedroom residences with two pools. Built area from 310 m&sup2;. Land from 214 m&sup2;.
+              </p>
+              <p className="font-sans text-sm font-light italic text-text-muted mt-3">
+                Four villas, three remaining.
+              </p>
+            </AnimatedSection>
+          </div>
+
+          <AnimatedSection className="mt-16 text-center">
+            <p className="font-sans text-[15px] font-normal text-text-primary">
+              Residences from $561,000.
+            </p>
+            <p className="font-sans text-sm font-light text-text-muted mt-2">
+              Detailed floor plans and pricing shared in the dossier with members of the VIREZIA Circle.
+            </p>
+          </AnimatedSection>
+        </div>
+      </section>
+
+      {/* ============================================================ */}
+      {/* 14. VIREZIA SELECTIONS (trust block)                         */}
       {/* ============================================================ */}
       <section className="py-20 md:py-28">
         <div className="mx-auto max-w-2xl px-6 md:px-10">
