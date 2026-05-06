@@ -1,7 +1,12 @@
 "use server";
 
 import { createServiceClient } from "@/lib/supabase/server";
-import { sendNotification } from "@/lib/email";
+import {
+  sendNotification,
+  sendCircleWelcome,
+  sendFoundingMemberWelcome,
+  addToResendContacts,
+} from "@/lib/email";
 
 function escapeHtml(str: string): string {
   return str
@@ -200,6 +205,28 @@ export async function submitLasOrcasForm(data: LasOrcasSubmission) {
     );
   } catch (err) {
     console.error("[Las Orcas] Email notification failed:", err);
+  }
+
+  // 8. Send confirmation email to lead + add to Resend Contacts
+  const firstName = data.fullName.split(" ")[0];
+  const lastName = data.fullName.split(" ").slice(1).join(" ");
+  try {
+    // Add to Resend Contacts for future broadcasts
+    await addToResendContacts(data.email, firstName, lastName, {
+      source: "las_orcas_campaign",
+      circle_member: "true",
+      founding_interest: isStage2 ? "true" : "false",
+      matched: isStage2 ? String(matched) : "false",
+    });
+
+    // Send appropriate welcome email
+    if (isStage2) {
+      await sendFoundingMemberWelcome(data.email, firstName, matched);
+    } else {
+      await sendCircleWelcome(data.email, firstName);
+    }
+  } catch (err) {
+    console.error("[Las Orcas] Lead email/contact failed:", err);
   }
 
   return { success: true, matched: isStage2 ? matched : undefined };
