@@ -83,15 +83,14 @@ export default function ForOwnersPage() {
             Submit a Property
           </h1>
           <p className="mt-6 font-sans text-base font-light leading-relaxed text-text-secondary">
-            VIREZIA features a limited number of exceptional properties each year &mdash;
-            sourced globally, with current focus across Latin America.
+            We feature a small number of properties each year,
+            sourced globally with a current focus on Latin America.
           </p>
           <p className="mt-4 font-sans text-base font-light leading-relaxed text-text-secondary">
-            If your property has architectural distinction, design lineage,
-            location character, or a story worth telling &mdash; we&apos;d like to hear from you.
+            If it has real architecture, a strong location, or a story behind it, we want to hear from you.
           </p>
           <p className="mt-4 font-sans text-sm text-text-muted">
-            Submission begins with a brief intake. Featured selection is reviewed quarterly.
+            Fill out the form below. We review submissions every quarter.
           </p>
         </AnimatedSection>
 
@@ -99,11 +98,11 @@ export default function ForOwnersPage() {
         <AnimatedSection className="mt-14 max-w-2xl">
           <h3 className="font-serif text-[24px] font-light">Selection criteria</h3>
           <div className="mt-6 space-y-3">
-            <p className="font-sans text-[15px] font-light text-text-secondary">&mdash; Architectural, design, or location distinction</p>
-            <p className="font-sans text-[15px] font-light text-text-secondary">&mdash; A defined investment thesis or off-market access</p>
-            <p className="font-sans text-[15px] font-light text-text-secondary">&mdash; Pricing aligned with market reality</p>
-            <p className="font-sans text-[15px] font-light text-text-secondary">&mdash; Clean legal title or clear regularization path</p>
-            <p className="font-sans text-[15px] font-light text-text-secondary">&mdash; Owner willing to support thoughtful presentation of the offer</p>
+            <p className="font-sans text-[15px] font-light text-text-secondary">&mdash; Architecture or design worth showing</p>
+            <p className="font-sans text-[15px] font-light text-text-secondary">&mdash; A strong location or off-market access</p>
+            <p className="font-sans text-[15px] font-light text-text-secondary">&mdash; Pricing that makes sense</p>
+            <p className="font-sans text-[15px] font-light text-text-secondary">&mdash; Clean legal title</p>
+            <p className="font-sans text-[15px] font-light text-text-secondary">&mdash; Willingness to present the property properly</p>
           </div>
         </AnimatedSection>
 

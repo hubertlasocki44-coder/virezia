@@ -156,7 +156,7 @@ function LasOrcasContent() {
               An AD100 architect returns to Mexico&apos;s Pacific Coast.
             </h1>
             <p className="font-sans text-base font-light text-text-secondary mt-8 max-w-xl leading-relaxed">
-              The first private residential project at this tier on the Oaxacan Coast &mdash; designed by Robert Couturier, the architect behind Cuixmala. Seven beachfront residences in Puerto Escondido.
+              The first architect-designed residential project on the Oaxacan Coast, by Robert Couturier, the architect behind Cuixmala. Seven beachfront residences in Puerto Escondido.
             </p>
           </motion.div>
         </div>
@@ -323,10 +323,10 @@ function LasOrcasContent() {
                 Puerto Escondido, Oaxaca
               </h2>
               <p className="font-sans text-base font-light leading-relaxed text-text-secondary mt-8">
-                Puerto Escondido began as a surfers&apos; secret &mdash; a stretch of Pacific coastline known only to those who sought it out. It has since become one of Mexico&apos;s most compelling destinations: unhurried, culturally rich, and architecturally awake in a way that few coastal towns anywhere in the world can match.
+                Puerto Escondido began as a surfers&apos; secret &mdash; a stretch of Pacific coastline known only to those who sought it out. It has since become one of Mexico&apos;s most compelling destinations: unhurried, culturally rich, and architecturally awake.
               </p>
               <p className="font-sans text-base font-light leading-relaxed text-text-secondary mt-6">
-                Oaxaca&apos;s food culture &mdash; rooted in indigenous tradition, refined by a generation of internationally recognized chefs &mdash; is considered among the most sophisticated in Mexico. The coast itself remains uncrowded. The pace is slow. The light is extraordinary.
+                Oaxaca&apos;s food culture &mdash; rooted in indigenous tradition, refined by a generation of internationally recognized chefs &mdash; is considered among the most sophisticated in Mexico. The coast is uncrowded. The pace is slow. The light is the kind you remember.
               </p>
               <p className="font-sans text-base font-light leading-relaxed text-text-secondary mt-6">
                 In the last five years, this stretch of coast has quietly attracted the greatest concentration of world-class architecture in Mexico: Tadao Ando, Alberto Kalach, Ludwig Godefroy. Until now, that architecture could only be visited. Las Orcas is the first opportunity to inhabit it.
@@ -509,7 +509,7 @@ function LasOrcasContent() {
               VIREZIA Selections
             </p>
             <p className="font-sans text-base font-light leading-relaxed text-text-secondary">
-              Las Orcas is part of VIREZIA Selections &mdash; a small set of curated opportunities selected for architectural significance, location, and the story behind them.
+              Las Orcas is part of VIREZIA Selections &mdash; a small group of properties we&apos;ve chosen for their architecture, their location, or the story behind them.
             </p>
           </AnimatedSection>
         </div>
@@ -642,7 +642,7 @@ function LasOrcasContent() {
               Five residences remain.
             </h2>
             <p className="font-sans text-base font-light leading-relaxed text-text-secondary">
-              If this project speaks to you &mdash; whether as a personal residence on the Pacific or as an investment in one of the most distinctive coastal developments in Mexico &mdash; you can become one of five founding members.
+              If this project speaks to you &mdash; whether as a personal residence on the Pacific or as an investment in the only Couturier-designed residential project on Mexico&apos;s Pacific Coast &mdash; you can become one of five founding members.
             </p>
             <p className="font-sans text-base font-light leading-relaxed text-text-secondary mt-6">
               Founding members select their residence from those remaining. They participate, where they wish, in the architect&apos;s final decisions on their home. They join a small group whose names will be associated with the project&apos;s first chapter.

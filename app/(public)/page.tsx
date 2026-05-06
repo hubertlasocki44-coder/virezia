@@ -49,21 +49,18 @@ function WhatVireziaIs() {
         <AnimatedSection className="max-w-2xl">
           <SectionLabel text="What VIREZIA Is" />
           <h2 className="mt-8">
-            A curated real estate network.
+            A private real estate network.
           </h2>
           <p className="mt-8 font-sans text-base font-light leading-relaxed text-text-secondary">
-            VIREZIA is not a listing portal.
-            We don&apos;t publish properties on the public homepage.
+            Properties aren&apos;t published here. They&apos;re inside VIREZIA Circle, visible only to members.
           </p>
           <p className="mt-4 font-sans text-base font-light leading-relaxed text-text-secondary">
-            We select real estate from across the market &mdash;
-            architectural, design-led, location-driven, investment-grade &mdash;
-            and present each property inside VIREZIA Circle.
+            We pick real estate from across the market based on architecture, location, and investment logic, and present each property to the right people inside the Circle.
           </p>
           <p className="mt-4 font-sans text-base font-light leading-relaxed text-text-secondary">
-            International investors apply to create a profile and access opportunities.
-            Developers and asset owners apply to submit properties for selection.
-            Each application is reviewed personally.
+            Investors apply to create a profile and access opportunities.
+            Developers and asset owners apply to submit properties.
+            We read every application.
           </p>
         </AnimatedSection>
       </div>
@@ -80,27 +77,16 @@ function TheApproach() {
         <AnimatedSection className="max-w-2xl mx-auto text-center">
           <SectionLabel text="The Approach" />
           <h2 className="mt-8">
-            We don&apos;t list properties.
-            <br />
-            We select them.
+            Every property here was chosen for a reason.
           </h2>
           <p className="mt-8 font-sans text-base font-light leading-relaxed text-text-secondary">
-            Every property in VIREZIA Circle is selected personally &mdash;
-            for its architecture, design, location, story,
-            investment thesis, or off-market access.
+            Usually it&apos;s the architecture, the location, or the story behind it. Sometimes it&apos;s an investment thesis that makes sense, or off-market access you won&apos;t find elsewhere.
           </p>
           <p className="mt-4 font-sans text-base font-light leading-relaxed text-text-secondary">
-            We work with the owners and developers behind each property
-            to present it the way it deserves to be presented.
+            We work with the owners and developers behind each property to present it the way it deserves to be presented. Some properties we feature are off the public market. Others are publicly available, but worth a closer look than the noise around them allows.
           </p>
           <p className="mt-4 font-sans text-base font-light leading-relaxed text-text-secondary">
-            Some properties we feature are off the public market.
-            Others are publicly available, but worth a closer look
-            than the noise around them allows.
-          </p>
-          <p className="mt-4 font-sans text-base font-light leading-relaxed text-text-secondary">
-            If a property earns a closer look, we feature it.
-            If it doesn&apos;t, we don&apos;t.
+            We only feature what we&apos;d personally spend time on.
           </p>
           <Link
             href="/approach"
@@ -128,27 +114,26 @@ function ForWhom() {
           <AnimatedSection>
             <h3 className="text-2xl text-text-primary">VIREZIA is for</h3>
             <div className="mt-8 space-y-4">
-              <p className="font-sans text-base font-light text-text-secondary">Buyers who value character over volume.</p>
-              <p className="font-sans text-base font-light text-text-secondary">Investors with a discerning eye.</p>
-              <p className="font-sans text-base font-light text-text-secondary">Owners of exceptional properties.</p>
-              <p className="font-sans text-base font-light text-text-secondary">People who prefer to be introduced.</p>
+              <p className="font-sans text-base font-light text-text-secondary">Serious buyers.</p>
+              <p className="font-sans text-base font-light text-text-secondary">Investors who know what they&apos;re looking at.</p>
+              <p className="font-sans text-base font-light text-text-secondary">Property owners who want their work shown properly.</p>
+              <p className="font-sans text-base font-light text-text-secondary">People who&apos;d rather be introduced than browse.</p>
             </div>
           </AnimatedSection>
 
           <AnimatedSection delay={0.1}>
-            <h3 className="text-2xl text-text-muted">VIREZIA is not for</h3>
-            <div className="mt-8 space-y-4">
-              <p className="font-sans text-base font-light text-text-muted">Browsing.</p>
-              <p className="font-sans text-base font-light text-text-muted">Mass-market property search.</p>
-              <p className="font-sans text-base font-light text-text-muted">Volume listings.</p>
-              <p className="font-sans text-base font-light text-text-muted">Anyone expecting a portal.</p>
+            <h3 className="text-2xl text-text-muted">Not for</h3>
+            <div className="mt-8">
+              <p className="font-sans text-base font-light text-text-muted">
+                If you want to scroll through hundreds of listings, this isn&apos;t the place.
+              </p>
             </div>
           </AnimatedSection>
         </div>
 
         <AnimatedSection className="mt-14">
           <p className="font-sans text-sm text-text-muted">
-            Access is limited. Each application is reviewed individually.
+            Spots are limited.
           </p>
         </AnimatedSection>
       </div>
@@ -165,14 +150,10 @@ function ForOwners() {
         <AnimatedSection className="max-w-xl">
           <SectionLabel text="For Owners & Developers" />
           <h3 className="mt-8 text-[clamp(24px,3vw,32px)]">
-            If your property is exceptional,
-            <br />
-            we&apos;d like to hear about it.
+            If you&apos;ve built something worth showing properly, tell us about it.
           </h3>
           <p className="mt-6 font-sans text-base font-light leading-relaxed text-text-secondary">
-            VIREZIA features a limited number of properties each year.
-            Owners and developers with architecturally distinctive,
-            design-led, or story-rich properties may submit for review.
+            We feature a small number of properties each year. If it has real architecture, a strong location, or a story behind it, we want to hear from you.
           </p>
           <Link
             href="/for-owners"
@@ -202,9 +183,7 @@ function FinalCTA() {
             Create your VIREZIA profile.
           </h2>
           <p className="mt-6 font-sans text-base font-light text-text-secondary">
-            Tell us what you&apos;re looking for &mdash;
-            or what you&apos;re offering.
-            We respond personally within 48 hours.
+            Tell us what you&apos;re looking for, or what you&apos;re offering. We get back to you within 48 hours.
           </p>
           <div className="mt-8">
             <Link
@@ -214,9 +193,6 @@ function FinalCTA() {
               Apply for Access
             </Link>
           </div>
-          <p className="mt-4 font-sans text-[12px] text-text-muted">
-            Each application is reviewed individually.
-          </p>
         </AnimatedSection>
       </div>
     </section>

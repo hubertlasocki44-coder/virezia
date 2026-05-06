@@ -15,7 +15,7 @@ export default function HeroContent() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            A Curated Real Estate Network
+            A Private Real Estate Network
           </motion.p>
 
           <motion.h1
@@ -25,9 +25,9 @@ export default function HeroContent() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.5 }}
           >
-            Curated real estate,
+            Selected real estate.
             <br />
-            selected &mdash; not listed.
+            Not listed &mdash; introduced.
           </motion.h1>
 
           <motion.p
@@ -47,9 +47,7 @@ export default function HeroContent() {
             transition={{ duration: 0.8, delay: 0.9 }}
           >
             <p className="font-sans text-[15px] font-light leading-[1.8] text-text-secondary">
-              VIREZIA selects properties from across the market &mdash;
-              architectural, design-led, location-driven, investment-grade &mdash;
-              and presents them inside VIREZIA Circle.
+              We pick properties for their architecture, location, and investment logic, and present them to members of VIREZIA Circle.
             </p>
             <p className="font-sans text-[15px] font-light leading-[1.8] text-text-secondary mt-3">
               Apply to create your profile.
@@ -79,7 +77,7 @@ export default function HeroContent() {
         </div>
       </div>
 
-      {/* Bottom text — part of flow, never overlaps */}
+      {/* Bottom text */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -87,10 +85,10 @@ export default function HeroContent() {
       >
         <div className="border-t border-border-subtle pt-5">
           <p className="font-sans text-[11px] tracking-[0.05em] text-text-muted">
-            Properties available inside VIREZIA Circle. Apply to create your profile.
+            Properties visible inside VIREZIA Circle. Apply to create your profile.
           </p>
           <p className="mt-2 font-serif text-[13px] italic text-accent-gold/60">
-            VIREZIA Circle &mdash; by invitation only.{" "}
+            VIREZIA Circle &mdash; access on application.{" "}
             <Link href="/circle" className="hover:text-accent-gold transition-colors">&rarr;</Link>
           </p>
         </div>

@@ -48,8 +48,7 @@ export default function CirclePage() {
           </h1>
 
           <p className="mt-6 font-sans text-base font-light leading-relaxed text-text-secondary">
-            A private network for those with active acquisition intent
-            in markets we cover.
+            A private network for buyers and investors active in our markets.
           </p>
           <p className="mt-4 font-sans text-base font-light leading-relaxed text-text-secondary">
             Membership is granted by invitation or direct referral.
@@ -100,8 +99,7 @@ export default function CirclePage() {
           )}
 
           <p className="mt-8 font-sans text-[12px] text-text-muted">
-            All requests are reviewed personally.
-            Current availability is limited.
+            We read every request. There&apos;s a short waitlist.
           </p>
 
           <Link
