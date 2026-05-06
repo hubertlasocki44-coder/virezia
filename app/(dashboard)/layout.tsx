@@ -82,8 +82,8 @@ export default async function DashboardLayout({
         </div>
       </div>
 
-      {/* Main content */}
-      <main className="flex-1 min-h-screen md:pt-0 pt-14">
+      {/* Main content — override global heading styles */}
+      <main className="flex-1 min-h-screen md:pt-0 pt-14 [&_h1]:font-sans [&_h1]:text-[24px] [&_h1]:font-medium [&_h1]:tracking-tight [&_h1]:leading-normal [&_h2]:font-sans [&_h2]:text-[11px] [&_h2]:font-normal [&_h2]:uppercase [&_h2]:tracking-[0.1em] [&_h2]:leading-normal [&_h3]:font-sans [&_h3]:text-[13px] [&_h3]:font-medium [&_h3]:tracking-normal [&_h3]:leading-normal">
         <div className="p-6 md:p-10 max-w-[1400px]">
           {children}
         </div>
