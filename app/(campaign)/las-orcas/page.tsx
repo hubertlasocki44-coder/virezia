@@ -188,10 +188,10 @@ function LasOrcasContent() {
                 Robert Couturier
               </h2>
               <p className="font-sans text-base font-light leading-relaxed text-text-secondary mt-6">
-                Paris-trained architect and interior designer. Based in New York since 1981. His work spans four continents &mdash; from Manhattan townhouses to estates in France, England, Russia, the Middle East, and Mexico.
+                Paris-trained architect and interior designer. Based in New York since 1981. His work spans four continents, from Manhattan townhouses to estates in France, England, Russia, the Middle East, and Mexico.
               </p>
               <p className="font-sans text-base font-light leading-relaxed text-text-secondary mt-4">
-                Named to the <span className="text-text-primary">AD100</span> &mdash; Architectural Digest&apos;s definitive list of the world&apos;s top architects and designers. Author of <span className="text-text-primary italic">Designing Paradises</span>, published by Rizzoli. Clients have included Sir James Goldsmith and Jeff Koons.
+                Named to the <span className="text-text-primary">AD100</span>, Architectural Digest&apos;s definitive list of the world&apos;s top architects and designers. Author of <span className="text-text-primary italic">Designing Paradises</span>, published by Rizzoli. Clients have included Sir James Goldsmith and Jeff Koons.
               </p>
 
               {/* Press logos inline */}
@@ -237,7 +237,7 @@ function LasOrcasContent() {
                 1987
               </p>
               <p className="font-sans text-base font-light leading-relaxed text-text-secondary">
-                In the autumn of 1987, after the stock market crash, Sir James Goldsmith &mdash; the Anglo-French financier &mdash; withdrew from the world he had spent thirty years building. He bought twenty thousand acres on the Pacific Coast of Mexico and began to imagine what it might become.
+                In the autumn of 1987, after the stock market crash, Sir James Goldsmith, the Anglo-French financier, withdrew from the world he had spent thirty years building. He bought twenty thousand acres on the Pacific Coast of Mexico and began to imagine what it might become.
               </p>
               <p className="font-sans text-base font-light leading-relaxed text-text-secondary mt-6">
                 He had recently commissioned a young French architect, newly arrived in New York, to decorate his Manhattan townhouse. He now offered him something larger: the design of an entire world.
@@ -323,10 +323,10 @@ function LasOrcasContent() {
                 Puerto Escondido, Oaxaca
               </h2>
               <p className="font-sans text-base font-light leading-relaxed text-text-secondary mt-8">
-                Puerto Escondido began as a surfers&apos; secret &mdash; a stretch of Pacific coastline known only to those who sought it out. It has since become one of Mexico&apos;s most compelling destinations: unhurried, culturally rich, and architecturally awake.
+                Puerto Escondido began as a surfers&apos; secret, a stretch of Pacific coastline known only to those who sought it out. It has since become one of Mexico&apos;s most compelling destinations: unhurried, culturally rich, and architecturally awake.
               </p>
               <p className="font-sans text-base font-light leading-relaxed text-text-secondary mt-6">
-                Oaxaca&apos;s food culture &mdash; rooted in indigenous tradition, refined by a generation of internationally recognized chefs &mdash; is considered among the most sophisticated in Mexico. The coast is uncrowded. The pace is slow. The light is the kind you remember.
+                Oaxaca&apos;s food culture, rooted in indigenous tradition and refined by a generation of internationally recognized chefs, is considered among the most sophisticated in Mexico. The coast is uncrowded. The pace is slow. The light is the kind you remember.
               </p>
               <p className="font-sans text-base font-light leading-relaxed text-text-secondary mt-6">
                 In the last five years, this stretch of coast has quietly attracted the greatest concentration of world-class architecture in Mexico: Tadao Ando, Alberto Kalach, Ludwig Godefroy. Until now, that architecture could only be visited. Las Orcas is the first opportunity to inhabit it.
@@ -383,13 +383,13 @@ function LasOrcasContent() {
                 Las Orcas
               </p>
               <p className="font-sans text-base font-light leading-relaxed text-text-secondary">
-                Seven private residences on a single beachfront parcel &mdash; four villas and three casitas, designed by Robert Couturier as a small village. &ldquo;So that when you walk through from the entrance to the upper bungalows,&rdquo; he says, &ldquo;you have a feeling that you&apos;re walking through a small little city.&rdquo;
+                Seven private residences on a single beachfront parcel. Four villas and three casitas, designed by Robert Couturier as a small village. &ldquo;So that when you walk through from the entrance to the upper bungalows,&rdquo; he says, &ldquo;you have a feeling that you&apos;re walking through a small little city.&rdquo;
               </p>
               <p className="font-sans text-base font-light leading-relaxed text-text-secondary mt-6">
-                The construction is in concrete and stone &mdash; materials chosen, in his words, &ldquo;that will live in the sea air and age gracefully &mdash; as we all should.&rdquo; Spaces are designed to be open but cozy. &ldquo;You don&apos;t have the feeling that you live outside all the time. You have the ability to be outside, and the ability to stay inside and read a book.&rdquo;
+                The construction is in concrete and stone. Materials chosen, in his words, &ldquo;that will live in the sea air and age gracefully &mdash; as we all should.&rdquo; Spaces are designed to be open but cozy. &ldquo;You don&apos;t have the feeling that you live outside all the time. You have the ability to be outside, and the ability to stay inside and read a book.&rdquo;
               </p>
               <p className="font-sans text-base font-light leading-relaxed text-text-secondary mt-6">
-                Each residence has its own private deed and rooftop plunge pool. Pre-construction. Pre-titled lots. Direct access to the uncrowded beach of La Barra. Seven residences in total &mdash; three casitas and four villas, ranging from two to three bedrooms. Five remain available to founding members.
+                Each residence has its own private deed and rooftop plunge pool. Pre-construction. Pre-titled lots. Direct access to the uncrowded beach of La Barra. Seven residences in total: three casitas and four villas, ranging from two to three bedrooms. Six remain available to founding members.
               </p>
               <p className="font-sans text-lg font-normal text-text-primary mt-10">
                 From $561,000.
@@ -471,7 +471,7 @@ function LasOrcasContent() {
                 Two-bedroom residences. Built area from 180 m&sup2;. Land from 78 m&sup2;.
               </p>
               <p className="font-sans text-sm font-light italic text-text-muted mt-3">
-                Three casitas, two remaining.
+                Three casitas, two available.
               </p>
             </AnimatedSection>
 
@@ -483,7 +483,7 @@ function LasOrcasContent() {
                 Three-bedroom residences with two pools. Built area from 310 m&sup2;. Land from 214 m&sup2;.
               </p>
               <p className="font-sans text-sm font-light italic text-text-muted mt-3">
-                Four villas, three remaining.
+                Four villas, four available.
               </p>
             </AnimatedSection>
           </div>
@@ -509,7 +509,7 @@ function LasOrcasContent() {
               VIREZIA Selections
             </p>
             <p className="font-sans text-base font-light leading-relaxed text-text-secondary">
-              Las Orcas is part of VIREZIA Selections &mdash; a small group of properties we&apos;ve chosen for their architecture, their location, or the story behind them.
+              Las Orcas is part of VIREZIA Selections, a small group of properties we&apos;ve chosen for their architecture, their location, or the story behind them.
             </p>
           </AnimatedSection>
         </div>
@@ -568,10 +568,10 @@ function LasOrcasContent() {
               The Coast
             </p>
             <p className="font-sans text-base font-light leading-relaxed text-text-secondary">
-              The Pacific Coast of Oaxaca runs for some of the most untouched coastline in Mexico &mdash; three hundred kilometers between Huatulco and Acapulco where the mountains meet the sea, with no high-rise development, no resort chains, and no immediate plans for either.
+              The Pacific Coast of Oaxaca runs for three hundred kilometers between Huatulco and Acapulco, where the mountains meet the sea. No high-rise development, no resort chains, and no immediate plans for either.
             </p>
             <p className="font-sans text-base font-light leading-relaxed text-text-secondary mt-6">
-              Las Orcas sits in La Barra &mdash; a quiet residential stretch east of Puerto Escondido&apos;s town center, removed from the surf scene of Zicatela and the bars of La Punta. The beach here is wide, walkable, and largely empty. The neighbors are private homes, not hotels.
+              Las Orcas sits in La Barra, a quiet residential stretch east of Puerto Escondido&apos;s town center, removed from the surf scene of Zicatela and the bars of La Punta. The beach here is wide, walkable, and largely empty. The neighbors are private homes, not hotels.
             </p>
           </AnimatedSection>
         </div>
@@ -620,10 +620,10 @@ function LasOrcasContent() {
               The Build
             </p>
             <p className="font-sans text-base font-light leading-relaxed text-text-secondary">
-              Construction by Quantia, the Puerto Escondido studio responsible for Casa Sicar&uacute; and Casa Madrina. Materials drawn from the region &mdash; Cantera Verde stone, Parota wood, Talavera tile, breeze blocks &mdash; selected for permanence in the sea air. Saltwater pools. Whole-home water filtration. Ten-inch walls and dual-pane glass to soften the climate. Each residence is delivered with private deed under Mexican federal title.
+              Construction by Quantia, the Puerto Escondido studio responsible for Casa Sicar&uacute; and Casa Madrina. Materials drawn from the region: Cantera Verde stone, Parota wood, Talavera tile, breeze blocks. All selected for permanence in the sea air. Saltwater pools. Whole-home water filtration. Ten-inch walls and dual-pane glass to soften the climate. Each residence is delivered with private deed under Mexican federal title.
             </p>
             <p className="font-sans text-sm text-text-muted mt-8">
-              Estimated construction: Q2 2026 &mdash; Q3 2027.
+              Estimated construction: Q2 2026 to Q3 2027.
             </p>
           </AnimatedSection>
         </div>
@@ -639,10 +639,10 @@ function LasOrcasContent() {
               Founding Members
             </p>
             <h2 className="font-serif text-[clamp(28px,4vw,44px)] font-light leading-[1.2] mb-8">
-              Five residences remain.
+              Six residences remain.
             </h2>
             <p className="font-sans text-base font-light leading-relaxed text-text-secondary">
-              If this project speaks to you &mdash; whether as a personal residence on the Pacific or as an investment in the only Couturier-designed residential project on Mexico&apos;s Pacific Coast &mdash; you can become one of five founding members.
+              If this project speaks to you, whether as a personal residence on the Pacific or as an investment in the only Couturier-designed residential project on Mexico&apos;s Pacific Coast, you can become one of six founding members.
             </p>
             <p className="font-sans text-base font-light leading-relaxed text-text-secondary mt-6">
               Founding members select their residence from those remaining. They participate, where they wish, in the architect&apos;s final decisions on their home. They join a small group whose names will be associated with the project&apos;s first chapter.
