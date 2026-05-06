@@ -153,7 +153,7 @@ function LasOrcasContent() {
               Robert Couturier &middot; Oaxacan Coast &middot; 2026
             </p>
             <h1 className="font-serif text-[clamp(36px,7vw,80px)] font-light leading-[1.05] max-w-4xl" style={{ textWrap: "balance" } as React.CSSProperties}>
-              An AD100 architect returns to Mexico&apos;s Pacific Coast.
+              An AD100 Architect Returns to Mexico&apos;s Pacific Coast.
             </h1>
             <p className="font-sans text-base font-light text-text-secondary mt-8 max-w-xl leading-relaxed">
               The first architect-designed residential project on the Oaxacan Coast, by Robert Couturier, the architect behind Cuixmala. Seven beachfront residences in Puerto Escondido.
