@@ -105,7 +105,9 @@ function emailWrapper(content: string): string {
 
 <!-- Logo -->
 <tr><td style="padding:40px 40px 32px 40px;border-bottom:1px solid #e8e4de;">
-  <span style="font-family:Georgia,'Times New Roman',serif;font-size:20px;letter-spacing:0.15em;color:#1a1a1a;">VIREZIA</span>
+  <a href="${siteUrl}" style="text-decoration:none;">
+    <img src="${siteUrl}/logo.png" alt="VIREZIA" width="120" height="auto" style="display:block;height:auto;max-width:120px;border:0;" />
+  </a>
 </td></tr>
 
 <!-- Content -->
