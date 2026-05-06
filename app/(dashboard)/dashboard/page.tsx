@@ -2,6 +2,7 @@ import { redirect } from "next/navigation";
 import { createClient, createServiceClient } from "@/lib/supabase/server";
 import Link from "next/link";
 import AdminStatusBadge from "@/components/admin/AdminStatusBadge";
+import PartnerKanban from "./PartnerKanban";
 
 export default async function DashboardPage() {
   const supabase = await createClient();
@@ -173,49 +174,14 @@ async function PartnerDashboard({ userId, profile }: { userId: string; profile: 
         </div>
       </div>
 
-      {/* Assigned leads */}
+      {/* Kanban board */}
       <div className="mt-8">
-        <h2 className="font-serif text-lg text-text-primary">Assigned Leads</h2>
-        <div className="mt-4 space-y-3">
-          {assignments?.map((a) => {
-            const lead = a.lead as Record<string, unknown> | null;
-            const client = lead?.client as Record<string, unknown> | null;
-            const notes = lead?.notes as string | null;
-
-            return (
-              <Link
-                key={a.id}
-                href={`/leads/${lead?.id}`}
-                className="block border border-border bg-bg-card p-4 transition-colors hover:border-accent-gold/30"
-              >
-                <div className="flex items-center justify-between">
-                  <div>
-                    <p className="font-sans text-sm text-text-primary">
-                      {(client?.full_name as string) || (client?.email as string) || "Anonymous"}
-                    </p>
-                    <div className="mt-1 flex items-center gap-2">
-                      <AdminStatusBadge status={lead?.status as string} />
-                      {lead?.priority ? (
-                        <span className="font-sans text-[11px] text-text-muted">
-                          {lead.priority as string}
-                        </span>
-                      ) : null}
-                    </div>
-                    {notes ? (
-                      <p className="mt-1 font-sans text-[12px] text-text-muted line-clamp-1">{notes}</p>
-                    ) : null}
-                  </div>
-                  <span className="font-sans text-[12px] text-text-muted">
-                    {new Date(a.created_at).toLocaleDateString()}
-                  </span>
-                </div>
-              </Link>
-            );
-          })}
-          {(!assignments || assignments.length === 0) && (
-            <p className="font-sans text-sm text-text-muted">No assigned leads yet.</p>
-          )}
-        </div>
+        <h2 className="font-serif text-lg text-text-primary mb-4">Lead Pipeline</h2>
+        {assignments && assignments.length > 0 ? (
+          <PartnerKanban assignments={assignments as unknown as Parameters<typeof PartnerKanban>[0]["assignments"]} />
+        ) : (
+          <p className="font-sans text-sm text-text-muted">No assigned leads yet.</p>
+        )}
       </div>
     </div>
   );

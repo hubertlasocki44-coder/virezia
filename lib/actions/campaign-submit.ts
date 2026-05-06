@@ -264,5 +264,38 @@ export async function submitLasOrcasForm(data: LasOrcasSubmission) {
     console.error("[Las Orcas] Lead email/contact failed:", err);
   }
 
+  // 9. Log email activity on lead (if lead exists)
+  if (userId) {
+    const { data: leadRecord } = await supabase
+      .from("leads")
+      .select("id")
+      .eq("client_id", userId)
+      .maybeSingle();
+
+    if (leadRecord) {
+      const emailType = isStage2
+        ? (matched ? "Founding Member welcome + video link" : "Circle welcome (unmatched)")
+        : "Circle welcome email";
+
+      // Find system user for created_by
+      const { data: sysUser } = await supabase
+        .from("profiles")
+        .select("id")
+        .in("role", ["employee", "super_admin"])
+        .limit(1)
+        .maybeSingle();
+
+      if (sysUser) {
+        await supabase.from("interactions").insert({
+          lead_id: leadRecord.id,
+          type: "email",
+          content: `Sent: ${emailType}. Drip sequence scheduled (Day 2, 5, 9, 14).`,
+          created_by: sysUser.id,
+          visible_to_partner: true,
+        });
+      }
+    }
+  }
+
   return { success: true, matched: isStage2 ? matched : undefined };
 }

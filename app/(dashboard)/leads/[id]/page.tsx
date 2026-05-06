@@ -2,6 +2,7 @@ import { createClient, createServiceClient } from "@/lib/supabase/server";
 import { notFound, redirect } from "next/navigation";
 import AdminStatusBadge from "@/components/admin/AdminStatusBadge";
 import Link from "next/link";
+import { StatusChanger, AddNote } from "./LeadActions";
 
 interface Props {
   params: Promise<{ id: string }>;
@@ -87,14 +88,16 @@ export default async function PartnerLeadDetailPage({ params }: Props) {
       <h1 className="mt-4 font-serif text-[28px] font-light text-text-primary">
         {(client?.full_name as string) || "Client"}
       </h1>
-      <div className="mt-2 flex items-center gap-3">
-        <AdminStatusBadge status={lead?.status as string} />
-        <span className="font-sans text-[11px] text-text-muted">
-          {assignment.visibility_level} access
-        </span>
+      <div className="mt-4 flex flex-wrap items-center gap-4">
+        <StatusChanger leadId={id} currentStatus={lead?.status as string} />
         {lead?.priority ? (
           <span className="font-sans text-[11px] text-text-muted">
             Priority: {lead.priority as string}
+          </span>
+        ) : null}
+        {lead?.score ? (
+          <span className="font-sans text-[11px] text-accent-gold">
+            Score: {lead.score as number}/100
           </span>
         ) : null}
       </div>
@@ -190,6 +193,12 @@ export default async function PartnerLeadDetailPage({ params }: Props) {
           <p className="font-sans text-sm text-text-secondary">{lead.notes as string}</p>
         </div>
       ) : null}
+
+      {/* Add note */}
+      <div className="mt-8">
+        <h2 className="font-sans text-[11px] uppercase tracking-[0.1em] text-accent-gold mb-2">Add Note</h2>
+        <AddNote leadId={id} />
+      </div>
 
       {/* Interaction history */}
       <div className="mt-8">
