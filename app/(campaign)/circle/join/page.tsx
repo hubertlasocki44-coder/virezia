@@ -95,6 +95,7 @@ function CircleJoinWizard() {
   const [timeline, setTimeline] = useState("");
   const [intent, setIntent] = useState("");
   const [loading, setLoading] = useState(false);
+  const [consent, setConsent] = useState(false);
   const [error, setError] = useState("");
   const [stage1Submitted, setStage1Submitted] = useState(false);
 
@@ -183,6 +184,7 @@ function CircleJoinWizard() {
         break;
       case "email":
         if (!email.trim() || !email.includes("@")) { setError("Please enter a valid email."); return; }
+        if (!consent) { setError("Please agree to receive emails to continue."); return; }
         setStage("phone");
         break;
       case "phone":
@@ -278,11 +280,22 @@ function CircleJoinWizard() {
                     type="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    onKeyDown={(e) => e.key === "Enter" && goNext()}
+                    onKeyDown={(e) => e.key === "Enter" && consent && goNext()}
                     placeholder="you@example.com"
                     autoFocus
                     className="w-full border-b border-border bg-transparent px-0 py-4 font-sans text-lg text-center text-text-primary placeholder:text-text-muted/40 focus:border-accent-gold focus:outline-none transition-colors"
                   />
+                  <label className="flex items-start gap-3 mt-8 text-left cursor-pointer">
+                    <input
+                      type="checkbox"
+                      checked={consent}
+                      onChange={(e) => setConsent(e.target.checked)}
+                      className="mt-1 h-4 w-4 shrink-0 accent-accent-gold"
+                    />
+                    <span className="font-sans text-[13px] font-light text-text-muted leading-relaxed">
+                      I agree to receive emails from VIREZIA about Las Orcas and future Selections. You can unsubscribe at any time.
+                    </span>
+                  </label>
                 </div>
               )}
 
