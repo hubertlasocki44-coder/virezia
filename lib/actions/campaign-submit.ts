@@ -183,34 +183,34 @@ export async function submitLasOrcasForm(data: LasOrcasSubmission) {
         notes: `Las Orcas founding member interest. Budget: ${data.investmentRange}, Timeline: ${data.timeline}, Intent: ${data.intent}`,
       }).select("id").single();
 
-      // Auto-assign to Las Orcas campaign partner (Paul Krueger)
+      // Auto-assign to all Las Orcas campaign partners
       if (newLead) {
-        const partnerEmail = process.env.LAS_ORCAS_PARTNER_EMAIL || "paul@lasorcasoax.com";
-        const { data: partner } = await supabase
+        // Find all developers with company_name containing "Las Orcas"
+        const { data: partners } = await supabase
           .from("profiles")
           .select("id")
-          .eq("email", partnerEmail)
-          .maybeSingle();
+          .eq("role", "developer")
+          .ilike("company_name", "%Las Orcas%");
 
-        if (partner) {
-          // Find an employee to set as assigned_by (first employee in system)
-          const { data: employee } = await supabase
-            .from("profiles")
-            .select("id")
-            .in("role", ["employee", "super_admin"])
-            .limit(1)
-            .single();
+        // Find an employee to set as assigned_by
+        const { data: employee } = await supabase
+          .from("profiles")
+          .select("id")
+          .in("role", ["employee", "super_admin"])
+          .limit(1)
+          .single();
 
-          if (employee) {
-            await supabase.from("lead_assignments").insert({
-              lead_id: newLead.id,
-              partner_id: partner.id,
-              visibility_level: "full",
-              status: "active",
-              assigned_by: employee.id,
-              notes: "Auto-assigned from Las Orcas campaign",
-            });
-          }
+        if (partners && partners.length > 0 && employee) {
+          const assignments = partners.map((partner) => ({
+            lead_id: newLead.id,
+            partner_id: partner.id,
+            visibility_level: "full" as const,
+            status: "active" as const,
+            assigned_by: employee.id,
+            notes: "Auto-assigned from Las Orcas campaign",
+          }));
+
+          await supabase.from("lead_assignments").insert(assignments);
         }
       }
     }
