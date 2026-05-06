@@ -1,7 +1,7 @@
 "use server";
 
 import { createServiceClient } from "@/lib/supabase/server";
-import { notifyNewApplication, notifyCircleRequest, notifyPartnerSubmission } from "@/lib/email";
+import { notifyNewApplication, notifyCircleRequest, notifyPartnerSubmission, sendApplicationConfirmation } from "@/lib/email";
 
 export async function submitApplication(stepData: Record<string, unknown>) {
   const supabase = await createServiceClient();
@@ -60,10 +60,30 @@ export async function submitApplication(stepData: Record<string, unknown>) {
     }, { onConflict: "user_id" });
   }
 
-  // Send email notification (never block form success on email failure)
+  // Auto-create lead for buyer/investor applicants
+  if (isBuyer && userId) {
+    const { data: existingLead } = await supabase
+      .from("leads")
+      .select("id")
+      .eq("client_id", userId)
+      .maybeSingle();
+
+    if (!existingLead) {
+      await supabase.from("leads").insert({
+        client_id: userId,
+        status: "new",
+        source: "apply",
+        priority: "medium",
+        notes: `Application: ${accountType}. ${stepData.context || ""}`.trim(),
+      });
+    }
+  }
+
+  // Send email notifications
   try {
     if (fullName && email) {
       await notifyNewApplication(fullName, email, accountType);
+      await sendApplicationConfirmation(email, fullName.split(" ")[0], "apply");
     }
   } catch (error) {
     console.error("[submitApplication] Email notification failed:", error);
@@ -85,6 +105,7 @@ export async function submitCircleRequest(email: string) {
 
   try {
     await notifyCircleRequest(email);
+    await sendApplicationConfirmation(email, "", "circle");
   } catch (err) {
     console.error("[submitCircleRequest] Email notification failed:", err);
   }
@@ -107,9 +128,13 @@ export async function submitPartnerApplication(data: Record<string, unknown>) {
 
   try {
     const fullName = data.full_name as string;
+    const email = data.email as string;
     const company = data.company_name as string;
     if (fullName && company) {
       await notifyPartnerSubmission(fullName, company);
+    }
+    if (email) {
+      await sendApplicationConfirmation(email, fullName?.split(" ")[0] || "", "for-owners");
     }
   } catch (err) {
     console.error("[submitPartnerApplication] Email notification failed:", err);

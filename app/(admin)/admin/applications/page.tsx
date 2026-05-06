@@ -34,7 +34,9 @@ export default async function ApplicationsPage() {
             {applications?.map((app) => (
               <tr key={app.id} className="border-b border-border-subtle bg-bg-card hover:bg-bg-secondary">
                 <td className="px-4 py-3 font-sans text-sm text-text-primary">
-                  {app.user?.full_name || app.user?.email || (app.step_data as Record<string, unknown>)?.full_name as string || "Anonymous"}
+                  <Link href={`/admin/applications/${app.id}`} className="text-accent-gold hover:text-accent-gold-light">
+                    {app.user?.full_name || app.user?.email || (app.step_data as Record<string, unknown>)?.full_name as string || "Anonymous"}
+                  </Link>
                 </td>
                 <td className="px-4 py-3 font-sans text-sm text-text-secondary">{app.type}</td>
                 <td className="px-4 py-3"><AdminStatusBadge status={app.status} /></td>

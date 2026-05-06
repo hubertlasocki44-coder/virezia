@@ -84,6 +84,45 @@ export async function notifyPartnerSubmission(name: string, company: string) {
   );
 }
 
+/* ─── Confirmation email for public forms ──────────────────── */
+
+export async function sendApplicationConfirmation(email: string, firstName: string, type: "apply" | "for-owners" | "circle") {
+  const client = getResendClient();
+  if (!client) {
+    console.log("[Email] Skipped confirmation (no API key):", email);
+    return;
+  }
+
+  const subjects: Record<string, string> = {
+    apply: "Your Application Has Been Received",
+    "for-owners": "Your Property Submission Has Been Received",
+    circle: "Your Request Has Been Noted",
+  };
+
+  const bodies: Record<string, string> = {
+    apply: `We review every application individually and will be in touch within 48 hours.`,
+    "for-owners": `We review every submission against our current featuring criteria. If there is a fit, we will reach out within 5 business days.`,
+    circle: `If there is a fit, someone will reach out directly.`,
+  };
+
+  try {
+    await client.emails.send({
+      from: FROM_EMAIL,
+      replyTo: REPLY_TO,
+      to: email,
+      subject: subjects[type],
+      html: emailWrapper(`
+        <h1 style="font-family:Georgia,'Times New Roman',serif;font-size:26px;font-weight:300;line-height:1.3;color:#1a1a1a;margin:0 0 20px 0;">Thank you${firstName ? `, ${escapeHtml(firstName)}` : ""}.</h1>
+        <p style="font-family:Georgia,'Times New Roman',serif;font-size:15px;line-height:1.7;color:#4a4a4a;margin:0 0 16px 0;">${bodies[type]}</p>
+        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin:24px 0;"><tr><td style="border-top:1px solid #e8e4de;height:1px;font-size:0;">&nbsp;</td></tr></table>
+        <p style="font-family:Georgia,'Times New Roman',serif;font-size:14px;font-style:italic;color:#c9a96e;margin:0;">&mdash; VIREZIA</p>
+      `),
+    });
+  } catch (err) {
+    console.error("[Email] Confirmation failed:", err);
+  }
+}
+
 /* ─── Emails to leads (table-based, inline styles, Gmail-safe) ── */
 
 function emailWrapper(content: string): string {

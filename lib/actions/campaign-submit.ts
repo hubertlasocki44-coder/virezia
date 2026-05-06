@@ -166,9 +166,8 @@ export async function submitLasOrcasForm(data: LasOrcasSubmission) {
     await supabase.from("buyer_profiles").upsert(buyerData, { onConflict: "user_id" });
   }
 
-  // 6. Create lead for matched Stage 2 submissions
+  // 6. Create lead for matched Stage 2 submissions + auto-assign to campaign partner
   if (isStage2 && matched && userId) {
-    // Check if lead already exists
     const { data: existingLead } = await supabase
       .from("leads")
       .select("id")
@@ -176,13 +175,44 @@ export async function submitLasOrcasForm(data: LasOrcasSubmission) {
       .maybeSingle();
 
     if (!existingLead) {
-      await supabase.from("leads").insert({
+      const { data: newLead } = await supabase.from("leads").insert({
         client_id: userId,
         status: "new",
         source: "circle",
         priority: data.investmentRange === "2m_plus" ? "high" : "medium",
         notes: `Las Orcas founding member interest. Budget: ${data.investmentRange}, Timeline: ${data.timeline}, Intent: ${data.intent}`,
-      });
+      }).select("id").single();
+
+      // Auto-assign to Las Orcas campaign partner (Paul Krueger)
+      if (newLead) {
+        const partnerEmail = process.env.LAS_ORCAS_PARTNER_EMAIL || "paul@lasorcasoax.com";
+        const { data: partner } = await supabase
+          .from("profiles")
+          .select("id")
+          .eq("email", partnerEmail)
+          .maybeSingle();
+
+        if (partner) {
+          // Find an employee to set as assigned_by (first employee in system)
+          const { data: employee } = await supabase
+            .from("profiles")
+            .select("id")
+            .in("role", ["employee", "super_admin"])
+            .limit(1)
+            .single();
+
+          if (employee) {
+            await supabase.from("lead_assignments").insert({
+              lead_id: newLead.id,
+              partner_id: partner.id,
+              visibility_level: "full",
+              status: "active",
+              assigned_by: employee.id,
+              notes: "Auto-assigned from Las Orcas campaign",
+            });
+          }
+        }
+      }
     }
   }
 
