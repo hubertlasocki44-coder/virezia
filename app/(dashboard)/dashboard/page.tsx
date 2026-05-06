@@ -180,6 +180,7 @@ async function PartnerDashboard({ userId, profile }: { userId: string; profile: 
           {assignments?.map((a) => {
             const lead = a.lead as Record<string, unknown> | null;
             const client = lead?.client as Record<string, unknown> | null;
+            const notes = lead?.notes as string | null;
 
             return (
               <Link
@@ -190,14 +191,19 @@ async function PartnerDashboard({ userId, profile }: { userId: string; profile: 
                 <div className="flex items-center justify-between">
                   <div>
                     <p className="font-sans text-sm text-text-primary">
-                      {(client?.full_name as string) || (client?.email as string)}
+                      {(client?.full_name as string) || (client?.email as string) || "Anonymous"}
                     </p>
                     <div className="mt-1 flex items-center gap-2">
                       <AdminStatusBadge status={lead?.status as string} />
-                      <span className="font-sans text-[11px] text-text-muted">
-                        {a.visibility_level} access
-                      </span>
+                      {lead?.priority ? (
+                        <span className="font-sans text-[11px] text-text-muted">
+                          {lead.priority as string}
+                        </span>
+                      ) : null}
                     </div>
+                    {notes ? (
+                      <p className="mt-1 font-sans text-[12px] text-text-muted line-clamp-1">{notes}</p>
+                    ) : null}
                   </div>
                   <span className="font-sans text-[12px] text-text-muted">
                     {new Date(a.created_at).toLocaleDateString()}
