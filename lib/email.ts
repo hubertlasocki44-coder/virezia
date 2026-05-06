@@ -124,7 +124,7 @@ ${content}
     VIREZIA &middot; Curated Selections in Mexico and Latin America
   </p>
   <p style="font-family:Arial,Helvetica,sans-serif;font-size:12px;line-height:1.6;color:#999999;margin:0 0 8px 0;">
-    KONAMIYA LLC &middot; Canc&uacute;n, Mexico
+    KONAMIYA LLC &middot; 30 N Gould St, STE R, Sheridan, WY 82801, USA
   </p>
   <p style="font-family:Arial,Helvetica,sans-serif;font-size:12px;line-height:1.6;color:#999999;margin:0 0 8px 0;">
     You received this email because you joined the VIREZIA Circle.

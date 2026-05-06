@@ -36,7 +36,7 @@ export default function Footer() {
               hello@virezia.com
             </a>
             <p className="mt-2 font-sans text-[12px] text-text-muted">
-              Canc&uacute;n &middot; Mexico
+              Sheridan, WY &middot; USA
             </p>
           </div>
         </div>
