@@ -5,21 +5,27 @@ export async function GET(request: Request) {
   const { searchParams, origin } = new URL(request.url);
   const code = searchParams.get("code");
   const next = searchParams.get("next") ?? "/dashboard";
-  // Validate redirect to prevent open redirect attacks
   const safeNext = next.startsWith("/") && !next.startsWith("//") ? next : "/dashboard";
 
   if (code) {
     const supabase = await createClient();
-    const { error } = await supabase.auth.exchangeCodeForSession(code);
+    const { data, error } = await supabase.auth.exchangeCodeForSession(code);
+
     if (!error) {
       const forwardedHost = request.headers.get("x-forwarded-host");
       const isLocalEnv = process.env.NODE_ENV === "development";
+
+      // Detect password recovery flow
+      const isRecovery = data.session?.user?.app_metadata?.providers?.includes("email")
+        && searchParams.get("type") === "recovery";
+      const redirectPath = isRecovery ? "/reset-password" : safeNext;
+
       if (isLocalEnv) {
-        return NextResponse.redirect(`${origin}${safeNext}`);
+        return NextResponse.redirect(`${origin}${redirectPath}`);
       } else if (forwardedHost) {
-        return NextResponse.redirect(`https://${forwardedHost}${safeNext}`);
+        return NextResponse.redirect(`https://${forwardedHost}${redirectPath}`);
       } else {
-        return NextResponse.redirect(`${origin}${safeNext}`);
+        return NextResponse.redirect(`${origin}${redirectPath}`);
       }
     }
   }
