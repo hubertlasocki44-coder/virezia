@@ -1,5 +1,5 @@
 import { redirect } from "next/navigation";
-import { createClient } from "@/lib/supabase/server";
+import { createClient, createServiceClient } from "@/lib/supabase/server";
 import Link from "next/link";
 import AdminStatusBadge from "@/components/admin/AdminStatusBadge";
 
@@ -126,7 +126,8 @@ async function BuyerDashboard({ userId, profile }: { userId: string; profile: Re
 }
 
 async function PartnerDashboard({ userId, profile }: { userId: string; profile: Record<string, unknown> }) {
-  const supabase = await createClient();
+  // Use service client to bypass RLS for join queries (partner auth verified above)
+  const supabase = await createServiceClient();
 
   const { data: assignments } = await supabase
     .from("lead_assignments")

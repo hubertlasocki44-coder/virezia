@@ -1,4 +1,4 @@
-import { createClient } from "@/lib/supabase/server";
+import { createClient, createServiceClient } from "@/lib/supabase/server";
 import { notFound, redirect } from "next/navigation";
 import AdminStatusBadge from "@/components/admin/AdminStatusBadge";
 import Link from "next/link";
@@ -16,8 +16,9 @@ export default async function PartnerLeadDetailPage({ params }: Props) {
 
   if (!user) redirect("/login");
 
-  // Get assignment for this partner + lead
-  const { data: assignment } = await supabase
+  // Use service client for join query (auth verified above, scoped by partner_id)
+  const serviceSupabase = await createServiceClient();
+  const { data: assignment } = await serviceSupabase
     .from("lead_assignments")
     .select("*, lead:leads(*, client:profiles!leads_client_id_fkey(*))")
     .eq("lead_id", id)
