@@ -6,6 +6,7 @@ import {
   sendCircleWelcome,
   sendFoundingMemberWelcome,
   addToResendContacts,
+  scheduleLasOrcasSequence,
 } from "@/lib/email";
 
 function escapeHtml(str: string): string {
@@ -222,8 +223,12 @@ export async function submitLasOrcasForm(data: LasOrcasSubmission) {
     // Send appropriate welcome email
     if (isStage2) {
       await sendFoundingMemberWelcome(data.email, firstName, matched);
+      // Schedule drip sequence with match status
+      await scheduleLasOrcasSequence(data.email, firstName, matched);
     } else {
       await sendCircleWelcome(data.email, firstName);
+      // Schedule drip sequence (default: unmatched, may upgrade if they do Stage 2)
+      await scheduleLasOrcasSequence(data.email, firstName, false);
     }
   } catch (err) {
     console.error("[Las Orcas] Lead email/contact failed:", err);
