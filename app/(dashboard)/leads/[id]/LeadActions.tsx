@@ -24,18 +24,17 @@ export function StatusChanger({ leadId, currentStatus }: { leadId: string; curre
 
   return (
     <div className="flex items-center gap-2">
-      <span className="font-sans text-[11px] uppercase tracking-[0.1em] text-text-muted">Status:</span>
       <select
         value={currentStatus}
         onChange={(e) => handleChange(e.target.value)}
         disabled={loading}
-        className="bg-bg-card border border-border px-3 py-1.5 font-sans text-sm text-text-primary focus:border-accent-gold focus:outline-none"
+        className="bg-white/[0.04] border border-white/[0.08] rounded-lg px-3 py-2 font-sans text-[12px] text-white/70 focus:border-[#c9a96e]/50 focus:outline-none appearance-none cursor-pointer disabled:opacity-50"
       >
         {STATUSES.map((s) => (
-          <option key={s.value} value={s.value}>{s.label}</option>
+          <option key={s.value} value={s.value} className="bg-[#141414]">{s.label}</option>
         ))}
       </select>
-      {loading ? <span className="font-sans text-[11px] text-accent-gold">Saving...</span> : null}
+      {loading ? <span className="font-sans text-[10px] text-[#c9a96e] animate-pulse">Saving...</span> : null}
     </div>
   );
 }
@@ -54,18 +53,18 @@ export function AddNote({ leadId }: { leadId: string }) {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="mt-4">
+    <form onSubmit={handleSubmit}>
       <textarea
         value={note}
         onChange={(e) => setNote(e.target.value)}
-        placeholder="Add a note or comment..."
+        placeholder="Add a note..."
         rows={3}
-        className="w-full border border-border bg-bg-card px-4 py-3 font-sans text-sm text-text-primary placeholder:text-text-muted focus:border-accent-gold focus:outline-none resize-none"
+        className="w-full bg-white/[0.03] border border-white/[0.06] rounded-lg px-4 py-3 font-sans text-[13px] text-white/70 placeholder:text-white/15 focus:border-white/[0.12] focus:outline-none resize-none"
       />
       <button
         type="submit"
         disabled={loading || !note.trim()}
-        className="mt-2 bg-accent-gold px-6 py-2 font-sans text-[12px] uppercase tracking-[0.1em] text-bg-primary transition-opacity hover:opacity-90 disabled:opacity-50"
+        className="mt-2 w-full bg-white/[0.06] hover:bg-white/[0.1] border border-white/[0.08] rounded-lg px-4 py-2.5 font-sans text-[11px] uppercase tracking-wider text-white/50 hover:text-white/70 transition-all disabled:opacity-30"
       >
         {loading ? "Saving..." : "Add Note"}
       </button>

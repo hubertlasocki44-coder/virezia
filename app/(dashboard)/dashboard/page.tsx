@@ -127,7 +127,6 @@ async function BuyerDashboard({ userId, profile }: { userId: string; profile: Re
 }
 
 async function PartnerDashboard({ userId, profile }: { userId: string; profile: Record<string, unknown> }) {
-  // Use service client to bypass RLS for join queries (partner auth verified above)
   const supabase = await createServiceClient();
 
   const { data: assignments } = await supabase
@@ -142,45 +141,55 @@ async function PartnerDashboard({ userId, profile }: { userId: string; profile: 
     .select("*", { count: "exact", head: true })
     .eq("partner_id", userId);
 
-  const { count: activeCount } = await supabase
-    .from("lead_assignments")
-    .select("*", { count: "exact", head: true })
-    .eq("partner_id", userId)
-    .eq("status", "active");
+  // Count by status
+  const statusCounts: Record<string, number> = {};
+  (assignments || []).forEach((a) => {
+    const lead = a.lead as Record<string, unknown> | null;
+    const status = (lead?.status as string) || "new";
+    statusCounts[status] = (statusCounts[status] || 0) + 1;
+  });
 
   return (
     <div>
-      <h1 className="font-serif text-[28px] font-light text-text-primary">
-        Welcome, {(profile.full_name as string)?.split(" ")[0] || "there"}.
-      </h1>
-      {profile.company_name ? (
-        <p className="mt-1 font-sans text-sm text-text-muted">{profile.company_name as string}</p>
-      ) : null}
-
-      {/* Verification status */}
-      <div className="mt-6">
-        <AdminStatusBadge status={profile.status as string} />
-      </div>
-
-      {/* Stats */}
-      <div className="mt-6 grid gap-4 sm:grid-cols-3">
-        <div className="border border-border bg-bg-card p-6">
-          <p className="font-sans text-[11px] uppercase tracking-[0.1em] text-text-muted">Total Leads</p>
-          <p className="mt-2 font-serif text-[32px] font-light text-text-primary">{totalAssigned ?? 0}</p>
-        </div>
-        <div className="border border-border bg-bg-card p-6">
-          <p className="font-sans text-[11px] uppercase tracking-[0.1em] text-text-muted">Active</p>
-          <p className="mt-2 font-serif text-[32px] font-light text-text-primary">{activeCount ?? 0}</p>
+      {/* Header */}
+      <div className="flex items-start justify-between">
+        <div>
+          <h1 className="font-sans text-[24px] font-medium text-white/90 tracking-tight">
+            Pipeline
+          </h1>
+          <p className="mt-1 font-sans text-[13px] text-white/30">
+            {profile.company_name ? `${profile.company_name as string} — ` : ""}
+            {totalAssigned ?? 0} total leads
+          </p>
         </div>
       </div>
 
-      {/* Kanban board */}
-      <div className="mt-8">
-        <h2 className="font-serif text-lg text-text-primary mb-4">Lead Pipeline</h2>
+      {/* Stats row */}
+      <div className="mt-8 grid grid-cols-2 md:grid-cols-4 gap-3">
+        {[
+          { label: "Total", value: totalAssigned ?? 0, color: "white/90" },
+          { label: "New", value: statusCounts["new"] || 0, color: "[#c9a96e]" },
+          { label: "In Progress", value: (statusCounts["screening"] || 0) + (statusCounts["qualified"] || 0) + (statusCounts["in_progress"] || 0), color: "[#5a8ac9]" },
+          { label: "Won", value: statusCounts["closed_won"] || 0, color: "[#4ade80]" },
+        ].map((stat) => (
+          <div key={stat.label} className="bg-white/[0.03] border border-white/[0.06] rounded-xl p-4">
+            <p className="font-sans text-[11px] text-white/30 uppercase tracking-wider">{stat.label}</p>
+            <p className={`mt-2 font-sans text-[28px] font-light text-${stat.color} tracking-tight`}>{stat.value}</p>
+          </div>
+        ))}
+      </div>
+
+      {/* Kanban */}
+      <div className="mt-10">
         {assignments && assignments.length > 0 ? (
           <PartnerKanban assignments={assignments as unknown as Parameters<typeof PartnerKanban>[0]["assignments"]} />
         ) : (
-          <p className="font-sans text-sm text-text-muted">No assigned leads yet.</p>
+          <div className="flex items-center justify-center h-[300px] border border-dashed border-white/[0.06] rounded-xl">
+            <div className="text-center">
+              <p className="font-sans text-[15px] text-white/30">No leads assigned yet</p>
+              <p className="mt-1 font-sans text-[12px] text-white/15">Leads from your campaign will appear here</p>
+            </div>
+          </div>
         )}
       </div>
     </div>

@@ -3,7 +3,7 @@ import { createClient } from "@/lib/supabase/server";
 import Image from "next/image";
 import Link from "next/link";
 import { signOut } from "@/lib/actions/auth";
-import { LogOut } from "lucide-react";
+import DashboardSidebar from "./DashboardSidebar";
 
 export default async function DashboardLayout({
   children,
@@ -19,44 +19,75 @@ export default async function DashboardLayout({
 
   const { data: profile } = await supabase
     .from("profiles")
-    .select("full_name, email, role")
+    .select("full_name, email, role, company_name")
     .eq("id", user.id)
     .single();
 
-  // Employees go to admin
   if (profile?.role === "employee" || profile?.role === "super_admin") {
     redirect("/admin");
   }
 
+  const isPartner = ["developer", "agent", "broker", "asset_owner", "service_partner"].includes(profile?.role || "");
+
   return (
-    <div className="min-h-screen bg-bg-primary">
-      <header className="border-b border-border">
-        <div className="mx-auto flex max-w-content items-center justify-between px-6 py-4">
+    <div className="min-h-screen bg-[#0a0a0a] flex">
+      {/* Sidebar */}
+      <aside className="hidden md:flex w-[260px] flex-col border-r border-white/[0.06] bg-[#0d0d0d]">
+        {/* Logo */}
+        <div className="px-6 py-6">
           <Link href="/">
             <Image
               src="/logo.png"
               alt="VIREZIA"
-              width={120}
-              height={30}
-              className="h-7 w-auto brightness-0 invert"
+              width={100}
+              height={26}
+              className="h-6 w-auto brightness-0 invert opacity-70"
             />
           </Link>
-          <div className="flex items-center gap-4">
-            <span className="font-sans text-sm text-text-secondary">
-              {profile?.full_name || profile?.email}
-            </span>
-            <form action={signOut}>
-              <button
-                type="submit"
-                className="flex h-8 w-8 items-center justify-center text-text-muted transition-colors hover:text-text-secondary"
-              >
-                <LogOut size={16} />
-              </button>
-            </form>
-          </div>
         </div>
-      </header>
-      <main className="mx-auto max-w-content px-6 py-8">{children}</main>
+
+        {/* Nav */}
+        <nav className="flex-1 px-3 mt-2">
+          <DashboardSidebar isPartner={isPartner} />
+        </nav>
+
+        {/* User */}
+        <div className="border-t border-white/[0.06] px-4 py-4">
+          <p className="font-sans text-[13px] text-white/80 truncate">
+            {profile?.full_name || profile?.email}
+          </p>
+          {profile?.company_name ? (
+            <p className="font-sans text-[11px] text-white/30 mt-0.5 truncate">
+              {profile.company_name}
+            </p>
+          ) : null}
+          <form action={signOut}>
+            <button
+              type="submit"
+              className="mt-3 font-sans text-[11px] text-white/30 hover:text-white/60 transition-colors"
+            >
+              Sign out
+            </button>
+          </form>
+        </div>
+      </aside>
+
+      {/* Mobile header */}
+      <div className="md:hidden fixed top-0 left-0 right-0 z-50 bg-[#0d0d0d] border-b border-white/[0.06]">
+        <div className="flex items-center justify-between px-4 py-3">
+          <Link href="/">
+            <Image src="/logo.png" alt="VIREZIA" width={80} height={20} className="h-5 w-auto brightness-0 invert opacity-70" />
+          </Link>
+          <span className="font-sans text-[12px] text-white/40">{profile?.full_name}</span>
+        </div>
+      </div>
+
+      {/* Main content */}
+      <main className="flex-1 min-h-screen md:pt-0 pt-14">
+        <div className="p-6 md:p-10 max-w-[1400px]">
+          {children}
+        </div>
+      </main>
     </div>
   );
 }
