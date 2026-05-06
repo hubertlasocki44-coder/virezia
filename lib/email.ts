@@ -12,6 +12,7 @@ function escapeHtml(str: string): string {
 }
 
 const FROM_EMAIL = "VIREZIA <hello@circle.virezia.com>";
+const REPLY_TO = "hello@virezia.com";
 const NOTIFY_EMAIL = "hello@virezia.com";
 
 let resendClient: Resend | null = null;
@@ -159,6 +160,7 @@ export async function sendCircleWelcome(email: string, firstName: string) {
   try {
     await client.emails.send({
       from: FROM_EMAIL,
+      replyTo: REPLY_TO,
       to: email,
       subject: "Welcome to VIREZIA Circle",
       html: emailWrapper(`
@@ -221,6 +223,7 @@ export async function sendFoundingMemberWelcome(
   try {
     await client.emails.send({
       from: FROM_EMAIL,
+      replyTo: REPLY_TO,
       to: email,
       subject: matched
         ? "Las Orcas — Your Interest Has Been Recorded"
@@ -388,6 +391,7 @@ export async function scheduleLasOrcasSequence(
     try {
       await client.emails.send({
         from: FROM_EMAIL,
+        replyTo: REPLY_TO,
         to: email,
         subject: em.subject,
         html: em.html,
