@@ -95,10 +95,10 @@ function LoginForm() {
       <p className="mt-3 text-center font-sans text-sm text-text-muted">
         No account?{" "}
         <Link
-          href="/signup"
+          href="/apply"
           className="text-accent-gold transition-colors hover:text-accent-gold-light"
         >
-          Create one
+          Apply for access
         </Link>
       </p>
     </div>
