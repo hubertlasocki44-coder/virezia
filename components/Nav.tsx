@@ -59,6 +59,12 @@ export default function Nav() {
             </Link>
           ))}
           <Link
+            href="/login"
+            className="font-sans text-[12px] uppercase tracking-[0.1em] text-text-muted transition-colors duration-200 hover:text-text-secondary"
+          >
+            Sign in
+          </Link>
+          <Link
             href="/apply"
             className="border border-accent-gold px-5 py-2 font-sans text-[12px] uppercase tracking-[0.1em] text-accent-gold transition-all duration-200 hover:bg-accent-gold hover:text-bg-primary"
           >
@@ -91,6 +97,13 @@ export default function Nav() {
                 {link.label}
               </Link>
             ))}
+            <Link
+              href="/login"
+              className="font-sans text-sm uppercase tracking-[0.1em] text-text-muted"
+              onClick={() => setMenuOpen(false)}
+            >
+              Sign in
+            </Link>
             <Link
               href="/apply"
               className="inline-block border border-accent-gold px-5 py-3 text-center font-sans text-sm uppercase tracking-[0.1em] text-accent-gold"
