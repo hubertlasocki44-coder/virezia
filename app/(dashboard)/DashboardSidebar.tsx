@@ -5,10 +5,12 @@ import { usePathname } from "next/navigation";
 
 const PARTNER_NAV = [
   { href: "/dashboard", label: "Pipeline", icon: "◇" },
+  { href: "/settings", label: "Settings", icon: "○" },
 ];
 
 const BUYER_NAV = [
   { href: "/dashboard", label: "Overview", icon: "◇" },
+  { href: "/settings", label: "Settings", icon: "○" },
 ];
 
 export default function DashboardSidebar({ isPartner }: { isPartner: boolean }) {
