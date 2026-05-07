@@ -671,12 +671,20 @@ function LasOrcasContent() {
           <p className="font-sans text-[12px] text-text-muted tracking-wide">
             VIREZIA &middot; Curated Selections in Mexico and Latin America
           </p>
-          <a
-            href="/privacy"
-            className="inline-block font-sans text-[11px] text-text-muted/60 hover:text-text-muted mt-4 transition-colors"
-          >
-            Privacy Policy
-          </a>
+          <p className="font-sans text-[11px] text-text-muted/60 mt-2">
+            KONAMIYA LLC &middot; 30 N Gould St, STE R, Sheridan, WY 82801, USA
+          </p>
+          <div className="flex items-center justify-center gap-4 mt-4">
+            <a href="/privacy" className="font-sans text-[11px] text-text-muted/60 hover:text-text-muted transition-colors">
+              Privacy Policy
+            </a>
+            <a href="/terms" className="font-sans text-[11px] text-text-muted/60 hover:text-text-muted transition-colors">
+              Terms
+            </a>
+          </div>
+          <p className="font-sans text-[10px] text-text-muted/30 mt-6 max-w-lg mx-auto leading-relaxed">
+            This site is not a part of the Facebook website or Facebook Inc. Additionally, this site is not endorsed by Facebook in any way. Facebook is a trademark of Facebook, Inc. We use Facebook advertising tools to deliver this content to people who may be interested. Your information is handled according to our Privacy Policy.
+          </p>
         </div>
       </footer>
     </>

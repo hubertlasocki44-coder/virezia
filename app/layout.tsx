@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { cormorant, dmSans } from "@/lib/fonts";
 import "@/styles/globals.css";
+import CookieBanner from "@/components/CookieBanner";
 
 const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://virezia.com";
 
@@ -72,6 +73,7 @@ export default function RootLayout({
           }}
         />
         {children}
+        <CookieBanner />
       </body>
     </html>
   );
