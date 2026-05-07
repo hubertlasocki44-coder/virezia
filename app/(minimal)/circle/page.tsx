@@ -64,7 +64,7 @@ export default function CirclePage() {
                 If there is a fit, someone will reach out directly.
               </p>
               <p className="mt-4 font-sans text-sm text-text-muted">
-                &mdash; VIREZIA
+                VIREZIA
               </p>
             </div>
           ) : (

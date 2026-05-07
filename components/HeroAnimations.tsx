@@ -27,7 +27,7 @@ export default function HeroContent() {
           >
             Selected real estate.
             <br />
-            Not listed &mdash; introduced.
+            Not listed. Introduced.
           </motion.h1>
 
           <motion.p
@@ -88,7 +88,7 @@ export default function HeroContent() {
             Properties visible inside VIREZIA Circle. Apply to create your profile.
           </p>
           <p className="mt-2 font-serif text-[13px] italic text-accent-gold/60">
-            VIREZIA Circle &mdash; access on application.{" "}
+            VIREZIA Circle. Access on application.{" "}
             <Link href="/circle" className="hover:text-accent-gold transition-colors">&rarr;</Link>
           </p>
         </div>

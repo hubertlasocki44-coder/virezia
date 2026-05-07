@@ -42,7 +42,7 @@ export default function LasOrcasConfirmedPage() {
               />
             </div>
             <p className="font-sans text-sm font-light text-text-secondary text-center mt-8">
-              Robert Couturier on Las Orcas &mdash; the full conversation.
+              Robert Couturier on Las Orcas. The full conversation.
             </p>
           </AnimatedSection>
         </div>

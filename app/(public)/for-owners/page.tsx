@@ -66,7 +66,7 @@ export default function ForOwnersPage() {
               If there is a fit, we will reach out within 5 business days.
             </p>
             <p className="mt-6 font-sans text-sm text-text-muted">
-              &mdash; VIREZIA
+              VIREZIA
             </p>
           </AnimatedSection>
         </div>
@@ -98,11 +98,11 @@ export default function ForOwnersPage() {
         <AnimatedSection className="mt-14 max-w-2xl">
           <h3 className="font-serif text-[24px] font-light">Selection criteria</h3>
           <div className="mt-6 space-y-3">
-            <p className="font-sans text-[15px] font-light text-text-secondary">&mdash; Architecture or design worth showing</p>
-            <p className="font-sans text-[15px] font-light text-text-secondary">&mdash; A strong location or off-market access</p>
-            <p className="font-sans text-[15px] font-light text-text-secondary">&mdash; Pricing that makes sense</p>
-            <p className="font-sans text-[15px] font-light text-text-secondary">&mdash; Clean legal title</p>
-            <p className="font-sans text-[15px] font-light text-text-secondary">&mdash; Willingness to present the property properly</p>
+            <p className="font-sans text-[15px] font-light text-text-secondary">Architecture or design worth showing</p>
+            <p className="font-sans text-[15px] font-light text-text-secondary">A strong location or off-market access</p>
+            <p className="font-sans text-[15px] font-light text-text-secondary">Pricing that makes sense</p>
+            <p className="font-sans text-[15px] font-light text-text-secondary">Clean legal title</p>
+            <p className="font-sans text-[15px] font-light text-text-secondary">Willingness to present the property properly</p>
           </div>
         </AnimatedSection>
 

@@ -174,7 +174,7 @@ export default function ApplyPage() {
               and will be in touch within 48 hours.
             </p>
             <p className="mt-6 font-sans text-sm text-text-muted">
-              &mdash; VIREZIA
+              VIREZIA
             </p>
           </AnimatedSection>
         </div>

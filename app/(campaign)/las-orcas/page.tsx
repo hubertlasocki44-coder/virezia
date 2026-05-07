@@ -228,7 +228,7 @@ function LasOrcasContent() {
                 />
               </div>
               <p className="font-sans text-[11px] text-text-muted mt-3">
-                Las Orcas &mdash; Puerto Escondido, Oaxaca
+                Las Orcas, Puerto Escondido, Oaxaca
               </p>
             </AnimatedSection>
 
@@ -243,10 +243,10 @@ function LasOrcasContent() {
                 He had recently commissioned a young French architect, newly arrived in New York, to decorate his Manhattan townhouse. He now offered him something larger: the design of an entire world.
               </p>
               <p className="font-sans text-base font-light leading-relaxed text-text-secondary mt-6">
-                Robert Couturier was thirty-two. The commission was, by his own biographer&apos;s account, the single greatest private commission of modern times. It would last a decade. It would expand to include a sixty-thousand-square-foot palace called La Loma, its blue-and-yellow tiled dome modeled after Hagia Sophia. A Boeing 757 &mdash; &ldquo;a flying carpet with a motor,&rdquo; Couturier called it. A French ch&acirc;teau. A double-width Manhattan home.
+                Robert Couturier was thirty-two. The commission was, by his own biographer&apos;s account, the single greatest private commission of modern times. It would last a decade. It would expand to include a sixty-thousand-square-foot palace called La Loma, its blue-and-yellow tiled dome modeled after Hagia Sophia. A Boeing 757, &ldquo;a flying carpet with a motor,&rdquo; Couturier called it. A French ch&acirc;teau. A double-width Manhattan home.
               </p>
               <p className="font-sans text-base font-light leading-relaxed text-text-secondary mt-6">
-                The estate became Cuixmala &mdash; &ldquo;the soul&apos;s resting place&rdquo; in the Nahuatl language. Architectural Digest later named it among the seven most beautiful resorts on Mexico&apos;s Pacific Coast. It hosted Henry Kissinger, Madonna, Bill Gates. It launched Robert Couturier&apos;s career.
+                The estate became Cuixmala, &ldquo;the soul&apos;s resting place&rdquo; in the Nahuatl language. Architectural Digest later named it among the seven most beautiful resorts on Mexico&apos;s Pacific Coast. It hosted Henry Kissinger, Madonna, Bill Gates. It launched Robert Couturier&apos;s career.
               </p>
               <p className="font-serif text-[clamp(20px,2.5vw,28px)] text-accent-gold mt-12 leading-snug">
                 Las Orcas is his return to that coast.
@@ -291,10 +291,10 @@ function LasOrcasContent() {
         <div className="mx-auto max-w-3xl px-6 md:px-10">
           <AnimatedSection className="text-center">
             <blockquote className="font-serif text-[clamp(24px,4vw,48px)] font-light leading-[1.3]">
-              &ldquo;Luxury there is the ability to live simply, comfortably, with excellent food, with great services, with access to most pleasant things in life &mdash; and to have sort of a slow, peaceful life.&rdquo;
+              &ldquo;Luxury there is the ability to live simply, comfortably, with excellent food, with great services, with access to most pleasant things in life, and to have sort of a slow, peaceful life.&rdquo;
             </blockquote>
             <p className="font-sans text-[11px] uppercase tracking-[0.15em] text-accent-gold mt-10">
-              &mdash; Robert Couturier
+              Robert Couturier
             </p>
           </AnimatedSection>
         </div>
@@ -344,7 +344,7 @@ function LasOrcasContent() {
                 />
               </div>
               <p className="font-sans text-[11px] text-text-muted mt-3">
-                The Oaxacan Coast &mdash; Puerto Escondido
+                The Oaxacan Coast, Puerto Escondido
               </p>
             </AnimatedSection>
           </div>
@@ -386,7 +386,7 @@ function LasOrcasContent() {
                 Seven private residences on a single beachfront parcel. Four villas and three casitas, designed by Robert Couturier as a small village. &ldquo;So that when you walk through from the entrance to the upper bungalows,&rdquo; he says, &ldquo;you have a feeling that you&apos;re walking through a small little city.&rdquo;
               </p>
               <p className="font-sans text-base font-light leading-relaxed text-text-secondary mt-6">
-                The construction is in concrete and stone. Materials chosen, in his words, &ldquo;that will live in the sea air and age gracefully &mdash; as we all should.&rdquo; Spaces are designed to be open but cozy. &ldquo;You don&apos;t have the feeling that you live outside all the time. You have the ability to be outside, and the ability to stay inside and read a book.&rdquo;
+                The construction is in concrete and stone. Materials chosen, in his words, &ldquo;that will live in the sea air and age gracefully, as we all should.&rdquo; Spaces are designed to be open but cozy. &ldquo;You don&apos;t have the feeling that you live outside all the time. You have the ability to be outside, and the ability to stay inside and read a book.&rdquo;
               </p>
               <p className="font-sans text-base font-light leading-relaxed text-text-secondary mt-6">
                 Each residence has its own private deed and rooftop plunge pool. Pre-construction. Pre-titled lots. Direct access to the uncrowded beach of La Barra. Seven residences in total: three casitas and four villas, ranging from two to three bedrooms. Six remain available to founding members.
@@ -429,10 +429,10 @@ function LasOrcasContent() {
 
             <blockquote className="text-center">
               <p className="font-serif text-[clamp(22px,3.5vw,40px)] font-light leading-[1.3]">
-                &ldquo;Materials that will live in the sea air and age gracefully &mdash; as we all should.&rdquo;
+                &ldquo;Materials that will live in the sea air and age gracefully, as we all should.&rdquo;
               </p>
               <p className="font-sans text-[11px] uppercase tracking-[0.15em] text-accent-gold mt-10">
-                &mdash; Robert Couturier
+                Robert Couturier
               </p>
             </blockquote>
           </AnimatedSection>
@@ -530,19 +530,19 @@ function LasOrcasContent() {
 
             <div className="space-y-6 max-w-lg mx-auto">
               <p className="font-sans text-[15px] font-light text-text-secondary">
-                <span className="text-text-primary">Casa Wabi</span> &mdash; Tadao Ando. Pritzker Prize, 1995. With pavilions by &Aacute;lvaro Siza, Kengo Kuma, Alberto Kalach, Solano Ben&iacute;tez and Gloria Cabral.
+                <span className="text-text-primary">Casa Wabi</span> by Tadao Ando. Pritzker Prize, 1995. With pavilions by &Aacute;lvaro Siza, Kengo Kuma, Alberto Kalach, Solano Ben&iacute;tez and Gloria Cabral.
               </p>
               <p className="font-sans text-[15px] font-light text-text-secondary">
-                <span className="text-text-primary">Casona Sforza</span> &mdash; Alberto Kalach. La Barra.
+                <span className="text-text-primary">Casona Sforza</span> by Alberto Kalach. La Barra.
               </p>
               <p className="font-sans text-[15px] font-light text-text-secondary">
-                <span className="text-text-primary">Hotel Escondido</span> &mdash; Grupo Habita. Member of Design Hotels.
+                <span className="text-text-primary">Hotel Escondido</span> by Grupo Habita. Member of Design Hotels.
               </p>
               <p className="font-sans text-[15px] font-light text-text-secondary">
-                <span className="text-text-primary">Hotel Terrestre</span> &mdash; Alberto Kalach. Solar-powered, member of Design Hotels.
+                <span className="text-text-primary">Hotel Terrestre</span> by Alberto Kalach. Solar-powered, member of Design Hotels.
               </p>
               <p className="font-sans text-[15px] font-light text-text-secondary">
-                <span className="text-text-primary">Casa TO</span> &mdash; Ludwig Godefroy. La Punta.
+                <span className="text-text-primary">Casa TO</span> by Ludwig Godefroy. La Punta.
               </p>
             </div>
 
@@ -598,7 +598,7 @@ function LasOrcasContent() {
               &ldquo;As we have more and more rarified access to the sea, it makes Las Orcas that much more precious.&rdquo;
             </blockquote>
             <p className="font-sans text-[11px] uppercase tracking-[0.15em] text-accent-gold mt-8">
-              &mdash; Robert Couturier
+              Robert Couturier
             </p>
           </AnimatedSection>
 

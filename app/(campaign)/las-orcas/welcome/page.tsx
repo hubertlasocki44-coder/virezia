@@ -20,7 +20,7 @@ export default function LasOrcasWelcomePage() {
               Welcome to the Circle.
             </h1>
             <p className="font-sans text-base font-light leading-relaxed text-text-secondary max-w-lg mx-auto">
-              You are now part of the VIREZIA Circle. We curate a small number of opportunities each quarter &mdash; reviewed for architectural significance, regulatory integrity, and process quality.
+              You are now part of the VIREZIA Circle. We curate a small number of opportunities each quarter, selected for their architecture, their location, or the story behind them.
             </p>
             <p className="font-sans text-base font-light leading-relaxed text-text-secondary max-w-lg mx-auto mt-6">
               Expect to hear from us when something aligns with your profile.
