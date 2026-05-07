@@ -26,9 +26,11 @@ const KANBAN_COLUMNS = [
   { status: "new", label: "New", color: "#c9a96e" },
   { status: "screening", label: "Screening", color: "#8b7355" },
   { status: "qualified", label: "Qualified", color: "#5a9e6f" },
+  { status: "matched", label: "Matched", color: "#c084fc" },
   { status: "in_progress", label: "In Progress", color: "#5a8ac9" },
   { status: "closed_won", label: "Won", color: "#4ade80" },
   { status: "closed_lost", label: "Lost", color: "#6b7280" },
+  { status: "archived", label: "Archived", color: "#4b5563" },
 ];
 
 function LeadCard({ assignment }: { assignment: LeadAssignment }) {
@@ -162,9 +164,8 @@ export default function PartnerKanban({ assignments }: { assignments: LeadAssign
     assignments: assignments.filter((a) => a.lead.status === col.status),
   }));
 
-  const activeColumns = groupedByStatus.filter(
-    (col) => col.assignments.length > 0 || ["new", "screening", "qualified", "in_progress"].includes(col.status)
-  );
+  // Show all columns — no filtering
+  const activeColumns = groupedByStatus;
 
   return (
     <div>
