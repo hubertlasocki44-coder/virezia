@@ -85,11 +85,7 @@ export default function HeroContent() {
       >
         <div className="border-t border-border-subtle pt-5">
           <p className="font-sans text-[11px] tracking-[0.05em] text-text-muted">
-            Properties visible inside VIREZIA Circle. Apply to create your profile.
-          </p>
-          <p className="mt-2 font-serif text-[13px] italic text-accent-gold/60">
-            VIREZIA Circle. Access on application.{" "}
-            <Link href="/circle" className="hover:text-accent-gold transition-colors">&rarr;</Link>
+            Apply to create your profile. We respond within 48 hours.
           </p>
         </div>
       </motion.div>
