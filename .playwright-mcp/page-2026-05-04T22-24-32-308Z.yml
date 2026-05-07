@@ -1,0 +1,103 @@
+- generic [active] [ref=e1]:
+  - link "Skip to content" [ref=e2] [cursor=pointer]:
+    - /url: "#main-content"
+  - navigation [ref=e3]:
+    - generic [ref=e4]:
+      - link "VIREZIA" [ref=e5] [cursor=pointer]:
+        - /url: /
+        - img "VIREZIA" [ref=e6]
+      - button "Toggle menu" [ref=e7]:
+        - img [ref=e8]
+  - main [ref=e9]:
+    - generic [ref=e11]:
+      - generic [ref=e12]:
+        - generic [ref=e13]: Apply for private access
+        - heading "Apply for Private Access" [level=1] [ref=e14]
+        - paragraph [ref=e15]: VIREZIA works with a limited number of buyers at any time. Submit your profile and we'll review your request within 48 hours.
+      - paragraph [ref=e21]: Step 1 of 3
+      - generic [ref=e23]:
+        - generic [ref=e24]:
+          - generic [ref=e25]: Full Name
+          - textbox "Full Name" [ref=e26]:
+            - /placeholder: Your full name
+        - generic [ref=e27]:
+          - generic [ref=e28]: Email
+          - textbox "Email" [ref=e29]:
+            - /placeholder: you@example.com
+        - generic [ref=e30]:
+          - generic [ref=e31]: Country of Residence
+          - textbox "Country of Residence" [ref=e32]:
+            - /placeholder: e.g. United States
+        - generic [ref=e33]:
+          - generic [ref=e34]: How did you hear about us?
+          - combobox "How did you hear about us?" [ref=e35]:
+            - option "Select one" [selected]
+            - option "Featured property"
+            - option "Referral"
+            - option "LinkedIn"
+            - option "Bespoke Living"
+            - option "Other"
+        - generic [ref=e36]:
+          - generic [ref=e37]: I am a...
+          - generic [ref=e38]:
+            - generic [ref=e39] [cursor=pointer]:
+              - radio "Buyer" [ref=e40]
+              - generic [ref=e42]: Buyer
+            - generic [ref=e43] [cursor=pointer]:
+              - radio "Investor" [ref=e44]
+              - generic [ref=e46]: Investor
+            - generic [ref=e47] [cursor=pointer]:
+              - radio "Developer" [ref=e48]
+              - generic [ref=e50]: Developer
+            - generic [ref=e51] [cursor=pointer]:
+              - radio "Asset owner" [ref=e52]
+              - generic [ref=e54]: Asset owner
+            - generic [ref=e55] [cursor=pointer]:
+              - radio "Real estate professional" [ref=e56]
+              - generic [ref=e58]: Real estate professional
+            - generic [ref=e59] [cursor=pointer]:
+              - radio "Other" [ref=e60]
+              - generic [ref=e62]: Other
+        - button "Continue" [ref=e63]
+  - contentinfo [ref=e64]:
+    - generic [ref=e65]:
+      - generic [ref=e66]:
+        - generic [ref=e67]:
+          - link "VIREZIA" [ref=e68] [cursor=pointer]:
+            - /url: /
+            - img "VIREZIA" [ref=e69]
+          - paragraph [ref=e70]: Curated homes, by invitation.
+        - generic [ref=e71]:
+          - link "Featured" [ref=e72] [cursor=pointer]:
+            - /url: /las-orcas
+          - link "Approach" [ref=e73] [cursor=pointer]:
+            - /url: /approach
+          - link "Bespoke Living" [ref=e74] [cursor=pointer]:
+            - /url: /bespoke-living
+          - link "Apply" [ref=e75] [cursor=pointer]:
+            - /url: /apply
+        - generic [ref=e76]:
+          - link "hello@virezia.com" [ref=e77] [cursor=pointer]:
+            - /url: mailto:hello@virezia.com
+          - paragraph [ref=e78]: Cancún · Mexico
+      - generic [ref=e79]:
+        - paragraph [ref=e80]: © 2026 VIREZIA. All rights reserved.
+        - generic [ref=e81]:
+          - link "Privacy" [ref=e82] [cursor=pointer]:
+            - /url: /privacy
+          - link "Terms" [ref=e83] [cursor=pointer]:
+            - /url: /terms
+          - link "For Owners →" [ref=e84] [cursor=pointer]:
+            - /url: /for-owners
+          - link "Circle →" [ref=e85] [cursor=pointer]:
+            - /url: /circle
+  - alert [ref=e86]
+  - generic [ref=e88]:
+    - paragraph [ref=e89]:
+      - text: We use essential cookies for site functionality and analytics cookies to improve our services. Read our
+      - link "Privacy Policy" [ref=e90] [cursor=pointer]:
+        - /url: /privacy
+      - text: for details.
+    - generic [ref=e91]:
+      - button "Decline" [ref=e92]
+      - button "Accept" [ref=e93]

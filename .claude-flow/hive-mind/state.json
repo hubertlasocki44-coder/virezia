@@ -1,0 +1,31 @@
+{
+  "initialized": true,
+  "topology": "hierarchical-mesh",
+  "workers": [
+    "hive-worker-1774832726346-oa93"
+  ],
+  "consensus": {
+    "pending": [],
+    "history": [
+      {
+        "proposalId": "proposal-1774834992418-1tia05",
+        "type": "audit-priority-plan",
+        "result": "approved",
+        "votes": {
+          "for": 1,
+          "against": 0
+        },
+        "decidedAt": "2026-03-30T01:43:18.418Z",
+        "strategy": "bft"
+      }
+    ]
+  },
+  "sharedMemory": {},
+  "createdAt": "2026-03-30T01:03:18.967Z",
+  "updatedAt": "2026-03-30T01:43:18.418Z",
+  "queen": {
+    "agentId": "queen-1774832598967",
+    "electedAt": "2026-03-30T01:03:18.967Z",
+    "term": 1
+  }
+}

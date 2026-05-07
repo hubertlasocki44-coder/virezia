@@ -1,0 +1,60 @@
+- generic [active] [ref=e1]:
+  - link "Skip to content" [ref=e2] [cursor=pointer]:
+    - /url: "#main-content"
+  - navigation [ref=e3]:
+    - generic [ref=e4]:
+      - link "VIREZIA" [ref=e5] [cursor=pointer]:
+        - /url: /
+        - img "VIREZIA" [ref=e6]
+      - generic [ref=e7]:
+        - link "Featured" [ref=e8] [cursor=pointer]:
+          - /url: /las-orcas
+        - link "Approach" [ref=e9] [cursor=pointer]:
+          - /url: /approach
+        - link "Bespoke Living" [ref=e10] [cursor=pointer]:
+          - /url: /bespoke-living
+        - link "Apply →" [ref=e11] [cursor=pointer]:
+          - /url: /apply
+  - main [ref=e12]
+  - contentinfo [ref=e16]:
+    - generic [ref=e17]:
+      - generic [ref=e18]:
+        - generic [ref=e19]:
+          - link "VIREZIA" [ref=e20] [cursor=pointer]:
+            - /url: /
+            - img "VIREZIA" [ref=e21]
+          - paragraph [ref=e22]: Curated homes, by invitation.
+        - generic [ref=e23]:
+          - link "Featured" [ref=e24] [cursor=pointer]:
+            - /url: /las-orcas
+          - link "Approach" [ref=e25] [cursor=pointer]:
+            - /url: /approach
+          - link "Bespoke Living" [ref=e26] [cursor=pointer]:
+            - /url: /bespoke-living
+          - link "Apply" [ref=e27] [cursor=pointer]:
+            - /url: /apply
+        - generic [ref=e28]:
+          - link "hello@virezia.com" [ref=e29] [cursor=pointer]:
+            - /url: mailto:hello@virezia.com
+          - paragraph [ref=e30]: Cancún · Mexico
+      - generic [ref=e31]:
+        - paragraph [ref=e32]: © 2026 VIREZIA. All rights reserved.
+        - generic [ref=e33]:
+          - link "Privacy" [ref=e34] [cursor=pointer]:
+            - /url: /privacy
+          - link "Terms" [ref=e35] [cursor=pointer]:
+            - /url: /terms
+          - link "For Owners →" [ref=e36] [cursor=pointer]:
+            - /url: /for-owners
+          - link "Circle →" [ref=e37] [cursor=pointer]:
+            - /url: /circle
+  - alert [ref=e38]
+  - generic [ref=e40]:
+    - paragraph [ref=e41]:
+      - text: We use essential cookies for site functionality and analytics cookies to improve our services. Read our
+      - link "Privacy Policy" [ref=e42] [cursor=pointer]:
+        - /url: /privacy
+      - text: for details.
+    - generic [ref=e43]:
+      - button "Decline" [ref=e44]
+      - button "Accept" [ref=e45]

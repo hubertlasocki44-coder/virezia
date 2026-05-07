@@ -1,0 +1,3 @@
+[    9102ms] [ERROR] Failed to load resource: the server responded with a status of 504 () @ https://virezia.vercel.app/favicon.ico:0
+[   25127ms] [ERROR] Failed to load resource: the server responded with a status of 504 () @ https://virezia.vercel.app/circle/join?intent=founding:0
+[   50211ms] [ERROR] Failed to load resource: the server responded with a status of 504 () @ https://virezia.vercel.app/favicon.ico:0

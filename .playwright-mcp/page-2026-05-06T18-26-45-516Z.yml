@@ -1,0 +1,17 @@
+- generic [ref=e1]:
+  - generic [ref=e2]:
+    - banner [ref=e3]:
+      - link "VIREZIA" [ref=e4] [cursor=pointer]:
+        - /url: /
+        - img "VIREZIA" [ref=e5]
+    - main [ref=e6]:
+      - generic [ref=e192]:
+        - link "Back to Las Orcas" [ref=e194] [cursor=pointer]:
+          - /url: /las-orcas
+        - generic [ref=e197]:
+          - paragraph [ref=e198]: 1 of 3
+          - generic [ref=e199]:
+            - heading "What is your name?" [level=2] [ref=e200]
+            - textbox "Your full name" [active] [ref=e201]
+          - button "Continue" [ref=e203]
+  - alert [ref=e191]: VIREZIA — Curated Real Estate, Selected — Not Listed

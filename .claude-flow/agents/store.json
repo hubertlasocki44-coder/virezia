@@ -1,0 +1,75 @@
+{
+  "agents": {
+    "brand-strategist": {
+      "agentId": "brand-strategist",
+      "agentType": "reviewer",
+      "status": "idle",
+      "health": 1,
+      "taskCount": 0,
+      "config": {
+        "model": "sonnet"
+      },
+      "createdAt": "2026-03-30T01:39:21.296Z",
+      "domain": "brand",
+      "model": "sonnet",
+      "modelRoutedBy": "explicit"
+    },
+    "ux-designer": {
+      "agentId": "ux-designer",
+      "agentType": "reviewer",
+      "status": "idle",
+      "health": 1,
+      "taskCount": 0,
+      "config": {
+        "model": "sonnet"
+      },
+      "createdAt": "2026-03-30T01:39:21.693Z",
+      "domain": "ux",
+      "model": "sonnet",
+      "modelRoutedBy": "explicit"
+    },
+    "seo-specialist": {
+      "agentId": "seo-specialist",
+      "agentType": "reviewer",
+      "status": "idle",
+      "health": 1,
+      "taskCount": 0,
+      "config": {
+        "model": "sonnet"
+      },
+      "createdAt": "2026-03-30T01:39:22.412Z",
+      "domain": "seo",
+      "model": "sonnet",
+      "modelRoutedBy": "explicit"
+    },
+    "copywriter": {
+      "agentId": "copywriter",
+      "agentType": "reviewer",
+      "status": "idle",
+      "health": 1,
+      "taskCount": 0,
+      "config": {
+        "model": "sonnet"
+      },
+      "createdAt": "2026-03-30T01:39:23.758Z",
+      "domain": "copy",
+      "model": "sonnet",
+      "modelRoutedBy": "explicit"
+    },
+    "real-estate-expert": {
+      "agentId": "real-estate-expert",
+      "agentType": "reviewer",
+      "status": "idle",
+      "health": 1,
+      "taskCount": 0,
+      "config": {
+        "model": "sonnet"
+      },
+      "createdAt": "2026-03-30T01:39:27.579Z",
+      "domain": "market",
+      "model": "sonnet",
+      "modelRoutedBy": "explicit"
+    }
+  },
+  "version": "3.0.0"
+}

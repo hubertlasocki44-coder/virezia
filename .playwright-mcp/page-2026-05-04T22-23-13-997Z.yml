@@ -1,0 +1,128 @@
+- generic [active] [ref=e1]:
+  - link "Skip to content" [ref=e2] [cursor=pointer]:
+    - /url: "#main-content"
+  - navigation [ref=e3]:
+    - generic [ref=e4]:
+      - link "VIREZIA" [ref=e5] [cursor=pointer]:
+        - /url: /
+        - img "VIREZIA" [ref=e6]
+      - generic [ref=e7]:
+        - link "Featured" [ref=e8] [cursor=pointer]:
+          - /url: /las-orcas
+        - link "Approach" [ref=e9] [cursor=pointer]:
+          - /url: /approach
+        - link "Bespoke Living" [ref=e10] [cursor=pointer]:
+          - /url: /bespoke-living
+        - link "Apply →" [ref=e11] [cursor=pointer]:
+          - /url: /apply
+  - main [ref=e12]:
+    - generic [ref=e14]:
+      - generic [ref=e15]:
+        - generic [ref=e16]: For Owners & Developers
+        - heading "Submit a Property" [level=1] [ref=e17]
+        - paragraph [ref=e18]: VIREZIA features a limited number of exceptional properties each year — sourced globally, with current focus across Latin America.
+        - paragraph [ref=e19]: If your property has architectural distinction, design lineage, location character, or a story worth telling — we'd like to hear from you.
+        - paragraph [ref=e20]: Submission begins with a brief intake. Featured selection is reviewed quarterly.
+      - generic [ref=e21]:
+        - heading "Selection criteria" [level=3] [ref=e22]
+        - generic [ref=e23]:
+          - paragraph [ref=e24]: — Architectural, design, or location distinction
+          - paragraph [ref=e25]: — A defined investment thesis or off-market access
+          - paragraph [ref=e26]: — Pricing aligned with market reality
+          - paragraph [ref=e27]: — Clean legal title or clear regularization path
+          - paragraph [ref=e28]: — Owner willing to support thoughtful presentation of the offer
+      - generic [ref=e30]:
+        - generic [ref=e31]:
+          - generic [ref=e32]:
+            - generic [ref=e33]: Name
+            - textbox "Name" [ref=e34]:
+              - /placeholder: Your name
+          - generic [ref=e35]:
+            - generic [ref=e36]: Email
+            - textbox "Email" [ref=e37]:
+              - /placeholder: you@company.com
+        - generic [ref=e38]:
+          - generic [ref=e39]: Role
+          - combobox "Role" [ref=e40]:
+            - option "Select role" [selected]
+            - option "Owner"
+            - option "Developer"
+            - option "Architect"
+            - option "Representing seller"
+        - generic [ref=e41]:
+          - generic [ref=e42]: Property location
+          - textbox "Property location" [ref=e43]:
+            - /placeholder: e.g. Puerto Escondido, Oaxaca
+        - generic [ref=e44]:
+          - generic [ref=e45]:
+            - generic [ref=e46]: Property type
+            - combobox "Property type" [ref=e47]:
+              - option "Select type" [selected]
+              - option "Single residence"
+              - option "Multi-unit"
+              - option "Land"
+              - option "Mixed-use"
+              - option "Other"
+          - generic [ref=e48]:
+            - generic [ref=e49]: Asking price range
+            - textbox "Asking price range" [ref=e50]:
+              - /placeholder: e.g. $500K - $1M USD
+        - generic [ref=e51]:
+          - generic [ref=e52]: Current status
+          - combobox "Current status" [ref=e53]:
+            - option "Select status" [selected]
+            - option "Pre-sale"
+            - option "Active listing"
+            - option "Off-market"
+            - option "Under development"
+        - generic [ref=e54]:
+          - generic [ref=e55]: What makes this property worth featuring?
+          - textbox "What makes this property worth featuring?" [ref=e56]:
+            - /placeholder: Tell us about the architecture, design, location, or story.
+        - generic [ref=e57]:
+          - generic [ref=e58]: Image / portfolio link (optional)
+          - textbox "Image / portfolio link (optional)" [ref=e59]:
+            - /placeholder: https://...
+        - button "Submit for Review" [ref=e60]
+  - contentinfo [ref=e61]:
+    - generic [ref=e62]:
+      - generic [ref=e63]:
+        - generic [ref=e64]:
+          - link "VIREZIA" [ref=e65] [cursor=pointer]:
+            - /url: /
+            - img "VIREZIA" [ref=e66]
+          - paragraph [ref=e67]: Curated homes, by invitation.
+        - generic [ref=e68]:
+          - link "Featured" [ref=e69] [cursor=pointer]:
+            - /url: /las-orcas
+          - link "Approach" [ref=e70] [cursor=pointer]:
+            - /url: /approach
+          - link "Bespoke Living" [ref=e71] [cursor=pointer]:
+            - /url: /bespoke-living
+          - link "Apply" [ref=e72] [cursor=pointer]:
+            - /url: /apply
+        - generic [ref=e73]:
+          - link "hello@virezia.com" [ref=e74] [cursor=pointer]:
+            - /url: mailto:hello@virezia.com
+          - paragraph [ref=e75]: Cancún · Mexico
+      - generic [ref=e76]:
+        - paragraph [ref=e77]: © 2026 VIREZIA. All rights reserved.
+        - generic [ref=e78]:
+          - link "Privacy" [ref=e79] [cursor=pointer]:
+            - /url: /privacy
+          - link "Terms" [ref=e80] [cursor=pointer]:
+            - /url: /terms
+          - link "For Owners →" [ref=e81] [cursor=pointer]:
+            - /url: /for-owners
+          - link "Circle →" [ref=e82] [cursor=pointer]:
+            - /url: /circle
+  - alert [ref=e83]
+  - generic [ref=e85]:
+    - paragraph [ref=e86]:
+      - text: We use essential cookies for site functionality and analytics cookies to improve our services. Read our
+      - link "Privacy Policy" [ref=e87] [cursor=pointer]:
+        - /url: /privacy
+      - text: for details.
+    - generic [ref=e88]:
+      - button "Decline" [ref=e89]
+      - button "Accept" [ref=e90]

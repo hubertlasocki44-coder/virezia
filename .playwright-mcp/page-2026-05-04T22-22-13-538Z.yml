@@ -1,0 +1,130 @@
+- generic [active] [ref=e1]:
+  - link "Skip to content" [ref=e2] [cursor=pointer]:
+    - /url: "#main-content"
+  - navigation [ref=e3]:
+    - generic [ref=e4]:
+      - link "VIREZIA" [ref=e5] [cursor=pointer]:
+        - /url: /
+        - img "VIREZIA" [ref=e6]
+      - generic [ref=e7]:
+        - link "Featured" [ref=e8] [cursor=pointer]:
+          - /url: /las-orcas
+        - link "Approach" [ref=e9] [cursor=pointer]:
+          - /url: /approach
+        - link "Bespoke Living" [ref=e10] [cursor=pointer]:
+          - /url: /bespoke-living
+        - link "Apply →" [ref=e11] [cursor=pointer]:
+          - /url: /apply
+  - main [ref=e12]:
+    - generic [ref=e17]:
+      - generic [ref=e19]:
+        - paragraph [ref=e20]: A Curated Real Estate Network
+        - heading "Curated real estate, selected — not listed." [level=1] [ref=e21]:
+          - text: Curated real estate,
+          - text: selected — not listed.
+        - paragraph [ref=e22]: A network where international investors meet and find good opportunities.
+        - generic [ref=e23]:
+          - paragraph [ref=e24]: VIREZIA selects properties from across the market — architectural, design-led, location-driven, investment-grade — and presents them inside VIREZIA Circle.
+          - paragraph [ref=e25]: Apply to create your profile. We work with buyers, investors, developers, and asset owners.
+        - generic [ref=e26]:
+          - link "Apply for Access" [ref=e27] [cursor=pointer]:
+            - /url: /apply
+          - link "How VIREZIA works →" [ref=e28] [cursor=pointer]:
+            - /url: /approach
+      - generic [ref=e30]:
+        - paragraph [ref=e31]: Properties available inside VIREZIA Circle. Apply to create your profile.
+        - paragraph [ref=e32]:
+          - text: VIREZIA Circle — by invitation only.
+          - link "→" [ref=e33] [cursor=pointer]:
+            - /url: /circle
+    - generic [ref=e36]:
+      - generic [ref=e37]: What VIREZIA Is
+      - heading "A curated real estate network." [level=2] [ref=e38]
+      - paragraph [ref=e39]: VIREZIA is not a listing portal. We don't publish properties on the public homepage.
+      - paragraph [ref=e40]: We select real estate from across the market — architectural, design-led, location-driven, investment-grade — and present each property inside VIREZIA Circle.
+      - paragraph [ref=e41]: International investors apply to create a profile and access opportunities. Developers and asset owners apply to submit properties for selection. Each application is reviewed personally.
+    - generic [ref=e44]:
+      - generic [ref=e45]: The Approach
+      - heading "We don't list properties. We select them." [level=2] [ref=e46]:
+        - text: We don't list properties.
+        - text: We select them.
+      - paragraph [ref=e47]: Every property in VIREZIA Circle is selected personally — for its architecture, design, location, story, investment thesis, or off-market access.
+      - paragraph [ref=e48]: We work with the owners and developers behind each property to present it the way it deserves to be presented.
+      - paragraph [ref=e49]: Some properties we feature are off the public market. Others are publicly available, but worth a closer look than the noise around them allows.
+      - paragraph [ref=e50]: If a property earns a closer look, we feature it. If it doesn't, we don't.
+      - link "Read the full approach →" [ref=e51] [cursor=pointer]:
+        - /url: /approach
+    - generic [ref=e53]:
+      - generic [ref=e55]: Who this is for
+      - generic [ref=e56]:
+        - generic [ref=e57]:
+          - heading "VIREZIA is for" [level=3] [ref=e58]
+          - generic [ref=e59]:
+            - paragraph [ref=e60]: Buyers who value character over volume.
+            - paragraph [ref=e61]: Investors with a discerning eye.
+            - paragraph [ref=e62]: Owners of exceptional properties.
+            - paragraph [ref=e63]: People who prefer to be introduced.
+        - generic [ref=e64]:
+          - heading "VIREZIA is not for" [level=3] [ref=e65]
+          - generic [ref=e66]:
+            - paragraph [ref=e67]: Browsing.
+            - paragraph [ref=e68]: Mass-market property search.
+            - paragraph [ref=e69]: Volume listings.
+            - paragraph [ref=e70]: Anyone expecting a portal.
+      - paragraph [ref=e72]: Access is limited. Each application is reviewed individually.
+    - generic [ref=e75]:
+      - generic [ref=e76]: For Owners & Developers
+      - heading "If your property is exceptional, we'd like to hear about it." [level=3] [ref=e77]:
+        - text: If your property is exceptional,
+        - text: we'd like to hear about it.
+      - paragraph [ref=e78]: VIREZIA features a limited number of properties each year. Owners and developers with architecturally distinctive, design-led, or story-rich properties may submit for review.
+      - link "Submit a property →" [ref=e79] [cursor=pointer]:
+        - /url: /for-owners
+    - generic [ref=e82]:
+      - heading "Create your VIREZIA profile." [level=2] [ref=e83]
+      - paragraph [ref=e84]: Tell us what you're looking for — or what you're offering. We respond personally within 48 hours.
+      - link "Apply for Access" [ref=e86] [cursor=pointer]:
+        - /url: /apply
+      - paragraph [ref=e87]: Each application is reviewed individually.
+  - contentinfo [ref=e88]:
+    - generic [ref=e89]:
+      - generic [ref=e90]:
+        - generic [ref=e91]:
+          - link "VIREZIA" [ref=e92] [cursor=pointer]:
+            - /url: /
+            - img "VIREZIA" [ref=e93]
+          - paragraph [ref=e94]: Curated homes, by invitation.
+        - generic [ref=e95]:
+          - link "Featured" [ref=e96] [cursor=pointer]:
+            - /url: /las-orcas
+          - link "Approach" [ref=e97] [cursor=pointer]:
+            - /url: /approach
+          - link "Bespoke Living" [ref=e98] [cursor=pointer]:
+            - /url: /bespoke-living
+          - link "Apply" [ref=e99] [cursor=pointer]:
+            - /url: /apply
+        - generic [ref=e100]:
+          - link "hello@virezia.com" [ref=e101] [cursor=pointer]:
+            - /url: mailto:hello@virezia.com
+          - paragraph [ref=e102]: Cancún · Mexico
+      - generic [ref=e103]:
+        - paragraph [ref=e104]: © 2026 VIREZIA. All rights reserved.
+        - generic [ref=e105]:
+          - link "Privacy" [ref=e106] [cursor=pointer]:
+            - /url: /privacy
+          - link "Terms" [ref=e107] [cursor=pointer]:
+            - /url: /terms
+          - link "For Owners →" [ref=e108] [cursor=pointer]:
+            - /url: /for-owners
+          - link "Circle →" [ref=e109] [cursor=pointer]:
+            - /url: /circle
+  - alert [ref=e110]
+  - generic [ref=e112]:
+    - paragraph [ref=e113]:
+      - text: We use essential cookies for site functionality and analytics cookies to improve our services. Read our
+      - link "Privacy Policy" [ref=e114] [cursor=pointer]:
+        - /url: /privacy
+      - text: for details.
+    - generic [ref=e115]:
+      - button "Decline" [ref=e116]
+      - button "Accept" [ref=e117]

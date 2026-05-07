@@ -1,0 +1,19 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - link "VIREZIA" [ref=e4] [cursor=pointer]:
+      - /url: /
+      - img "VIREZIA" [ref=e5]
+    - main [ref=e6]:
+      - generic [ref=e9]:
+        - paragraph [ref=e10]: By Invitation Only
+        - heading "VIREZIA Circle" [level=1] [ref=e11]
+        - paragraph [ref=e12]: A private network for those with active acquisition intent in markets we cover.
+        - paragraph [ref=e13]: Membership is granted by invitation or direct referral.
+        - generic [ref=e14]:
+          - generic [ref=e15]:
+            - generic [ref=e16]: Email
+            - textbox "Email" [ref=e17]:
+              - /placeholder: you@example.com
+          - button "Request Access" [ref=e18]
+        - paragraph [ref=e19]: All requests are reviewed personally. Current availability is limited.
+  - alert [ref=e20]

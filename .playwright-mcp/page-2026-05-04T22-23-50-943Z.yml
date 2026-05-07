@@ -1,0 +1,100 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - banner [ref=e3]:
+      - link "VIREZIA" [ref=e4] [cursor=pointer]:
+        - /url: /
+        - img "VIREZIA" [ref=e5]
+    - main [ref=e6]:
+      - generic [ref=e7]:
+        - img "Las Orcas — beachfront villas, Puerto Escondido" [ref=e9]
+        - generic [ref=e12]:
+          - paragraph [ref=e13]: A VIREZIA Selection
+          - paragraph [ref=e14]: Robert Couturier · Oaxacan Coast · 2026
+          - heading "Forty years after Cuixmala, he returns to the Pacific." [level=1] [ref=e15]:
+            - text: Forty years after Cuixmala,
+            - text: he returns to the Pacific.
+      - generic [ref=e18]:
+        - img "Robert Couturier — architect" [ref=e21]
+        - generic [ref=e22]:
+          - paragraph [ref=e23]: "1987"
+          - paragraph [ref=e24]: In the autumn of 1987, after the stock market crash, Sir James Goldsmith — the Anglo-French financier — withdrew from the world he had spent thirty years building. He bought twenty thousand acres on the Pacific Coast of Mexico and began to imagine what it might become.
+          - paragraph [ref=e25]: "He had recently commissioned a young French architect, newly arrived in New York, to decorate his Manhattan townhouse. He now offered him something larger: the design of an entire world."
+          - paragraph [ref=e26]: Robert Couturier was thirty-two. The commission was, by his own biographer's account, the single greatest private commission of modern times. It would last a decade. It would expand to include a sixty-thousand-square-foot palace called La Loma, its blue-and-yellow tiled dome modeled after Hagia Sophia. A Boeing 757 — “a flying carpet with a motor,” Couturier called it. A French château. A double-width Manhattan home.
+          - paragraph [ref=e27]: The estate became Cuixmala — “the soul's resting place” in the Nahuatl language. Architectural Digest later named it among the seven most beautiful resorts on Mexico's Pacific Coast. It hosted Henry Kissinger, Madonna, Bill Gates. It launched Robert Couturier's career.
+          - paragraph [ref=e28]: Las Orcas is his return to that coast.
+      - generic [ref=e31]:
+        - button "Robert Couturier on Las Orcas" [ref=e33] [cursor=pointer]:
+          - img "Robert Couturier on Las Orcas" [ref=e34]
+          - img [ref=e37]
+        - generic [ref=e39]:
+          - paragraph [ref=e40]: Robert Couturier on Las Orcas, Oaxaca, and his return to Mexico's Pacific Coast.
+          - paragraph [ref=e41]: The full conversation is shared with members of the VIREZIA Circle.
+      - generic [ref=e44]:
+        - paragraph [ref=e45]: Why He Returned
+        - paragraph [ref=e46]: Couturier has worked in Mexico for over four decades. When the developers of Las Orcas approached him about Puerto Escondido, his answer was personal before it was professional.
+        - generic [ref=e47]:
+          - blockquote [ref=e48]:
+            - paragraph [ref=e49]: “What I love about Mexico is the incredible kindness of its people, the devotion of its workers, and their intelligence in making your dream come true.”
+          - blockquote [ref=e50]:
+            - paragraph [ref=e51]: “Puerto Escondido is being discovered. Most of the developments there are environmentally friendly, family-friendly. You don't have the feeling that you live on top of each other.”
+        - paragraph [ref=e52]: — Robert Couturier
+      - generic [ref=e55]:
+        - paragraph [ref=e56]: Published in
+        - generic [ref=e57]:
+          - img "Architectural Digest" [ref=e58]
+          - img "The New York Times" [ref=e59]
+          - img "Elle" [ref=e60]
+          - img "1stDibs" [ref=e61]
+      - generic [ref=e64]:
+        - blockquote [ref=e65]: “Luxury there is the ability to live simply, comfortably, with excellent food, with great services, with access to most pleasant things in life — and to have sort of a slow, peaceful life.”
+        - paragraph [ref=e66]: — Robert Couturier
+      - generic [ref=e69]:
+        - paragraph [ref=e70]: VIREZIA Selections
+        - paragraph [ref=e71]: Las Orcas is part of VIREZIA Selections — a small set of curated opportunities reviewed for architectural significance, regulatory integrity, and the seriousness of the process behind them.
+      - generic [ref=e74]:
+        - img "Las Orcas villa — designed by Robert Couturier" [ref=e77]
+        - generic [ref=e78]:
+          - paragraph [ref=e79]: Las Orcas
+          - paragraph [ref=e80]: Seven private residences on a single beachfront parcel in Puerto Escondido, Oaxaca — four villas and three casitas, designed by Robert Couturier as a small village. “So that when you walk through from the entrance to the upper bungalows,” he says, “you have a feeling that you're walking through a small little city.”
+          - paragraph [ref=e81]: The construction is in concrete and stone — materials chosen, in his words, “that will live in the sea air and age gracefully — as we all should.” Spaces are designed to be open but cozy. “You don't have the feeling that you live outside all the time. You have the ability to be outside, and the ability to stay inside and read a book.”
+          - paragraph [ref=e82]: Each residence has its own private deed and rooftop plunge pool. Pre-construction. Pre-titled lots. Direct access to the uncrowded beach of La Barra. Five residences remain available to founding members.
+          - paragraph [ref=e83]: From $561,000.
+      - generic [ref=e86]:
+        - blockquote [ref=e87]:
+          - paragraph [ref=e88]: “What will distinguish Las Orcas is the care with which it was designed and built. Luxury but also simplicity.”
+        - blockquote [ref=e89]:
+          - paragraph [ref=e90]: “Materials that will live in the sea air and age gracefully — as we all should.”
+          - paragraph [ref=e91]: — Robert Couturier
+      - generic [ref=e94]:
+        - paragraph [ref=e95]: The Neighborhood
+        - paragraph [ref=e96]: "The Pacific Coast of Oaxaca has become, quietly, the most concentrated architectural destination in Mexico. Within thirty minutes of Las Orcas:"
+        - generic [ref=e97]:
+          - paragraph [ref=e98]: Casa Wabi — Tadao Ando. Pritzker Prize, 1995. With pavilions by Álvaro Siza, Kengo Kuma, Alberto Kalach, Solano Benítez and Gloria Cabral.
+          - paragraph [ref=e99]: Casona Sforza — Alberto Kalach. La Barra.
+          - paragraph [ref=e100]: Hotel Escondido — Grupo Habita. Member of Design Hotels.
+          - paragraph [ref=e101]: Hotel Terrestre — Alberto Kalach. Solar-powered, member of Design Hotels.
+          - paragraph [ref=e102]: Casa TO — Ludwig Godefroy. La Punta.
+        - generic [ref=e103]:
+          - paragraph [ref=e104]: Until now, this architecture could be visited. It could not be inhabited.
+          - paragraph [ref=e105]: Las Orcas is the first private residential project at this tier on the Oaxacan Coast.
+      - generic [ref=e108]:
+        - paragraph [ref=e109]: The Build
+        - paragraph [ref=e110]: Construction by Quantia, the Puerto Escondido studio responsible for Casa Sicarú and Casa Madrina. Materials drawn from the region — Cantera Verde stone, Parota wood, Talavera tile, breeze blocks — selected for permanence in the sea air. Saltwater pools. Whole-home water filtration. Ten-inch walls and dual-pane glass to soften the climate. Each residence is delivered with private deed under Mexican federal title.
+        - paragraph [ref=e111]: "Estimated construction: Q2 2026 — Q3 2027."
+      - generic [ref=e114]:
+        - paragraph [ref=e115]: Join the VIREZIA Circle
+        - paragraph [ref=e116]: There is more to this story. The full conversation with Robert Couturier, the dossier, and the introductions to Las Orcas and future Selections are shared with members of the VIREZIA Circle.
+        - paragraph [ref=e117]: Membership is by inquiry. There is no fee.
+        - link "Join the VIREZIA Circle" [ref=e118] [cursor=pointer]:
+          - /url: /circle/join
+      - generic [ref=e121]:
+        - paragraph [ref=e122]: Founding Members
+        - paragraph [ref=e123]: Las Orcas opens to seven founding members — the first owners of a Robert Couturier residence on the Oaxacan Coast. Founding members select their residence from those remaining. They participate, where they wish, in the architect's final decisions on their home. They join a small group whose names will be associated with the project's first chapter.
+        - paragraph [ref=e124]: Founding membership is offered to members of the VIREZIA Circle who indicate alignment with the project. A short conversation precedes any introduction to the developer.
+        - link "Express Interest as a Founding Member" [ref=e125] [cursor=pointer]:
+          - /url: /circle/join?intent=founding
+      - generic [ref=e127]:
+        - paragraph [ref=e128]: VIREZIA · Private Real Estate Intelligence — Curated Selections in Mexico and Latin America
+        - link "Privacy Policy" [ref=e129] [cursor=pointer]:
+          - /url: /privacy
+  - alert [ref=e130]

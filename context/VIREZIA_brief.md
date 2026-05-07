@@ -1,36 +1,57 @@
-VIREZIA — Claude Code Build Brief
-Complete Website Specification
+# VIREZIA — Claude Code Build Brief
+## Complete Website Specification
 
-CONTEXT FOR CLAUDE CODE
-Build a complete multi-page website for VIREZIA — a private real estate verification and acquisition layer for globally-minded buyers entering Mexico's emerging destinations (Tulum, Riviera Maya, Oaxaca).
-VIREZIA is NOT a marketplace, NOT a listing portal, NOT a traditional real estate agency.
-It is a curated access and verification layer: showing clients fewer, better options —
-sourced from the full market, verified end-to-end, and personally matched to each buyer's profile.
-FIVE CORE DIFFERENTIATORS (always present in messaging):
+**Version:** 2.0 (May 2026)
+**Status:** Canonical
+**Supersedes:** v1.0 (March 2026 — "Private Real Estate Intelligence" positioning)
 
-FEW NOT MANY — small number of curated opportunities, not overwhelming volume
-VERIFIED END-TO-END — on-site audit, legal check, price benchmark, market data
-NO HIDDEN FEES — full transparency on costs, critical for foreign buyers in Mexico
-PERSONALIZED MATCH — every client has a profile, receives only what fits them
-ON-DEMAND AUDIT — client can commission verification of their own found deal
+---
 
-Off-market and pre-sale = premium subset ("including opportunities not yet publicly listed")
-Not the only source — VIREZIA curates from the full market, selects the best.
-The model is semi-manual and relationship-driven. The website's job is to filter the right people in, and everyone else out.
+## CONTEXT FOR CLAUDE CODE
 
-TECH STACK
+Build a complete multi-page website for **VIREZIA** — a **curator-led editorial platform for exceptional homes and real estate investments**, with a focus on Latin America and a global scope.
 
-Framework: Next.js 14 (App Router)
-Styling: Tailwind CSS
-Fonts: Cormorant Garamond (headings) + DM Sans (body) — load via Google Fonts
-Animations: Framer Motion (fade-in on scroll, staggered reveals)
-Forms: React Hook Form (no external form services)
-Icons: Lucide React
-Deployment ready: Vercel-compatible static export
+VIREZIA is **NOT**:
+- A marketplace
+- A listing portal
+- A traditional real estate agency
+- A "real estate intelligence platform" (in public-facing language)
+- A volume play
 
+VIREZIA **IS**:
+- A curator's selection of exceptional properties
+- An editorial publication where each featured listing is told as story
+- An invitation-only access layer for serious buyers
+- A two-sided model: asset owners pay for placement, buyers apply for access
 
-DESIGN SYSTEM
-css--bg-primary: #080808
+The website's job is to **filter the right people in and everyone else out**, while signaling status, taste, and exclusivity through restraint.
+
+### Critical architectural rule
+
+**Intelligence is the backend. Editorial is the front.**
+
+The platform's actual capabilities (REACH, AI tooling, market data, due diligence partnerships, repositioning frameworks, audience matching) are **real** but **never appear on public-facing pages.** They power what is delivered, but the public sees only editorial curation.
+
+For full reasoning, see `positioning-architecture.md`. For voice and language rules, see `brand-guidelines.md`. For featured listing copy, see `editorial-voice.md`.
+
+---
+
+## TECH STACK
+
+- **Framework:** Next.js 14 (App Router)
+- **Styling:** Tailwind CSS
+- **Fonts:** Cormorant Garamond (headings) + DM Sans (body) — load via Google Fonts
+- **Animations:** Framer Motion (fade-in on scroll, staggered reveals — slow rhythm)
+- **Forms:** React Hook Form (no external services)
+- **Icons:** Lucide React (use sparingly — most sections need none)
+- **Deployment:** Vercel-compatible static export
+
+---
+
+## DESIGN SYSTEM
+
+```css
+--bg-primary: #080808
 --bg-secondary: #111111
 --bg-card: #161616
 --text-primary: #f0ece4
@@ -40,24 +61,28 @@ css--bg-primary: #080808
 --accent-gold-light: #e8d5b0
 --border: #222222
 --border-subtle: #1a1a1a
-Typography scale:
+```
 
-H1: Cormorant Garamond, 72–96px, weight 300, letter-spacing -0.02em
-H2: Cormorant Garamond, 48–64px, weight 300
-H3: Cormorant Garamond, 32px, weight 400
-Body: DM Sans, 16px, weight 300–400, line-height 1.7
-Label/Caption: DM Sans, 12px, weight 400, letter-spacing 0.12em, UPPERCASE
+### Typography scale
 
-Layout:
+- **H1:** Cormorant Garamond, 72–96px, weight 300, letter-spacing -0.02em
+- **H2:** Cormorant Garamond, 48–64px, weight 300
+- **H3:** Cormorant Garamond, 32px, weight 400
+- **Body:** DM Sans, 16px, weight 300–400, line-height 1.7
+- **Label/Caption:** DM Sans, 12px, weight 400, letter-spacing 0.12em, UPPERCASE
 
-Max content width: 1200px, centered
-Section padding: 120px vertical
-Grid: 12-column with generous gutters
-Zero decorative dividers — space is the separator
-No stock photography. Use CSS gradients, abstract mesh backgrounds, and subtle grain texture overlay.
+### Layout
 
-Grain overlay (apply globally):
-cssbody::after {
+- Max content width: 1200px, centered
+- Section padding: 120px vertical
+- Grid: 12-column with generous gutters
+- Zero decorative dividers — space is the separator
+- **No stock photography.** Architecture-grade imagery only, or CSS gradients / mesh backgrounds with subtle grain texture overlay (3% opacity)
+
+### Grain overlay (apply globally)
+
+```css
+body::after {
   content: '';
   position: fixed;
   inset: 0;
@@ -66,471 +91,603 @@ cssbody::after {
   pointer-events: none;
   z-index: 9999;
 }
+```
 
-SITE ARCHITECTURE
-/ ............... Homepage
-/apply .......... Application form (primary conversion)
-/how-it-works ... Process explanation (trust builder)
-/market ......... Market intelligence teaser
-/bespoke-living . Blog/content hub
-/circle ......... VIREZIA Circle — password/invite protected, invitation only
-/partners ....... Developer/owner submission (hidden from main nav)
-Main Navigation (minimal, sticky, transparent → solid on scroll):
-VIREZIA [logo/wordmark]          How It Works   Market   Bespoke Living   Apply →
-"Apply →" is a small outlined button with gold border.
-Circle: visible only as a subtle link under the main CTA on homepage and in footer. Not in main nav.
-Partners page: accessible only via footer link, not main nav.
+---
 
-PAGE 1: HOMEPAGE ( / )
-Section 1 — HERO
-Full viewport height. Dark background with subtle radial gradient (warm center, cold edges).
-Animated: text fades in staggered on load.
+## SITE ARCHITECTURE
+
+```
+/ ................. Homepage
+/featured/[slug] .. Individual featured property pages (Las Orcas first)
+/apply ............ Application form (primary buyer conversion)
+/approach ......... How VIREZIA works (replaces /how-it-works — editorial framing)
+/bespoke-living ... Blog / editorial content hub
+/bespoke-living/[slug]
+/circle ........... VIREZIA Circle — invitation only, minimal page
+/for-owners ....... Asset owner / developer submission (replaces /partners)
+```
+
+### Main Navigation
+
+Minimal, sticky, transparent → solid on scroll:
+
+```
+VIREZIA [logo/wordmark]    Featured   Approach   Bespoke Living   Apply →
+```
+
+- "Apply →" is a small outlined button with gold border
+- **Circle** is visible only as a subtle line under the homepage hero CTA, and in the footer. **Never in main nav.**
+- **For Owners** is a footer link only. Not in main nav.
+
+---
+
+## PAGE 1: HOMEPAGE ( / )
+
+### Section 1 — HERO
+
+Full viewport height. Dark background with subtle radial gradient (warm center, cold edges). Animated: text fades in staggered on load.
+
+```
 [Small label, uppercase, gold, letter-spacing wide]
-Private Real Estate Intelligence · Mexico
+A Curated Real Estate Network
 
-[H1, large, serif, light weight]
-Fewer Options.
-Better Ones. Yours.
+[H1, large, serif, light weight — LOCKED]
+Curated real estate,
+selected — not listed.
+
+[Sub-line, serif lighter weight, max-width 640px, muted]
+A network where international investors meet
+and find good opportunities.
 
 [Body text, muted, max-width 520px]
-We help expats and foreign investors buy property
-in Mexico with full confidence.
+VIREZIA selects properties from across the market —
+architectural, design-led, location-driven, investment-grade —
+and presents them inside VIREZIA Circle.
 
-Every opportunity we show you is curated from the full market,
-verified on-site, benchmarked against real data,
-and matched personally to your profile.
+Apply to create your profile.
+We work with buyers, investors, developers, and asset owners.
 
-No hidden fees. No noise. No guesswork.
+[CTA button, gold border, text: "Apply for Access"]
+[Secondary link below: "How VIREZIA works →" → /approach]
+```
 
-[CTA button, gold border, text: "Apply for Private Access"]
-[Secondary link below: "Learn how it works →"]
-Bottom of hero: thin horizontal line + small text: "Not a listing portal. Every option is selected for you specifically."
+Bottom of hero: thin horizontal line + small text:
 
-Section 2 — PROBLEM CONTRAST
-Two-column layout. Left: the broken market. Right: VIREZIA's approach.
-Background: slightly lighter (#111).
-[Left column — label: "The market"]
-Hundreds of listings.
-Inflated prices.
-No legal clarity.
-No independent verification.
-Brokers optimizing for commission,
-not for your outcome.
+> Properties available inside VIREZIA Circle. Apply to create your profile.
 
-[Right column — label: "VIREZIA"]
-Every deal audited before you see it.
-Price benchmarked against market signals.
-Legal status verified by local counsel.
-Matched to your intent, not our inventory.
-You see less. You decide with more clarity.
+Below that, separate line, italic, muted gold (60% opacity):
 
-Section 3 — WHAT IS VIREZIA
-Full-width section. Single column, centered. Large serif text.
-[Label: "What we are"]
+> VIREZIA Circle — by invitation only. [→ /circle]
+
+### Section 2 — WHAT VIREZIA IS
+
+Replaces the previous "Currently Featured" section. Per architectural decision: **homepage does not display properties.** Featured properties are visible only on dedicated landing pages built per campaign, or inside VIREZIA Circle for members.
+
+Single column, generous spacing. Confident, declarative.
+
+```
+[Label: "What VIREZIA Is"]
 
 [H2]
-We Don't Show You Everything.
-We Show You What's Right for You.
+A curated real estate network.
 
-[Body]
-VIREZIA curates a small number of opportunities from the full
-Mexican real estate market — not one list for everyone,
-but a personal selection built around your profile.
+[Body, max 640px]
+VIREZIA is not a listing portal.
+We don't publish properties on the public homepage.
 
-Every property we surface is verified on-site, benchmarked
-against real market data, and reviewed for legal clarity.
-No hidden fees. No noise. No guesswork.
+We select real estate from across the market —
+architectural, design-led, location-driven, investment-grade —
+and present each property inside VIREZIA Circle.
 
-And if you've already found something —
-you can commission an independent audit through our partner network.
+International investors apply to create a profile and access opportunities.
+Developers and asset owners apply to submit properties for selection.
+Each application is reviewed personally.
+```
 
-[Three items in a row — minimalist, no icons, just numbers + text]
+**No featured properties shown here.** No carousel. No grid. The work of presenting properties happens on dedicated landing pages, not on this surface.
 
-01 — Personal Profile
-Tell us your goals, budget, and priorities.
-We build your buyer profile and match opportunities to it —
-not the other way around.
+### Section 3 — THE APPROACH
 
-02 — Curated & Verified
-Every option is sourced from the full market, selected for quality,
-verified on-site by our due diligence partner, and benchmarked
-against current pricing data. Including off-market and pre-sale
-opportunities not yet publicly listed.
+Single column, restrained, declarative.
 
-03 — Guided to Close
-Full transparency from first contact to notarial close.
-No hidden fees. Legal support, partner network, and clear
-process at every step — or audit your own found deal on demand.
+```
+[Label: "The Approach"]
 
-Section 4 — HOW IT WORKS (abbreviated)
-Three steps. Horizontal on desktop, vertical on mobile.
-[Label: "The process"]
+[H2]
+We don't list properties.
+We select them.
 
-[Step 1]
-Define Your Direction
-Tell us your goals, budget, and timeline.
-We build your buyer profile.
+[Body, max 640px]
+Every property in VIREZIA Circle is selected personally —
+for its architecture, design, location, story,
+investment thesis, or off-market access.
 
-[Step 2]
-Receive Verified Options
-We surface audited opportunities matched to your intent.
-Off-market, pre-sales, and selected listings — verified before delivery.
+We work with the owners and developers behind each property
+to present it the way it deserves to be presented.
 
-[Step 3]
-Acquire with Clarity
-We guide you from first review to final close.
-Legal support, notarial process, partner network — all coordinated.
+Some properties we feature are off the public market.
+Others are publicly available, but worth a closer look
+than the noise around them allows.
 
-[Link: "Full process breakdown →" → /how-it-works]
+If a property earns a closer look, we feature it.
+If it doesn't, we don't.
 
-Section 5 — FOR WHOM (qualification filter)
-Two columns. Clean, direct.
+[Subtle link: "Read the full approach →" → /approach]
+```
+
+### Section 4 — FOR WHOM
+
+Two columns, restrained. No bullets — short lines, line-broken.
+
+```
 [Label: "Who this is for"]
 
-[Left — "VIREZIA is for:"]
-· Expats relocating to Mexico
-· Foreign investors entering emerging markets
-· Remote founders seeking a base of operations
-· Individuals who value clarity over volume
-· Buyers who don't want to navigate an unfamiliar market alone
+[Left — header: "VIREZIA is for"]
+Buyers who value character over volume.
+Investors with a discerning eye.
+Owners of exceptional properties.
+People who prefer to be introduced.
 
-[Right — "VIREZIA is not for:"]
-· Browsing hundreds of listings
-· Comparing options without intent to buy
-· Those expecting an automated platform
-· Mass-market property search
+[Right — header: "VIREZIA is not for"]
+Browsing.
+Mass-market property search.
+Volume listings.
+Anyone expecting a portal.
 
 [Note at bottom, small, muted]
 Access is limited. Each application is reviewed individually.
+```
 
-[Separate line, italic, color: --accent-gold at 60% opacity]
-For investors seeking pre-market deal access before public release —
-VIREZIA Circle operates by invitation only. [→ /circle]
+### Section 5 — FOR OWNERS & DEVELOPERS (light touch)
 
-Section 6 — TRUST SIGNALS
-Dark card background. No fabricated testimonials. Real-feeling signals only.
-[Label: "Track record"]
+A single quiet block — does not dominate the buyer-focused homepage.
 
-[Stat 1]
-3 Focus Regions
-Tulum · Riviera Maya · Oaxaca
-Markets monitored daily for pricing, demand, and legal shifts.
+```
+[Label: "For Owners & Developers"]
 
-[Stat 2]
-Independent Verification Standard
-Legal title · Physical on-site inspection · Registro Público records
-Every deal audited by our due diligence partner before you see it.
+[H3]
+If your property is exceptional, we'd like to hear about it.
 
-[Stat 3]
-Full Cycle Support
-From first inquiry to acquisition close.
-Including legal, notarial, and relocation partners.
+[Body, max 560px]
+VIREZIA features a limited number of properties each year.
+Owners and developers with architecturally distinctive,
+design-led, or story-rich properties may submit for review.
 
-[Anonymous case note — styled as a card]
-"A US-based founder with a $280k budget and a 90-day timeline
-received three verified options in Tulum within 5 days.
-Acquisition completed in 7 weeks."
-— Anonymous · Q1 2026
+[Link: "Submit a property →" → /for-owners]
+```
 
-Section 7 — FINAL CTA
-Full-width, high contrast. Gold accent.
+### Section 6 — FINAL CTA
+
+Full-width, high contrast, gold accent. Restrained.
+
+```
 [H2]
-Private Access.
-Reviewed Individually.
+Create your VIREZIA profile.
 
 [Body]
-Submit your application and tell us what you are looking for.
-We review every request and respond within 48 hours.
+Tell us what you're looking for —
+or what you're offering.
+We respond personally within 48 hours.
 
-[Button: "Apply for Private Access"]
-[Small text below: "No commitment. No browsing. Just clarity."]
-
-[Subtle line below button, smaller, muted]
-Already a member? → VIREZIA Circle  [links to /circle]
-
----
-
-### Section 7 — FINAL CTA
-
-Full-width, high contrast. Gold accent.
-[H2]
-Private Access.
-Reviewed Individually.
-[Body]
-Submit your application and tell us what you are looking for.
-We review every request and respond within 48 hours.
-[Button: "Apply for Private Access"]
-[Small text below: "No commitment. No browsing. Just clarity."]
-
----
+[Button: "Apply for Access"]
+[Small text below, muted: "Each application is reviewed individually."]
+```
 
 ### FOOTER
 
-Minimal. Dark, border-top subtle.
-[Left: VIREZIA wordmark + tagline: Bespoke Living]
+Minimal, dark, border-top subtle.
+
+```
+[Left: VIREZIA wordmark + small line: "Curated homes, by invitation."]
+
 [Center links]
-How It Works · Market · Bespoke Living · Apply
+Featured · Approach · Bespoke Living · Apply
+
 [Right]
 hello@virezia.com
 Cancún · Mexico
+
 [Bottom row]
 © 2026 VIREZIA. All rights reserved.
-Privacy Policy · Terms · [hidden: List Your Property →]
-
-"List Your Property →" links to /partners — visible only in footer, no main nav.
+Privacy · Terms · For Owners → · Circle →
+```
 
 ---
 
-## PAGE 2: /apply
+## PAGE 2: /featured/[slug] — Individual Featured Property
 
 ### Purpose
-Primary conversion page. Multi-step form. No external services (Typeform, etc.) — built inline.
+The editorial heart of VIREZIA. Each featured property is a long-form curatorial introduction.
+
+For full writing guidance, see `editorial-voice.md`.
+
+### Structure (mirrors editorial-voice.md §2)
+
+```
+[Hero image — architecture photography, full-width]
+
+[Small label: "Featured · [Region]"]
+
+[H1]
+[Property Name]
+
+[Subtitle, serif, lighter weight]
+[One-line editorial framing — e.g., "A coastal retreat by Robert Couturier"]
+
+[Body — written following editorial-voice.md]
+
+  Block 1: The Lead (1–2 paragraphs)
+  Block 2: The Place (2–3 paragraphs)
+  Block 3: The Property (2–3 paragraphs)
+  Block 4: The Practical (compressed, sidebar or short paragraph)
+  Block 5: The Invitation (CTA)
+```
+
+### Practical sidebar (or compressed bottom block)
+
+Right column on desktop, below body on mobile. Minimal.
+
+```
+ARCHITECT / DESIGNER
+Robert Couturier
+
+LOCATION
+Pacific Coast, Mexico
+
+CONFIGURATION
+11 residences
+
+STATUS
+Pre-sale · 2026 delivery
+
+ACCESS
+By application via VIREZIA
+```
+
+**No prices on the public page.** Pricing is disclosed post-qualification, in private 1:1 conversation.
+
+### CTA at bottom
+
+```
+[H3]
+Express interest in [Property Name]
+
+[Body, brief]
+Currently accepting expressions of interest from qualified buyers.
+Inquiries are reviewed personally.
+
+[Button: "Apply for Private Access"]
+```
+
+---
+
+## PAGE 3: /apply — Application Form
+
+### Purpose
+Primary conversion page for buyers. Multi-step form, built inline, no external services.
 
 ### Header
+
+```
 [H1]
 Apply for Private Access
+
 [Body, max 480px]
 VIREZIA works with a limited number of buyers at any time.
 Submit your profile and we'll review your request within 48 hours.
+```
 
-### Form — 3 Steps (progress indicator at top)
+### Form — 3 Steps (progress indicator at top, thin gold line)
 
 **Step 1 — You**
 - Full Name (text)
 - Email (email)
-- Country of residence (select — common options: USA, Canada, UK, Germany, Poland, Other)
-- How did you hear about VIREZIA? (select: Referral / LinkedIn / Search / Other)
+- Country of residence (select)
+- I am: (radio) Buyer / Investor / Developer / Asset owner / Real estate professional / Other
+- How did you hear about VIREZIA? (select: Featured property / Referral / LinkedIn / Bespoke Living / Other)
 
 **Step 2 — Your Intent**
-- I am looking to: (radio) Relocate to Mexico / Invest in property / Both / Still exploring
-- Preferred region: (multi-select) Tulum / Riviera Maya / Oaxaca / Not sure yet
-- Timeline: (radio) Immediately / 3–6 months / 6–12 months / Exploring for now
-- Budget range: (radio) Under $150k / $150k–$300k / $300k–$600k / $600k+ / Prefer not to say
+- I am looking to: (radio) Acquire a primary residence / Acquire as investment / Both / Submit a property / Still exploring
+- Property character that interests you: (multi-select) Architectural distinction / Design lineage / Coastal / Urban / Land / Investment-grade / Off-market / Pre-sale
+- Preferred regions: (multi-select) Mexico / Argentina / Other Latin America / Europe / Other
+- Timeline: (radio) Immediately / 3–6 months / 6–12 months / Exploring
+- Budget range: (radio) Under $500k / $500k–$1M / $1M–$3M / $3M+ / Prefer not to say
 
 **Step 3 — Context**
-- Tell us briefly what you are looking for: (textarea, 4 rows)
-- Placeholder: "What matters most to you in this acquisition? Investment return, lifestyle, relocation, something else?"
+- What kind of property would you most want to be introduced to? (textarea, 4 rows)
+- Placeholder: "Tell us what would make a property worth your attention. Specific architects, locations, lifestyles, investment thesis, or anything else that defines what you're looking for."
 
 **Submit button:** "Submit Application"
 
-**After submit:** Show confirmation message inline (no redirect):
+**After submit (inline confirmation, no redirect):**
+
+```
 Your application has been received.
-We review every request individually and will be in touch within 48 hours.
+We review every request individually
+and will be in touch within 48 hours.
+
 — VIREZIA
+```
 
 ---
 
-## PAGE 3: /how-it-works
+## PAGE 4: /approach — How VIREZIA Works (editorial)
 
 ### Purpose
-Destroy objections before application. Show that the process is real, structured, and trustworthy.
+Explain the model **without** revealing backend mechanics. Reassure serious applicants. Build trust through restraint, not feature lists.
+
+This page replaces the previous `/how-it-works` page, which was service-catalog-style.
 
 ### Structure
 
-**Header:**
-[H1] A Different Way to Enter the Market
-[Body] Most buyers in Mexico navigate alone — relying on a single agent
-with a conflict of interest. VIREZIA was built to close that gap.
+```
+[H1]
+The Approach
 
-**Section 1 — Signal Collection**
-[H3] How We See the Market
-We continuously aggregate data from multiple sources:
-· Social media demand signals across expat and investor communities
-· Rental performance data (AirDNA and equivalent)
-· Historical pricing and transaction records
-· Direct developer relationships and pre-market access
-· On-ground physical audits through local partner network
-This gives us a real-time map of what the market is doing —
-not what developers want you to believe it's doing.
+[Body, max 640px]
+VIREZIA exists because the way exceptional properties
+are usually presented does them a disservice.
 
-**Section 2 — Verification Standard**
-[H3] What "Verified" Means
-Every property that enters our network passes a multi-point independent review
-conducted by our due diligence partner — a registered Mexican entity operating
-under Swiss standards of accuracy and transparency.
-Legal audit — Title verification via Registro Público de la Propiedad.
-Liens, debt status, ejido classification, permit review, developer background.
-Physical inspection — On-site visit: keys, utilities, structural condition,
-photos, written report. Conducted before any opportunity is presented.
-Price benchmark — Compared against current market data for the region and asset type.
-Rental potential — AirDNA occupancy and ADR estimates where relevant.
-Only properties that pass this standard enter our network.
-Full legal and notarial report available as a paid add-on.
-Basic verification: from $890. Full asset protection: from $4,500.
-Included in complete acquisition packages — ask when you apply.
+Most homes are listed. A small number deserve to be introduced.
 
-**Section 3 — Buyer Profile**
-[H3] Your Profile Drives Everything
-When you apply, we build a detailed buyer profile:
-· Acquisition intent (investment, relocation, both)
-· Timeline and flexibility
-· Budget range and financing situation
-· Lifestyle and location preferences
-· Risk tolerance
-Every opportunity we surface is matched against this profile.
-We don't send you a list — we send you what fits.
+These are the ones we work with.
+```
 
-**Section 4 — Full Cycle Support**
-[H3] From First Contact to Close
-We accompany every client through the full acquisition cycle:
-· Initial options delivery (typically within 72 hours of profile completion)
-· Property walkthroughs (virtual or in-person)
-· Negotiation support
-· Legal and notarial coordination through trusted partners
-· Relocation, residency, and financing referrals
-We do not disappear after the introduction.
-We stay until the transaction is closed.
+### Section: Selection
 
-**CTA at bottom:**
-[H2] Ready to begin?
-[Button: Apply for Private Access]
+```
+[H3] What we feature
+
+[Body]
+Every property featured on VIREZIA is selected personally
+for one or more of the following:
+
+— Architectural or design distinction
+— Location with character
+— A story worth telling
+— A defined investment thesis
+— Off-market access not available elsewhere
+
+We feature a defined number of properties at any time.
+Not the largest. Not the cheapest. The right ones for the right buyer.
+```
+
+### Section: How buyers engage
+
+```
+[H3] If you are looking to acquire
+
+[Body]
+You apply. We respond personally within 48 hours.
+
+If there is alignment between what you are looking for
+and what we are featuring or sourcing,
+we begin a private conversation.
+
+What follows is shaped by the property and by you —
+not by a fixed process diagram.
+```
+
+### Section: How owners engage
+
+```
+[H3] If you own a property worth featuring
+
+[Body]
+Owners and developers approach VIREZIA when they want
+their property told properly — and placed in front of
+buyers who will value it.
+
+Featured selection is reviewed quarterly.
+Inclusion is by invitation following submission.
+
+[Link: "Submit a property →" → /for-owners]
+```
+
+### Section: What we do not do
+
+A confident, restrained closing block.
+
+```
+[H3] What we do not do
+
+[Body, line-broken]
+We do not list.
+We do not browse.
+We do not work with mass-market product.
+We do not feature what we would not personally consider exceptional.
+
+Selectivity is the entire point.
+```
+
+### Final CTA
+
+```
+[Button: "Apply for Private Access"]
+```
+
+**What this page does NOT contain:**
+- Verification mechanics
+- Due diligence pricing or packages
+- AI / intelligence claims
+- Process flowcharts with "Step 1 / Step 2 / Step 3"
+- Service tier comparisons
 
 ---
 
-## PAGE 4: /market
+## PAGE 5: /bespoke-living — Blog / Editorial Hub
 
 ### Purpose
-Demonstrate intelligence capability. Teaser only — full access post-application.
+Editorial content hub. Lifestyle, architecture, design, place. The voice of the curator.
 
-### Structure
+### Header
 
-**Header:**
-[H1] Market Intelligence
-[Body] A public snapshot of what we monitor across our three focus regions.
-Full analysis and verified deal data is available to active members.
+```
+[H1]
+Bespoke Living
 
-**Three region cards (one per region):**
+[Body]
+Notes on architecture, design, and life across the places
+VIREZIA features.
+```
 
-Each card:
-- Region name (Tulum / Riviera Maya / Oaxaca)
-- 2–3 data points (example placeholders — replace with real data):
-  - Average price per m² (condos): $X,XXX
-  - Average short-term rental yield: X%
-  - Demand trend: ↑ Rising / → Stable / ↓ Cooling
-- One sentence of editorial context
-- "View verified opportunities →" → links to /apply
+### Layout
 
-**Section below cards:**
-[H3] What We Monitor
-· Listing price trends across Tulum, Akumal, Puerto Morelos, Puerto Escondido
-· Short-term rental performance (AirDNA)
-· Developer pipeline and pre-sale absorption rates
-· Legal risk indicators by zone (ejido, coastal restrictions)
-· Expat and investor demand signals from community monitoring
-[Note, muted]
-This data informs every deal in our network.
-It is not public. It is not available elsewhere.
-Full access is provided to verified buyers after application.
+- 2-column masonry post grid
+- Each card: title (serif), date, 2-line excerpt, "Read →"
+- No sidebar. No categories. No comments. No author bylines (the curator's voice is implicit).
 
----
+### Every post footer
 
-## PAGE 5: /bespoke-living
-
-### Purpose
-Content hub. Lifestyle + intelligence editorial. Each post ends with one CTA.
-
-### Structure
-
-**Header:**
-[H1] Bespoke Living
-[Body] Notes on life, markets, and acquisition in Mexico's emerging destinations.
-
-**Post grid:** 2-column masonry grid. Each card: title, date, 2-line excerpt, "Read →"
-
-**No sidebar. No categories. No comments.**
-
-**Every post footer:**
-
+```
 Interested in acquiring in this market?
-[Button: Apply for Private Access]
+
+[Button: "Apply for Private Access"]
+
+Or browse currently featured properties →
+```
+
+### Post structure (template — see editorial-voice.md)
+
+- Long-form (1,000–2,500 words)
+- Architecture-grade imagery
+- Personal voice
+- Always closes with one CTA only
 
 ---
 
-## PAGE 6: /circle
+## PAGE 6: /circle — VIREZIA Circle
 
 ### Purpose
-Signals the existence of a higher-access tier. Publicly visible but functionally gated.
-No details about what Circle contains — interest is captured via email only.
-Operational launch of Circle is deferred until minimum deal flow exists (3+ pre-market assets).
+Signal that Circle exists. Capture interest. **Never disclose what Circle contains** on public surfaces.
 
-### Access gate
-Page is publicly accessible but contains no member content.
-Future: add password protection or invite-token system once Circle is operational.
+For positioning rule, see `value-propositions.md` §Track 3.
 
-### Structure
+### Structure (full-page, minimal, dark, no main nav)
 
-**Full-page layout. Minimal. Dark. No nav links visible except logo.**
+```
 [Small label, uppercase, gold]
 By Invitation Only
+
 [H1, large serif]
 VIREZIA Circle
+
 [Body, centered, max 480px]
-A private network for investors with active acquisition intent
-in Mexico's emerging markets.
-Pre-market deals. Off-market assets. Verified before release.
-Access to opportunities that never reach the public.
+A private network for those with active acquisition intent
+in markets we cover.
+
+Membership is granted by invitation or direct referral.
+
 [Separator — thin gold line, short, centered]
-[H3, lighter weight]
-How membership works
-[Three lines, minimal]
-· Deals are sourced and verified before any public listing
-· Members receive priority access based on acquisition profile
-· Network introductions available within the Circle
-[Separator]
+
 [Single input field + button]
 Request an introduction
 [Email input placeholder: "Your email address"]
+[Optional textarea: "Brief context (optional)"]
 [Button: "Submit Request"]
+
 [Muted note below]
-All requests are reviewed individually.
-Membership is granted by invitation or direct referral only.
+All requests are reviewed personally.
 Current availability is limited.
+
 [Footer link only — no main nav]
 ← Return to VIREZIA
+```
 
 ### Behavior after submit
-Show inline confirmation:
+
+```
 Your request has been noted.
 If there is a fit, someone will reach out directly.
+
 — VIREZIA
+```
+
 No automated email. Manual review. This is intentional.
+
+### What this page does NOT contain
+- Description of what Circle members receive
+- Pre-market deal mechanics
+- Pricing of any kind
+- Member benefits list
+- Tier structures
+
+The page exists to signal Circle's existence to those already aware of it. Anyone who needs more explanation is not the target.
 
 ---
 
-## PAGE 7: /partners
+## PAGE 7: /for-owners — Asset Owner / Developer Submission
 
 ### Purpose
-Hidden entry point for developers and property owners who want to list with VIREZIA.
-NOT advertised in main nav. Footer link only.
+Hidden entry point for owners and developers who want to submit a property for featuring consideration.
+
+**Footer link only. Not in main nav.**
 
 ### Structure
 
-**Header:**
-[H1] Submit Your Property
-[Body] VIREZIA evaluates a limited number of developer and owner
-opportunities each quarter. Every submission is reviewed against
-our buyer demand data before acceptance.
+```
+[Label: "For Owners & Developers"]
 
-**What we look for:**
-· Properties in Tulum, Riviera Maya, or Oaxaca / Puerto Escondido
-· Pricing aligned with market data (not wishful listing prices)
-· Clean legal title or clear regularization path
-· Developer or owner with capacity to support due diligence
+[H1]
+Submit a Property
 
-**Form (simple, single step):**
+[Body, max 640px]
+VIREZIA features a limited number of exceptional properties each year —
+sourced globally, with current focus across Latin America.
+
+If your property has architectural distinction, design lineage,
+location character, or a story worth telling — we'd like to hear from you.
+
+Submission begins with a brief intake. Featured selection is reviewed quarterly.
+```
+
+### What we look for
+
+```
+[H3] Selection criteria
+
+— Architectural, design, or location distinction
+— A defined investment thesis or off-market access
+— Pricing aligned with market reality
+— Clean legal title or clear regularization path
+— Owner willing to support thoughtful presentation of the offer
+```
+
+### Form (single step, simple)
+
 - Name
 - Email
-- Property location (text)
-- Property type (select: Condo / Villa / Land / Commercial / Other)
-- Asking price (text)
+- Role (select: Owner / Developer / Architect / Representing seller)
+- Property location
+- Property type (select: Single residence / Multi-unit / Land / Mixed-use / Other)
+- Asking price range (text)
 - Current status (select: Pre-sale / Active listing / Off-market / Under development)
-- Brief description (textarea)
+- What makes this property worth featuring? (textarea, 5 rows)
+- Image / portfolio link (optional, URL)
 
-**Submit button:** "Submit for Evaluation"
+**Submit button:** "Submit for Review"
 
-**After submit:**
-Thank you. We review all submissions against current buyer demand.
+### After submit
+
+```
+Thank you.
+
+We review every submission against our current featuring criteria.
 If there is a fit, we will reach out within 5 business days.
+
+— VIREZIA
+```
+
+### What this page does NOT contain
+
+- Repositioning / campaign pricing
+- Retainer fee structure
+- "Featured packages" or tiers
+- Service-catalog mechanics
+- Audience size claims
+
+These are disclosed in private conversation **after** initial submission review.
 
 ---
 
@@ -540,19 +697,19 @@ If there is a fit, we will reach out within 5 business days.
 - Transparent on load, transitions to `rgba(8,8,8,0.95)` with backdrop-blur on scroll
 - Logo: "VIREZIA" in Cormorant Garamond, tracking wide, gold color
 - Links: DM Sans, small, uppercase, letter-spacing wide, text-secondary
-- CTA: small outlined button, gold border, gold text, hover: fills gold, text dark
+- CTA: small outlined button, gold border, gold text. Hover: fills gold, text dark.
 
 ### Button Variants
-Primary: gold border + gold text, dark bg. Hover: bg fills gold, text #080808
-Secondary: text only with underline animation
-Ghost: fully transparent, border subtle
+- **Primary:** gold border + gold text, dark bg. Hover: bg fills gold, text #080808
+- **Secondary:** text only with underline animation
+- **Ghost:** fully transparent, border subtle
 
-### Card Component
+### Featured Property Card
 - Background: #161616
 - Border: 1px solid #222
-- Padding: 32px
+- Padding: 0 (image bleeds to edge), 32px on text section
 - No border-radius OR very subtle (4px max)
-- Hover: border color shifts to gold (subtle)
+- Hover: border color shifts to gold (subtle), image subtle zoom (1.02 scale)
 
 ### Form Component
 - Input fields: bg #111, border #222, text primary
@@ -564,73 +721,146 @@ Ghost: fully transparent, border subtle
 ### Scroll Animations
 - All sections: fade-in + translateY(20px) → translateY(0) on enter
 - Stagger delay for lists: 0.1s per item
+- **Slow rhythm** — animations should breathe, not snap
 - Use Framer Motion `useInView` hook
 
 ---
 
 ## COPY RULES (enforce throughout)
 
-- Never use: "browse," "search listings," "find properties," "explore options"
-- Always use: "verified," "audited," "matched," "curated," "clarity"
-- Tone: calm, precise, confident. Zero hype. Zero urgency language.
-- No exclamation marks anywhere on the site.
-- Numbers and specificity over adjectives wherever possible.
-- When describing the service: "we" not "our team" (solo operation, keep it lean)
+### Always use
+- *Featured, curated, selected, presented, introduced*
+- *By invitation, by application, by referral*
+- *Exceptional, distinctive, distinguished* (only when literally true)
+- *Story, design, architecture, place, character*
+
+### Never use (front-end)
+- *Browse, search listings, find properties, explore options*
+- *Verified, audited, due diligence* (in copy or pricing)
+- *Intelligence, smart, AI-powered, tech-enabled*
+- *Listings, inventory, database*
+- *Best, top, leading, premier, world-class, luxurious*
+- *Exclamation marks anywhere on the site*
+- *Don't miss, limited time, act now*
+
+### Tone
+- Calm, precise, confident
+- Slow rhythm — sentences breathe
+- Specific over decorative
+- Confident through restraint, not volume
+
+### Voice
+- "We" not "our team" (solo curator-led operation)
+- First person where natural ("we featured this because...")
+- Editorial framing, not service-provider framing
 
 ---
 
-## WHAT TO EXCLUDE
+## WHAT TO EXCLUDE (anti-pattern checklist)
 
-- Social media icons (omit entirely until profiles are active)
-- Any testimonials not in the exact format specified above
-- "For Agents" language or nav items
-- Any language implying a browsable database
-- Stock photography of smiling people, tropical beaches, generic real estate
-- Alexa Ramírez persona (communications only, not on website)
-- Three redundant pillars that say the same thing
+- Stock photography of any kind (smiling people, beaches, generic interiors)
+- Social media icons (omit until profiles are active and editorially aligned)
+- Three-pillar service catalogs ("Personal Profile / Curated & Verified / Guided to Close")
+- Five-differentiator lists ("Few not many · Verified · No hidden fees...")
+- Due diligence pricing or service packages on any public page
+- Process flowcharts with numbered steps
+- Testimonials in standard format (use anonymous case notes only, sparingly)
+- Alexa Ramírez persona (deprecated entirely)
+- "Bespoke Living" as homepage tagline (it's the blog name now)
+- "Live Beyond Borders" hero (deprecated)
+- "Private Real Estate Intelligence" anywhere on public pages
+- Any geographic claim broader than what is actually featured
+- AI / intelligence / tech-enabled language anywhere customer-facing
+- Generic real estate adjective stacking
 
 ---
 
-## FILE STRUCTURE (suggested)
+## FILE STRUCTURE
+
+```
 /app
-/page.tsx .................. Homepage
-/apply/page.tsx ............ Application form
-/how-it-works/page.tsx ..... Process page
-/market/page.tsx ........... Market intelligence
-/bespoke-living/page.tsx ... Blog index
-/bespoke-living/[slug]/page.tsx
-/partners/page.tsx ......... Hidden partner form
-layout.tsx ................. Root layout with nav + footer
+  page.tsx                      # Homepage
+  /featured
+    /[slug]/page.tsx            # Individual featured property
+  /apply/page.tsx               # Application form
+  /approach/page.tsx            # The approach (replaces /how-it-works)
+  /bespoke-living
+    page.tsx                    # Blog index
+    /[slug]/page.tsx            # Blog post
+  /circle/page.tsx              # VIREZIA Circle (minimal)
+  /for-owners/page.tsx          # Submission form (replaces /partners)
+  layout.tsx                    # Root layout (nav + footer)
+
 /components
-Nav.tsx
-Footer.tsx
-Hero.tsx
-SectionLabel.tsx
-Button.tsx
-Card.tsx
-ApplyForm.tsx .............. Multi-step form
-PartnerForm.tsx
-AnimatedSection.tsx ........ Scroll reveal wrapper
+  Nav.tsx
+  Footer.tsx
+  Hero.tsx
+  FeaturedCard.tsx
+  SectionLabel.tsx
+  Button.tsx
+  ApplyForm.tsx                 # Multi-step
+  OwnerSubmissionForm.tsx
+  CircleRequestForm.tsx
+  AnimatedSection.tsx           # Scroll reveal wrapper
+
+/content
+  /featured                     # MDX or markdown for each featured property
+    las-orcas.mdx
+  /bespoke-living               # MDX or markdown for blog posts
+
 /lib
-fonts.ts ................... Google Fonts config
-constants.ts ............... Site copy constants
+  fonts.ts
+  constants.ts                  # Site copy constants
+
 /styles
-globals.css ................ CSS variables + base styles
+  globals.css                   # CSS variables + base styles
+```
 
 ---
 
-## LAUNCH CHECKLIST (before going live)
+## LAUNCH CHECKLIST
 
-- [ ] Replace placeholder market data in /market with real numbers
-- [ ] Add one real anonymous case study (Q1 2026 format)
-- [ ] Connect form submissions to email (Resend or Nodemailer → hello@virezia.com)
-- [ ] Set up form data storage (simple: Notion API or Airtable as backend)
-- [ ] Remove "List Your Property →" footer link until /partners is ready
-- [ ] Add Google Analytics or Plausible (privacy-first preferred)
+### Before campaign reactivation (Las Orcas)
+
+- [ ] Tagline decision finalized (see `brand-guidelines.md` §6)
+- [ ] Las Orcas featured page (`/featured/las-orcas`) drafted with full editorial copy
+- [ ] All references to "intelligence," "verified," "audited" pricing removed from public pages
+- [ ] DD pricing migrated to post-qualification flow (private only)
+- [ ] `/market` page deprecated or redirected to `/approach`
+- [ ] `/partners` redirected to `/for-owners`
+- [ ] Hero copy reviewed against `brand-guidelines.md` §10 decision filter
+- [ ] At least 3 hero-quality images for Las Orcas confirmed
+- [ ] Apply form connected to email + storage (Notion or Airtable backend)
+- [ ] Privacy / Terms pages basic version live
+
+### Operational readiness
+
+- [ ] Form submissions route to `hello@virezia.com`
+- [ ] Manual review process for Apply, Circle, For Owners submissions
+- [ ] Analytics: privacy-first (Plausible recommended)
 - [ ] Meta tags: OG image, title, description per page
-- [ ] Mobile QA: all sections responsive, form usable on iOS
+- [ ] Mobile QA: all sections responsive, forms usable on iOS
+
+### Post-launch monitoring
+
+- [ ] Anti-drift check (against `positioning-architecture.md` §7)
+- [ ] First Bespoke Living post drafted within 30 days of launch
+- [ ] Second featured property sourced and editorial drafted within 60 days
 
 ---
 
-*Brief version: 1.0 — March 2026*
-*Built for Claude Code. All copy is final unless marked [PLACEHOLDER].*
+## RELATED DOCUMENTS (read before building)
+
+- `brand-guidelines.md` — Voice, tone, language, decision filter
+- `value-propositions.md` — Audience-specific messaging (buyer, owner, Circle)
+- `editorial-voice.md` — How to write featured listings and blog posts
+- `positioning-architecture.md` — Front-vs-backend separation, anti-drift triggers
+
+When this brief conflicts with older briefs or strategy notes, **this version wins.**
+When this brief conflicts with `positioning-architecture.md`, **that document wins** (it is the highest-level decision document).
+
+---
+
+*Brief version: 2.3 — May 2026 (tagline LOCKED: "Curated real estate, selected — not listed." + sub-line "A network where international investors meet and find good opportunities.")*
+*Built for Claude Code. All copy is final unless marked [DECISION PENDING].*
+*Maintained by: Lucas Hubert*
