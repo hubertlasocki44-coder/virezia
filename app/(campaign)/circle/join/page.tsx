@@ -185,12 +185,38 @@ function CircleJoinWizard() {
       case "email":
         if (!email.trim() || !email.includes("@")) { setError("Please enter a valid email."); return; }
         if (!consent) { setError("Please agree to receive emails to continue."); return; }
+        // Save email immediately (partial lead capture)
+        {
+          const earlyResult = await submitLasOrcasForm({
+            fullName,
+            email,
+            phone: "",
+            investmentRange: "",
+            timeline: "",
+            intent: "",
+            ...utmRef.current,
+          });
+          if (earlyResult.error) {
+            setError(earlyResult.error);
+            return;
+          }
+          setStage1Submitted(true);
+        }
         setStage("phone");
         break;
       case "phone":
-        if (!phone.trim()) { setError("Please enter your phone number."); return; }
-        const ok = await submitStage1();
-        if (!ok) return;
+        // Phone is optional enrichment, re-submit with phone to update profile
+        if (phone.trim()) {
+          await submitLasOrcasForm({
+            fullName,
+            email,
+            phone,
+            investmentRange: "",
+            timeline: "",
+            intent: "",
+            ...utmRef.current,
+          });
+        }
         if (isFoundingEntry) {
           setStage("budget");
         } else {
@@ -302,9 +328,10 @@ function CircleJoinWizard() {
               {/* STAGE 1 — Phone */}
               {stage === "phone" && (
                 <div className="text-center">
-                  <h2 className="font-serif text-[clamp(28px,4vw,44px)] font-light leading-[1.2] mb-10">
+                  <h2 className="font-serif text-[clamp(28px,4vw,44px)] font-light leading-[1.2] mb-2">
                     And by phone?
                   </h2>
+                  <p className="font-sans text-[13px] text-text-muted mb-8">Optional</p>
                   <input
                     type="tel"
                     value={phone}

@@ -32,9 +32,9 @@ interface LasOrcasSubmission {
   utmTerm?: string;
 }
 
-function isMatch(investmentRange: string, intent: string): boolean {
+function isMatch(investmentRange: string): boolean {
   const qualifyingBudgets = ["500k_1m", "1m_2m", "2m_plus"];
-  return qualifyingBudgets.includes(investmentRange) && intent !== "investment_yield";
+  return qualifyingBudgets.includes(investmentRange);
 }
 
 export async function submitLasOrcasForm(data: LasOrcasSubmission) {
@@ -85,7 +85,7 @@ export async function submitLasOrcasForm(data: LasOrcasSubmission) {
   }
 
   // 3. Build application data
-  const matched = isStage2 ? isMatch(data.investmentRange, data.intent) : false;
+  const matched = isStage2 ? isMatch(data.investmentRange) : false;
 
   const stepData: Record<string, unknown> = {
     source: "las_orcas_campaign",
