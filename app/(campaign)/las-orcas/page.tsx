@@ -44,6 +44,16 @@ function VideoTeaser() {
   );
 }
 
+/* -- Track CTA click via Meta Pixel --------------------------------- */
+function trackCtaClick() {
+  if (typeof window !== "undefined" && (window as unknown as Record<string, unknown>).fbq) {
+    (window as unknown as { fbq: (...args: unknown[]) => void }).fbq("track", "InitiateCheckout", {
+      content_name: "Las Orcas",
+      content_category: "founding_member_cta",
+    });
+  }
+}
+
 /* -- Floating CTA -------------------------------------------------- */
 function FloatingCTA() {
   const [visible, setVisible] = useState(false);
@@ -84,6 +94,7 @@ function FloatingCTA() {
           >
             <Link
               href="/circle/join?intent=founding"
+              onClick={trackCtaClick}
               className="border border-accent-gold/70 bg-bg-primary/80 backdrop-blur-sm px-6 py-3 font-sans text-[12px] uppercase tracking-[0.1em] text-accent-gold transition-all hover:bg-accent-gold hover:text-bg-primary"
             >
               Become a Founding Member
@@ -100,6 +111,7 @@ function FloatingCTA() {
           >
             <Link
               href="/circle/join?intent=founding"
+              onClick={trackCtaClick}
               className="flex items-center justify-center h-12 bg-bg-primary/90 backdrop-blur-sm border-t border-accent-gold/30 font-sans text-[12px] uppercase tracking-[0.1em] text-accent-gold"
             >
               Become a Founding Member
@@ -652,6 +664,7 @@ function LasOrcasContent() {
             </p>
             <Link
               href="/circle/join?intent=founding"
+              onClick={trackCtaClick}
               className="inline-block mt-10 bg-accent-gold px-12 py-4 font-sans text-[13px] uppercase tracking-[0.1em] text-bg-primary transition-opacity hover:opacity-90"
             >
               Become a Founding Member
