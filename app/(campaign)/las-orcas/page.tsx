@@ -44,10 +44,11 @@ function VideoTeaser() {
   );
 }
 
-/* -- Track CTA click via Meta Pixel --------------------------------- */
+/* -- Track CTA click via GTM dataLayer ------------------------------ */
 function trackCtaClick() {
-  if (typeof window !== "undefined" && (window as unknown as Record<string, unknown>).fbq) {
-    (window as unknown as { fbq: (...args: unknown[]) => void }).fbq("track", "InitiateCheckout", {
+  if (typeof window !== "undefined") {
+    (window as unknown as { dataLayer?: unknown[] }).dataLayer?.push({
+      event: "cta_click",
       content_name: "Las Orcas",
       content_category: "founding_member_cta",
     });
