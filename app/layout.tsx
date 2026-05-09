@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { cormorant, dmSans } from "@/lib/fonts";
 import "@/styles/globals.css";
 import CookieBanner from "@/components/CookieBanner";
+import MetaPixel from "@/components/MetaPixel";
 
 const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://virezia.com";
 
@@ -92,6 +93,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           }}
         />
         {children}
+        <MetaPixel />
         <CookieBanner />
       </body>
     </html>

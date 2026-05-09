@@ -8,6 +8,7 @@ import {
   addToResendContacts,
   scheduleLasOrcasSequence,
 } from "@/lib/email";
+import { sendMetaEvent } from "@/lib/meta-capi";
 
 function escapeHtml(str: string): string {
   return str
@@ -295,6 +296,32 @@ export async function submitLasOrcasForm(data: LasOrcasSubmission) {
         });
       }
     }
+  }
+
+  // 10. Meta Conversions API (server-side)
+  try {
+    await sendMetaEvent({
+      eventName: isStage2 ? "Lead" : "CompleteRegistration",
+      email: data.email,
+      phone: data.phone || undefined,
+      firstName: data.fullName.split(" ")[0],
+      lastName: data.fullName.split(" ").slice(1).join(" ") || undefined,
+      sourceUrl: "https://virezia.com/las-orcas",
+      customData: {
+        content_name: "Las Orcas",
+        content_category: isStage2 ? "founding_member" : "circle_join",
+        value: isStage2 ? (matched ? 1 : 0.5) : 0.25,
+        currency: "USD",
+        ...(isStage2 ? {
+          investment_range: data.investmentRange,
+          timeline: data.timeline,
+          intent: data.intent,
+          matched: matched,
+        } : {}),
+      },
+    });
+  } catch (err) {
+    console.error("[Las Orcas] Meta CAPI failed:", err);
   }
 
   return { success: true, matched: isStage2 ? matched : undefined };
