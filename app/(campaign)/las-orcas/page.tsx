@@ -86,7 +86,7 @@ function FloatingCTA() {
               href="/circle/join?intent=founding"
               className="border border-accent-gold/70 bg-bg-primary/80 backdrop-blur-sm px-6 py-3 font-sans text-[12px] uppercase tracking-[0.1em] text-accent-gold transition-all hover:bg-accent-gold hover:text-bg-primary"
             >
-              Join the Circle
+              Become a Founding Member
             </Link>
           </motion.div>
 
@@ -102,7 +102,7 @@ function FloatingCTA() {
               href="/circle/join?intent=founding"
               className="flex items-center justify-center h-12 bg-bg-primary/90 backdrop-blur-sm border-t border-accent-gold/30 font-sans text-[12px] uppercase tracking-[0.1em] text-accent-gold"
             >
-              Join the Circle
+              Become a Founding Member
             </Link>
           </motion.div>
         </>
