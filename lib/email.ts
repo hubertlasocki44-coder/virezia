@@ -269,6 +269,10 @@ export async function sendFoundingMemberWelcome(
 
 /* ─── Resend Contacts (for audience/broadcast sequences) ───── */
 
+// Audience IDs
+const AUDIENCE_CIRCLE = "4351a5d2-f99a-40ec-95bc-46f7195b9a5f";
+const AUDIENCE_LAS_ORCAS = "fc49c1de-f734-4ffc-872a-f5ac7883e4bc";
+
 export async function addToResendContacts(
   email: string,
   firstName: string,
@@ -281,15 +285,32 @@ export async function addToResendContacts(
     return;
   }
 
+  // Add to VIREZIA Circle audience
   try {
     await client.contacts.create({
+      audienceId: AUDIENCE_CIRCLE,
       email,
       firstName: firstName || undefined,
       lastName: lastName || undefined,
       unsubscribed: false,
     });
   } catch (err) {
-    console.error("[Email] Contact create failed:", err);
+    console.error("[Email] Circle contact failed:", err);
+  }
+
+  // Add to Las Orcas audience if from that campaign
+  if (properties.source === "las_orcas_campaign") {
+    try {
+      await client.contacts.create({
+        audienceId: AUDIENCE_LAS_ORCAS,
+        email,
+        firstName: firstName || undefined,
+        lastName: lastName || undefined,
+        unsubscribed: false,
+      });
+    } catch (err) {
+      console.error("[Email] Las Orcas contact failed:", err);
+    }
   }
 }
 
