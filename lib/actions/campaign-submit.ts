@@ -252,14 +252,16 @@ export async function submitLasOrcasForm(data: LasOrcasSubmission) {
     });
 
     // Send appropriate welcome email
+    // Stage 1: welcome only (no drip — user may continue to Stage 2)
+    // Stage 2: welcome + drip sequence (final submission, we know match status)
     if (isStage2) {
       await sendFoundingMemberWelcome(data.email, firstName, matched);
-      // Schedule drip sequence with match status
       await scheduleLasOrcasSequence(data.email, firstName, matched);
     } else {
       await sendCircleWelcome(data.email, firstName);
-      // Schedule drip sequence (default: unmatched, may upgrade if they do Stage 2)
-      await scheduleLasOrcasSequence(data.email, firstName, false);
+      // No drip here — wait for Stage 2. If they never do Stage 2,
+      // they still have the welcome email and are in Resend Contacts
+      // for future broadcasts.
     }
   } catch (err) {
     console.error("[Las Orcas] Lead email/contact failed:", err);
