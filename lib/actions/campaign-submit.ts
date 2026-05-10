@@ -251,18 +251,8 @@ export async function submitLasOrcasForm(data: LasOrcasSubmission) {
       matched: isStage2 ? String(matched) : "false",
     });
 
-    // Send appropriate welcome email
-    // Stage 1: welcome only (no drip — user may continue to Stage 2)
-    // Stage 2: welcome + drip sequence (final submission, we know match status)
-    if (isStage2) {
-      await sendFoundingMemberWelcome(data.email, firstName, matched);
-      await scheduleLasOrcasSequence(data.email, firstName, matched);
-    } else {
-      await sendCircleWelcome(data.email, firstName);
-      // No drip here — wait for Stage 2. If they never do Stage 2,
-      // they still have the welcome email and are in Resend Contacts
-      // for future broadcasts.
-    }
+    // Send single confirmation email
+    await sendCircleWelcome(data.email, firstName);
   } catch (err) {
     console.error("[Las Orcas] Lead email/contact failed:", err);
   }

@@ -201,15 +201,14 @@ export async function sendCircleWelcome(email: string, firstName: string) {
       from: FROM_EMAIL,
       replyTo: REPLY_TO,
       to: email,
-      subject: "Welcome to VIREZIA Circle",
+      subject: "We've received your interest",
       html: emailWrapper(`
-        <h1 style="font-family:Georgia,'Times New Roman',serif;font-size:26px;font-weight:300;line-height:1.3;color:#1a1a1a;margin:0 0 20px 0;">Welcome to the Circle.</h1>
+        <h1 style="font-family:Georgia,'Times New Roman',serif;font-size:26px;font-weight:300;line-height:1.3;color:#1a1a1a;margin:0 0 20px 0;">Thank you for your interest.</h1>
         <p style="font-family:Georgia,'Times New Roman',serif;font-size:15px;line-height:1.7;color:#4a4a4a;margin:0 0 16px 0;">Hello${firstName ? ` ${escapeHtml(firstName)}` : ""},</p>
-        <p style="font-family:Georgia,'Times New Roman',serif;font-size:15px;line-height:1.7;color:#4a4a4a;margin:0 0 16px 0;">You are now part of VIREZIA Circle, a private network for buyers and investors active in our markets.</p>
-        <p style="font-family:Georgia,'Times New Roman',serif;font-size:15px;line-height:1.7;color:#4a4a4a;margin:0 0 16px 0;">Over the next two weeks, we will share more about how VIREZIA works, the properties we are currently featuring, and how Selections are made.</p>
-        <p style="font-family:Georgia,'Times New Roman',serif;font-size:15px;line-height:1.7;color:#4a4a4a;margin:0 0 16px 0;">If you have questions at any point, reply to this email. Every message is read personally.</p>
+        <p style="font-family:Georgia,'Times New Roman',serif;font-size:15px;line-height:1.7;color:#4a4a4a;margin:0 0 16px 0;">We have received your inquiry. Someone from our team will reach out to you within 24 hours.</p>
+        <p style="font-family:Georgia,'Times New Roman',serif;font-size:15px;line-height:1.7;color:#4a4a4a;margin:0 0 16px 0;">If you have any questions in the meantime, reply to this email or write to us at hello@virezia.com.</p>
         <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin:24px 0;"><tr><td style="border-top:1px solid #e8e4de;height:1px;font-size:0;">&nbsp;</td></tr></table>
-        <p style="font-family:Georgia,'Times New Roman',serif;font-size:14px;font-style:italic;color:#c9a96e;margin:0;">&mdash; VIREZIA</p>
+        <p style="font-family:Georgia,'Times New Roman',serif;font-size:14px;font-style:italic;color:#c9a96e;margin:0;">VIREZIA</p>
       `),
     });
   } catch (err) {
