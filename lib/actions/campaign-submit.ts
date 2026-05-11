@@ -55,6 +55,7 @@ export async function submitLasOrcasForm(data: LasOrcasSubmission) {
 
   // 2. Find or create user profile
   let userId: string | null = null;
+  let isNewUser = false;
 
   const { data: existingProfile } = await supabase
     .from("profiles")
@@ -64,7 +65,6 @@ export async function submitLasOrcasForm(data: LasOrcasSubmission) {
 
   if (existingProfile) {
     userId = existingProfile.id;
-    // Update phone/name if missing
     await supabase
       .from("profiles")
       .update({ full_name: data.fullName, phone: data.phone })
@@ -76,6 +76,7 @@ export async function submitLasOrcasForm(data: LasOrcasSubmission) {
       user_metadata: { full_name: data.fullName },
     });
     userId = authData.user?.id ?? null;
+    isNewUser = true;
 
     if (userId) {
       await supabase
@@ -239,22 +240,21 @@ export async function submitLasOrcasForm(data: LasOrcasSubmission) {
     console.error("[Las Orcas] Email notification failed:", err);
   }
 
-  // 8. Send confirmation email to lead + add to Resend Contacts
+  // 8. Send confirmation email + add to Resend (ONLY on first submit, not updates)
   const firstName = data.fullName.split(" ")[0];
   const lastName = data.fullName.split(" ").slice(1).join(" ");
-  try {
-    // Add to Resend Contacts for future broadcasts
-    await addToResendContacts(data.email, firstName, lastName, {
-      source: "las_orcas_campaign",
-      circle_member: "true",
-      founding_interest: isStage2 ? "true" : "false",
-      matched: isStage2 ? String(matched) : "false",
-    });
-
-    // Send single confirmation email
-    await sendCircleWelcome(data.email, firstName);
-  } catch (err) {
-    console.error("[Las Orcas] Lead email/contact failed:", err);
+  if (isNewUser) {
+    try {
+      await addToResendContacts(data.email, firstName, lastName, {
+        source: "las_orcas_campaign",
+        circle_member: "true",
+        founding_interest: isStage2 ? "true" : "false",
+        matched: isStage2 ? String(matched) : "false",
+      });
+      await sendCircleWelcome(data.email, firstName);
+    } catch (err) {
+      console.error("[Las Orcas] Lead email/contact failed:", err);
+    }
   }
 
   // 9. Log email activity on lead (if lead exists)
