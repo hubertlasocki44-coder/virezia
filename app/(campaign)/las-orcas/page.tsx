@@ -108,7 +108,7 @@ function FloatingCTA() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 20 }}
             transition={{ duration: 0.3 }}
-            className="fixed bottom-0 left-0 right-0 z-40 md:hidden"
+            className="fixed bottom-12 left-0 right-0 z-40 md:hidden"
           >
             <Link
               href="/circle/join?intent=founding"
@@ -252,11 +252,11 @@ function LasOrcasContent() {
               <p className="font-sans text-base font-light leading-relaxed text-text-secondary">
                 In the autumn of 1987, after the stock market crash, Sir James Goldsmith, the Anglo-French financier, withdrew from the world he had spent thirty years building. He bought twenty thousand acres on the Pacific Coast of Mexico and began to imagine what it might become.
               </p>
-              <p className="font-sans text-base font-light leading-relaxed text-text-secondary mt-6">
+              <p className="hidden md:block font-sans text-base font-light leading-relaxed text-text-secondary mt-6">
                 He had recently commissioned a young French architect, newly arrived in New York, to decorate his Manhattan townhouse. He now offered him something larger: the design of an entire world.
               </p>
               <p className="font-sans text-base font-light leading-relaxed text-text-secondary mt-6">
-                Robert Couturier was thirty-two. The commission was, by his own biographer&apos;s account, the single greatest private commission of modern times. It would last a decade. It would expand to include a sixty-thousand-square-foot palace called La Loma, its blue-and-yellow tiled dome modeled after Hagia Sophia. A Boeing 757, &ldquo;a flying carpet with a motor,&rdquo; Couturier called it. A French ch&acirc;teau. A double-width Manhattan home.
+                Robert Couturier was thirty-two. The commission was, by his own biographer&apos;s account, the single greatest private commission of modern times.<span className="hidden md:inline"> It would last a decade. It would expand to include a sixty-thousand-square-foot palace called La Loma, its blue-and-yellow tiled dome modeled after Hagia Sophia. A Boeing 757, &ldquo;a flying carpet with a motor,&rdquo; Couturier called it. A French ch&acirc;teau. A double-width Manhattan home.</span>
               </p>
               <p className="font-sans text-base font-light leading-relaxed text-text-secondary mt-6">
                 The estate became Cuixmala, &ldquo;the soul&apos;s resting place&rdquo; in the Nahuatl language. Architectural Digest later named it among the seven most beautiful resorts on Mexico&apos;s Pacific Coast. It hosted Henry Kissinger, Madonna, Bill Gates. It launched Robert Couturier&apos;s career.
@@ -293,6 +293,21 @@ function LasOrcasContent() {
                 The full conversation is shared with members of the VIREZIA Circle.
               </p>
             </div>
+          </AnimatedSection>
+        </div>
+      </section>
+
+      {/* ── Mid-page CTA ─────────────────────────────────────────── */}
+      <section className="py-12 md:py-16">
+        <div className="mx-auto max-w-content px-6 md:px-10 text-center">
+          <AnimatedSection>
+            <Link
+              href="/circle/join?intent=founding"
+              onClick={trackCtaClick}
+              className="inline-block border border-accent-gold/60 px-8 py-3 font-sans text-[12px] uppercase tracking-[0.1em] text-accent-gold transition-all hover:bg-accent-gold/10 hover:border-accent-gold"
+            >
+              Become a Founding Member
+            </Link>
           </AnimatedSection>
         </div>
       </section>
@@ -365,6 +380,22 @@ function LasOrcasContent() {
       </section>
 
       {/* ============================================================ */}
+      {/* ── Mid-page CTA 2 ────────────────────────────────────────── */}
+      <section className="py-12 md:py-16">
+        <div className="mx-auto max-w-content px-6 md:px-10 text-center">
+          <AnimatedSection>
+            <p className="font-sans text-[13px] text-text-muted mb-4">Seven villas. Six remaining. From $561,000.</p>
+            <Link
+              href="/circle/join?intent=founding"
+              onClick={trackCtaClick}
+              className="inline-block border border-accent-gold/60 px-8 py-3 font-sans text-[12px] uppercase tracking-[0.1em] text-accent-gold transition-all hover:bg-accent-gold/10 hover:border-accent-gold"
+            >
+              Become a Founding Member
+            </Link>
+          </AnimatedSection>
+        </div>
+      </section>
+
       {/* 8. IMAGE: Entrance View                                      */}
       {/* ============================================================ */}
       <AnimatedSection>

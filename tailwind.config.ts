@@ -12,7 +12,7 @@ const config: Config = {
         "bg-secondary": "#111111",
         "bg-card": "#161616",
         "text-primary": "#f0ece4",
-        "text-secondary": "#9a9690",
+        "text-secondary": "#b0aca6",
         "text-muted": "#5a5650",
         "accent-gold": "#c9a96e",
         "accent-gold-light": "#e8d5b0",

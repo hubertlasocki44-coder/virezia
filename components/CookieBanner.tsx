@@ -28,26 +28,24 @@ export default function CookieBanner() {
   if (!visible) return null;
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-50 border-t border-border-subtle bg-bg-primary/95 backdrop-blur-sm">
-      <div className="mx-auto flex max-w-content flex-col gap-4 px-6 py-4 sm:flex-row sm:items-center sm:justify-between">
-        <p className="font-sans text-sm text-text-secondary">
-          We use essential cookies for site functionality and analytics cookies to improve our services.
-          Read our{" "}
+    <div className="fixed bottom-0 left-0 right-0 z-40 border-t border-border-subtle bg-bg-primary/95 backdrop-blur-sm">
+      <div className="mx-auto flex max-w-content items-center justify-between gap-3 px-4 py-3 sm:px-6 sm:py-4">
+        <p className="font-sans text-[12px] leading-relaxed text-text-secondary sm:text-sm">
+          Cookies for site functionality and analytics.{" "}
           <Link href="/privacy" className="text-accent-gold hover:text-accent-gold-light transition-colors underline">
             Privacy Policy
-          </Link>{" "}
-          for details.
+          </Link>
         </p>
-        <div className="flex shrink-0 gap-3">
+        <div className="flex shrink-0 gap-2">
           <button
             onClick={decline}
-            className="rounded border border-border-subtle px-4 py-2 font-sans text-xs uppercase tracking-wider text-text-muted transition-colors hover:border-text-muted hover:text-text-secondary"
+            className="px-3 py-1.5 font-sans text-[11px] uppercase tracking-wider text-text-muted transition-colors hover:text-text-secondary sm:px-4 sm:py-2 sm:text-xs"
           >
             Decline
           </button>
           <button
             onClick={accept}
-            className="rounded bg-accent-gold px-4 py-2 font-sans text-xs uppercase tracking-wider text-bg-primary transition-colors hover:bg-accent-gold-light"
+            className="bg-accent-gold px-3 py-1.5 font-sans text-[11px] uppercase tracking-wider text-bg-primary transition-colors hover:bg-accent-gold-light sm:px-4 sm:py-2 sm:text-xs"
           >
             Accept
           </button>
