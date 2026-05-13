@@ -91,31 +91,31 @@ function FloatingCTA() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 10 }}
             transition={{ duration: 0.3 }}
-            className="fixed bottom-8 right-8 z-40 hidden md:block"
+            className="fixed bottom-8 right-8 z-50 hidden md:block"
           >
             <Link
               href="/circle/join?intent=founding"
               onClick={trackCtaClick}
-              className="border border-accent-gold/70 bg-bg-primary/80 backdrop-blur-sm px-6 py-3 font-sans text-[12px] uppercase tracking-[0.1em] text-accent-gold transition-all hover:bg-accent-gold hover:text-bg-primary"
+              className="bg-accent-gold px-6 py-3 font-sans text-[12px] uppercase tracking-[0.1em] text-bg-primary transition-opacity hover:opacity-90 shadow-lg"
             >
-              Become a Founding Member
+              Contact
             </Link>
           </motion.div>
 
-          {/* Mobile: sticky bottom bar */}
+          {/* Mobile: floating button */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 20 }}
             transition={{ duration: 0.3 }}
-            className="fixed bottom-12 left-0 right-0 z-40 md:hidden"
+            className="fixed bottom-6 right-4 z-50 md:hidden"
           >
             <Link
               href="/circle/join?intent=founding"
               onClick={trackCtaClick}
-              className="flex items-center justify-center h-12 bg-bg-primary/90 backdrop-blur-sm border-t border-accent-gold/30 font-sans text-[12px] uppercase tracking-[0.1em] text-accent-gold"
+              className="flex items-center justify-center bg-accent-gold px-5 py-3 font-sans text-[12px] uppercase tracking-[0.1em] text-bg-primary shadow-lg shadow-accent-gold/20 rounded-sm"
             >
-              Become a Founding Member
+              Contact
             </Link>
           </motion.div>
         </>
