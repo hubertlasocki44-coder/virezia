@@ -14,7 +14,7 @@ function VideoTeaser() {
     <div className="relative aspect-video w-full max-w-4xl mx-auto bg-black overflow-hidden">
       {showVideo ? (
         <iframe
-          src="https://www.youtube.com/embed/scE6aC4XyyY?start=209&end=228&autoplay=1&rel=0&modestbranding=1&color=white"
+          src="https://www.youtube.com/embed/scE6aC4XyyY?start=3&autoplay=1&rel=0&modestbranding=1&color=white"
           title="Robert Couturier on Las Orcas"
           allow="autoplay; encrypted-media"
           allowFullScreen
@@ -102,18 +102,18 @@ function FloatingCTA() {
             </Link>
           </motion.div>
 
-          {/* Mobile: floating button */}
+          {/* Mobile: top-right floating button (mirrors logo position) */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="fixed bottom-6 right-4 z-50 md:hidden"
+            className="fixed top-6 right-4 z-50 md:hidden"
           >
             <Link
               href="/circle/join?intent=founding"
               onClick={trackCtaClick}
-              className="flex items-center justify-center bg-accent-gold px-5 py-3 font-sans text-[12px] uppercase tracking-[0.1em] text-bg-primary shadow-lg shadow-accent-gold/20 rounded-sm"
+              className="flex items-center justify-center bg-accent-gold px-4 py-2 font-sans text-[11px] uppercase tracking-[0.1em] text-bg-primary"
             >
               Contact
             </Link>
