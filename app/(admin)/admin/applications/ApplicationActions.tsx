@@ -9,8 +9,25 @@ interface Props {
   hasUser: boolean;
 }
 
+const STATUSES = [
+  { value: "pending", label: "Pending" },
+  { value: "screening", label: "Screening" },
+  { value: "qualified", label: "Qualified" },
+  { value: "approved", label: "Approved" },
+  { value: "rejected", label: "Rejected" },
+  { value: "archived", label: "Archived" },
+];
+
 export default function ApplicationActions({ id, status, hasUser }: Props) {
   const [loading, setLoading] = useState(false);
+  const [currentStatus, setCurrentStatus] = useState(status);
+
+  const handleStatusChange = async (newStatus: string) => {
+    setLoading(true);
+    await updateApplicationStatus(id, newStatus);
+    setCurrentStatus(newStatus);
+    setLoading(false);
+  };
 
   const handleConvert = async () => {
     setLoading(true);
@@ -23,30 +40,25 @@ export default function ApplicationActions({ id, status, hasUser }: Props) {
   };
 
   return (
-    <div className="flex gap-2">
-      {status === "pending" && (
-        <>
-          <button
-            onClick={() => updateApplicationStatus(id, "screening")}
-            className="font-sans text-[12px] text-accent-gold hover:text-accent-gold-light"
-          >
-            Screen
-          </button>
-          <button
-            onClick={() => updateApplicationStatus(id, "rejected")}
-            className="font-sans text-[12px] text-red-400 hover:text-red-300"
-          >
-            Reject
-          </button>
-        </>
-      )}
-      {(status === "screening" || status === "qualified") && hasUser && (
+    <div className="flex items-center gap-3">
+      <select
+        value={currentStatus}
+        onChange={(e) => handleStatusChange(e.target.value)}
+        disabled={loading}
+        className="bg-bg-card border border-border px-2 py-1 font-sans text-[12px] text-text-primary focus:border-accent-gold focus:outline-none disabled:opacity-50"
+      >
+        {STATUSES.map((s) => (
+          <option key={s.value} value={s.value}>{s.label}</option>
+        ))}
+      </select>
+
+      {hasUser && !["rejected", "archived"].includes(currentStatus) && (
         <button
           onClick={handleConvert}
           disabled={loading}
           className="font-sans text-[12px] text-emerald-400 hover:text-emerald-300 disabled:opacity-50"
         >
-          {loading ? "Converting..." : "Convert to Lead"}
+          {loading ? "..." : "→ Lead"}
         </button>
       )}
     </div>
