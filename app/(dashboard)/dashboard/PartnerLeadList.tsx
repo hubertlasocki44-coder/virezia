@@ -16,6 +16,7 @@ interface LeadAssignment {
     client: {
       full_name: string | null;
       email: string;
+      phone: string | null;
     };
   };
 }
@@ -96,6 +97,7 @@ export default function PartnerLeadList({ assignments }: { assignments: LeadAssi
               <tr className="border-b border-white/[0.06]">
                 <th className="px-4 py-3 text-left font-sans text-[10px] uppercase tracking-wider text-white/25">Name</th>
                 <th className="px-4 py-3 text-left font-sans text-[10px] uppercase tracking-wider text-white/25 hidden sm:table-cell">Email</th>
+                <th className="px-4 py-3 text-left font-sans text-[10px] uppercase tracking-wider text-white/25 hidden md:table-cell">Phone</th>
                 <th className="px-4 py-3 text-left font-sans text-[10px] uppercase tracking-wider text-white/25">Status</th>
                 <th className="px-4 py-3 text-right font-sans text-[10px] uppercase tracking-wider text-white/25 hidden sm:table-cell">Date</th>
               </tr>
@@ -114,14 +116,16 @@ export default function PartnerLeadList({ assignments }: { assignments: LeadAssi
                         <p className="font-sans text-[13px] text-white/80 hover:text-white transition-colors">
                           {client?.full_name || "Anonymous"}
                         </p>
-                        {lead.notes ? (
-                          <p className="font-sans text-[11px] text-white/20 mt-0.5 line-clamp-1">{lead.notes}</p>
-                        ) : null}
                       </Link>
                     </td>
                     <td className="px-4 py-3 hidden sm:table-cell">
-                      <span className="font-sans text-[12px] text-white/30">
+                      <a href={`mailto:${client?.email}`} className="font-sans text-[12px] text-white/30 hover:text-white/60 transition-colors">
                         {client?.email || "N/A"}
+                      </a>
+                    </td>
+                    <td className="px-4 py-3 hidden md:table-cell">
+                      <span className="font-sans text-[12px] text-white/30">
+                        {client?.phone || "N/A"}
                       </span>
                     </td>
                     <td className="px-4 py-3">

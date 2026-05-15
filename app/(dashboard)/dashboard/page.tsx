@@ -131,7 +131,7 @@ async function PartnerDashboard({ userId, profile }: { userId: string; profile: 
 
   const { data: assignments } = await supabase
     .from("lead_assignments")
-    .select("*, lead:leads(*, client:profiles!leads_client_id_fkey(full_name, email))")
+    .select("*, lead:leads(*, client:profiles!leads_client_id_fkey(full_name, email, phone))")
     .eq("partner_id", userId)
     .eq("status", "active")
     .order("created_at", { ascending: false });
