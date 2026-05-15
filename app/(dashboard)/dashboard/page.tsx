@@ -2,7 +2,7 @@ import { redirect } from "next/navigation";
 import { createClient, createServiceClient } from "@/lib/supabase/server";
 import Link from "next/link";
 import AdminStatusBadge from "@/components/admin/AdminStatusBadge";
-import PartnerKanban from "./PartnerKanban";
+import PartnerLeadList from "./PartnerLeadList";
 
 export default async function DashboardPage() {
   const supabase = await createClient();
@@ -182,7 +182,7 @@ async function PartnerDashboard({ userId, profile }: { userId: string; profile: 
       {/* Kanban */}
       <div className="mt-10">
         {assignments && assignments.length > 0 ? (
-          <PartnerKanban assignments={assignments as unknown as Parameters<typeof PartnerKanban>[0]["assignments"]} />
+          <PartnerLeadList assignments={assignments as unknown as Parameters<typeof PartnerLeadList>[0]["assignments"]} />
         ) : (
           <div className="flex items-center justify-center h-[300px] border border-dashed border-white/[0.06] rounded-xl">
             <div className="text-center">
