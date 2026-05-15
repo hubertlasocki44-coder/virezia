@@ -84,6 +84,28 @@ export async function notifyPartnerSubmission(name: string, company: string) {
   );
 }
 
+/* ─── Partner lead notification ─────────────────────────────── */
+
+export async function sendPartnerLeadNotification(partnerEmail: string, subject: string, html: string) {
+  const client = getResendClient();
+  if (!client) {
+    console.log("[Email] Skipped partner notification (no API key):", partnerEmail);
+    return;
+  }
+
+  try {
+    await client.emails.send({
+      from: FROM_EMAIL,
+      replyTo: REPLY_TO,
+      to: partnerEmail,
+      subject,
+      html: emailWrapper(html),
+    });
+  } catch (err) {
+    console.error("[Email] Partner notification failed:", err);
+  }
+}
+
 /* ─── Confirmation email for public forms ──────────────────── */
 
 export async function sendApplicationConfirmation(email: string, firstName: string, type: "apply" | "for-owners" | "circle") {

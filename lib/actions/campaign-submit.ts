@@ -228,6 +228,35 @@ export async function submitLasOrcasForm(data: LasOrcasSubmission) {
           }));
 
           await supabase.from("lead_assignments").insert(assignments);
+
+          // Notify partners about new lead
+          const { data: partnerProfiles } = await supabase
+            .from("profiles")
+            .select("email")
+            .eq("role", "developer")
+            .ilike("company_name", "%Las Orcas%");
+
+          if (partnerProfiles) {
+            const { sendPartnerLeadNotification } = await import("@/lib/email");
+            for (const p of partnerProfiles) {
+              try {
+                await sendPartnerLeadNotification(
+                  p.email,
+                  `New Las Orcas Lead: ${data.fullName}`,
+                  `<h2>New Lead in Your Pipeline</h2>
+                  <p><strong>Name:</strong> ${escapeHtml(data.fullName)}</p>
+                  <p><strong>Email:</strong> ${escapeHtml(data.email)}</p>
+                  <p><strong>Phone:</strong> ${escapeHtml(data.phone || "Not provided")}</p>
+                  <p><strong>Budget:</strong> ${escapeHtml(data.investmentRange)}</p>
+                  <p><strong>Timeline:</strong> ${escapeHtml(data.timeline)}</p>
+                  <p><strong>Intent:</strong> ${escapeHtml(data.intent)}</p>
+                  <p>View in your dashboard: <a href="https://virezia.com/dashboard">virezia.com/dashboard</a></p>`
+                );
+              } catch (err) {
+                console.error("[Las Orcas] Partner notification failed:", err);
+              }
+            }
+          }
         }
       }
     }
