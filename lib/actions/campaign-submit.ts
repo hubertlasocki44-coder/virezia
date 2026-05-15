@@ -139,17 +139,32 @@ export async function submitLasOrcasForm(data: LasOrcasSubmission) {
         status: matched ? "screening" : "pending",
       });
     }
-  } else {
-    // Stage 1 only — create new application
-    const { error: insertError } = await supabase.from("applications").insert({
-      user_id: userId,
-      type: "las_orcas_campaign",
-      step_data: stepData,
-      status: "pending",
-    });
+  } else if (userId) {
+    // Stage 1 — upsert (update existing or create new)
+    const { data: existing } = await supabase
+      .from("applications")
+      .select("id")
+      .eq("user_id", userId)
+      .eq("type", "las_orcas_campaign")
+      .order("created_at", { ascending: false })
+      .limit(1)
+      .maybeSingle();
 
-    if (insertError) {
-      return { error: "Something went wrong. Please try again or email hello@virezia.com." };
+    if (existing) {
+      await supabase
+        .from("applications")
+        .update({ step_data: stepData })
+        .eq("id", existing.id);
+    } else {
+      const { error: insertError } = await supabase.from("applications").insert({
+        user_id: userId,
+        type: "las_orcas_campaign",
+        step_data: stepData,
+        status: "pending",
+      });
+      if (insertError) {
+        return { error: "Something went wrong. Please try again or email hello@virezia.com." };
+      }
     }
   }
 
