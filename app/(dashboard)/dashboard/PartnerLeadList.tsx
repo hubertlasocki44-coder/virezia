@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import Link from "next/link";
 
 interface LeadAssignment {
@@ -43,18 +43,71 @@ const STATUS_COLORS: Record<string, string> = {
   archived: "bg-white/[0.04] text-white/30",
 };
 
+type SortKey = "name" | "email" | "status" | "date";
+type SortDir = "asc" | "desc";
+
+const PAGE_SIZE = 10;
+
 export default function PartnerLeadList({ assignments }: { assignments: LeadAssignment[] }) {
   const [filter, setFilter] = useState("all");
+  const [sortKey, setSortKey] = useState<SortKey>("date");
+  const [sortDir, setSortDir] = useState<SortDir>("desc");
+  const [page, setPage] = useState(0);
 
   const filtered = filter === "all"
     ? assignments
     : assignments.filter((a) => a.lead.status === filter);
 
-  // Count per status for tab badges
+  const sorted = useMemo(() => {
+    return [...filtered].sort((a, b) => {
+      let cmp = 0;
+      switch (sortKey) {
+        case "name":
+          cmp = (a.lead.client?.full_name || "").localeCompare(b.lead.client?.full_name || "");
+          break;
+        case "email":
+          cmp = (a.lead.client?.email || "").localeCompare(b.lead.client?.email || "");
+          break;
+        case "status":
+          cmp = a.lead.status.localeCompare(b.lead.status);
+          break;
+        case "date":
+          cmp = new Date(a.created_at).getTime() - new Date(b.created_at).getTime();
+          break;
+      }
+      return sortDir === "asc" ? cmp : -cmp;
+    });
+  }, [filtered, sortKey, sortDir]);
+
+  const totalPages = Math.ceil(sorted.length / PAGE_SIZE);
+  const paginated = sorted.slice(page * PAGE_SIZE, (page + 1) * PAGE_SIZE);
+
+  const handleSort = (key: SortKey) => {
+    if (sortKey === key) {
+      setSortDir(sortDir === "asc" ? "desc" : "asc");
+    } else {
+      setSortKey(key);
+      setSortDir(key === "date" ? "desc" : "asc");
+    }
+    setPage(0);
+  };
+
+  const handleFilter = (value: string) => {
+    setFilter(value);
+    setPage(0);
+  };
+
   const counts: Record<string, number> = { all: assignments.length };
   assignments.forEach((a) => {
     counts[a.lead.status] = (counts[a.lead.status] || 0) + 1;
   });
+
+  const sortIcon = (key: SortKey) => {
+    if (sortKey !== key) return "";
+    return sortDir === "asc" ? " \u2191" : " \u2193";
+  };
+
+  const thClass = "px-4 py-3 text-left font-sans text-[10px] uppercase tracking-wider text-white/25 cursor-pointer hover:text-white/50 transition-colors select-none";
 
   return (
     <div>
@@ -67,7 +120,7 @@ export default function PartnerLeadList({ assignments }: { assignments: LeadAssi
           return (
             <button
               key={tab.value}
-              onClick={() => setFilter(tab.value)}
+              onClick={() => handleFilter(tab.value)}
               className={`flex items-center gap-2 px-3 py-2 rounded-md font-sans text-[12px] transition-all whitespace-nowrap ${
                 active
                   ? "bg-white/[0.08] text-white"
@@ -87,62 +140,89 @@ export default function PartnerLeadList({ assignments }: { assignments: LeadAssi
 
       {/* Lead list */}
       <div className="mt-4 border border-white/[0.06] rounded-xl overflow-hidden">
-        {filtered.length === 0 ? (
+        {sorted.length === 0 ? (
           <div className="px-6 py-12 text-center">
             <p className="font-sans text-[13px] text-white/25">No leads with this status.</p>
           </div>
         ) : (
-          <table className="w-full">
-            <thead>
-              <tr className="border-b border-white/[0.06]">
-                <th className="px-4 py-3 text-left font-sans text-[10px] uppercase tracking-wider text-white/25">Name</th>
-                <th className="px-4 py-3 text-left font-sans text-[10px] uppercase tracking-wider text-white/25 hidden sm:table-cell">Email</th>
-                <th className="px-4 py-3 text-left font-sans text-[10px] uppercase tracking-wider text-white/25 hidden md:table-cell">Phone</th>
-                <th className="px-4 py-3 text-left font-sans text-[10px] uppercase tracking-wider text-white/25">Status</th>
-                <th className="px-4 py-3 text-right font-sans text-[10px] uppercase tracking-wider text-white/25 hidden sm:table-cell">Date</th>
-              </tr>
-            </thead>
-            <tbody>
-              {filtered.map((a) => {
-                const lead = a.lead;
-                const client = lead.client;
-                return (
-                  <tr
-                    key={a.id}
-                    className="border-b border-white/[0.04] hover:bg-white/[0.02] transition-colors"
+          <>
+            <table className="w-full">
+              <thead>
+                <tr className="border-b border-white/[0.06]">
+                  <th className={thClass} onClick={() => handleSort("name")}>Name{sortIcon("name")}</th>
+                  <th className={`${thClass} hidden sm:table-cell`} onClick={() => handleSort("email")}>Email{sortIcon("email")}</th>
+                  <th className={`${thClass} hidden md:table-cell`}>Phone</th>
+                  <th className={thClass} onClick={() => handleSort("status")}>Status{sortIcon("status")}</th>
+                  <th className={`${thClass} text-right hidden sm:table-cell`} onClick={() => handleSort("date")}>Date{sortIcon("date")}</th>
+                </tr>
+              </thead>
+              <tbody>
+                {paginated.map((a) => {
+                  const lead = a.lead;
+                  const client = lead.client;
+                  return (
+                    <tr
+                      key={a.id}
+                      className="border-b border-white/[0.04] hover:bg-white/[0.02] transition-colors"
+                    >
+                      <td className="px-4 py-3">
+                        <Link href={`/leads/${lead.id}`} className="block">
+                          <p className="font-sans text-[13px] text-white/80 hover:text-white transition-colors">
+                            {client?.full_name || "Anonymous"}
+                          </p>
+                        </Link>
+                      </td>
+                      <td className="px-4 py-3 hidden sm:table-cell">
+                        <a href={`mailto:${client?.email}`} className="font-sans text-[12px] text-white/30 hover:text-white/60 transition-colors">
+                          {client?.email || "N/A"}
+                        </a>
+                      </td>
+                      <td className="px-4 py-3 hidden md:table-cell">
+                        <span className="font-sans text-[12px] text-white/30">
+                          {client?.phone || "N/A"}
+                        </span>
+                      </td>
+                      <td className="px-4 py-3">
+                        <span className={`inline-block px-2 py-0.5 rounded text-[10px] font-medium uppercase tracking-wider ${STATUS_COLORS[lead.status] || "bg-white/[0.04] text-white/30"}`}>
+                          {lead.status}
+                        </span>
+                      </td>
+                      <td className="px-4 py-3 text-right hidden sm:table-cell">
+                        <span className="font-sans text-[11px] text-white/20">
+                          {new Date(a.created_at).toLocaleDateString("en-US", { month: "short", day: "numeric" })}
+                        </span>
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+
+            {/* Pagination */}
+            {totalPages > 1 ? (
+              <div className="flex items-center justify-between px-4 py-3 border-t border-white/[0.06]">
+                <p className="font-sans text-[11px] text-white/20">
+                  {page * PAGE_SIZE + 1}&#8211;{Math.min((page + 1) * PAGE_SIZE, sorted.length)} of {sorted.length}
+                </p>
+                <div className="flex gap-1">
+                  <button
+                    onClick={() => setPage(p => Math.max(0, p - 1))}
+                    disabled={page === 0}
+                    className="px-3 py-1 font-sans text-[11px] text-white/40 hover:text-white/70 disabled:text-white/10 transition-colors"
                   >
-                    <td className="px-4 py-3">
-                      <Link href={`/leads/${lead.id}`} className="block">
-                        <p className="font-sans text-[13px] text-white/80 hover:text-white transition-colors">
-                          {client?.full_name || "Anonymous"}
-                        </p>
-                      </Link>
-                    </td>
-                    <td className="px-4 py-3 hidden sm:table-cell">
-                      <a href={`mailto:${client?.email}`} className="font-sans text-[12px] text-white/30 hover:text-white/60 transition-colors">
-                        {client?.email || "N/A"}
-                      </a>
-                    </td>
-                    <td className="px-4 py-3 hidden md:table-cell">
-                      <span className="font-sans text-[12px] text-white/30">
-                        {client?.phone || "N/A"}
-                      </span>
-                    </td>
-                    <td className="px-4 py-3">
-                      <span className={`inline-block px-2 py-0.5 rounded text-[10px] font-medium uppercase tracking-wider ${STATUS_COLORS[lead.status] || "bg-white/[0.04] text-white/30"}`}>
-                        {lead.status}
-                      </span>
-                    </td>
-                    <td className="px-4 py-3 text-right hidden sm:table-cell">
-                      <span className="font-sans text-[11px] text-white/20">
-                        {new Date(a.created_at).toLocaleDateString("en-US", { month: "short", day: "numeric" })}
-                      </span>
-                    </td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
+                    Previous
+                  </button>
+                  <button
+                    onClick={() => setPage(p => Math.min(totalPages - 1, p + 1))}
+                    disabled={page >= totalPages - 1}
+                    className="px-3 py-1 font-sans text-[11px] text-white/40 hover:text-white/70 disabled:text-white/10 transition-colors"
+                  >
+                    Next
+                  </button>
+                </div>
+              </div>
+            ) : null}
+          </>
         )}
       </div>
     </div>
