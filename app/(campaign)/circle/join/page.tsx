@@ -86,6 +86,7 @@ function CircleJoinWizard() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const isFoundingEntry = searchParams.get("intent") === "founding";
+  const campaign = isFoundingEntry ? "las_orcas" : "circle";
 
   const [stage, setStage] = useState<Stage>("name");
   const [fullName, setFullName] = useState("");
@@ -128,6 +129,7 @@ function CircleJoinWizard() {
         investmentRange: "",
         timeline: "",
         intent: "",
+        campaign,
         ...utmRef.current,
       });
       if (result.error) {
@@ -156,6 +158,7 @@ function CircleJoinWizard() {
         investmentRange,
         timeline,
         intent,
+        campaign,
         ...utmRef.current,
       });
       if (result.error) {
@@ -194,6 +197,7 @@ function CircleJoinWizard() {
             investmentRange: "",
             timeline: "",
             intent: "",
+            campaign,
             ...utmRef.current,
           });
           if (earlyResult.error) {
@@ -214,6 +218,7 @@ function CircleJoinWizard() {
             investmentRange: "",
             timeline: "",
             intent: "",
+            campaign,
             ...utmRef.current,
           });
         }

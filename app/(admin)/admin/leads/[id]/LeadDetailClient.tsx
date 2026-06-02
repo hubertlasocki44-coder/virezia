@@ -1,13 +1,14 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useTransition } from "react";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
 import AdminStatusBadge from "@/components/admin/AdminStatusBadge";
 import AdminModal from "@/components/admin/AdminModal";
 import FormSelect from "@/components/forms/FormSelect";
 import FormTextarea from "@/components/forms/FormTextarea";
 import FormInput from "@/components/forms/FormInput";
-import { updateLeadStatus, updateLeadPriority, updateLeadScore, assignEmployee } from "@/lib/actions/leads";
+import { updateLeadStatus, updateLeadPriority, updateLeadScore, assignEmployee, archiveLead, deleteLead } from "@/lib/actions/leads";
 import { addInteraction } from "@/lib/actions/interactions";
 import { assignPartner, revokeAssignment } from "@/lib/actions/assignments";
 import type { InteractionType, VisibilityLevel, LeadStatus, LeadPriority } from "@/lib/types";
@@ -42,6 +43,8 @@ export default function LeadDetailClient({
   const [score, setScore] = useState(String(lead.score ?? ""));
   const [scoreSaving, setScoreSaving] = useState(false);
   const [employeeSaving, setEmployeeSaving] = useState(false);
+  const [pending, start] = useTransition();
+  const router = useRouter();
 
   const client = lead.client as Record<string, unknown> | null;
 
@@ -163,6 +166,33 @@ export default function LeadDetailClient({
             className="border border-border px-3 py-1.5 font-sans text-sm text-text-secondary hover:border-text-muted"
           >
             Add Note
+          </button>
+          {lead.status !== "archived" && (
+            <button
+              onClick={() => start(() => archiveLead(lead.id as string))}
+              disabled={pending}
+              className="border border-border px-3 py-1.5 font-sans text-sm text-text-muted transition-colors hover:text-text-secondary disabled:opacity-50"
+            >
+              Archive
+            </button>
+          )}
+          <button
+            onClick={() => {
+              if (
+                confirm(
+                  "Delete this lead permanently? Its interactions and partner assignments will also be removed. This cannot be undone."
+                )
+              ) {
+                start(async () => {
+                  await deleteLead(lead.id as string);
+                  router.push("/admin/leads");
+                });
+              }
+            }}
+            disabled={pending}
+            className="border border-red-500/30 px-3 py-1.5 font-sans text-sm text-red-400 transition-colors hover:bg-red-500/5 disabled:opacity-50"
+          >
+            Delete
           </button>
         </div>
       </div>

@@ -34,6 +34,12 @@ export async function submitApplication(stepData: Record<string, unknown>) {
     }
   }
 
+  // Campaign attribution for the admin funnel.
+  stepData.campaign =
+    accountType === "developer" || accountType === "asset_owner" || accountType === "agent"
+      ? "partner"
+      : "apply";
+
   // Insert application (service role bypasses RLS)
   const { error: insertError } = await supabase.from("applications").insert({
     user_id: userId,
@@ -116,6 +122,7 @@ export async function submitCircleRequest(email: string) {
 export async function submitPartnerApplication(data: Record<string, unknown>) {
   const supabase = await createServiceClient();
 
+  data.campaign = "partner";
   const { error } = await supabase.from("applications").insert({
     type: "developer",
     step_data: data,

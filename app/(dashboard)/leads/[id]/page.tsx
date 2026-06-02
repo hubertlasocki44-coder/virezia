@@ -1,7 +1,9 @@
 import { createClient, createServiceClient } from "@/lib/supabase/server";
 import { notFound, redirect } from "next/navigation";
 import Link from "next/link";
-import { StatusChanger, AddNote } from "./LeadActions";
+import { StatusChanger, AddNote, LogContact } from "./LeadActions";
+import ContactBadge from "@/components/ContactBadge";
+import { computeLeadHealth } from "@/lib/leads-health";
 
 interface Props {
   params: Promise<{ id: string }>;
@@ -60,6 +62,17 @@ export default async function PartnerLeadDetailPage({ params }: Props) {
     .eq("visible_to_partner", true)
     .order("created_at", { ascending: false });
 
+  const health = computeLeadHealth({
+    assignedAt: assignment.created_at as string,
+    partnerId: user.id,
+    status: lead?.status as string,
+    interactions: (interactions || []).map((i) => ({
+      created_by: i.created_by,
+      created_at: i.created_at,
+      type: i.type,
+    })),
+  });
+
   const formatValue = (value: unknown): string => {
     if (typeof value === "boolean") return value ? "Yes" : "No";
     if (Array.isArray(value)) return value.join(", ");
@@ -102,6 +115,7 @@ export default async function PartnerLeadDetailPage({ params }: Props) {
       {/* Status + score bar */}
       <div className="mt-6 flex flex-wrap items-center gap-4 pb-6 border-b border-white/[0.06]">
         <StatusChanger leadId={id} currentStatus={lead?.status as string} />
+        <ContactBadge state={health.state} label={health.label} />
         {lead?.priority && (lead.priority as string) !== "medium" ? (
           <span className={`px-2 py-1 rounded text-[10px] font-medium uppercase tracking-wider ${
             lead.priority === "high" || lead.priority === "urgent"
@@ -184,6 +198,15 @@ export default async function PartnerLeadDetailPage({ params }: Props) {
 
         {/* Right column: Activity + Notes */}
         <div className="space-y-6">
+          {/* Log contact */}
+          <div className="bg-white/[0.02] border border-white/[0.06] rounded-xl p-5">
+            <h2 className="font-sans text-[11px] uppercase tracking-wider text-[#c9a96e] mb-3">Log Contact</h2>
+            <LogContact leadId={id} />
+            <p className="mt-2 font-sans text-[11px] text-white/20">
+              Records your outreach so response time is tracked.
+            </p>
+          </div>
+
           {/* Add note */}
           <div className="bg-white/[0.02] border border-white/[0.06] rounded-xl p-5">
             <h2 className="font-sans text-[11px] uppercase tracking-wider text-[#c9a96e] mb-3">Add Note</h2>

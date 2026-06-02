@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { updateLeadStatus, addLeadNote } from "@/lib/actions/partner-actions";
+import { updateLeadStatus, addLeadNote, logContact } from "@/lib/actions/partner-actions";
 
 const STATUSES = [
   { value: "new", label: "New" },
@@ -35,6 +35,49 @@ export function StatusChanger({ leadId, currentStatus }: { leadId: string; curre
         ))}
       </select>
       {loading ? <span className="font-sans text-[10px] text-[#c9a96e] animate-pulse">Saving...</span> : null}
+    </div>
+  );
+}
+
+const CHANNELS = [
+  { value: "call", label: "Call" },
+  { value: "email", label: "Email" },
+  { value: "whatsapp", label: "WhatsApp" },
+  { value: "meeting", label: "Meeting" },
+] as const;
+
+export function LogContact({ leadId }: { leadId: string }) {
+  const [channel, setChannel] = useState<(typeof CHANNELS)[number]["value"]>("call");
+  const [loading, setLoading] = useState(false);
+  const [done, setDone] = useState(false);
+
+  const handle = async () => {
+    setLoading(true);
+    await logContact(leadId, channel);
+    setLoading(false);
+    setDone(true);
+    setTimeout(() => setDone(false), 2500);
+  };
+
+  return (
+    <div className="flex items-center gap-2">
+      <select
+        value={channel}
+        onChange={(e) => setChannel(e.target.value as (typeof CHANNELS)[number]["value"])}
+        disabled={loading}
+        className="bg-white/[0.04] border border-white/[0.08] rounded-lg px-3 py-2 font-sans text-[12px] text-white/70 focus:border-[#c9a96e]/50 focus:outline-none appearance-none cursor-pointer disabled:opacity-50"
+      >
+        {CHANNELS.map((c) => (
+          <option key={c.value} value={c.value} className="bg-[#141414]">{c.label}</option>
+        ))}
+      </select>
+      <button
+        onClick={handle}
+        disabled={loading}
+        className="bg-[#c9a96e]/15 hover:bg-[#c9a96e]/25 border border-[#c9a96e]/30 rounded-lg px-4 py-2 font-sans text-[11px] uppercase tracking-wider text-[#c9a96e] transition-all disabled:opacity-40"
+      >
+        {loading ? "Logging..." : done ? "Logged ✓" : "Log contact"}
+      </button>
     </div>
   );
 }

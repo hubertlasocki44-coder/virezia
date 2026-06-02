@@ -2,11 +2,14 @@
 
 import { useState, useMemo } from "react";
 import Link from "next/link";
+import ContactBadge from "@/components/ContactBadge";
+import type { ContactState } from "@/lib/leads-health";
 
 interface LeadAssignment {
   id: string;
   visibility_level: string;
   created_at: string;
+  health?: { state: ContactState; label: string } | null;
   lead: {
     id: string;
     status: string;
@@ -20,6 +23,12 @@ interface LeadAssignment {
     };
   };
 }
+
+const CONTACT_FILTERS = [
+  { value: "all", label: "All" },
+  { value: "not_contacted", label: "Not contacted" },
+  { value: "at_risk", label: "At risk" },
+] as const;
 
 const TABS = [
   { value: "all", label: "All" },
@@ -50,13 +59,19 @@ const PAGE_SIZE = 10;
 
 export default function PartnerLeadList({ assignments }: { assignments: LeadAssignment[] }) {
   const [filter, setFilter] = useState("all");
+  const [contactFilter, setContactFilter] = useState<(typeof CONTACT_FILTERS)[number]["value"]>("all");
   const [sortKey, setSortKey] = useState<SortKey>("date");
   const [sortDir, setSortDir] = useState<SortDir>("desc");
   const [page, setPage] = useState(0);
 
-  const filtered = filter === "all"
-    ? assignments
-    : assignments.filter((a) => a.lead.status === filter);
+  const filtered = assignments
+    .filter((a) => filter === "all" || a.lead.status === filter)
+    .filter((a) => contactFilter === "all" || a.health?.state === contactFilter);
+
+  const contactCounts: Record<string, number> = { all: assignments.length };
+  assignments.forEach((a) => {
+    if (a.health?.state) contactCounts[a.health.state] = (contactCounts[a.health.state] || 0) + 1;
+  });
 
   const sorted = useMemo(() => {
     return [...filtered].sort((a, b) => {
@@ -138,6 +153,37 @@ export default function PartnerLeadList({ assignments }: { assignments: LeadAssi
         })}
       </div>
 
+      {/* Contact health filter */}
+      <div className="mt-2 flex gap-1">
+        {CONTACT_FILTERS.map((cf) => {
+          const count = contactCounts[cf.value] || 0;
+          const active = contactFilter === cf.value;
+          const tone =
+            cf.value === "not_contacted"
+              ? "text-red-400"
+              : cf.value === "at_risk"
+              ? "text-amber-400"
+              : "text-white/50";
+          return (
+            <button
+              key={cf.value}
+              onClick={() => {
+                setContactFilter(cf.value);
+                setPage(0);
+              }}
+              className={`flex items-center gap-2 px-3 py-1.5 rounded-md font-sans text-[12px] transition-all ${
+                active ? "bg-white/[0.08] text-white" : `${tone} hover:bg-white/[0.03]`
+              }`}
+            >
+              {cf.label}
+              <span className={`text-[10px] px-1.5 py-0.5 rounded-full ${active ? "bg-white/[0.1] text-white/70" : "bg-white/[0.04] text-white/25"}`}>
+                {count}
+              </span>
+            </button>
+          );
+        })}
+      </div>
+
       {/* Lead list */}
       <div className="mt-4 border border-white/[0.06] rounded-xl overflow-hidden">
         {sorted.length === 0 ? (
@@ -153,6 +199,7 @@ export default function PartnerLeadList({ assignments }: { assignments: LeadAssi
                   <th className={`${thClass} hidden sm:table-cell`} onClick={() => handleSort("email")}>Email{sortIcon("email")}</th>
                   <th className={`${thClass} hidden md:table-cell`}>Phone</th>
                   <th className={thClass} onClick={() => handleSort("status")}>Status{sortIcon("status")}</th>
+                  <th className={`${thClass} hidden lg:table-cell`}>Contact</th>
                   <th className={`${thClass} text-right hidden sm:table-cell`} onClick={() => handleSort("date")}>Date{sortIcon("date")}</th>
                 </tr>
               </thead>
@@ -186,6 +233,9 @@ export default function PartnerLeadList({ assignments }: { assignments: LeadAssi
                         <span className={`inline-block px-2 py-0.5 rounded text-[10px] font-medium uppercase tracking-wider ${STATUS_COLORS[lead.status] || "bg-white/[0.04] text-white/30"}`}>
                           {lead.status}
                         </span>
+                      </td>
+                      <td className="px-4 py-3 hidden lg:table-cell">
+                        {a.health ? <ContactBadge state={a.health.state} label={a.health.label} /> : <span className="font-sans text-[11px] text-white/20">—</span>}
                       </td>
                       <td className="px-4 py-3 text-right hidden sm:table-cell">
                         <span className="font-sans text-[11px] text-white/20">

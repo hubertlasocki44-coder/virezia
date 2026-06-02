@@ -26,6 +26,7 @@ interface LasOrcasSubmission {
   investmentRange: string;
   timeline: string;
   intent: string;
+  campaign?: string; // 'circle' (membership) or 'las_orcas' (Selection founding interest)
   utmSource?: string;
   utmMedium?: string;
   utmCampaign?: string;
@@ -89,8 +90,13 @@ export async function submitLasOrcasForm(data: LasOrcasSubmission) {
   // 3. Build application data
   const matched = isStage2 ? isMatch(data.investmentRange) : false;
 
+  // Campaign attribution: completing Stage 2 = Las Orcas founding interest.
+  // A plain Circle signup (Stage 1, generic entry) stays 'circle' membership.
+  const campaign = isStage2 ? "las_orcas" : (data.campaign || "circle");
+
   const stepData: Record<string, unknown> = {
     source: "las_orcas_campaign",
+    campaign,
     full_name: data.fullName,
     email: data.email,
     phone: data.phone,

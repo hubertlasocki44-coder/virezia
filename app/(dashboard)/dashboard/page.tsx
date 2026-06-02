@@ -3,6 +3,7 @@ import { createClient, createServiceClient } from "@/lib/supabase/server";
 import Link from "next/link";
 import AdminStatusBadge from "@/components/admin/AdminStatusBadge";
 import PartnerLeadList from "./PartnerLeadList";
+import { computeLeadHealth, summarizeHealth, type LeadHealth } from "@/lib/leads-health";
 
 export default async function DashboardPage() {
   const supabase = await createClient();
@@ -149,6 +150,47 @@ async function PartnerDashboard({ userId, profile }: { userId: string; profile: 
     statusCounts[status] = (statusCounts[status] || 0) + 1;
   });
 
+  // --- Response health: pull this partner's touches across assigned leads ---
+  const leadIds = (assignments || [])
+    .map((a) => (a.lead as Record<string, unknown> | null)?.id as string)
+    .filter(Boolean);
+
+  const { data: partnerInteractions } = leadIds.length
+    ? await supabase
+        .from("interactions")
+        .select("lead_id, created_by, created_at, type")
+        .in("lead_id", leadIds)
+        .eq("created_by", userId)
+    : { data: [] as { lead_id: string; created_by: string | null; created_at: string; type: string }[] };
+
+  const byLead = new Map<string, { created_by: string | null; created_at: string; type: string }[]>();
+  for (const i of partnerInteractions || []) {
+    const arr = byLead.get(i.lead_id) || [];
+    arr.push({ created_by: i.created_by, created_at: i.created_at, type: i.type });
+    byLead.set(i.lead_id, arr);
+  }
+
+  const healthByAssignment = new Map<string, LeadHealth>();
+  for (const a of assignments || []) {
+    const lead = a.lead as Record<string, unknown> | null;
+    const leadId = lead?.id as string;
+    healthByAssignment.set(
+      a.id as string,
+      computeLeadHealth({
+        assignedAt: a.created_at as string,
+        partnerId: userId,
+        status: (lead?.status as string) || "new",
+        interactions: byLead.get(leadId) || [],
+      })
+    );
+  }
+  const summary = summarizeHealth(Array.from(healthByAssignment.values()));
+
+  const assignmentsWithHealth = (assignments || []).map((a) => {
+    const h = healthByAssignment.get(a.id as string);
+    return { ...a, health: h ? { state: h.state, label: h.label } : null };
+  });
+
   return (
     <div>
       {/* Header */}
@@ -179,10 +221,24 @@ async function PartnerDashboard({ userId, profile }: { userId: string; profile: 
         ))}
       </div>
 
+      {/* Response health row */}
+      <div className="mt-3 grid grid-cols-3 gap-3">
+        {[
+          { label: "Not contacted", value: summary.notContacted, color: "red-400" },
+          { label: "At risk", value: summary.atRisk, color: "amber-400" },
+          { label: "Avg response", value: summary.avgResponseLabel, color: "white/90" },
+        ].map((stat) => (
+          <div key={stat.label} className="bg-white/[0.03] border border-white/[0.06] rounded-xl p-4">
+            <p className="font-sans text-[11px] text-white/30 uppercase tracking-wider">{stat.label}</p>
+            <p className={`mt-2 font-sans text-[28px] font-light text-${stat.color} tracking-tight`}>{stat.value}</p>
+          </div>
+        ))}
+      </div>
+
       {/* Kanban */}
       <div className="mt-10">
         {assignments && assignments.length > 0 ? (
-          <PartnerLeadList assignments={assignments as unknown as Parameters<typeof PartnerLeadList>[0]["assignments"]} />
+          <PartnerLeadList assignments={assignmentsWithHealth as unknown as Parameters<typeof PartnerLeadList>[0]["assignments"]} />
         ) : (
           <div className="flex items-center justify-center h-[300px] border border-dashed border-white/[0.06] rounded-xl">
             <div className="text-center">

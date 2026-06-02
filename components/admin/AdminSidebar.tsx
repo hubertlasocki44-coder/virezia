@@ -5,6 +5,8 @@ import { usePathname } from "next/navigation";
 import {
   LayoutDashboard,
   Users,
+  CircleDot,
+  Timer,
   FileText,
   Handshake,
   Shield,
@@ -27,6 +29,8 @@ interface AdminSidebarProps {
 const NAV_ITEMS = [
   { href: "/admin", label: "Dashboard", icon: LayoutDashboard, module: null },
   { href: "/admin/leads", label: "Leads Pipeline", icon: Users, module: "leads" as const },
+  { href: "/admin/circle", label: "Circle", icon: CircleDot, module: "leads" as const },
+  { href: "/admin/response", label: "Partner Response", icon: Timer, module: "leads" as const },
   { href: "/admin/applications", label: "Applications", icon: FileText, module: "applications" as const },
   { href: "/admin/partners", label: "Partners", icon: Handshake, module: "partners" as const },
   { href: "/admin/audits", label: "Audits", icon: Shield, module: "audits" as const },
