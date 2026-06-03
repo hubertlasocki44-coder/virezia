@@ -27,6 +27,7 @@ interface LasOrcasSubmission {
   timeline: string;
   intent: string;
   campaign?: string; // 'circle' (membership) or 'las_orcas' (Selection founding interest)
+  notify?: boolean; // send the team notification email (default true). Partial autosaves pass false.
   utmSource?: string;
   utmMedium?: string;
   utmCampaign?: string;
@@ -268,10 +269,11 @@ export async function submitLasOrcasForm(data: LasOrcasSubmission) {
     }
   }
 
-  // 7. Notify team
+  // 7. Notify team — only on real milestones, not on partial autosaves.
   const safeName = escapeHtml(data.fullName);
   const safeEmail = escapeHtml(data.email);
   const stage = isStage2 ? "Founding Member" : "Circle Join";
+  if (data.notify !== false) {
   try {
     await sendNotification(
       `Las Orcas ${isStage2 ? (matched ? "MATCH" : "No match") : "Circle"}: ${safeName}`,
@@ -288,6 +290,7 @@ export async function submitLasOrcasForm(data: LasOrcasSubmission) {
     );
   } catch (err) {
     console.error("[Las Orcas] Email notification failed:", err);
+  }
   }
 
   // 8. Send confirmation email + add to Resend (ONLY on first submit, not updates)

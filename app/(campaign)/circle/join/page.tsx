@@ -188,7 +188,7 @@ function CircleJoinWizard() {
       case "email":
         if (!email.trim() || !email.includes("@")) { setError("Please enter a valid email."); return; }
         if (!consent) { setError("Please agree to receive emails to continue."); return; }
-        // Save email immediately (partial lead capture)
+        // Save email immediately (partial capture) — silent, no team email.
         {
           const earlyResult = await submitLasOrcasForm({
             fullName,
@@ -198,6 +198,7 @@ function CircleJoinWizard() {
             timeline: "",
             intent: "",
             campaign,
+            notify: false,
             ...utmRef.current,
           });
           if (earlyResult.error) {
@@ -209,19 +210,19 @@ function CircleJoinWizard() {
         setStage("phone");
         break;
       case "phone":
-        // Phone is optional enrichment, re-submit with phone to update profile
-        if (phone.trim()) {
-          await submitLasOrcasForm({
-            fullName,
-            email,
-            phone,
-            investmentRange: "",
-            timeline: "",
-            intent: "",
-            campaign,
-            ...utmRef.current,
-          });
-        }
+        // Stage 1 complete — persist (with phone if given). Send ONE team email
+        // here for plain Circle joins; founding-path users are notified at Stage 2.
+        await submitLasOrcasForm({
+          fullName,
+          email,
+          phone,
+          investmentRange: "",
+          timeline: "",
+          intent: "",
+          campaign,
+          notify: !isFoundingEntry,
+          ...utmRef.current,
+        });
         if (isFoundingEntry) {
           setStage("budget");
         } else {
