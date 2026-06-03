@@ -162,3 +162,152 @@ export async function deleteIncompleteCapture(email: string) {
   revalidatePath("/admin/circle");
   revalidatePath("/admin/leads");
 }
+
+// --- Bulk actions -----------------------------------------------------------
+
+export async function bulkArchiveLeads(ids: string[]) {
+  await requireEmployeeWithModule("leads");
+  if (!ids.length) return;
+  const supabase = await createClient();
+  const { error } = await supabase.from("leads").update({ status: "archived" }).in("id", ids);
+  if (error) throw error;
+  revalidatePath("/admin/leads");
+}
+
+export async function bulkDeleteLeads(ids: string[]) {
+  await requireEmployeeWithModule("leads");
+  if (!ids.length) return;
+  const supabase = await createClient();
+  const { error } = await supabase.from("leads").delete().in("id", ids);
+  if (error) throw error;
+  revalidatePath("/admin/leads");
+}
+
+export async function bulkArchiveCaptures(emails: string[]) {
+  await requireEmployeeWithModule("leads");
+  if (!emails.length) return;
+  const svc = await createServiceClient();
+  const lowers = emails.map(normalizeEmail);
+  await svc.from("circle_requests").update({ status: "rejected" }).in("email", lowers);
+  const { data: profs } = await svc.from("profiles").select("id").in("email", lowers);
+  for (const p of profs ?? []) {
+    await svc.from("applications").update({ status: "archived" }).eq("user_id", p.id).eq("type", "las_orcas_campaign");
+  }
+  revalidatePath("/admin/circle");
+  revalidatePath("/admin/leads");
+}
+
+export async function bulkDeleteCaptures(emails: string[]) {
+  await requireEmployeeWithModule("leads");
+  if (!emails.length) return;
+  const svc = await createServiceClient();
+  const lowers = emails.map(normalizeEmail);
+  await svc.from("circle_requests").delete().in("email", lowers);
+  const { data: profs } = await svc.from("profiles").select("id").in("email", lowers);
+  for (const p of profs ?? []) {
+    await svc.from("applications").delete().eq("user_id", p.id).eq("type", "las_orcas_campaign");
+  }
+  revalidatePath("/admin/circle");
+  revalidatePath("/admin/leads");
+}
+
+// --- Add to campaign (assign to a campaign's partners) ----------------------
+
+// Campaigns that have partners to assign to. Las Orcas = developers whose
+// company_name matches; extend here as new Selections onboard partners.
+async function getCampaignPartnerIds(
+  svc: Awaited<ReturnType<typeof createServiceClient>>,
+  campaign: string
+): Promise<string[]> {
+  if (campaign === "las_orcas") {
+    const { data } = await svc
+      .from("profiles")
+      .select("id")
+      .eq("role", "developer")
+      .ilike("company_name", "%Las Orcas%");
+    return (data ?? []).map((p) => p.id);
+  }
+  return [];
+}
+
+async function assignLeadToPartners(
+  svc: Awaited<ReturnType<typeof createServiceClient>>,
+  leadId: string,
+  partnerIds: string[],
+  assignedBy: string,
+  note: string
+) {
+  for (const pid of partnerIds) {
+    const { data: existing } = await svc
+      .from("lead_assignments")
+      .select("id")
+      .eq("lead_id", leadId)
+      .eq("partner_id", pid)
+      .maybeSingle();
+    if (existing) continue;
+    await svc.from("lead_assignments").insert({
+      lead_id: leadId,
+      partner_id: pid,
+      visibility_level: "full",
+      status: "active",
+      assigned_by: assignedBy,
+      notes: note,
+    });
+  }
+}
+
+// Existing leads → assign to a campaign's partners (full visibility).
+export async function addLeadsToCampaign(leadIds: string[], campaign: string) {
+  await requireEmployeeWithModule("leads");
+  if (!leadIds.length) return;
+  const supabase = await createClient();
+  const { data: { user } } = await supabase.auth.getUser();
+  if (!user) throw new Error("Not authenticated");
+  const svc = await createServiceClient();
+  const partnerIds = await getCampaignPartnerIds(svc, campaign);
+  for (const leadId of leadIds) {
+    await assignLeadToPartners(svc, leadId, partnerIds, user.id, `Added to ${campaign} campaign`);
+  }
+  revalidatePath("/admin/leads");
+}
+
+// Incomplete captures (email + consent) → promote to a low-priority lead, then
+// assign to the campaign's partners (preview). One click from the Incomplete tab.
+export async function addCapturesToCampaign(emails: string[], campaign: string) {
+  await requireEmployeeWithModule("leads");
+  if (!emails.length) return;
+  const supabase = await createClient();
+  const { data: { user } } = await supabase.auth.getUser();
+  if (!user) throw new Error("Not authenticated");
+  const svc = await createServiceClient();
+  const partnerIds = await getCampaignPartnerIds(svc, campaign);
+
+  for (const emailRaw of emails) {
+    const email = normalizeEmail(emailRaw);
+    const { data: profile } = await svc.from("profiles").select("id").ilike("email", email).maybeSingle();
+    if (!profile) continue;
+
+    // Find or create a low-priority lead for this person.
+    const { data: existingLead } = await svc.from("leads").select("id").eq("client_id", profile.id).maybeSingle();
+    let leadId = existingLead?.id as string | undefined;
+    if (!leadId) {
+      const { data: created } = await svc
+        .from("leads")
+        .insert({
+          client_id: profile.id,
+          status: "new",
+          source: campaign === "las_orcas" ? "circle" : "manual",
+          priority: "low",
+          notes: `Promoted from ${campaign} capture (email + consent).`,
+        })
+        .select("id")
+        .single();
+      leadId = created?.id;
+    }
+    if (!leadId) continue;
+
+    await assignLeadToPartners(svc, leadId, partnerIds, user.id, `Added to ${campaign} campaign (preview)`);
+  }
+  revalidatePath("/admin/leads");
+  revalidatePath("/admin/circle");
+}
