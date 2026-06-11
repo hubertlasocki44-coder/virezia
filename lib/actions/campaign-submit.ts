@@ -28,6 +28,8 @@ interface LasOrcasSubmission {
   intent: string;
   campaign?: string; // 'circle' (membership) or 'las_orcas' (Selection founding interest)
   notify?: boolean; // send the team notification email (default true). Partial autosaves pass false.
+  fbc?: string; // Meta click id (from fbclid) for CAPI attribution
+  fbp?: string; // Meta browser id (_fbp cookie) for CAPI attribution
   utmSource?: string;
   utmMedium?: string;
   utmCampaign?: string;
@@ -344,29 +346,40 @@ export async function submitLasOrcasForm(data: LasOrcasSubmission) {
   }
 
   // 10. Meta Conversions API (server-side)
-  try {
-    await sendMetaEvent({
-      eventName: isStage2 ? "Lead" : "CompleteRegistration",
-      email: data.email,
-      phone: data.phone || undefined,
-      firstName: data.fullName.split(" ")[0],
-      lastName: data.fullName.split(" ").slice(1).join(" ") || undefined,
-      sourceUrl: "https://virezia.com/las-orcas",
-      customData: {
-        content_name: "Las Orcas",
-        content_category: isStage2 ? "founding_member" : "circle_join",
-        value: isStage2 ? (matched ? 1 : 0.5) : 0.25,
-        currency: "USD",
-        ...(isStage2 ? {
-          investment_range: data.investmentRange,
-          timeline: data.timeline,
-          intent: data.intent,
-          matched: matched,
-        } : {}),
-      },
-    });
-  } catch (err) {
-    console.error("[Las Orcas] Meta CAPI failed:", err);
+  // Fire once per real milestone, only after the record persisted (userId), and
+  // with a STABLE event_id per person+event so Meta deduplicates resubmissions
+  // and back-navigation into a single conversion. Partial autosaves (notify=false
+  // email step, and silent founding-entry Stage 1) do not fire.
+  const metaEligible = !!userId && (isStage2 || data.notify !== false);
+  if (metaEligible) {
+    const eventName = isStage2 ? "Lead" : "CompleteRegistration";
+    try {
+      await sendMetaEvent({
+        eventName,
+        eventId: `${eventName}_${userId}`,
+        email: data.email,
+        phone: data.phone || undefined,
+        firstName: data.fullName.split(" ")[0],
+        lastName: data.fullName.split(" ").slice(1).join(" ") || undefined,
+        fbc: data.fbc || undefined,
+        fbp: data.fbp || undefined,
+        sourceUrl: "https://virezia.com/las-orcas",
+        customData: {
+          content_name: "Las Orcas",
+          content_category: isStage2 ? "founding_member" : "circle_join",
+          value: isStage2 ? (matched ? 1 : 0.5) : 0.25,
+          currency: "USD",
+          ...(isStage2 ? {
+            investment_range: data.investmentRange,
+            timeline: data.timeline,
+            intent: data.intent,
+            matched: matched,
+          } : {}),
+        },
+      });
+    } catch (err) {
+      console.error("[Las Orcas] Meta CAPI failed:", err);
+    }
   }
 
   return { success: true, matched: isStage2 ? matched : undefined };
