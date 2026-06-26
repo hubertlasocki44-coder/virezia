@@ -2,6 +2,7 @@ import { createClient } from "@/lib/supabase/server";
 import Link from "next/link";
 import LeadsTable, { type PipelineRow } from "./LeadsTable";
 import IncompleteCaptureTable, { type IncompleteRow } from "./IncompleteTable";
+import ExportButton from "./ExportButton";
 import {
   campaignFromApplication,
   campaignFromLead,
@@ -66,12 +67,17 @@ export default async function LeadsPage({
 
   const header = (
     <div>
-      <h1 className="font-serif text-[28px] font-light text-text-primary">Leads Pipeline</h1>
-      <p className="mt-1 font-sans text-sm text-text-muted">
-        {view === "pipeline"
-          ? "Qualified demand across all Selections."
-          : "Founding interest that has not qualified yet — almost-leads."}
-      </p>
+      <div className="flex items-start justify-between gap-4">
+        <div>
+          <h1 className="font-serif text-[28px] font-light text-text-primary">Leads Pipeline</h1>
+          <p className="mt-1 font-sans text-sm text-text-muted">
+            {view === "pipeline"
+              ? "Qualified demand across all Selections."
+              : "Founding interest that has not qualified yet — almost-leads."}
+          </p>
+        </div>
+        <ExportButton campaign="las_orcas" />
+      </div>
 
       {/* View tabs */}
       <div className="mt-6 flex gap-1 border-b border-border">
