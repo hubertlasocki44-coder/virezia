@@ -108,12 +108,9 @@ function CircleJoinWizard() {
   const [error, setError] = useState("");
   const [stage1Submitted, setStage1Submitted] = useState(false);
 
-  // Google Ads conversion IDs.
-  // AW_ID: account-level tag ID. LABEL_STAGE1 / LABEL_STAGE2: per-conversion-action.
-  // Replace LABEL_* with real values from Google Ads → Conversions → Tag setup.
-  const AW_ID = "AW-8356345156";
-  const LABEL_STAGE1 = "REPLACE_WITH_STAGE1_LABEL"; // Stage 1: name+email+phone
-  const LABEL_STAGE2 = "REPLACE_WITH_STAGE2_LABEL"; // Stage 2: founding member intent
+  // Google Ads: one conversion action, fires when name+email+phone are submitted.
+  // Replace LABEL with value from Google Ads → Goals → Conversions → Tag setup.
+  const GADS_SEND_TO = "AW-8356345156/REPLACE_WITH_LABEL";
 
   // Guards: each milestone fires at most once per session.
   const stage1ConversionFiredRef = useRef(false);
@@ -195,16 +192,10 @@ function CircleJoinWizard() {
         return;
       }
 
-      // Stage 2 conversion: founding member intent submitted successfully.
+      // Stage 2: founding member intent. No separate Google Ads hit —
+      // Stage 1 already counted the lead. GTM / GA4 still receive generate_lead.
       if (!conversionFiredRef.current) {
         conversionFiredRef.current = true;
-        // Google Ads — direct hit, real-time, no GA4 delay.
-        window.gtag?.("event", "conversion", {
-          send_to: `${AW_ID}/${LABEL_STAGE2}`,
-          value: 561000,
-          currency: "USD",
-        });
-        // dataLayer for GTM + GA4.
         window.gtag?.("event", "generate_lead", {
           form: "las_orcas_founding_member",
           value: 561000,
@@ -278,19 +269,18 @@ function CircleJoinWizard() {
           return;
         }
 
-        // Stage 1 conversion: name + email + phone submitted successfully.
-        // Fires for BOTH founding path and circle-only path.
+        // Stage 1 conversion: name + email + phone submitted — counts as a lead.
+        // Single Google Ads conversion, fires for both founding and circle paths.
         if (!stage1ConversionFiredRef.current) {
           stage1ConversionFiredRef.current = true;
           window.gtag?.("event", "conversion", {
-            send_to: `${AW_ID}/${LABEL_STAGE1}`,
+            send_to: GADS_SEND_TO,
             value: 561000,
             currency: "USD",
           });
           window.dataLayer?.push({
             event: "las_orcas_stage1_complete",
             form: "las_orcas_circle_join",
-            has_phone: phone.trim().length > 0,
           });
         }
 
