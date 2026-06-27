@@ -110,7 +110,7 @@ function CircleJoinWizard() {
 
   // Google Ads: one conversion action, fires when name+email+phone are submitted.
   // Replace LABEL with value from Google Ads → Goals → Conversions → Tag setup.
-  const GADS_SEND_TO = "AW-8356345156/REPLACE_WITH_LABEL";
+  const GADS_SEND_TO = "AW-18276002948/tggpCP7VtMYcEITZ1opE";
 
   // Guards: each milestone fires at most once per session.
   const stage1ConversionFiredRef = useRef(false);
