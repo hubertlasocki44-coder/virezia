@@ -7,6 +7,14 @@ import Image from "next/image";
 import Link from "next/link";
 import { submitLasOrcasForm } from "@/lib/actions/campaign-submit";
 
+// Ambient types for GTM / gtag — loaded by GTM-T49MNCXR snippet in layout.
+declare global {
+  interface Window {
+    gtag?: (...args: unknown[]) => void;
+    dataLayer?: Record<string, unknown>[];
+  }
+}
+
 const INVESTMENT_OPTIONS = [
   { value: "under_500k", label: "Under $500K" },
   { value: "500k_1m", label: "$500K \u2013 $1M" },
@@ -100,6 +108,9 @@ function CircleJoinWizard() {
   const [error, setError] = useState("");
   const [stage1Submitted, setStage1Submitted] = useState(false);
 
+  // Guard: fire the Google Ads conversion event exactly once per form session.
+  const conversionFiredRef = useRef(false);
+
   const utmRef = useRef({
     utmSource: "",
     utmMedium: "",
@@ -175,6 +186,21 @@ function CircleJoinWizard() {
         setLoading(false);
         return;
       }
+
+      // Fire Google Ads conversion once on successful Stage 2 submission.
+      if (!conversionFiredRef.current) {
+        conversionFiredRef.current = true;
+        window.gtag?.("event", "generate_lead", {
+          form: "las_orcas_founding_member",
+          value: 561000,
+          currency: "USD",
+        });
+        window.dataLayer?.push({
+          event: "generate_lead",
+          form: "las_orcas_founding_member",
+        });
+      }
+
       if (result.matched) {
         router.push("/circle/confirmed");
       } else {
