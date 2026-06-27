@@ -275,7 +275,7 @@ function CircleJoinWizard() {
           stage1ConversionFiredRef.current = true;
           window.gtag?.("event", "conversion", {
             send_to: GADS_SEND_TO,
-            value: 561000,
+            value: 1,
             currency: "USD",
           });
           window.dataLayer?.push({
