@@ -124,13 +124,13 @@ function CircleJoinWizard() {
     utmTerm: "",
     fbc: "",
     fbp: "",
+    userAgent: "",
   });
 
   useEffect(() => {
     const fbclid = searchParams.get("fbclid");
     const cookie = (name: string) =>
       document.cookie.split("; ").find((c) => c.startsWith(`${name}=`))?.split("=")[1] || "";
-    // Prefer the _fbc cookie if Meta set one; otherwise build it from fbclid.
     const fbc = cookie("_fbc") || (fbclid ? `fb.1.${Date.now()}.${fbclid}` : "");
     utmRef.current = {
       utmSource: searchParams.get("utm_source") || "",
@@ -140,6 +140,7 @@ function CircleJoinWizard() {
       utmTerm: searchParams.get("utm_term") || "",
       fbc,
       fbp: cookie("_fbp"),
+      userAgent: navigator.userAgent || "",
     };
   }, [searchParams]);
 

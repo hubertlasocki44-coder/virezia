@@ -30,6 +30,8 @@ interface LasOrcasSubmission {
   notify?: boolean; // send the team notification email (default true). Partial autosaves pass false.
   fbc?: string; // Meta click id (from fbclid) for CAPI attribution
   fbp?: string; // Meta browser id (_fbp cookie) for CAPI attribution
+  clientIp?: string; // forwarded from request headers — improves Meta EMQ
+  userAgent?: string; // browser user agent — improves Meta EMQ
   utmSource?: string;
   utmMedium?: string;
   utmCampaign?: string;
@@ -363,6 +365,8 @@ export async function submitLasOrcasForm(data: LasOrcasSubmission) {
         lastName: data.fullName.split(" ").slice(1).join(" ") || undefined,
         fbc: data.fbc || undefined,
         fbp: data.fbp || undefined,
+        clientIp: data.clientIp || undefined,
+        userAgent: data.userAgent || undefined,
         sourceUrl: "https://virezia.com/las-orcas",
         customData: {
           content_name: "Las Orcas",
