@@ -3,20 +3,30 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-const PARTNER_NAV = [
-  { href: "/dashboard", label: "Pipeline", icon: "◇" },
-  { href: "/offer", label: "Our Offer", icon: "◈" },
-  { href: "/settings", label: "Settings", icon: "○" },
+type PartnerModule = "pipeline" | "offer" | "settings";
+
+const ALL_PARTNER_NAV: { href: string; label: string; icon: string; module: PartnerModule }[] = [
+  { href: "/dashboard", label: "Pipeline",  icon: "◇", module: "pipeline" },
+  { href: "/offer",     label: "Our Offer", icon: "◈", module: "offer"    },
+  { href: "/settings",  label: "Settings",  icon: "○", module: "settings" },
 ];
 
 const BUYER_NAV = [
   { href: "/dashboard", label: "Overview", icon: "◇" },
-  { href: "/settings", label: "Settings", icon: "○" },
+  { href: "/settings",  label: "Settings", icon: "○" },
 ];
 
-export default function DashboardSidebar({ isPartner }: { isPartner: boolean }) {
+export default function DashboardSidebar({
+  isPartner,
+  modules,
+}: {
+  isPartner: boolean;
+  modules?: PartnerModule[];
+}) {
   const pathname = usePathname();
-  const items = isPartner ? PARTNER_NAV : BUYER_NAV;
+  const items = isPartner
+    ? ALL_PARTNER_NAV.filter((i) => !modules || modules.includes(i.module))
+    : BUYER_NAV;
 
   return (
     <div className="space-y-1">

@@ -29,6 +29,11 @@ export default async function DashboardLayout({
 
   const isPartner = ["developer", "agent", "broker", "asset_owner", "service_partner"].includes(profile?.role || "");
 
+  // Per-client module access. Add company_name patterns here to grant/restrict
+  // specific nav items without a DB schema change.
+  const company = (profile?.company_name || "").toLowerCase();
+  const partnerModules = resolvePartnerModules(company);
+
   return (
     <div className="min-h-screen bg-[#0a0a0a] flex">
       {/* Sidebar */}
@@ -48,7 +53,7 @@ export default async function DashboardLayout({
 
         {/* Nav */}
         <nav className="flex-1 px-3 mt-2">
-          <DashboardSidebar isPartner={isPartner} />
+          <DashboardSidebar isPartner={isPartner} modules={partnerModules} />
         </nav>
 
         {/* User */}
@@ -89,4 +94,21 @@ export default async function DashboardLayout({
       </main>
     </div>
   );
+}
+
+// ---------------------------------------------------------------------------
+// Per-client module access control
+// Add entries here to grant or restrict nav items per company.
+// Modules: "pipeline" | "offer" | "settings"
+// ---------------------------------------------------------------------------
+type PartnerModule = "pipeline" | "offer" | "settings";
+
+function resolvePartnerModules(companyLower: string): PartnerModule[] {
+  // Las Orcas: pipeline only — offer page is hidden
+  if (companyLower.includes("las orcas")) {
+    return ["pipeline", "settings"];
+  }
+
+  // Default for all other partners: full access
+  return ["pipeline", "offer", "settings"];
 }

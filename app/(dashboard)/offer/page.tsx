@@ -20,6 +20,10 @@ export default async function OfferPage() {
   const allowed = PARTNER_ROLES.has(role) || role === "super_admin" || role === "employee";
   if (!allowed) redirect("/dashboard");
 
+  // Las Orcas partners don't have access to the offer page.
+  const company = (profile?.company_name || "").toLowerCase();
+  if (company.includes("las orcas")) redirect("/dashboard");
+
   return (
     <div className="min-h-screen -m-6 md:-m-10">
       <iframe

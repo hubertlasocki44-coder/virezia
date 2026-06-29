@@ -28,6 +28,12 @@ export async function GET() {
     return new NextResponse("Access denied.", { status: 403 });
   }
 
+  // Las Orcas partners: offer page is not part of their package.
+  const company = ((profile as { company_name?: string } | null)?.company_name || "").toLowerCase();
+  if (company.includes("las orcas")) {
+    return new NextResponse("Access denied.", { status: 403 });
+  }
+
   const html = readFileSync(
     join(process.cwd(), "app/(dashboard)/offer/calculator.html"),
     "utf8"
