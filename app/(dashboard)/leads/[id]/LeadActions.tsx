@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 import { updateLeadStatus, addLeadNote, logContact } from "@/lib/actions/partner-actions";
+import { useLang } from "@/lib/lang";
+import { t } from "@/lib/translations";
 
 const STATUSES = [
   { value: "new", label: "New" },
@@ -47,6 +49,7 @@ const CHANNELS = [
 ] as const;
 
 export function LogContact({ leadId }: { leadId: string }) {
+  const { lang } = useLang();
   const [channel, setChannel] = useState<(typeof CHANNELS)[number]["value"]>("call");
   const [loading, setLoading] = useState(false);
   const [done, setDone] = useState(false);
@@ -76,13 +79,14 @@ export function LogContact({ leadId }: { leadId: string }) {
         disabled={loading}
         className="bg-[#c9a96e]/15 hover:bg-[#c9a96e]/25 border border-[#c9a96e]/30 rounded-lg px-4 py-2 font-sans text-[11px] uppercase tracking-wider text-[#c9a96e] transition-all disabled:opacity-40"
       >
-        {loading ? "Logging..." : done ? "Logged ✓" : "Log contact"}
+        {loading ? t("lead_logging", lang) : done ? t("lead_logged", lang) : t("lead_log_btn", lang)}
       </button>
     </div>
   );
 }
 
 export function AddNote({ leadId }: { leadId: string }) {
+  const { lang } = useLang();
   const [note, setNote] = useState("");
   const [loading, setLoading] = useState(false);
 
@@ -100,7 +104,7 @@ export function AddNote({ leadId }: { leadId: string }) {
       <textarea
         value={note}
         onChange={(e) => setNote(e.target.value)}
-        placeholder="Add a note..."
+        placeholder={t("lead_note_placeholder", lang)}
         rows={3}
         className="w-full bg-white/[0.03] border border-white/[0.06] rounded-lg px-4 py-3 font-sans text-[13px] text-white/70 placeholder:text-white/15 focus:border-white/[0.12] focus:outline-none resize-none"
       />
@@ -109,7 +113,7 @@ export function AddNote({ leadId }: { leadId: string }) {
         disabled={loading || !note.trim()}
         className="mt-2 w-full bg-white/[0.06] hover:bg-white/[0.1] border border-white/[0.08] rounded-lg px-4 py-2.5 font-sans text-[11px] uppercase tracking-wider text-white/50 hover:text-white/70 transition-all disabled:opacity-30"
       >
-        {loading ? "Saving..." : "Add Note"}
+        {loading ? t("lead_saving", lang) : t("lead_add_note_btn", lang)}
       </button>
     </form>
   );

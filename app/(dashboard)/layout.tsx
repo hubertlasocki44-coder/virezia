@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { signOut } from "@/lib/actions/auth";
 import DashboardSidebar from "./DashboardSidebar";
+import { LangProvider } from "@/lib/lang";
 
 export default async function DashboardLayout({
   children,
@@ -35,6 +36,7 @@ export default async function DashboardLayout({
   const partnerModules = resolvePartnerModules(company);
 
   return (
+  <LangProvider>
     <div className="min-h-screen bg-[#0a0a0a] flex">
       {/* Sidebar */}
       <aside className="hidden md:flex w-[260px] flex-col border-r border-white/[0.06] bg-[#0d0d0d]">
@@ -93,6 +95,7 @@ export default async function DashboardLayout({
         </div>
       </main>
     </div>
+  </LangProvider>
   );
 }
 

@@ -4,6 +4,7 @@ import Link from "next/link";
 import AdminStatusBadge from "@/components/admin/AdminStatusBadge";
 import PartnerLeadList from "./PartnerLeadList";
 import { computeLeadHealth, summarizeHealth, type LeadHealth } from "@/lib/leads-health";
+import PartnerDashboardClient from "./PartnerDashboardClient";
 
 export default async function DashboardPage() {
   const supabase = await createClient();
@@ -192,62 +193,12 @@ async function PartnerDashboard({ userId, profile }: { userId: string; profile: 
   });
 
   return (
-    <div>
-      {/* Header */}
-      <div className="flex items-start justify-between">
-        <div>
-          <h1 className="font-sans text-[24px] font-medium text-white/90 tracking-tight">
-            Pipeline
-          </h1>
-          <p className="mt-1 font-sans text-[13px] text-white/30">
-            {profile.company_name ? `${profile.company_name as string} — ` : ""}
-            {totalAssigned ?? 0} total leads
-          </p>
-        </div>
-      </div>
-
-      {/* Stats row */}
-      <div className="mt-8 grid grid-cols-2 md:grid-cols-4 gap-3">
-        {[
-          { label: "Total", value: totalAssigned ?? 0, color: "white/90" },
-          { label: "New", value: statusCounts["new"] || 0, color: "[#c9a96e]" },
-          { label: "In Progress", value: (statusCounts["screening"] || 0) + (statusCounts["qualified"] || 0) + (statusCounts["in_progress"] || 0), color: "[#5a8ac9]" },
-          { label: "Won", value: statusCounts["closed_won"] || 0, color: "[#4ade80]" },
-        ].map((stat) => (
-          <div key={stat.label} className="bg-white/[0.03] border border-white/[0.06] rounded-xl p-4">
-            <p className="font-sans text-[11px] text-white/30 uppercase tracking-wider">{stat.label}</p>
-            <p className={`mt-2 font-sans text-[28px] font-light text-${stat.color} tracking-tight`}>{stat.value}</p>
-          </div>
-        ))}
-      </div>
-
-      {/* Response health row */}
-      <div className="mt-3 grid grid-cols-3 gap-3">
-        {[
-          { label: "Not contacted", value: summary.notContacted, color: "red-400" },
-          { label: "At risk", value: summary.atRisk, color: "amber-400" },
-          { label: "Avg response", value: summary.avgResponseLabel, color: "white/90" },
-        ].map((stat) => (
-          <div key={stat.label} className="bg-white/[0.03] border border-white/[0.06] rounded-xl p-4">
-            <p className="font-sans text-[11px] text-white/30 uppercase tracking-wider">{stat.label}</p>
-            <p className={`mt-2 font-sans text-[28px] font-light text-${stat.color} tracking-tight`}>{stat.value}</p>
-          </div>
-        ))}
-      </div>
-
-      {/* Kanban */}
-      <div className="mt-10">
-        {assignments && assignments.length > 0 ? (
-          <PartnerLeadList assignments={assignmentsWithHealth as unknown as Parameters<typeof PartnerLeadList>[0]["assignments"]} />
-        ) : (
-          <div className="flex items-center justify-center h-[300px] border border-dashed border-white/[0.06] rounded-xl">
-            <div className="text-center">
-              <p className="font-sans text-[15px] text-white/30">No leads assigned yet</p>
-              <p className="mt-1 font-sans text-[12px] text-white/15">Leads from your campaign will appear here</p>
-            </div>
-          </div>
-        )}
-      </div>
-    </div>
+    <PartnerDashboardClient
+      companyName={(profile.company_name as string) || null}
+      totalAssigned={totalAssigned ?? 0}
+      statusCounts={statusCounts}
+      summary={summary}
+      assignments={assignmentsWithHealth as Parameters<typeof PartnerDashboardClient>[0]["assignments"]}
+    />
   );
 }

@@ -4,6 +4,8 @@ import { useState, useMemo } from "react";
 import Link from "next/link";
 import ContactBadge from "@/components/ContactBadge";
 import type { ContactState } from "@/lib/leads-health";
+import { useLang } from "@/lib/lang";
+import { t } from "@/lib/translations";
 
 interface LeadAssignment {
   id: string;
@@ -58,6 +60,7 @@ type SortDir = "asc" | "desc";
 const PAGE_SIZE = 10;
 
 export default function PartnerLeadList({ assignments }: { assignments: LeadAssignment[] }) {
+  const { lang } = useLang();
   const [filter, setFilter] = useState("all");
   const [contactFilter, setContactFilter] = useState<(typeof CONTACT_FILTERS)[number]["value"]>("all");
   const [sortKey, setSortKey] = useState<SortKey>("date");
@@ -132,6 +135,16 @@ export default function PartnerLeadList({ assignments }: { assignments: LeadAssi
           const count = counts[tab.value] || 0;
           if (tab.value !== "all" && count === 0) return null;
           const active = filter === tab.value;
+          const tabLabels: Record<string, string> = {
+            all: t("leads_filter_all", lang),
+            new: t("leads_filter_new", lang),
+            screening: t("leads_filter_screening", lang),
+            qualified: t("leads_filter_qualified", lang),
+            matched: t("leads_filter_matched", lang),
+            in_progress: t("leads_filter_in_progress", lang),
+            closed_won: t("leads_filter_won", lang),
+            closed_lost: t("leads_filter_lost", lang),
+          };
           return (
             <button
               key={tab.value}
@@ -142,7 +155,7 @@ export default function PartnerLeadList({ assignments }: { assignments: LeadAssi
                   : "text-white/35 hover:text-white/60 hover:bg-white/[0.03]"
               }`}
             >
-              {tab.label}
+              {tabLabels[tab.value] ?? tab.label}
               <span className={`text-[10px] px-1.5 py-0.5 rounded-full ${
                 active ? "bg-white/[0.1] text-white/70" : "bg-white/[0.04] text-white/25"
               }`}>
@@ -175,7 +188,7 @@ export default function PartnerLeadList({ assignments }: { assignments: LeadAssi
                 active ? "bg-white/[0.08] text-white" : `${tone} hover:bg-white/[0.03]`
               }`}
             >
-              {cf.label}
+              {cf.value === "all" ? t("leads_filter_all", lang) : cf.value === "not_contacted" ? t("leads_not_contacted", lang) : t("leads_at_risk", lang)}
               <span className={`text-[10px] px-1.5 py-0.5 rounded-full ${active ? "bg-white/[0.1] text-white/70" : "bg-white/[0.04] text-white/25"}`}>
                 {count}
               </span>
@@ -188,19 +201,19 @@ export default function PartnerLeadList({ assignments }: { assignments: LeadAssi
       <div className="mt-4 border border-white/[0.06] rounded-xl overflow-hidden">
         {sorted.length === 0 ? (
           <div className="px-6 py-12 text-center">
-            <p className="font-sans text-[13px] text-white/25">No leads with this status.</p>
+            <p className="font-sans text-[13px] text-white/25">{t("leads_none", lang)}</p>
           </div>
         ) : (
           <>
             <table className="w-full">
               <thead>
                 <tr className="border-b border-white/[0.06]">
-                  <th className={thClass} onClick={() => handleSort("name")}>Name{sortIcon("name")}</th>
-                  <th className={`${thClass} hidden sm:table-cell`} onClick={() => handleSort("email")}>Email{sortIcon("email")}</th>
-                  <th className={`${thClass} hidden md:table-cell`}>Phone</th>
-                  <th className={thClass} onClick={() => handleSort("status")}>Status{sortIcon("status")}</th>
-                  <th className={`${thClass} hidden lg:table-cell`}>Contact</th>
-                  <th className={`${thClass} text-right hidden sm:table-cell`} onClick={() => handleSort("date")}>Date{sortIcon("date")}</th>
+                  <th className={thClass} onClick={() => handleSort("name")}>{t("leads_col_name", lang)}{sortIcon("name")}</th>
+                  <th className={`${thClass} hidden sm:table-cell`} onClick={() => handleSort("email")}>{t("leads_col_email", lang)}{sortIcon("email")}</th>
+                  <th className={`${thClass} hidden md:table-cell`}>{t("leads_col_phone", lang)}</th>
+                  <th className={thClass} onClick={() => handleSort("status")}>{t("leads_col_status", lang)}{sortIcon("status")}</th>
+                  <th className={`${thClass} hidden lg:table-cell`}>{t("leads_col_contact", lang)}</th>
+                  <th className={`${thClass} text-right hidden sm:table-cell`} onClick={() => handleSort("date")}>{t("leads_col_date", lang)}{sortIcon("date")}</th>
                 </tr>
               </thead>
               <tbody>
@@ -260,14 +273,14 @@ export default function PartnerLeadList({ assignments }: { assignments: LeadAssi
                     disabled={page === 0}
                     className="px-3 py-1 font-sans text-[11px] text-white/40 hover:text-white/70 disabled:text-white/10 transition-colors"
                   >
-                    Previous
+                    {t("leads_prev", lang)}
                   </button>
                   <button
                     onClick={() => setPage(p => Math.min(totalPages - 1, p + 1))}
                     disabled={page >= totalPages - 1}
                     className="px-3 py-1 font-sans text-[11px] text-white/40 hover:text-white/70 disabled:text-white/10 transition-colors"
                   >
-                    Next
+                    {t("leads_next", lang)}
                   </button>
                 </div>
               </div>

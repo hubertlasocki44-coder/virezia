@@ -1,6 +1,7 @@
 import { createClient } from "@/lib/supabase/server";
 import { redirect } from "next/navigation";
 import SettingsForm from "./SettingsForm";
+import SettingsTitle from "./SettingsTitle";
 
 export default async function SettingsPage() {
   const supabase = await createClient();
@@ -17,10 +18,7 @@ export default async function SettingsPage() {
 
   return (
     <div>
-      <h1>Settings</h1>
-      <p className="mt-1 font-sans text-[13px] text-white/30">
-        Manage your profile and account
-      </p>
+      <SettingsTitle />
 
       <SettingsForm
         email={profile.email}
