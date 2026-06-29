@@ -1,0 +1,979 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Virezia: Strategic Campaigns for Luxury Real Estate</title>
+<meta name="robots" content="noindex, nofollow">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Virezia: Strategic Campaigns for Luxury Real Estate">
+<meta property="og:description" content="We market the property. You never pay more than a broker. A dedicated Meta and Google campaign, qualified international buyers, and your cost capped at the commission.">
+<meta property="og:image" content="https://www.virezia.com/images/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Virezia: Strategic Campaigns for Luxury Real Estate">
+<meta name="twitter:image" content="https://www.virezia.com/images/og-image.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#080808;--bg-2:#0d0c0a;--bg-3:#121110;--card:#151310;--card-2:#1a1713;
+    --line:rgba(240,236,228,.10);--line-2:rgba(240,236,228,.06);--line-gold:rgba(201,169,110,.30);
+    --ivory:#f0ece4;--muted:#a8a294;--muted-2:#7b7569;--gold:#c9a96e;--gold-2:#dcc08c;--warn:#cf8f6a;
+    --serif:"Cormorant Garamond",Georgia,"Times New Roman",serif;
+    --sans:"DM Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--ivory);font-family:var(--sans);font-weight:300;line-height:1.65;-webkit-font-smoothing:antialiased}
+  body.lang-es .en{display:none}
+  body.lang-en .es{display:none}
+  h1,h2,h3{font-family:var(--serif);font-weight:300;letter-spacing:-.02em;line-height:1.08;margin:0}
+  p{margin:0 0 1em}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1140px;margin:0 auto;padding:0 30px}
+  .eyebrow{font-family:var(--sans);font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);font-weight:500;margin:0 0 22px;opacity:.85}
+  .lead{font-size:18px;color:var(--muted);font-weight:300}
+  .section{padding:96px 0;border-top:1px solid var(--line-2)}
+  .section h2{font-size:42px;margin-bottom:14px;color:var(--ivory)}
+  .section .kicker{font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);font-weight:500;margin-bottom:20px;opacity:.85}
+  .rule{width:46px;height:1px;background:var(--gold);opacity:.6;margin:0 0 26px}
+
+  header.bar{position:sticky;top:0;z-index:50;background:rgba(8,8,8,.85);backdrop-filter:blur(10px);border-bottom:1px solid var(--line-2)}
+  .bar .wrap{display:flex;align-items:center;justify-content:space-between;height:74px}
+  .bar img{height:34px;display:block}
+  .bar nav{display:flex;align-items:center;gap:28px}
+  .bar nav a.nl{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);font-weight:400}
+  .bar nav a.nl:hover{color:var(--ivory)}
+  .toggle{display:flex;border:1px solid var(--line-gold);border-radius:2px;overflow:hidden}
+  .toggle button{background:transparent;color:var(--muted);border:0;padding:6px 12px;font-size:11px;font-weight:600;letter-spacing:.1em;cursor:pointer;font-family:var(--sans)}
+  .toggle button.active{background:var(--gold);color:var(--bg)}
+  .btn{display:inline-block;padding:13px 28px;border-radius:2px;font-weight:500;font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;cursor:pointer;border:1px solid var(--gold);color:var(--gold);background:transparent;transition:.25s;font-family:var(--sans)}
+  .btn:hover{background:var(--gold);color:var(--bg)}
+  .btn-solid{background:var(--gold);color:var(--bg)}
+  .btn-solid:hover{background:var(--gold-2);border-color:var(--gold-2)}
+  @media(max-width:880px){.bar nav .nl{display:none}}
+
+  .hero{position:relative;overflow:hidden}
+  .hero:before{content:"";position:absolute;inset:0;background:
+    radial-gradient(1100px 520px at 78% -8%,rgba(201,169,110,.13),transparent 60%),
+    radial-gradient(800px 600px at -8% 112%,rgba(143,179,164,.05),transparent 60%);}
+  .hero .wrap{position:relative;padding:104px 30px 92px}
+  .hero h1{font-size:60px;color:var(--ivory);max-width:18ch;font-weight:300}
+  .hero h1 em{font-style:italic;color:var(--gold-2)}
+  .hero .sub{font-size:19px;color:var(--muted);max-width:64ch;margin-top:26px;font-weight:300}
+  .hero .cta{margin-top:38px;display:flex;gap:14px;flex-wrap:wrap}
+  .hero .strip{margin-top:60px;display:flex;gap:1px;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:30px}
+  .hero .strip div{flex:1;min-width:200px;padding-right:20px}
+  .hero .strip .n{font-family:var(--serif);font-size:34px;color:var(--gold-2);font-weight:300}
+  .hero .strip .l{font-size:13px;color:var(--muted);margin-top:4px;line-height:1.4}
+
+  .grid{display:grid;gap:1px;background:var(--line-2)}
+  .grid-3{grid-template-columns:repeat(3,1fr)}
+  .grid-2{grid-template-columns:repeat(2,1fr)}
+  .card{background:var(--bg);padding:34px 30px}
+  .card h3{font-size:22px;margin-bottom:10px;color:var(--ivory)}
+  .card .ic{font-family:var(--serif);font-size:18px;color:var(--gold);width:40px;height:40px;border:1px solid var(--line-gold);border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:18px}
+  .card p{color:var(--muted);font-size:15px;margin:0}
+  .muted{color:var(--muted)}
+
+  .callout{border:1px solid var(--line-gold);border-radius:4px;padding:42px 44px;background:linear-gradient(180deg,var(--card),var(--bg))}
+  .callout h3{color:var(--ivory);font-size:30px;margin-bottom:16px}
+  .callout .big{font-family:var(--serif);font-size:26px;color:var(--gold-2);line-height:1.34;font-weight:300}
+  .callout p{color:var(--muted)}
+
+  .layers{display:grid;gap:14px;margin-top:8px}
+  .layer{display:grid;grid-template-columns:54px 1fr auto;gap:20px;align-items:start;background:var(--card);border:1px solid var(--line);border-radius:3px;padding:24px 28px}
+  .layer .ln{font-family:var(--serif);font-size:30px;color:var(--gold);line-height:1;font-weight:300}
+  .layer h3{font-size:21px;margin-bottom:6px}
+  .layer p{margin:0;color:var(--muted);font-size:14.5px}
+  .layer .tag{font-family:var(--serif);font-size:23px;color:var(--ivory);white-space:nowrap;text-align:right}
+  .layer .tag small{display:block;font-family:var(--sans);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-2);margin-top:4px}
+  @media(max-width:720px){.layer{grid-template-columns:1fr}.layer .tag{text-align:left}}
+  .credited{margin-top:14px;font-size:13.5px;color:var(--gold-2);font-style:italic;text-align:center}
+
+  .stats{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--line-2);border:1px solid var(--line-2)}
+  .stat{background:var(--bg);padding:26px 18px}
+  .stat .n{font-family:var(--serif);font-size:35px;color:var(--gold-2);font-weight:300}
+  .stat .l{font-size:12px;color:var(--muted);margin-top:6px;line-height:1.4}
+
+  .offerbox{border:1px solid var(--line-gold);border-radius:4px;padding:8px 36px;background:var(--card)}
+  .terms{list-style:none;margin:0;padding:0}
+  .terms li{display:flex;gap:16px;padding:18px 0;border-bottom:1px solid var(--line-2);align-items:baseline}
+  .terms li:last-child{border-bottom:0}
+  .terms .tk{color:var(--gold);font-weight:500}
+  .terms .t{font-weight:500;min-width:210px;color:var(--ivory)}
+  .terms .d{color:var(--muted);font-size:15px}
+
+  /* calculator */
+  .calc{display:grid;grid-template-columns:0.92fr 1.08fr;margin-top:30px;border:1px solid var(--line-gold);border-radius:4px;overflow:hidden}
+  .controls{background:var(--bg-2);padding:34px}
+  .results{background:var(--bg-3);padding:34px;border-left:1px solid var(--line)}
+  .ctrl{margin-bottom:24px}
+  .ctrl label{display:flex;justify-content:space-between;align-items:baseline;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:500;margin-bottom:12px}
+  .ctrl label .v{font-family:var(--serif);font-size:21px;color:var(--gold-2);letter-spacing:0;text-transform:none}
+  input[type=range]{-webkit-appearance:none;width:100%;height:2px;border-radius:2px;background:#3a352c;outline:none}
+  input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:18px;height:18px;border-radius:50%;background:var(--gold);cursor:pointer;border:3px solid var(--bg-2);box-shadow:0 0 0 1px var(--gold)}
+  input[type=range]::-moz-range-thumb{width:16px;height:16px;border-radius:50%;background:var(--gold);cursor:pointer;border:3px solid var(--bg-2)}
+  .seg,.chan{display:flex;gap:8px}
+  .seg button,.chan button{flex:1;background:#1d1a15;border:1px solid var(--line);color:var(--muted);padding:11px 6px;border-radius:2px;font-size:12px;font-weight:500;cursor:pointer;font-family:var(--sans);transition:.15s;line-height:1.15}
+  .seg button.active,.chan button.active{background:var(--gold);color:var(--bg);border-color:var(--gold);font-weight:600}
+  .origin{font-size:11.5px;color:var(--muted-2);margin-top:10px;font-style:italic}
+
+  .res-head{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line-2);border:1px solid var(--line-2);border-radius:3px;overflow:hidden}
+  .res-cell{background:var(--card);padding:17px 18px}
+  .res-cell.accent{background:var(--card-2)}
+  .res-cell .l{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:500}
+  .res-cell .n{font-family:var(--serif);font-size:30px;color:var(--ivory);margin-top:5px;line-height:1;font-weight:300}
+  .res-cell.accent .n{color:var(--gold-2)}
+  .res-cell .s{font-size:11.5px;color:var(--muted-2);margin-top:6px}
+
+  .lesson{margin:16px 0;padding:14px 18px;border-left:2px solid var(--gold);background:rgba(201,169,110,.07);border-radius:0 3px 3px 0;font-size:13.5px;color:#d9cdb4}
+
+  .funnel{margin:14px 0 4px}
+  .fbar{display:flex;align-items:center;gap:12px;margin:8px 0}
+  .fbar .fl{font-size:11.5px;color:var(--muted);width:128px;flex-shrink:0}
+  .fbar .ftrack{flex:1;background:rgba(240,236,228,.06);border-radius:4px;height:20px;overflow:hidden}
+  .fbar .ffill{height:100%;background:linear-gradient(90deg,#9b803f,var(--gold-2));border-radius:4px;transition:width .35s;min-width:3px}
+  .fbar .fv{font-family:var(--serif);font-size:15px;color:var(--ivory);width:58px;text-align:right;flex-shrink:0;font-weight:300}
+
+  .costbox{margin-top:20px;background:var(--card);border:1px solid var(--line);border-radius:3px;padding:18px 22px}
+  .cap{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-weight:500;margin-bottom:8px}
+  .costbox .row{display:flex;justify-content:space-between;align-items:baseline;font-size:14px;padding:7px 0;color:var(--muted)}
+  .costbox .row span:last-child{font-family:var(--serif);font-size:17px;color:var(--ivory)}
+  .costbox .row.total{border-top:1px solid var(--line-gold);margin-top:8px;padding-top:12px}
+  .costbox .row.total span:first-child{color:var(--ivory);font-weight:500}
+  .costbox .row.total span:last-child{font-size:25px;color:var(--gold-2)}
+  .costnote{font-size:11.5px;color:var(--muted-2);margin-top:10px;line-height:1.55}
+  .costnote.warn{color:var(--warn)}
+
+  .compare{margin-top:16px;border:1px solid var(--line-gold);border-radius:3px;padding:20px 22px;background:linear-gradient(180deg,rgba(201,169,110,.06),transparent)}
+  .compare .crow{display:flex;justify-content:space-between;align-items:baseline;padding:6px 0;font-size:14px;color:var(--muted)}
+  .compare .crow span:last-child{font-family:var(--serif);font-size:19px;color:var(--ivory)}
+  .compare .crow.net span:last-child{color:var(--gold-2)}
+  .compare .verdict{margin-top:12px;padding-top:12px;border-top:1px solid var(--line-2);font-size:13.5px;color:#d9cdb4;font-style:italic}
+  .assume{font-size:10.5px;color:var(--muted-2);margin-top:16px;line-height:1.55}
+
+  .vlist{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line-2);border:1px solid var(--line-2)}
+  .vi{background:var(--bg);padding:22px 24px}
+  .vi b{display:block;color:var(--ivory);font-weight:500;font-size:15.5px;margin-bottom:4px;padding-left:16px;position:relative}
+  .vi b:before{content:"";position:absolute;left:0;top:9px;width:8px;height:1px;background:var(--gold)}
+  .vi span{color:var(--muted);font-size:14px;padding-left:16px;display:block}
+
+  /* faq */
+  .faq{margin-top:30px}
+  .faq details{border-top:1px solid var(--line)}
+  .faq details:last-child{border-bottom:1px solid var(--line)}
+  .faq summary{list-style:none;cursor:pointer;padding:22px 0;display:flex;justify-content:space-between;gap:24px;align-items:baseline;font-family:var(--serif);font-size:22px;color:var(--ivory);font-weight:300}
+  .faq summary::-webkit-details-marker{display:none}
+  .faq summary:after{content:"+";color:var(--gold);font-family:var(--sans);font-size:24px;line-height:1;transition:transform .2s;flex-shrink:0}
+  .faq details[open] summary:after{transform:rotate(45deg)}
+  .faq .ans{color:var(--muted);font-size:15px;padding:0 0 24px;max-width:84ch}
+
+  .final{text-align:center}
+  .final h2{font-size:46px;color:var(--ivory);max-width:20ch;margin:0 auto 18px}
+  .final .lead{max-width:58ch;margin:0 auto 30px}
+  .contact{margin-top:34px;color:var(--muted-2);font-size:13px;letter-spacing:.04em}
+  .contact b{color:var(--ivory);font-weight:500}
+  footer{border-top:1px solid var(--line-2);padding:40px 0;color:var(--muted-2);font-size:12.5px}
+  footer .wrap{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;align-items:center}
+  footer img{height:30px;opacity:.85}
+
+  @media(max-width:880px){
+    .grid-3,.grid-2,.stats,.calc,.vlist,.res-head{grid-template-columns:1fr}
+    .results{border-left:0;border-top:1px solid var(--line)}
+    .hero h1{font-size:40px}.section h2{font-size:30px}.final h2{font-size:32px}
+    .hero .wrap{padding:70px 30px 60px}.section{padding:64px 0}
+  }
+</style>
+</head>
+<body class="lang-en">
+
+<header class="bar">
+  <div class="wrap">
+    <a href="https://www.virezia.com"><img src="https://www.virezia.com/logo.png" alt="VIREZIA"></a>
+    <nav>
+      <a class="nl en" href="#model">The Model</a><a class="nl es" href="#model">El Modelo</a>
+      <a class="nl en" href="#work">What We Do</a><a class="nl es" href="#work">Qué Hacemos</a>
+      <a class="nl en" href="#faq">FAQ</a><a class="nl es" href="#faq">FAQ</a>
+      <a class="nl en" href="#calc">Estimate</a><a class="nl es" href="#calc">Estimar</a>
+      <div class="toggle">
+        <button id="btn-en" class="active" onclick="setLang('en')">EN</button>
+        <button id="btn-es" onclick="setLang('es')">ES</button>
+      </div>
+      <a class="btn en" href="#calc">Model it</a><a class="btn es" href="#calc">Modelar</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <p class="eyebrow en">Virezia &middot; Strategic campaigns for luxury real estate</p>
+    <p class="eyebrow es">Virezia &middot; Campañas estratégicas para inmobiliaria de lujo</p>
+    <h1 class="en">We market the property. You <em>never pay more than a broker.</em></h1>
+    <h1 class="es">Comercializamos la propiedad. <em>Nunca pagas más que a un broker.</em></h1>
+    <p class="sub en">A commission-only listing posts your property and waits. Virezia runs an active, strategic campaign across Meta and Google, sources qualified and international buyers. On a sale your all-in cost never exceeds 5%, the same commission you would pay anyway. We are paid to sell, not to spend.</p>
+    <p class="sub es">Un listado a solo comisión publica tu propiedad y espera. Virezia ejecuta una campaña activa y estratégica en Meta y Google, capta compradores cualificados e internacionales. En una venta tu coste total nunca supera el 5%, la misma comisión que pagarías igual. Cobramos por vender, no por gastar.</p>
+    <div class="cta">
+      <a class="btn btn-solid en" href="#calc">See the numbers</a><a class="btn btn-solid es" href="#calc">Ver los números</a>
+      <a class="btn en" href="#model">How the model works</a><a class="btn es" href="#model">Cómo funciona el modelo</a>
+    </div>
+    <div class="strip">
+      <div><div class="n">&le; 5%</div><div class="l en">all-in, capped at a standard commission</div><div class="l es">todo incluido, limitado a una comisión estándar</div></div>
+      <div><div class="n en">On the sale</div><div class="n es">En la venta</div><div class="l en">we are paid to sell, not on your leads</div><div class="l es">cobramos por vender, no por tus contactos</div></div>
+      <div><div class="n">$92</div><div class="l en">cost per qualified buyer, live campaign (USD)</div><div class="l es">coste por comprador cualificado, campaña real (USD)</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT / FOUNDER -->
+<section class="section">
+  <div class="wrap">
+    <p class="kicker en">Who is behind this</p><p class="kicker es">Quién está detrás</p>
+    <div class="rule"></div>
+    <h2 class="en">Virezia was founded by Lucas Hubert.</h2>
+    <h2 class="es">Virezia fue fundada por Lucas Hubert.</h2>
+    <p class="lead en" style="max-width:74ch;margin-top:18px">Lucas Hubert is a strategic advisor with twenty years in marketing and in running recruitment and advertising campaigns across industries. Virezia is the specialized platform he built for one job: comprehensive, strategically driven campaigns for luxury real estate. For the buyers behind those properties, and especially international buyers who operate across languages and arrive with different needs, Virezia adds direct help through the purchase. The seller gets demand. The buyer gets understood.</p>
+    <p class="lead es" style="max-width:74ch;margin-top:18px">Lucas Hubert es un asesor estratégico con veinte años en marketing y en la gestión de campañas de captación y publicidad para distintos sectores. Virezia es la plataforma especializada que creó para una sola tarea: campañas integrales y estratégicas para inmobiliaria de lujo. Para los compradores detrás de esas propiedades, y en especial los internacionales que operan en varios idiomas y llegan con necesidades distintas, Virezia añade ayuda directa durante la compra. El vendedor obtiene demanda. El comprador, comprensión.</p>
+    <p class="muted en" style="max-width:74ch;margin-top:16px;font-size:14.5px">Virezia is a United States registered company. All budgets and fees are in USD, and we work with international clients across markets.</p>
+    <p class="muted es" style="max-width:74ch;margin-top:16px;font-size:14.5px">Virezia es una empresa registrada en Estados Unidos. Todos los presupuestos y honorarios están en USD, y trabajamos con clientes internacionales en distintos mercados.</p>
+  </div>
+</section>
+
+<!-- THE PRINCIPLE -->
+<section class="section">
+  <div class="wrap">
+    <div class="callout">
+      <p class="kicker en">The principle most agencies get wrong</p>
+      <p class="kicker es">El principio que casi todas las agencias confunden</p>
+      <h3 class="en">Cheap leads are not cheap buyers.</h3>
+      <h3 class="es">Un contacto barato no es un comprador barato.</h3>
+      <p class="en">Ad platforms optimize toward the cheapest event they can see, a raw form-fill. So the cheapest audience always looks like the winner on the dashboard. It rarely is.</p>
+      <p class="es">Las plataformas optimizan hacia el evento más barato que ven, un formulario. Por eso la audiencia más barata siempre parece la ganadora en el panel. Casi nunca lo es.</p>
+      <p class="big en">In a live luxury-villa campaign, the broad audience produced leads at $37. The narrower, more expensive audience produced leads at $56, and those were the people who actually qualified to buy. The expensive leads were the cheaper buyers.</p>
+      <p class="big es">En una campaña real de villas de lujo, la audiencia amplia generó contactos a $37. La audiencia más estrecha y cara los generó a $56, y esos fueron quienes de verdad cualificaban para comprar. Los contactos caros resultaron ser los compradores más baratos.</p>
+      <p class="en" style="margin-bottom:0">We optimize for cost per qualified buyer, not cost per lead. All figures here are in USD. The calculator below lets you watch that trade-off move in real time.</p>
+      <p class="es" style="margin-bottom:0">Optimizamos por coste por comprador cualificado, no por coste por contacto. Todas las cifras están en USD. La calculadora de abajo te permite ver ese intercambio en tiempo real.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST LAYER -->
+<section class="section">
+  <div class="wrap">
+    <p class="kicker en">Why buyers respond</p><p class="kicker es">Por qué responden los compradores</p>
+    <div class="rule"></div>
+    <h2 class="en">A brand buyers already trust.</h2>
+    <h2 class="es">Una marca en la que los compradores ya confían.</h2>
+    <p class="lead en" style="max-width:74ch;margin:16px 0 26px">Most developers and brokers advertise the same way. Buyers do not trust it, and they cannot tell a good offer from a bad one. Campaigns run on Virezia accounts, under the Virezia brand, on Virezia pages, so a buyer meets a curated network instead of one more seller's ad. That trust is why the same property draws more qualified buyers.</p>
+    <p class="lead es" style="max-width:74ch;margin:16px 0 26px">La mayoría de promotores y brokers se anuncian igual. Los compradores no confían, y no distinguen una buena oferta de una mala. Las campañas corren en cuentas Virezia, bajo la marca Virezia, en páginas Virezia, así el comprador encuentra una red curada en lugar de un anuncio más de un vendedor. Esa confianza es la razón por la que la misma propiedad atrae más compradores cualificados.</p>
+    <div class="grid grid-2" style="margin-top:6px">
+      <div class="card">
+        <h3 class="en">We advise the buyer</h3><h3 class="es">Asesoramos al comprador</h3>
+        <p class="en">As Virezia we answer buyers searching for the right property and give them tools to verify an offer and decide with confidence. A buyer who feels secure moves faster, which moves your sale.</p>
+        <p class="es">Como Virezia respondemos a compradores que buscan la propiedad adecuada y les damos herramientas para verificar una oferta y decidir con confianza. Un comprador que se siente seguro avanza más rápido, lo que mueve tu venta.</p>
+      </div>
+      <div class="card">
+        <h3 class="en">Trust, not just traffic</h3><h3 class="es">Confianza, no solo tráfico</h3>
+        <p class="en">A curated, credible presentation pulls more qualified buyers to the same property than a generic developer ad. The trust layer is also a conversion advantage for the seller, not only comfort for the buyer.</p>
+        <p class="es">Una presentación curada y creíble atrae más compradores cualificados a la misma propiedad que un anuncio genérico de promotor. La capa de confianza también es una ventaja de conversión para el vendedor, no solo comodidad para el comprador.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- THE MODEL -->
+<section class="section" id="model">
+  <div class="wrap">
+    <p class="kicker en">The model</p><p class="kicker es">El modelo</p>
+    <div class="rule"></div>
+    <h2 class="en">You never pay more than 5%.</h2>
+    <h2 class="es">Nunca pagas más del 5%.</h2>
+    <p class="lead en" style="max-width:72ch;margin:16px 0 16px">That is the same commission you would pay any broker or agent. The difference is what the 5% buys. A commission-only listing does no marketing. The property is posted and everyone waits. Your 5% with Virezia funds an offer audit, a competitor audit, market analysis, and an active multi-channel campaign. You do not pay extra for strategy. It is inside the commission.</p>
+    <p class="lead es" style="max-width:72ch;margin:16px 0 16px">Esa es la misma comisión que pagarías a cualquier broker o agente. La diferencia es lo que ese 5% compra. Un listado a solo comisión no hace marketing. La propiedad se publica y todos esperan. Tu 5% con Virezia financia una auditoría de la oferta, una auditoría de la competencia, análisis de mercado y una campaña activa multicanal. No pagas aparte por la estrategia. Está dentro de la comisión.</p>
+
+    <div class="layers">
+      <div class="layer">
+        <div class="ln">01</div>
+        <div>
+          <h3 class="en">Ad budget</h3><h3 class="es">Presupuesto de anuncios</h3>
+          <p class="en">Meta Ads and Google Ads, paid to the platforms to run your campaign. Billed in USD.</p>
+          <p class="es">Meta Ads y Google Ads, pagados a las plataformas para ejecutar tu campaña. Facturado en USD.</p>
+        </div>
+        <div class="tag en">pass-through<small>you set it</small></div>
+        <div class="tag es">directo<small>tú lo fijas</small></div>
+      </div>
+      <div class="layer">
+        <div class="ln">02</div>
+        <div>
+          <h3 class="en">Management fee</h3><h3 class="es">Tarifa de gestión</h3>
+          <p class="en">20% of spend, the market standard for managing these channels. It funds the team and the system that run them.</p>
+          <p class="es">20% de la inversión, el estándar del mercado para gestionar estos canales. Financia el equipo y el sistema que los operan.</p>
+        </div>
+        <div class="tag en">20%<small>of spend &middot; min US$600 / channel</small></div>
+        <div class="tag es">20%<small>de la inversión &middot; mín US$600 / canal</small></div>
+      </div>
+      <div class="layer" style="border-color:var(--line-gold)">
+        <div class="ln">03</div>
+        <div>
+          <h3 class="en">Success fee</h3><h3 class="es">Honorario de éxito</h3>
+          <p class="en">Paid only when a buyer we sourced closes. This is our real incentive, because it ties our pay to your sale, not your budget. If a partner agent is involved we split it 50/50, market standard.</p>
+          <p class="es">Se paga solo cuando cierra un comprador que captamos. Este es nuestro verdadero incentivo, porque ata nuestro pago a tu venta, no a tu presupuesto. Si participa un agente colaborador, lo dividimos 50/50, estándar del mercado.</p>
+        </div>
+        <div class="tag en">3 to 5%<small>5% default &middot; on the sale</small></div>
+        <div class="tag es">3 a 5%<small>5% por defecto &middot; sobre la venta</small></div>
+      </div>
+    </div>
+    <p class="credited en">All three are credited toward your 5% cap. On a sale, you are never billed above a standard commission.</p>
+    <p class="credited es">Las tres se imputan a tu tope del 5%. En una venta, nunca se te factura por encima de una comisión estándar.</p>
+
+    <div class="callout" style="margin-top:30px">
+      <h3 class="en">The guarantee, and the honesty</h3>
+      <h3 class="es">La garantía, y la honestidad</h3>
+      <p class="big en">Your all-in cost, ad budget, management, and success fee together, is guaranteed not to exceed 5% of the sale, or another rate we agree. The success fee tops up to that cap and is earned only when you sell. Campaign cost is your marketing investment and is not contingent on a sale; the cap applies to what you pay on a closing. We cannot guarantee a result, and no one honest will. We can guarantee discipline: we review every campaign with you, scale up or down, and never spend when it does not make sense.</p>
+      <p class="big es">Tu coste total, presupuesto, gestión y honorario de éxito juntos, tiene la garantía de no superar el 5% de la venta, u otra tasa que acordemos. El honorario de éxito completa ese tope y se gana solo cuando vendes. El coste de campaña es tu inversión en marketing y no depende de una venta; el tope aplica a lo que pagas en un cierre. No podemos garantizar un resultado, y nadie honesto lo hará. Sí garantizamos disciplina: revisamos cada campaña contigo, subimos o bajamos, y nunca gastamos cuando no tiene sentido.</p>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT THE FEE BUYS -->
+<section class="section">
+  <div class="wrap">
+    <div class="callout">
+      <p class="kicker en">What the management fee actually buys</p>
+      <p class="kicker es">Qué compra de verdad la tarifa de gestión</p>
+      <h3 class="en">The 20% buys cheaper advertising, and our network.</h3>
+      <h3 class="es">El 20% compra publicidad más barata, y nuestra red.</h3>
+      <p class="en">You are not paying 20% for someone to press buttons. You are paying for advertising that works harder per dollar: tighter targeting, no learning-curve waste, no time or resources spent on your side. The effective cost of a qualified buyer comes out lower than running it yourself.</p>
+      <p class="es">No pagas el 20% para que alguien pulse botones. Pagas por publicidad que rinde más por dólar: segmentación más precisa, sin desperdicio de curva de aprendizaje, sin tiempo ni recursos por tu parte. El coste efectivo de un comprador cualificado sale más bajo que si lo hicieras tú.</p>
+      <p class="big en" style="margin-bottom:0">And on top of your dedicated Meta and Google campaign, you receive matched buyers from the Virezia Circle, our active pool of people already searching for property. That is demand a solo campaign cannot reach.</p>
+      <p class="big es" style="margin-bottom:0">Y además de tu campaña dedicada en Meta y Google, recibes compradores afines del Virezia Circle, nuestra red activa de personas que ya buscan propiedad. Es demanda que una campaña en solitario no alcanza.</p>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT WE DO -->
+<section class="section" id="work">
+  <div class="wrap">
+    <p class="kicker en">What we do</p><p class="kicker es">Qué hacemos</p>
+    <div class="rule"></div>
+    <h2 class="en">Strategy first, then we hunt buyers.</h2>
+    <h2 class="es">Primero estrategia, luego cazamos compradores.</h2>
+    <div class="grid grid-3" style="margin-top:36px">
+      <div class="card">
+        <div class="ic">1</div>
+        <h3 class="en">Strategy and audits, included</h3><h3 class="es">Estrategia y auditorías, incluidas</h3>
+        <p class="en">Offer audit, competitor audit, and market analysis before a dollar is spent. You never receive a separate strategy invoice. It is inside the commission.</p>
+        <p class="es">Auditoría de la oferta, de la competencia y análisis de mercado antes de gastar un dólar. Nunca recibes una factura aparte por estrategia. Está dentro de la comisión.</p>
+      </div>
+      <div class="card">
+        <div class="ic">2</div>
+        <h3 class="en">A dedicated campaign per property</h3><h3 class="es">Una campaña dedicada por propiedad</h3>
+        <p class="en">Your budget is never pooled into a generic funnel. Each investment gets its own positioned campaign across Meta and Google, built around its architecture, location, and buyer.</p>
+        <p class="es">Tu presupuesto nunca se mezcla en un embudo genérico. Cada inversión recibe su campaña posicionada en Meta y Google, construida en torno a su arquitectura, ubicación y comprador.</p>
+      </div>
+      <div class="card">
+        <div class="ic">3</div>
+        <h3 class="en">The network works on day one</h3><h3 class="es">La red trabaja desde el primer día</h3>
+        <p class="en">We already hold buyers and investors inside VIREZIA Circle. When your property matches people we know, we introduce it before and alongside the campaign, and cross-sell when a buyer fits another property.</p>
+        <p class="es">Ya tenemos compradores e inversores dentro de VIREZIA Circle. Cuando tu propiedad encaja con gente que conocemos, la presentamos antes y junto a la campaña, y hacemos venta cruzada cuando un comprador encaja en otra propiedad.</p>
+      </div>
+      <div class="card">
+        <div class="ic">4</div>
+        <h3 class="en">Your leads are yours</h3><h3 class="es">Tus contactos son tuyos</h3>
+        <p class="en">Buyers sourced for your property are exclusively yours while you want them. Release one you do not want to the shared pool and earn access to more pooled buyers than you could generate alone.</p>
+        <p class="es">Los compradores captados para tu propiedad son tuyos en exclusiva mientras los quieras. Libera al fondo común uno que no quieras y gana acceso a más compradores de los que generarías tú solo.</p>
+      </div>
+      <div class="card">
+        <div class="ic">5</div>
+        <h3 class="en">Your Virezia CRM panel</h3><h3 class="es">Tu panel CRM de Virezia</h3>
+        <p class="en">Every lead lands in your Virezia CRM panel in real time, with source, status, qualification, and contact. You manage and own the lead data. The accounts and the brand that earn the trust stay with Virezia.</p>
+        <p class="es">Cada contacto entra en tu panel CRM de Virezia en tiempo real, con origen, estado, cualificación y contacto. Tú gestionas y eres dueño de los datos. Las cuentas y la marca que generan la confianza permanecen en Virezia.</p>
+      </div>
+      <div class="card">
+        <div class="ic">6</div>
+        <h3 class="en">We serve the buyer too</h3><h3 class="es">También atendemos al comprador</h3>
+        <p class="en">International buyers arrive across languages and with different needs. We guide them through the purchase, so the buyer is understood and supported, not lost in translation.</p>
+        <p class="es">Los compradores internacionales llegan en varios idiomas y con necesidades distintas. Los acompañamos durante la compra, para que el comprador sea comprendido y apoyado, no perdido en la traducción.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROOF -->
+<section class="section">
+  <div class="wrap">
+    <p class="kicker en">A live case</p><p class="kicker es">Un caso real</p>
+    <div class="rule"></div>
+    <h2 class="en">A luxury villa developer in Mexico.</h2>
+    <h2 class="es">Un promotor de villas de lujo en México.</h2>
+    <p class="lead en" style="margin:14px 0 28px;max-width:66ch">Six villas, around $7M of total inventory, entry near $561K. About $4,000 of spend produced a steady flow of qualified buyers. Numbers rounded, client anonymized, all figures in USD.</p>
+    <p class="lead es" style="margin:14px 0 28px;max-width:66ch">Seis villas, alrededor de $7M de inventario total, entrada cerca de $561K. Unos $4,000 de inversión generaron un flujo constante de compradores cualificados. Cifras redondeadas, cliente anonimizado, todas en USD.</p>
+    <div class="stats">
+      <div class="stat"><div class="n">~$4K</div><div class="l en">ad spend</div><div class="l es">inversión</div></div>
+      <div class="stat"><div class="n">6 villas</div><div class="l en">~$7M total inventory</div><div class="l es">~$7M inventario total</div></div>
+      <div class="stat"><div class="n">$561K</div><div class="l en">entry price</div><div class="l es">precio de entrada</div></div>
+      <div class="stat"><div class="n">~40</div><div class="l en">qualified buyers</div><div class="l es">compradores cualificados</div></div>
+      <div class="stat"><div class="n">~$90</div><div class="l en">cost per qualified buyer</div><div class="l es">coste por comprador cualificado</div></div>
+    </div>
+    <div class="callout" style="margin-top:28px">
+      <p class="big en" style="margin-bottom:0">At 5%, the commission across the development is about $350,000. Even the entry villa carries roughly $28,000. The objective was never a low cost per lead. It was qualified-buyer flow, and the marketing is a small fraction of any of it.</p>
+      <p class="big es" style="margin-bottom:0">Al 5%, la comisión de todo el desarrollo ronda los $350,000. Incluso la villa de entrada supone unos $28,000. El objetivo nunca fue un coste por contacto bajo. Fue el flujo de compradores cualificados, y el marketing es una pequeña fracción de cualquiera de ellos.</p>
+    </div>
+    <p class="muted en" style="font-size:12px;margin-top:14px">Numbers rounded and in USD. Client anonymized.</p>
+    <p class="muted es" style="font-size:12px;margin-top:14px">Cifras redondeadas y en USD. Cliente anonimizado.</p>
+  </div>
+</section>
+
+<!-- CALCULATOR -->
+<section class="section" id="calc">
+  <div class="wrap">
+    <p class="kicker en">Estimation</p><p class="kicker es">Estimación</p>
+    <div class="rule"></div>
+    <h2 class="en">Model your engagement.</h2>
+    <h2 class="es">Modela tu colaboración.</h2>
+    <p class="lead en" style="margin-top:16px;max-width:72ch">Move the sliders. The model uses benchmarks from live luxury campaigns. It shows what we deliver, qualified buyers at a known cost, and proves the cap: your all-in cost never exceeds the agreed commission. Campaigns are billed in USD. Switch the display to MXN for reference only.</p>
+    <p class="lead es" style="margin-top:16px;max-width:72ch">Mueve los controles. El modelo usa referencias de campañas reales de lujo. Muestra lo que entregamos, compradores cualificados a un coste conocido, y demuestra el tope: tu coste total nunca supera la comisión acordada. Las campañas se facturan en USD. Cambia la vista a MXN solo como referencia.</p>
+
+    <div class="calc">
+      <div class="controls">
+        <div class="ctrl">
+          <label><span id="l-value">Property or inventory value</span><span class="v" id="v-value">US$560K</span></label>
+          <input type="range" id="value" min="150000" max="10000000" step="10000" value="560000">
+        </div>
+        <div class="ctrl">
+          <label><span id="l-comm">Total commission</span><span class="v" id="v-comm">5.0%</span></label>
+          <input type="range" id="comm" min="3" max="7" step="0.5" value="5">
+          <div class="origin" id="commnote">Standard 5%. Can be higher by agreement.</div>
+        </div>
+        <div class="ctrl">
+          <label><span id="l-mkt">Marketing, share of price</span><span class="v" id="v-mkt">1.00%</span></label>
+          <input type="range" id="mkt" min="0.25" max="5" step="0.25" value="1">
+          <div class="origin" id="mktnote"></div>
+        </div>
+        <div class="ctrl">
+          <label><span id="l-target">Buyer targeting</span></label>
+          <div class="seg" id="seg-target">
+            <button data-tier="broad" id="seg-broad">Broad / Volume</button>
+            <button data-tier="balanced" class="active" id="seg-balanced">Balanced</button>
+            <button data-tier="premium" id="seg-premium">Premium / Intent</button>
+          </div>
+          <div class="origin" id="origin">Typical buyer origin: mixed US/Canada and international.</div>
+        </div>
+        <div class="ctrl">
+          <label><span id="l-chan">Channels</span></label>
+          <div class="chan" id="chan">
+            <button data-ch="1" class="active" id="ch1">Meta only</button>
+            <button data-ch="2" id="ch2">Meta + Google</button>
+          </div>
+        </div>
+        <div class="ctrl" style="margin-bottom:0">
+          <label><span id="l-cur">Display currency</span></label>
+          <div class="chan" id="cur">
+            <button data-cur="USD" class="active" id="curUSD">US$ USD</button>
+            <button data-cur="MXN" id="curMXN">MX$ MXN</button>
+          </div>
+          <div class="origin" id="curnote">Campaigns are billed in USD. MXN shown for reference only.</div>
+        </div>
+      </div>
+
+      <div class="results">
+        <div class="res-head">
+          <div class="res-cell accent">
+            <div class="l" id="l-qual">Qualified buyers (campaign)</div>
+            <div class="n" id="o-qual">47 to 64</div>
+            <div class="s" id="o-qual-s">at or above your value tier</div>
+          </div>
+          <div class="res-cell">
+            <div class="l" id="l-cpq">Cost / qualified buyer</div>
+            <div class="n" id="o-cpq">US$101</div>
+            <div class="s" id="o-cpq-s">what a real buyer costs</div>
+          </div>
+        </div>
+        <div class="res-head" style="margin-top:12px">
+          <div class="res-cell">
+            <div class="l" id="l-ver">Verified leads (campaign)</div>
+            <div class="n" id="o-ver">92 to 124</div>
+            <div class="s" id="o-ver-s">deduplicated, real people</div>
+          </div>
+          <div class="res-cell">
+            <div class="l" id="l-cpl">Cost / lead</div>
+            <div class="n" id="o-cpl">US$52</div>
+            <div class="s" id="o-cpl-s">the dashboard number</div>
+          </div>
+        </div>
+
+        <div class="lesson" id="lesson"></div>
+
+        <div class="funnel">
+          <div class="fbar"><span class="fl" id="fl-ver">Verified leads</span><span class="ftrack"><span class="ffill" id="f-ver" style="width:100%"></span></span><span class="fv" id="fv-ver">108</span></div>
+          <div class="fbar"><span class="fl" id="fl-qual">Qualified buyers</span><span class="ftrack"><span class="ffill" id="f-qual" style="width:48%"></span></span><span class="fv" id="fv-qual">56</span></div>
+          <div class="fbar"><span class="fl" id="fl-cons">Consultations</span><span class="ftrack"><span class="ffill" id="f-cons" style="width:14%"></span></span><span class="fv" id="fv-cons">16</span></div>
+          <div class="fbar"><span class="fl" id="fl-close">Closes (illustrative)</span><span class="ftrack"><span class="ffill" id="f-close" style="width:3%"></span></span><span class="fv" id="fv-close">1.1</span></div>
+        </div>
+
+        <div class="costbox">
+          <div class="cap" id="cap-cost">What you pay, all-in (capped at your commission)</div>
+          <div class="row"><span id="l-c1">Marketing prepay</span><span id="o-c1">US$5,600</span></div>
+          <div class="row"><span id="l-c2">Success fee at close</span><span id="o-c2">US$22,400</span></div>
+          <div class="row total"><span id="l-c3">Your all-in cost</span><span id="o-c3">US$28,000</span></div>
+          <div class="costnote" id="costnote"></div>
+        </div>
+
+        <div class="compare">
+          <div class="cap" id="cap-cmp">What it means</div>
+          <div class="crow"><span id="l-m1">A broker takes the same commission</span><span id="o-m1">US$28,000</span></div>
+          <div class="crow net"><span id="l-m2">Your net proceeds at close</span><span id="o-m2">US$532,000</span></div>
+          <div class="crow"><span id="l-m3">Projected time to sale</span><span id="o-m3">~8 months</span></div>
+          <div class="verdict" id="verdict"></div>
+        </div>
+
+        <p class="assume" id="assume"></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section" id="faq">
+  <div class="wrap">
+    <p class="kicker en">Questions</p><p class="kicker es">Preguntas</p>
+    <div class="rule"></div>
+    <h2 class="en">Why this is different.</h2>
+    <h2 class="es">Por qué esto es diferente.</h2>
+    <div class="faq">
+      <details open>
+        <summary><span class="en">How is this different from a traditional agency or a commission-only listing?</span><span class="es">¿En qué se diferencia de una agencia tradicional o un listado a solo comisión?</span></summary>
+        <div class="ans en">A commission-only listing does no marketing. The property is posted and everyone waits. We run an active, strategic, multi-channel campaign: offer audit, competitor audit, market analysis, then paid demand across Meta and Google. Same commission, a completely different amount of work behind it.</div>
+        <div class="ans es">Un listado a solo comisión no hace marketing. La propiedad se publica y todos esperan. Nosotros ejecutamos una campaña activa, estratégica y multicanal: auditoría de la oferta, de la competencia, análisis de mercado y luego demanda pagada en Meta y Google. La misma comisión, con un trabajo detrás completamente distinto.</div>
+      </details>
+      <details>
+        <summary><span class="en">Do I pay separately for strategy, audits, or positioning?</span><span class="es">¿Pago aparte por estrategia, auditorías o posicionamiento?</span></summary>
+        <div class="ans en">No. The offer audit, competitor audit, market analysis, and positioning are inside the commission. You never receive a separate strategy invoice. It is the part most providers skip and quietly charge for.</div>
+        <div class="ans es">No. La auditoría de la oferta, la de la competencia, el análisis de mercado y el posicionamiento están dentro de la comisión. Nunca recibes una factura aparte por estrategia. Es la parte que la mayoría omite y cobra por separado.</div>
+      </details>
+      <details>
+        <summary><span class="en">It is still 5%, the same as a broker. Why is that better?</span><span class="es">Sigue siendo 5%, lo mismo que un broker. ¿Por qué es mejor?</span></summary>
+        <div class="ans en">Because the 5% is capped and it buys enterprise-grade marketing instead of a listing. A campaign at this scale needs a specialist team, a cost that is unviable for a local firm or a smaller developer to build in-house. Virezia is that team, in an economical form, without the overhead or the risk.</div>
+        <div class="ans es">Porque ese 5% está topado y compra marketing de nivel enterprise en lugar de un anuncio. Una campaña de esta escala necesita un equipo especialista, un coste inviable de montar internamente para una empresa local o un promotor pequeño. Virezia es ese equipo, en formato económico, sin la estructura ni el riesgo.</div>
+      </details>
+      <details>
+        <summary><span class="en">We have an in-house marketing team and good creative. Why Virezia?</span><span class="es">Tenemos equipo de marketing propio y buena creatividad. ¿Por qué Virezia?</span></summary>
+        <div class="ans en">Producing creative is not the same as running strategic campaigns. Positioning, competitor analysis, finding a niche, orchestrating Meta and Google together, and reading the data are different disciplines. A good design team covers one fragment, often a single channel. We run the whole system at a level a small team cannot sustain.</div>
+        <div class="ans es">Producir creatividades no es lo mismo que dirigir campañas estratégicas. Posicionamiento, análisis de competencia, encontrar un nicho, orquestar Meta y Google juntos y leer los datos son disciplinas distintas. Un buen equipo de diseño cubre un fragmento, a menudo un solo canal. Nosotros operamos todo el sistema a un nivel que un equipo pequeño no puede sostener.</div>
+      </details>
+      <details>
+        <summary><span class="en">Can you guarantee results?</span><span class="es">¿Pueden garantizar resultados?</span></summary>
+        <div class="ans en">No, and anyone who does is not being straight with you. What we guarantee is discipline: we assess every campaign with you, scale up or down, and never spend when it does not make sense. We optimize for the sale, not for leads, because we are paid on the sale.</div>
+        <div class="ans es">No, y quien lo prometa no está siendo sincero. Lo que garantizamos es disciplina: evaluamos cada campaña contigo, subimos o bajamos, y nunca gastamos cuando no tiene sentido. Optimizamos para la venta, no para los contactos, porque cobramos sobre la venta.</div>
+      </details>
+      <details>
+        <summary><span class="en">How long is the commitment, and how fast will it work?</span><span class="es">¿Cuánto dura el compromiso y cuán rápido funciona?</span></summary>
+        <div class="ans en">There is no imposed contract length. To fairly test the offer and the fit, we need a pool of at least 30 leads. Real estate is patient work: roughly 6 months on average from first lead contact to a close. The longer we run, the sharper the targeting gets, so it is run continuously, not in bursts.</div>
+        <div class="ans es">No imponemos duración de contrato. Para probar con justicia la oferta y el encaje, necesitamos un grupo de al menos 30 contactos. La inmobiliaria exige paciencia: unos 6 meses de media desde el primer contacto hasta el cierre. Cuanto más tiempo operamos, más afinada es la segmentación, por eso se ejecuta de forma continua, no a ráfagas.</div>
+      </details>
+      <details>
+        <summary><span class="en">Why a success fee instead of just charging more for the campaign?</span><span class="es">¿Por qué un honorario de éxito y no cobrar más por la campaña?</span></summary>
+        <div class="ans en">Because our goal is your sale, not earning on ad materials and management. The management fee covers the system that runs the channels. The success fee is what aligns us to actually sell, and it is capped inside your commission.</div>
+        <div class="ans es">Porque nuestro objetivo es tu venta, no ganar con materiales y gestión. La tarifa de gestión cubre el sistema que opera los canales. El honorario de éxito es lo que nos alinea para vender de verdad, y está topado dentro de tu comisión.</div>
+      </details>
+      <details>
+        <summary><span class="en">Why not just use my agents and the listing portals?</span><span class="es">¿Por qué no usar mis agentes y los portales de anuncios?</span></summary>
+        <div class="ans en">Many agents on the same portals, all waiting, is not a strategy. Marketing should not be pushed onto agents. Their role is to close the leads a developer or master broker hands them, not to run amateur promotion that covers only one channel. Fragmented effort costs more and usually gets abandoned.</div>
+        <div class="ans es">Muchos agentes en los mismos portales, todos esperando, no es una estrategia. El marketing no debe recaer en los agentes. Su papel es cerrar los contactos que les entrega un promotor o un master broker, no hacer promoción amateur que cubre un solo canal. El esfuerzo fragmentado cuesta más y suele abandonarse.</div>
+      </details>
+      <details>
+        <summary><span class="en">What if you do not spend the budget within the month?</span><span class="es">¿Y si no gastan el presupuesto dentro del mes?</span></summary>
+        <div class="ans en">We do not lose it. If we cannot deploy the agreed budget within the month, we extend the campaign to spend it, or compress and deliver results faster when that serves you better. The budget is always put to work.</div>
+        <div class="ans es">No se pierde. Si no podemos ejecutar el presupuesto acordado dentro del mes, extendemos la campaña para gastarlo, o lo comprimimos y entregamos resultados más rápido cuando te conviene. El presupuesto siempre se pone a trabajar.</div>
+      </details>
+      <details>
+        <summary><span class="en">Whose accounts and brand do the campaigns run on?</span><span class="es">¿En qué cuentas y marca corren las campañas?</span></summary>
+        <div class="ans en">On Virezia's ad accounts and under the Virezia brand, on Virezia pages. Buyers trust a curated network more than a developer's own ad, which lifts qualified response. Every lead reaches your Virezia CRM panel in real time, and the lead data is yours.</div>
+        <div class="ans es">En las cuentas publicitarias de Virezia y bajo la marca Virezia, en páginas Virezia. Los compradores confían en una red curada más que en el anuncio propio de un promotor, lo que eleva la respuesta cualificada. Cada contacto llega a tu panel CRM de Virezia en tiempo real, y los datos del contacto son tuyos.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- FIRST CAMPAIGN -->
+<section class="section">
+  <div class="wrap">
+    <p class="kicker en">How we start</p><p class="kicker es">Cómo empezamos</p>
+    <div class="rule"></div>
+    <h2 class="en">Start with one campaign. Decide on the results.</h2>
+    <h2 class="es">Empieza con una campaña. Decide con los resultados.</h2>
+    <p class="lead en" style="margin:14px 0 28px;max-width:66ch">No imposed contract. To fairly test the offer and whether we are a fit, we run to a pool of at least 30 leads. You decide on your own numbers, not our promises. All amounts in USD.</p>
+    <p class="lead es" style="margin:14px 0 28px;max-width:66ch">Sin contrato impuesto. Para probar con justicia la oferta y si encajamos, trabajamos hasta un grupo de al menos 30 contactos. Decides con tus propios números, no con nuestras promesas. Todos los importes en USD.</p>
+    <div class="offerbox">
+      <ul class="terms">
+        <li><span class="tk">01</span><span class="t en">Budget</span><span class="t es">Presupuesto</span><span class="d en">US$3,000 to US$5,000, your choice.</span><span class="d es">US$3,000 a US$5,000, a tu elección.</span></li>
+        <li><span class="tk">02</span><span class="t en">Test pool</span><span class="t es">Grupo de prueba</span><span class="d en">At least 30 qualified-intent leads, so both sides can judge fit.</span><span class="d es">Al menos 30 contactos con intención cualificada, para que ambas partes evalúen el encaje.</span></li>
+        <li><span class="tk">03</span><span class="t en">Reference cost</span><span class="t es">Coste de referencia</span><span class="d en">A cost-per-lead floor near US$35, so the test is legible and comparable.</span><span class="d es">Un coste por contacto en torno a US$35, para que la prueba sea legible y comparable.</span></li>
+        <li><span class="tk">04</span><span class="t en">Our commitment</span><span class="t es">Nuestro compromiso</span><span class="d en">We review the campaign with you, scale only when it makes economic sense, and never spend without reason.</span><span class="d es">Revisamos la campaña contigo, escalamos solo cuando tiene sentido económico y nunca gastamos sin motivo.</span></li>
+        <li><span class="tk">05</span><span class="t en">All-in cap</span><span class="t es">Tope total</span><span class="d en">On a sale, your total never exceeds the agreed commission. The success fee applies only when a buyer closes.</span><span class="d es">En una venta, tu total nunca supera la comisión acordada. El honorario de éxito aplica solo cuando cierra un comprador.</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ENGAGEMENT TERMS -->
+<section class="section">
+  <div class="wrap">
+    <p class="kicker en">How the engagement works</p><p class="kicker es">Cómo funciona la colaboración</p>
+    <div class="rule"></div>
+    <h2 class="en">The terms, in plain language.</h2>
+    <h2 class="es">Las condiciones, en lenguaje claro.</h2>
+    <div class="offerbox" style="margin-top:26px">
+      <ul class="terms">
+        <li><span class="tk">01</span><span class="t en">Who runs it</span><span class="t es">Quién lo opera</span><span class="d en">Campaigns run on Virezia accounts and under the Virezia brand, on Virezia pages. Every lead reaches your Virezia CRM panel in real time, and the lead data is yours.</span><span class="d es">Las campañas corren en cuentas Virezia y bajo la marca Virezia, en páginas Virezia. Cada contacto llega a tu panel CRM de Virezia en tiempo real, y los datos del contacto son tuyos.</span></li>
+        <li><span class="tk">02</span><span class="t en">Broker of record</span><span class="t es">Broker de registro</span><span class="d en">Sale commissions are settled through a licensed broker of record. Where a local or partner agent is involved, Virezia co-brokes and the commission is split 50/50, market standard.</span><span class="d es">Las comisiones de venta se liquidan a través de un broker de registro con licencia. Cuando participa un agente local o colaborador, Virezia co-corretea y la comisión se divide 50/50, estándar del mercado.</span></li>
+        <li><span class="tk">03</span><span class="t en">How a sale counts</span><span class="t es">Cómo cuenta una venta</span><span class="d en">A buyer is registered as Virezia-sourced the moment they enter your CRM panel, with a timestamp. A sale to a registered buyer counts toward the success fee, and the registration record settles any question of source.</span><span class="d es">Un comprador queda registrado como captado por Virezia en el momento en que entra en tu panel CRM, con fecha y hora. Una venta a un comprador registrado cuenta para el honorario de éxito, y el registro resuelve cualquier duda sobre el origen.</span></li>
+        <li><span class="tk">04</span><span class="t en">Commission tail</span><span class="t es">Cola de comisión</span><span class="d en">The success fee applies to registered buyers who close within 12 to 24 months of registration, including after a campaign pauses or the engagement ends. Real estate closes slowly; the tail protects the work.</span><span class="d es">El honorario de éxito aplica a compradores registrados que cierran dentro de 12 a 24 meses desde el registro, incluso tras pausar una campaña o terminar la colaboración. La inmobiliaria cierra despacio; la cola protege el trabajo.</span></li>
+        <li><span class="tk">05</span><span class="t en">Exclusivity and aging</span><span class="t es">Exclusividad y caducidad</span><span class="d en">Buyers sourced for your property are exclusively yours while you work them. A lead left unworked past an agreed window, or one you release, returns to the shared pool, which earns you access to more pooled buyers.</span><span class="d es">Los compradores captados para tu propiedad son tuyos en exclusiva mientras los trabajas. Un contacto sin trabajar pasado un plazo acordado, o uno que liberes, vuelve al fondo común, lo que te da acceso a más compradores del fondo.</span></li>
+        <li><span class="tk">06</span><span class="t en">Pool fairness</span><span class="t es">Equidad del fondo</span><span class="d en">Pooled buyers are matched to the best-fit property. The same buyer is never sold to competing clients for the same property; the buyer's preference and first registration decide.</span><span class="d es">Los compradores del fondo se asignan a la propiedad que mejor encaja. El mismo comprador nunca se vende a clientes competidores para la misma propiedad; deciden la preferencia del comprador y el primer registro.</span></li>
+        <li><span class="tk">07</span><span class="t en">What qualified means</span><span class="t es">Qué significa cualificado</span><span class="d en">A qualified buyer meets the agreed criteria: budget at or above the property threshold, genuine purchase intent, deduplicated, no test or internal contacts. Counts are reconciled against your CRM each month.</span><span class="d es">Un comprador cualificado cumple los criterios acordados: presupuesto igual o superior al umbral de la propiedad, intención real de compra, deduplicado, sin contactos de prueba o internos. Las cifras se concilian con tu CRM cada mes.</span></li>
+        <li><span class="tk">08</span><span class="t en">Budget delivery</span><span class="t es">Ejecución del presupuesto</span><span class="d en">If we cannot deploy the agreed budget within the month, we do not lose it. We extend the campaign to spend it, or compress and deliver faster when that serves you better.</span><span class="d es">Si no podemos ejecutar el presupuesto acordado dentro del mes, no se pierde. Extendemos la campaña para gastarlo, o lo comprimimos y entregamos más rápido cuando te conviene.</span></li>
+        <li><span class="tk">09</span><span class="t en">Payments and entity</span><span class="t es">Pagos y entidad</span><span class="d en">Virezia is a United States registered company. All budgets and fees are billed and paid in USD. We work with international clients.</span><span class="d es">Virezia es una empresa registrada en Estados Unidos. Todos los presupuestos y honorarios se facturan y pagan en USD. Trabajamos con clientes internacionales.</span></li>
+        <li><span class="tk">10</span><span class="t en">Campaign fees are earned</span><span class="t es">Las tarifas de campaña se ganan</span><span class="d en">Ad budget and management are billed as the work runs and are not refundable if the property does not sell. They are the minimum we take. We do not subsidize campaigns.</span><span class="d es">El presupuesto y la gestión se facturan a medida que avanza el trabajo y no son reembolsables si la propiedad no se vende. Son el mínimo que cobramos. No subvencionamos campañas.</span></li>
+        <li><span class="tk">11</span><span class="t en">Success fee never goes negative</span><span class="t es">El honorario de éxito nunca es negativo</span><span class="d en">The success fee is the agreed commission minus marketing already paid, floored at zero. If marketing has reached the commission, no success fee applies and nothing is refunded.</span><span class="d es">El honorario de éxito es la comisión acordada menos el marketing ya pagado, con suelo en cero. Si el marketing ya alcanzó la comisión, no aplica honorario y no se reembolsa nada.</span></li>
+        <li><span class="tk">12</span><span class="t en">Margin and spend ceiling</span><span class="t es">Margen y tope de inversión</span><span class="d en">We only take mandates where the expected commission is at least three times the planned marketing, and we cap total spend at 33% of the expected commission, 40% as a hard stop. Past that we pause and renegotiate. This is why the model favors higher-value property.</span><span class="d es">Solo aceptamos encargos donde la comisión esperada es al menos tres veces el marketing previsto, y limitamos la inversión total al 33% de la comisión esperada, 40% como tope máximo. Pasado eso, pausamos y renegociamos. Por eso el modelo favorece propiedades de mayor valor.</span></li>
+      </ul>
+    </div>
+    <p class="muted en" style="font-size:12px;margin-top:14px">Proposed standard terms. Specific windows and rates are confirmed per engagement.</p>
+    <p class="muted es" style="font-size:12px;margin-top:14px">Condiciones estándar propuestas. Los plazos y tasas concretos se confirman en cada colaboración.</p>
+  </div>
+</section>
+
+<!-- PAYMENTS -->
+<section class="section">
+  <div class="wrap">
+    <p class="kicker en">Payments</p><p class="kicker es">Pagos</p>
+    <div class="rule"></div>
+    <h2 class="en">How you pay, and what it costs to transfer.</h2>
+    <h2 class="es">Cómo pagas, y cuánto cuesta transferir.</h2>
+    <p class="lead en" style="max-width:76ch;margin:14px 0 22px">Everything is billed in USD to a United States account. The transfer cost depends on how you pay. Example rates, which vary by bank, card, and amount:</p>
+    <p class="lead es" style="max-width:76ch;margin:14px 0 22px">Todo se factura en USD a una cuenta de Estados Unidos. El coste de transferencia depende de cómo pagues. Tarifas de ejemplo, que varían según banco, tarjeta e importe:</p>
+    <div class="offerbox">
+      <ul class="terms">
+        <li><span class="tk">ACH</span><span class="t en">US bank transfer</span><span class="t es">Transferencia bancaria EE.UU.</span><span class="d en">Lowest cost. About 0.8% capped at $5 through Stripe, often free bank to bank. One to three business days. Best for larger amounts.</span><span class="d es">El más barato. Cerca del 0.8% con tope de $5 vía Stripe, a menudo gratis de banco a banco. De uno a tres días hábiles. Ideal para importes grandes.</span></li>
+        <li><span class="tk">Wire</span><span class="t en">Domestic or international wire</span><span class="t es">Transferencia wire</span><span class="d en">Fast, same or next day. Roughly $15 to $35 domestic, $35 to $50 international, plus possible intermediary-bank fees. A flat cost, so efficient on large sums.</span><span class="d es">Rápida, mismo día o siguiente. Aproximadamente $15 a $35 nacional, $35 a $50 internacional, más posibles comisiones de bancos intermediarios. Coste fijo, eficiente en sumas grandes.</span></li>
+        <li><span class="tk">Card</span><span class="t en">Card via Stripe</span><span class="t es">Tarjeta vía Stripe</span><span class="d en">Most convenient. About 2.9% + $0.30 for US cards, 3.1% + $0.30 for international, plus about 1% currency conversion. On large fees this adds up, so cards suit smaller payments.</span><span class="d es">Lo más cómodo. Cerca del 2.9% + $0.30 para tarjetas de EE.UU., 3.1% + $0.30 internacionales, más cerca del 1% de conversión de divisa. En honorarios grandes se acumula, así que la tarjeta conviene para pagos menores.</span></li>
+        <li><span class="tk">FX</span><span class="t en">Currency conversion</span><span class="t es">Conversión de divisa</span><span class="d en">If you fund in a currency other than USD, expect about 1% to 2% on the conversion. Paying in USD avoids it. MXN figures in the calculator are reference only.</span><span class="d es">Si pagas en una divisa distinta del USD, cuenta con cerca del 1% al 2% en la conversión. Pagar en USD lo evita. Las cifras en MXN de la calculadora son solo de referencia.</span></li>
+      </ul>
+    </div>
+    <p class="muted en" style="font-size:12px;margin-top:14px">Example rates as of 2026. Confirm current fees with your bank or card provider. Transfer costs are borne by the client.</p>
+    <p class="muted es" style="font-size:12px;margin-top:14px">Tarifas de ejemplo a 2026. Confirma las comisiones vigentes con tu banco o tarjeta. Los costes de transferencia corren por cuenta del cliente.</p>
+  </div>
+</section>
+
+<!-- REPORTING -->
+<section class="section">
+  <div class="wrap">
+    <p class="kicker en">Reporting and your dashboard</p><p class="kicker es">Reporting y tu panel</p>
+    <div class="rule"></div>
+    <h2 class="en">You see the same truth we do.</h2>
+    <h2 class="es">Ves la misma verdad que nosotros.</h2>
+    <div class="grid grid-2" style="margin-top:30px">
+      <div class="card">
+        <p class="en" style="font-size:15px">Reporting is plain and on a rhythm. A weekly read on the metrics that move the outcome, qualified flow and cost per qualified buyer, and a monthly reconciliation against your CRM so the report and reality agree.</p>
+        <p class="en" style="font-size:15px;margin:0">Your dashboard is live. Every lead appears with source, status, qualification, and contact, the moment it lands.</p>
+        <p class="es" style="font-size:15px">El reporting es claro y con un ritmo fijo. Una lectura semanal de las métricas que mueven el resultado, flujo cualificado y coste por comprador cualificado, y una conciliación mensual con tu CRM para que informe y realidad coincidan.</p>
+        <p class="es" style="font-size:15px;margin:0">Tu panel es en vivo. Cada contacto aparece con origen, estado, cualificación y contacto, en el momento en que entra.</p>
+      </div>
+      <div class="card">
+        <p class="en" style="font-size:15px">Optimization is continuous. Audience, creative, and budget move toward what produces qualified buyers and away from what does not. We close the loop most agencies leave open, feeding your real qualification data back so the platform learns your actual buyer, not anyone who fills a form.</p>
+        <p class="en" style="font-size:15px;margin:0">The sale cycle is long and rewards patience. We optimize for the close, across the full 6-month horizon, not for a cheap lead today.</p>
+        <p class="es" style="font-size:15px">La optimización es continua. Audiencia, creatividades y presupuesto se mueven hacia lo que produce compradores cualificados y se retiran de lo que no. Cerramos el bucle que casi todas las agencias dejan abierto, devolviendo tus datos reales de cualificación para que la plataforma aprenda quién es tu comprador, no cualquiera que rellene un formulario.</p>
+        <p class="es" style="font-size:15px;margin:0">El ciclo de venta es largo y premia la paciencia. Optimizamos para el cierre, en todo el horizonte de 6 meses, no para un contacto barato hoy.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT YOU GAIN -->
+<section class="section">
+  <div class="wrap">
+    <p class="kicker en">For developers, master brokers, and owners</p>
+    <p class="kicker es">Para promotores, master brokers y propietarios</p>
+    <div class="rule"></div>
+    <h2 class="en">What you gain.</h2>
+    <h2 class="es">Lo que ganas.</h2>
+    <p class="lead en" style="max-width:74ch;margin:14px 0 26px">If you want to sell, as fast as the market allows, this is what working with Virezia puts in your hands.</p>
+    <p class="lead es" style="max-width:74ch;margin:14px 0 26px">Si quieres vender, tan rápido como el mercado permita, esto es lo que trabajar con Virezia pone en tus manos.</p>
+    <div class="vlist">
+      <div class="vi"><b class="en">A live pool of international buyers</b><b class="es">Una red activa de compradores internacionales</b><span class="en">Access to the Virezia Circle, people already searching and ready to buy, not cold strangers.</span><span class="es">Acceso al Virezia Circle, personas que ya buscan y quieren comprar, no desconocidos en frío.</span></div>
+      <div class="vi"><b class="en">No senior marketing to hire</b><b class="es">Sin marketing senior que contratar</b><span class="en">Enterprise-grade campaign work without building or paying a specialist team in-house.</span><span class="es">Trabajo de campaña de nivel enterprise sin montar ni pagar un equipo especialista interno.</span></div>
+      <div class="vi"><b class="en">You build demand, you set the pace</b><b class="es">Construyes demanda, marcas el ritmo</b><span class="en">Stop waiting for a buyer to wander in. You decide how fast it sells by how much you put into promotion.</span><span class="es">Deja de esperar a que aparezca un comprador. Decides cuán rápido se vende según cuánto destinas a promoción.</span></div>
+      <div class="vi"><b class="en">Strategic reach to international buyers</b><b class="es">Alcance estratégico al comprador internacional</b><span class="en">Positioning and sales angles built for cross-border, multilingual buyers, not a generic local ad.</span><span class="es">Posicionamiento y ángulos de venta pensados para compradores transfronterizos y multilingües, no un anuncio local genérico.</span></div>
+      <div class="vi"><b class="en">Often a lower effective ad cost</b><b class="es">A menudo un coste publicitario efectivo menor</b><span class="en">Tighter targeting and no learning-curve waste usually means a lower true cost per qualified buyer than doing it yourself.</span><span class="es">Segmentación más precisa y sin desperdicio de curva de aprendizaje suele significar un coste real por comprador cualificado menor que hacerlo tú.</span></div>
+      <div class="vi"><b class="en">Monetization maximized over time</b><b class="es">Monetización maximizada en el tiempo</b><span class="en">The campaign compounds: better data, sharper targeting, more qualified buyers, a faster and fuller sell-through.</span><span class="es">La campaña se acumula: mejores datos, segmentación más afilada, más compradores cualificados, una venta más rápida y completa.</span></div>
+      <div class="vi"><b class="en">Your agents close, nothing else</b><b class="es">Tus agentes cierran, nada más</b><span class="en">Agents do what they are for, closing, instead of losing time running amateur campaigns.</span><span class="es">Los agentes hacen para lo que están, cerrar, en vez de perder tiempo gestionando campañas amateur.</span></div>
+      <div class="vi"><b class="en">A partnership, with strategic advice</b><b class="es">Una alianza, con asesoría estratégica</b><span class="en">We build the offer, suggest the strategic sales angles, and work as a partner, not a vendor.</span><span class="es">Construimos la oferta, sugerimos los ángulos estratégicos de venta y trabajamos como socio, no como proveedor.</span></div>
+    </div>
+
+    <div class="callout" style="margin-top:30px">
+      <h3 class="en">We amplify your marketing, we do not replace it.</h3>
+      <h3 class="es">Amplificamos tu marketing, no lo reemplazamos.</h3>
+      <p class="en">If you already have a marketing team, we do not push them aside. They keep producing the materials and creative we deploy in campaigns. We take the specialized work, strategy, positioning, and multi-channel orchestration, that sits beyond a standard marketing department, off their plate. Your team is relieved, not replaced.</p>
+      <p class="es">Si ya tienes un equipo de marketing, no lo apartamos. Sigue produciendo los materiales y creatividades que desplegamos en campañas. Nosotros asumimos el trabajo especializado, estrategia, posicionamiento y orquestación multicanal, que queda más allá de un departamento de marketing estándar. Tu equipo se descarga, no se sustituye.</p>
+      <p class="big en" style="margin-bottom:0">The model in one line: you cover the marketing, we earn on the sale. You never pay more than the commission, you simply prepay the campaign that produces the buyer. A simple win-win.</p>
+      <p class="big es" style="margin-bottom:0">El modelo en una línea: tú cubres el marketing, nosotros ganamos con la venta. Nunca pagas más que la comisión, solo prepagas la campaña que produce al comprador. Un win-win simple.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL -->
+<section class="section final">
+  <div class="wrap">
+    <p class="eyebrow en" style="opacity:.85">The decision</p><p class="eyebrow es" style="opacity:.85">La decisión</p>
+    <h2 class="en">Run one campaign. Let the results make the decision.</h2>
+    <h2 class="es">Lanza una campaña. Deja que decidan los resultados.</h2>
+    <p class="lead en">The same commission you would pay anyway, capped, and a team that actually sells the property. You pay the marketing as we go, and the rest only when you close.</p>
+    <p class="lead es">La misma comisión que pagarías igual, topada, y un equipo que de verdad vende la propiedad. Pagas el marketing sobre la marcha, y el resto solo cuando cierras.</p>
+    <div style="margin-top:20px">
+      <a class="btn btn-solid en" href="#calc">Model your first campaign</a><a class="btn btn-solid es" href="#calc">Modela tu primera campaña</a>
+    </div>
+    <div class="contact">
+      <span class="en">Lucas Hubert &middot; <b>Virezia</b> &middot; hello@virezia.com</span>
+      <span class="es">Lucas Hubert &middot; <b>Virezia</b> &middot; hello@virezia.com</span>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <img src="https://www.virezia.com/logo.png" alt="VIREZIA">
+    <span class="en">Founded by Lucas Hubert &middot; Sheridan, WY, USA &middot; Campaigns billed in USD</span>
+    <span class="es">Fundada por Lucas Hubert &middot; Sheridan, WY, USA &middot; Campañas facturadas en USD</span>
+    <span class="en" style="max-width:46ch">Estimates are planning tools based on live-campaign benchmarks. Lead delivery is contracted; closings depend on your sales process. Figures illustrative, in USD.</span>
+    <span class="es" style="max-width:46ch">Las estimaciones son herramientas de planificación basadas en campañas reales. La entrega de contactos es contractual; los cierres dependen de tu proceso de ventas. Cifras ilustrativas, en USD.</span>
+  </div>
+</footer>
+
+<script>
+var FX = 17.5; // approx MXN per USD, reference only
+
+var STR = {
+  en:{
+    value:"Property or inventory value", comm:"Total commission", mkt:"Marketing, share of price",
+    commNote:"Standard 5%. Can be higher by agreement.",
+    mktNote:function(p,m){return "= "+p+"% of your commission ("+m+"). More promotion, faster sale.";},
+    target:"Buyer targeting", chan:"Channels", cur:"Display currency",
+    qual:"Qualified buyers (campaign)", qualS:"at or above your value tier",
+    cpq:"Cost / qualified buyer", cpqS:"what a real buyer costs",
+    ver:"Verified leads (campaign)", verS:"deduplicated, real people",
+    cpl:"Cost / lead", cplS:"the dashboard number",
+    flVer:"Verified leads", flQual:"Qualified buyers", flCons:"Consultations", flClose:"Closes (illustrative)",
+    capCost:"What you pay, all-in (capped at your commission)", c1:"Marketing prepay",
+    c2:"Success fee at close", c3:"Your all-in cost",
+    capCmp:"What it means", m1:"A broker takes the same commission", m2:"Your net proceeds at close", m3:"Projected time to sale",
+    months:function(n){return "~"+n+" months";},
+    to:" to ",
+    curnote:"Campaigns are billed in USD. MXN shown for reference only, at approx "+FX+" MXN per USD.",
+    origin:{broad:"Typical buyer origin: mostly local and broad international.",balanced:"Typical buyer origin: mixed US/Canada and international.",premium:"Typical buyer origin: high-intent US and Canada buyers."},
+    lesson:{
+      broad:"You are buying the cheapest leads. Low cost per lead, but fewer qualified buyers and weaker economics. Cheap leads, not cheap buyers.",
+      balanced:"A balanced split. A reasonable cost per lead with a solid share of qualified buyers.",
+      premium:"You are buying intent. Cost per lead is higher, yet you get more qualified buyers and a lower cost per qualified buyer. The expensive leads are the cheaper buyers."
+    },
+    note:function(comm,share,over){var p=Math.round(share*100);
+      if(over) return "Marketing here exceeds your commission. Lower it below your "+comm.toFixed(1)+"% commission. We never spend past the commission, and we never subsidize.";
+      return "Your all-in cost is capped at your "+comm.toFixed(1)+"% commission, the same a broker takes. Marketing is "+p+"% of that commission; the rest is our success fee. The more efficient the marketing, the larger that fee, so we are paid to be precise, not to spend.";},
+    verdict:function(share,over){
+      if(over) return "Beyond this point marketing eats the whole commission. The model favors higher-value property, where promotion is a small slice of what you pay anyway.";
+      if(share<=0.4) return "Lean and efficient. On top of this dedicated Meta and Google campaign, you also receive matched buyers from the Virezia Circle, our active pool. More promotion shortens the sale; less keeps more of the commission as upside we only earn on a close.";
+      return "You are putting a large share of the commission into promotion for maximum speed. Your total is still the same commission a broker takes, and you receive matched buyers from the Virezia Circle on top.";},
+    assume:function(t){return "Model assumptions: "+Math.round(t.qual*100)+"% of leads qualify, "+Math.round(t.q2c*100)+"% of qualified take a consultation, "+Math.round(t.c2x*100)+"% of those close. Volume shown as a low-to-high range. Closings depend on your sales process and are illustrative. All amounts in USD unless MXN is selected.";}
+  },
+  es:{
+    value:"Valor de la propiedad o inventario", comm:"Comisión total", mkt:"Marketing, parte del precio",
+    commNote:"Estándar 5%. Puede ser mayor por acuerdo.",
+    mktNote:function(p,m){return "= "+p+"% de tu comisión ("+m+"). Más promoción, venta más rápida.";},
+    target:"Segmentación de comprador", chan:"Canales", cur:"Moneda de visualización",
+    qual:"Compradores cualificados (campaña)", qualS:"en o por encima de tu rango de valor",
+    cpq:"Coste / comprador cualificado", cpqS:"lo que cuesta un comprador real",
+    ver:"Contactos verificados (campaña)", verS:"deduplicados, personas reales",
+    cpl:"Coste / contacto", cplS:"el número del panel",
+    flVer:"Contactos verificados", flQual:"Compradores cualificados", flCons:"Consultas", flClose:"Cierres (ilustrativo)",
+    capCost:"Lo que pagas, total (limitado a tu comisión)", c1:"Prepago de marketing",
+    c2:"Honorario de éxito al cierre", c3:"Tu coste total",
+    capCmp:"Qué significa", m1:"Un broker toma la misma comisión", m2:"Tu beneficio neto al cierre", m3:"Tiempo de venta estimado",
+    months:function(n){return "~"+n+" meses";},
+    to:" a ",
+    curnote:"Las campañas se facturan en USD. MXN se muestra solo como referencia, a aprox "+FX+" MXN por USD.",
+    origin:{broad:"Origen típico: sobre todo local e internacional amplio.",balanced:"Origen típico: mixto EE.UU./Canadá e internacional.",premium:"Origen típico: compradores de alta intención de EE.UU. y Canadá."},
+    lesson:{
+      broad:"Estás comprando los contactos más baratos. Bajo coste por contacto, pero menos compradores cualificados y peor economía. Contactos baratos, no compradores baratos.",
+      balanced:"Un reparto equilibrado. Un coste por contacto razonable con una buena proporción de compradores cualificados.",
+      premium:"Estás comprando intención. El coste por contacto es más alto, pero consigues más compradores cualificados y un menor coste por comprador cualificado. Los contactos caros son los compradores más baratos."
+    },
+    note:function(comm,share,over){var p=Math.round(share*100);
+      if(over) return "Aquí el marketing supera tu comisión. Bájalo por debajo de tu comisión del "+comm.toFixed(1)+"%. Nunca gastamos más allá de la comisión, y nunca subvencionamos.";
+      return "Tu coste total se limita a tu comisión del "+comm.toFixed(1)+"%, la misma que toma un broker. El marketing es el "+p+"% de esa comisión; el resto es nuestro honorario de éxito. Cuanto más eficiente el marketing, mayor ese honorario, así que cobramos por precisión, no por gastar.";},
+    verdict:function(share,over){
+      if(over) return "Más allá de este punto el marketing consume toda la comisión. El modelo favorece propiedades de mayor valor, donde la promoción es una pequeña parte de lo que pagas igual.";
+      if(share<=0.4) return "Ligero y eficiente. Además de esta campaña dedicada en Meta y Google, recibes compradores afines del Virezia Circle, nuestra red activa. Más promoción acorta la venta; menos conserva más de la comisión como margen que solo ganamos en un cierre.";
+      return "Estás destinando gran parte de la comisión a promoción para máxima velocidad. Tu total sigue siendo la misma comisión que toma un broker, y recibes compradores afines del Virezia Circle.";},
+    assume:function(t){return "Supuestos del modelo: "+Math.round(t.qual*100)+"% de los contactos cualifican, "+Math.round(t.q2c*100)+"% de los cualificados pide consulta, "+Math.round(t.c2x*100)+"% de esos cierran. El volumen se muestra como un rango. Los cierres dependen de tu proceso de ventas y son ilustrativos. Importes en USD salvo que elijas MXN.";}
+  }
+};
+
+var TIERS = {
+  broad:    { cpl:34, qual:0.26, q2c:0.20, c2x:0.05 },
+  balanced: { cpl:52, qual:0.52, q2c:0.28, c2x:0.07 },
+  premium:  { cpl:74, qual:0.80, q2c:0.35, c2x:0.10 }
+};
+
+var state = { tier:"balanced", value:560000, comm:5, mkt:1, channels:1 };
+var LANG = "en";
+var CUR = "USD";
+
+function compute(s){
+  var t = TIERS[s.tier];
+  var cpl = t.cpl, qShare = t.qual;
+  if(s.channels === 2){ qShare *= 1.06; }
+  var valuePenalty = Math.min(0.35, Math.max(0,(s.value-500000)/10000000));
+  qShare = qShare * (1 - valuePenalty);
+
+  var marketing = s.value * (s.mkt/100);
+  var commission = s.value * (s.comm/100);
+  var over = marketing > commission;
+  var successFee = Math.max(0, commission - marketing);
+  var total = marketing + successFee;        // = max(commission, marketing)
+  var net = s.value - total;
+  var shareOfComm = commission > 0 ? marketing / commission : 0;
+
+  var verified = marketing / cpl;
+  var qualified = verified * qShare;
+  var consults = qualified * t.q2c;
+  var closes = consults * t.c2x;
+
+  var intensity = Math.min(1, shareOfComm);
+  var months = Math.max(3, Math.round(9 - 6*intensity));
+
+  return {
+    cpl:cpl, verified:verified, qualified:qualified, consults:consults, closes:closes,
+    cpq: marketing / qualified,
+    marketing:marketing, commission:commission, successFee:successFee,
+    total:total, net:net, shareOfComm:shareOfComm, over:over, months:months
+  };
+}
+
+function fmt(n){ return new Intl.NumberFormat('en-US',{maximumFractionDigits:0}).format(Math.round(n)); }
+function money(usd){
+  var v = CUR==="MXN" ? usd*FX : usd;
+  var sym = CUR==="MXN" ? "MX$" : "US$";
+  return sym + fmt(v);
+}
+function moneyK(usd){
+  var v = CUR==="MXN" ? usd*FX : usd;
+  var sym = CUR==="MXN" ? "MX$" : "US$";
+  if(v>=1000000) return sym + (v/1000000).toFixed(v>=10000000?0:1) + "M";
+  if(v>=1000) return sym + Math.round(v/1000) + "K";
+  return sym + Math.round(v);
+}
+function rangeStr(n){ return Math.max(0,Math.round(n*0.85)) + STR[LANG].to + Math.round(n*1.15); }
+function setText(id,v){ var e=document.getElementById(id); if(e) e.textContent=v; }
+
+function render(){
+  var s=state, T=STR[LANG], r=compute(s);
+
+  setText('l-value',T.value); setText('l-comm',T.comm); setText('l-mkt',T.mkt);
+  setText('l-target',T.target); setText('l-chan',T.chan); setText('l-cur',T.cur);
+  setText('v-value', moneyK(s.value));
+  setText('v-comm', s.comm.toFixed(1)+'%');
+  setText('v-mkt', s.mkt.toFixed(2)+'%');
+  setText('commnote', T.commNote);
+  setText('mktnote', T.mktNote(Math.round(r.shareOfComm*100), money(r.marketing)));
+  setText('origin', T.origin[s.tier]);
+  setText('curnote', T.curnote);
+
+  setText('l-qual',T.qual); setText('o-qual-s',T.qualS);
+  setText('l-cpq',T.cpq); setText('o-cpq-s',T.cpqS);
+  setText('l-ver',T.ver); setText('o-ver-s',T.verS);
+  setText('l-cpl',T.cpl); setText('o-cpl-s',T.cplS);
+  setText('fl-ver',T.flVer); setText('fl-qual',T.flQual); setText('fl-cons',T.flCons); setText('fl-close',T.flClose);
+  setText('cap-cost',T.capCost); setText('l-c1',T.c1); setText('l-c2',T.c2); setText('l-c3',T.c3);
+  setText('cap-cmp',T.capCmp); setText('l-m1',T.m1); setText('l-m2',T.m2); setText('l-m3',T.m3);
+
+  setText('o-qual', rangeStr(r.qualified));
+  setText('o-cpq', money(r.cpq));
+  setText('o-ver', rangeStr(r.verified));
+  setText('o-cpl', money(r.cpl));
+  setText('lesson', T.lesson[s.tier]);
+
+  setText('fv-ver', Math.round(r.verified));
+  setText('fv-qual', Math.round(r.qualified));
+  setText('fv-cons', Math.round(r.consults));
+  setText('fv-close', r.closes>=1? r.closes.toFixed(1) : r.closes.toFixed(2));
+  var base=r.verified||1;
+  document.getElementById('f-ver').style.width='100%';
+  document.getElementById('f-qual').style.width=Math.max(3,(r.qualified/base*100))+'%';
+  document.getElementById('f-cons').style.width=Math.max(3,(r.consults/base*100))+'%';
+  document.getElementById('f-close').style.width=Math.max(2,(r.closes/base*100))+'%';
+
+  setText('o-c1', money(r.marketing));
+  setText('o-c2', money(r.successFee));
+  setText('o-c3', money(r.total));
+  var cn=document.getElementById('costnote');
+  cn.textContent=T.note(s.comm, r.shareOfComm, r.over);
+  cn.className=r.over ? 'costnote warn' : 'costnote';
+
+  setText('o-m1', money(r.commission));
+  setText('o-m2', money(r.net));
+  setText('o-m3', T.months(r.months));
+  setText('verdict', T.verdict(r.shareOfComm, r.over));
+
+  setText('assume', T.assume(TIERS[s.tier]));
+}
+
+document.getElementById('value').addEventListener('input',function(e){ state.value=+e.target.value; render(); });
+document.getElementById('comm').addEventListener('input',function(e){ state.comm=+e.target.value; render(); });
+document.getElementById('mkt').addEventListener('input',function(e){ state.mkt=+e.target.value; render(); });
+document.querySelectorAll('#seg-target button').forEach(function(b){
+  b.addEventListener('click',function(){
+    document.querySelectorAll('#seg-target button').forEach(function(x){x.classList.remove('active');});
+    b.classList.add('active'); state.tier=b.getAttribute('data-tier'); render();
+  });
+});
+document.querySelectorAll('#chan button').forEach(function(b){
+  b.addEventListener('click',function(){
+    document.querySelectorAll('#chan button').forEach(function(x){x.classList.remove('active');});
+    b.classList.add('active'); state.channels=+b.getAttribute('data-ch'); render();
+  });
+});
+document.querySelectorAll('#cur button').forEach(function(b){
+  b.addEventListener('click',function(){
+    document.querySelectorAll('#cur button').forEach(function(x){x.classList.remove('active');});
+    b.classList.add('active'); CUR=b.getAttribute('data-cur'); render();
+  });
+});
+
+function setLang(l){
+  LANG=l;
+  document.body.className='lang-'+l;
+  document.getElementById('btn-en').classList.toggle('active', l==='en');
+  document.getElementById('btn-es').classList.toggle('active', l==='es');
+  document.documentElement.lang=l;
+  if(l==='es'){
+    document.getElementById('seg-broad').textContent='Amplio / Volumen';
+    document.getElementById('seg-balanced').textContent='Equilibrado';
+    document.getElementById('seg-premium').textContent='Premium / Intención';
+    document.getElementById('ch1').textContent='Solo Meta';
+    document.getElementById('ch2').textContent='Meta + Google';
+  } else {
+    document.getElementById('seg-broad').textContent='Broad / Volume';
+    document.getElementById('seg-balanced').textContent='Balanced';
+    document.getElementById('seg-premium').textContent='Premium / Intent';
+    document.getElementById('ch1').textContent='Meta only';
+    document.getElementById('ch2').textContent='Meta + Google';
+  }
+  render();
+}
+
+render();
+</script>
+</body>
+</html>

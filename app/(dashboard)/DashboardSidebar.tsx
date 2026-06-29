@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 
 const PARTNER_NAV = [
   { href: "/dashboard", label: "Pipeline", icon: "◇" },
+  { href: "/offer", label: "Our Offer", icon: "◈" },
   { href: "/settings", label: "Settings", icon: "○" },
 ];
 
