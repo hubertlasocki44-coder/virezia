@@ -7,7 +7,7 @@ type PartnerModule = "pipeline" | "offer" | "settings";
 
 const ALL_PARTNER_NAV: { href: string; label: string; icon: string; module: PartnerModule }[] = [
   { href: "/dashboard", label: "Pipeline",  icon: "◇", module: "pipeline" },
-  { href: "/offer",     label: "Our Offer", icon: "◈", module: "offer"    },
+  { href: "/offer",     label: "The Proposal", icon: "◈", module: "offer"    },
   { href: "/settings",  label: "Settings",  icon: "○", module: "settings" },
 ];
 
